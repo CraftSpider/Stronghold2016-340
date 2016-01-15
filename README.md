@@ -1,2 +1,2 @@
-# Team340_2016_Stronghold
-2016 code for FRC robot
+# Stronghold2016-340
+2016 code for FRC team 340
