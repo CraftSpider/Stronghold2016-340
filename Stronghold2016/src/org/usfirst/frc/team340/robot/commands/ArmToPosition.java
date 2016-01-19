@@ -26,19 +26,25 @@ public class ArmToPosition extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.clawArm.sendArmToPosition(position, speed);
+    	if (Robot.clawArm.armPosition() > position && !Robot.clawArm.armAtBottom()) {
+    		Robot.clawArm.armDown(speed);
+    	} else if (Robot.clawArm.armPosition() < position && !Robot.clawArm.armAtTop()) {
+    		Robot.clawArm.armUp(speed);
+    	} else {
+    		Robot.clawArm.armStop();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.clawArm.armAtBottom() || Robot.clawArm.armAtTop()) {
+    	if ((Robot.clawArm.armAtBottom() && position < Robot.clawArm.armPosition()) || (Robot.clawArm.armAtTop() && position > Robot.clawArm.armPosition())) {
     		return true;
     	} else if (Robot.clawArm.armPosition() == position) {
     		return true;
     	}
     	return false;
     	//This would do about the same thing, but would be quite a pain to read:
-    	//return ((Robot.clawArm.armPosition() > position || Robot.clawArm.armPosition() < position) && !(Robot.clawArm.armAtBottom() || Robot.clawArm.armAtTop())? false : true);
+    	//return ((Robot.clawArm.armPosition() > position || Robot.clawArm.armPosition() < position) && !((Robot.clawArm.armAtBottom() && position < Robot.clawArm.armPosition()) || (Robot.clawArm.armAtTop() && position > Robot.clawArm.armPosition()))? false : true);
     }
 
     // Called once after isFinished returns true

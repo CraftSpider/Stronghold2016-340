@@ -47,20 +47,6 @@ public class ClawArm extends Subsystem {
     	clawPiston.set(false);
     }
     
-    /**
-     * Send arm to a specified potentiometer angle. Potentiometer for this example has zero corresponding exactly to the bottom and a max value corresponding exactly to the top.
-     * <br><br><i>ALWAYS call in a loop.</i>
-     */
-    public void sendArmToPosition(int position,double speed) {
-    	if (armAngleSensor.get() > position && !armAtBottom()) {
-    		armMotor.set(-speed);
-    	} else if (armAngleSensor.get() < position && !armAtTop()) {
-    		armMotor.set(speed);
-    	} else {
-    		armMotor.set(0);
-    	}
-    }
-    
     public void armDown(double speed) {
 		armMotor.set(-speed);
     }
