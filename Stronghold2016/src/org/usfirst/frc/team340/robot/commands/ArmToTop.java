@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveWithJoysticks extends Command {
+public class ArmToTop extends Command {
 
-    public DriveWithJoysticks() {
+    public ArmToTop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drive);
+    	requires(Robot.clawArm);
     }
 
     // Called just before this Command runs the first time
@@ -21,16 +21,17 @@ public class DriveWithJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.arcadeDrive(Robot.oi.getDriveMove(), Robot.oi.getDriveRotate());
+    	Robot.clawArm.armUp(1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.clawArm.armAtTop();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.clawArm.armStop();
     }
 
     // Called when another command which requires one or more of the same
