@@ -101,8 +101,27 @@ public class OI {
 	}
 	LeftTrig2 leftTrig2 = new LeftTrig2();
 	
-	public double getDriveMove() {
+	public double getArcadeDriveMove() {
 		return xBoxDriver.getRawAxis(0);
+	}
+	
+	/**
+	 * Get throttle for GTA (trigger-based) drive
+	 * @return double throttle
+	 */
+	public double getGTADriveMove() {
+		//only return for the right trigger if it above 0.05 (dead zone)
+		if(xBoxDriver.getRawAxis(3) > 0.05) {
+			return xBoxDriver.getRawAxis(3);
+		//even though the right trigger isn't above 0.05, make sure the left is to avoid running the
+		//motors really slowly
+		} else if(xBoxDriver.getRawAxis(2) > 0.05) {
+			return xBoxDriver.getRawAxis(2);
+		}
+		//in case neither trigger is held down
+		return 0;
+		
+		//todo: add a dead zone variable perhaps in robotmap
 	}
 	
 	public double getDriveRotate() {

@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveWithJoysticks extends Command {
 
+	public boolean GTADrive = true;
+	
     public DriveWithJoysticks() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,7 +23,11 @@ public class DriveWithJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.arcadeDrive(Robot.oi.getDriveMove(), Robot.oi.getDriveRotate());
+    	if(GTADrive) {
+    		Robot.drive.arcadeDrive(Robot.oi.getGTADriveMove(), Robot.oi.getDriveRotate());
+    	} else {
+    		Robot.drive.arcadeDrive(Robot.oi.getArcadeDriveMove(), Robot.oi.getDriveRotate());
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
