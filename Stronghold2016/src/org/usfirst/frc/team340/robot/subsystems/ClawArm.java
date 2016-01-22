@@ -27,11 +27,15 @@ public class ClawArm extends Subsystem {
 	private DigitalInput topSwitch;
 	
 	public ClawArm() {
+		System.out.println("Claw arm constructor method called");
 		armMotor = new TalonSRX(RobotMap.ClawArmMotor);
 		
 		clawPiston = new Solenoid(RobotMap.ClawPiston);
 		
 		armAngleSensor = new AnalogPotentiometer(RobotMap.ClawArmAngleSensor,270);
+		bottomSwitch = new DigitalInput(RobotMap.ClawBottomSwitch);
+		topSwitch = new DigitalInput(RobotMap.ClawTopSwitch);
+		System.out.println("Claw arm constructor method complete.");
 	}
 
     public void initDefaultCommand() {
@@ -40,34 +44,42 @@ public class ClawArm extends Subsystem {
     }
     
     public void openClaw() {
+    	System.out.println("Opening Claw");
     	clawPiston.set(true);
     }
     
     public void closeClaw() {
+    	System.out.println("Closing Claw");
     	clawPiston.set(false);
     }
     
     public void armDown(double speed) {
+    	System.out.println("Sending arm down at " + speed);
 		armMotor.set(-speed);
     }
     
     public void armUp(double speed) {
+    	System.out.println("Sending arm up at " + speed);
     	armMotor.set(speed);
     }
     
     public void armStop() {
+    	System.out.println("Arm Stopped");
     	armMotor.set(0);
     }
     
     public boolean armAtBottom() {
+    	System.out.println("Arm at bottom?");
     	return ((armAngleSensor.get() < 1) || bottomSwitch.get());
     }
     
     public boolean armAtTop() {
+    	System.out.println("Arm at top?");
     	return ((armAngleSensor.get() > 179) || topSwitch.get());
     }
     
     public double armPosition() {
+    	System.out.println("Arm at position " + armAngleSensor.get());
     	return armAngleSensor.get();
     }
 }
