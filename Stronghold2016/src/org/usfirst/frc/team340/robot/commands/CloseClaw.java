@@ -16,6 +16,7 @@ public class CloseClaw extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//this is a change 
     }
 
     // Called repeatedly when this Command is scheduled to run
