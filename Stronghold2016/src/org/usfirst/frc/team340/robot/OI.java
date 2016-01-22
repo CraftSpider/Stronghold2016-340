@@ -15,7 +15,7 @@ import org.usfirst.frc.team340.robot.commands.*;
 public class OI {
 	
     public OI() {
-        //Put the commands to be executed when buttons are pressed here
+        LB1.whenPressed(new CollectingMode());
 //    	A1.whenPressed(new DriveForward(1,1));
     }
     //// CREATING BUTTONS
