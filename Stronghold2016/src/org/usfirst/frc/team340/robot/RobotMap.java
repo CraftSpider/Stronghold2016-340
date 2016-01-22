@@ -28,6 +28,7 @@ public class RobotMap {
 	//
 	
 	public static int ClawBottomSwitch = 4;
+	public static int ClawTopSwitch = 5;
 	
 	//
 	// Analog I/O Ports

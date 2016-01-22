@@ -33,6 +33,8 @@ public class ClawArm extends Subsystem {
 		clawPiston = new Solenoid(RobotMap.ClawPiston);
 		
 		armAngleSensor = new AnalogPotentiometer(RobotMap.ClawArmAngleSensor,270);
+		bottomSwitch = new DigitalInput(RobotMap.ClawBottomSwitch);
+		topSwitch = new DigitalInput(RobotMap.ClawTopSwitch);
 		System.out.println("Claw arm constructor method complete.");
 	}
 
