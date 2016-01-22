@@ -11,10 +11,12 @@ import org.usfirst.frc.team340.robot.commands.*;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+@SuppressWarnings("unused")
 public class OI {
 	
     public OI() {
         LB1.whenPressed(new CollectingMode());
+//    	A1.whenPressed(new DriveForward(1,1));
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
