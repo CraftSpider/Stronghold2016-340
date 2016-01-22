@@ -14,6 +14,9 @@ import org.usfirst.frc.team340.robot.commands.*;
 public class OI {
 	
     public OI() {
+    	
+    	A1.whenPressed(new Score());
+    	
         //Put the commands to be executed when buttons are pressed here
     }
     //// CREATING BUTTONS
