@@ -5,9 +5,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class ThingThatGoes extends CommandGroup {
+public class CG_Score extends CommandGroup {
     
-    public  ThingThatGoes() {
+    public  CG_Score() {
+    	
+    	addSequential(new CloseClaw());
+    	addSequential(new ArmToPosition(90, 0.5));
+    	addSequential(new OpenClaw());
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,7 +29,5 @@ public class ThingThatGoes extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new DriveForward(5,1));
-    	addSequential(new DriveForward(5,-1));
     }
 }

@@ -5,11 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class EmergencyStop extends CommandGroup {
+public class CG_PrepareToScore extends CommandGroup {
     
-    public  EmergencyStop() {
-    	addParallel(new ArmStop());
-    	addParallel(new DriveStop());
+    public  CG_PrepareToScore() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,5 +24,8 @@ public class EmergencyStop extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	
+    	addSequential(new CloseClaw());
+    	addSequential(new ArmToPosition(100, 1));
     }
 }

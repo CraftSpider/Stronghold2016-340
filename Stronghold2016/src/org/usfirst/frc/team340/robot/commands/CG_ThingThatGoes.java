@@ -5,12 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class YButton extends CommandGroup {
+public class CG_ThingThatGoes extends CommandGroup {
     
-    public  YButton() {
-    	
-    	addSequential(new DriveForward(8, 1));
-    	
+    public  CG_ThingThatGoes() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -27,5 +24,7 @@ public class YButton extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+    	addSequential(new DriveForward(5,1));
+    	addSequential(new DriveForward(5,-1));
     }
 }

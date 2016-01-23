@@ -5,14 +5,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Score extends CommandGroup {
+public class CG_EmergencyStop extends CommandGroup {
     
-    public  Score() {
-    	
-    	addSequential(new CloseClaw());
-    	addSequential(new ArmToPosition(90, 0.5));
-    	addSequential(new OpenClaw());
-    	
+    public  CG_EmergencyStop() {
+    	addParallel(new ArmStop());
+    	addParallel(new DriveStop());
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

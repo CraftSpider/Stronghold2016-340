@@ -5,9 +5,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class PrepareToScore extends CommandGroup {
+public class CG_YButton extends CommandGroup {
     
-    public  PrepareToScore() {
+    public  CG_YButton() {
+    	
+    	addSequential(new DriveForward(8, 1));
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,8 +27,5 @@ public class PrepareToScore extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-    	addSequential(new CloseClaw());
-    	addSequential(new ArmToPosition(100, 1));
     }
 }

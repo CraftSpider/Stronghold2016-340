@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CollectingMode extends CommandGroup {
+public class CG_CollectingMode extends CommandGroup {
     
-    public  CollectingMode() {
+    public  CG_CollectingMode() {
        addParallel(new ArmToBottom());
        addSequential(new OpenClaw());
     	
