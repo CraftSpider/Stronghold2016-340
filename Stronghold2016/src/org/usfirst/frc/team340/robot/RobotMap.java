@@ -15,7 +15,6 @@ public class RobotMap {
 	// Motor Ports
 	//
 	//wundr is the smartest guy on programming mmkay -Mr. Mackey
-	// =)!!!Hi there nerds!!!(=
 	
 	public static int DriveLeftMotor = 0;
 	public static int DriveRightMotor = 1;
