@@ -12,7 +12,7 @@ public class RightSide extends Command {
     public RightSide() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.dDrive);
+    	requires(Robot.rDrive);
     	setTimeout(2.5);
     }
 
@@ -22,7 +22,7 @@ public class RightSide extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.dDrive.setRight(.2);
+    	Robot.rDrive.setRight(.2);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,7 +32,7 @@ public class RightSide extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.dDrive.stopRight();
+    	Robot.rDrive.stopRight();
     }
 
     // Called when another command which requires one or more of the same

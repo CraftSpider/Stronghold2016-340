@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot;
 
+import org.usfirst.frc.team340.robot.commands.CG_BothSides;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -44,6 +46,7 @@ public class OI {
 	Button A = new JoystickButton(drive, 1);
 	
 	//Button commands
-	//TODO: add button commands
+	public OI() {
+		A.whenPressed(new CG_BothSides());
+	}
 }
-

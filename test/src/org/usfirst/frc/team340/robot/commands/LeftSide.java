@@ -12,7 +12,7 @@ public class LeftSide extends Command {
     public LeftSide() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.dDrive);
+    	requires(Robot.lDrive);
     	setTimeout(5);
     }
 
@@ -22,7 +22,7 @@ public class LeftSide extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.dDrive.setLeft(.2);
+    	Robot.lDrive.setLeft(.2);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,7 +32,7 @@ public class LeftSide extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.dDrive.stopLeft();
+    	Robot.lDrive.stopLeft();
     }
 
     // Called when another command which requires one or more of the same

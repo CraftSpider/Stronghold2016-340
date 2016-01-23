@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class DualDrive extends Subsystem {
+public class LeftDrive extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -17,26 +17,16 @@ public class DualDrive extends Subsystem {
     }
     
     private TalonSRX leftDrive;
-    private TalonSRX rightDrive;
     
-    public DualDrive() {
+    public LeftDrive() {
     	leftDrive = new TalonSRX(0);
-    	rightDrive = new TalonSRX(1);
     }
     
     public void setLeft(double leftOut) {
     	leftDrive.set(leftOut);
     }
     
-    public void setRight(double rightOut) {
-    	rightDrive.set(-rightOut);
-    }
-    
     public void stopLeft() {
     	leftDrive.set(0);
-    }
-    
-    public void stopRight() {
-    	rightDrive.set(0);
     }
 }

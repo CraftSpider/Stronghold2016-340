@@ -2,8 +2,9 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ExampleCommand;
-import org.usfirst.frc.team340.robot.subsystems.DualDrive;
 import org.usfirst.frc.team340.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team340.robot.subsystems.LeftDrive;
+import org.usfirst.frc.team340.robot.subsystems.RightDrive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -28,7 +29,8 @@ public class Robot extends IterativeRobot {
     SendableChooser chooser;
     
     //Init subsystems
-    public static final DualDrive dDrive = new DualDrive();
+    public static LeftDrive lDrive;
+    public static RightDrive rDrive;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -38,8 +40,12 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new ExampleCommand());
+        lDrive = new LeftDrive();
+        rDrive = new RightDrive();
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        SmartDashboard.putData(lDrive);
+        SmartDashboard.putData(rDrive);
     }
 	
 	/**
