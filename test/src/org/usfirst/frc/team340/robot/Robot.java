@@ -1,12 +1,14 @@
 
 package org.usfirst.frc.team340.robot;
 
+import org.usfirst.frc.team340.robot.commands.ExampleCommand;
+import org.usfirst.frc.team340.robot.subsystems.DualDrive;
+import org.usfirst.frc.team340.robot.subsystems.ExampleSubsystem;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team340.robot.commands.ExampleCommand;
-import org.usfirst.frc.team340.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -24,6 +26,9 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     SendableChooser chooser;
+    
+    //Init subsystems
+    public static final DualDrive dDrive = new DualDrive();
 
     /**
      * This function is run when the robot is first started up and should be
