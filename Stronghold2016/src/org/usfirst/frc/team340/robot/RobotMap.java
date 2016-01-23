@@ -10,11 +10,9 @@ import org.usfirst.frc.team340.robot.subsystems.Harvester;
  */
 public class RobotMap {
 	
-	//why
-	//change here
+	//
 	// Motor Ports
 	//
-	//wundr is the smartest guy on programming mmkay -Mr. Mackey
 	
 	public static int DriveLeftMotor = 0;
 	public static int DriveRightMotor = 1;
