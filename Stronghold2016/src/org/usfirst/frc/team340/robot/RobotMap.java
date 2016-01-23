@@ -1,4 +1,7 @@
 package org.usfirst.frc.team340.robot;
+
+import org.usfirst.frc.team340.robot.subsystems.Harvester;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -7,7 +10,8 @@ package org.usfirst.frc.team340.robot;
  */
 public class RobotMap {
 	
-	//
+	//why
+	//change here
 	// Motor Ports
 	//
 	// =)!!!Hi there nerds!!!(=
@@ -36,4 +40,7 @@ public class RobotMap {
 	//
 	
 	public static int ClawArmAngleSensor = 0;
+	
+	//wundr doesn't quite know where to put this
+	public Harvester harvester = new Harvester();
 }

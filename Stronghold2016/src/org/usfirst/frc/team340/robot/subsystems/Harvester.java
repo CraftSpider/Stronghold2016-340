@@ -46,4 +46,3 @@ public class Harvester extends Subsystem {
     	return aimPosition.get();
     }
 }
-
