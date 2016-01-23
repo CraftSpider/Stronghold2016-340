@@ -1,12 +1,15 @@
 
 package org.usfirst.frc.team340.robot;
 
+import org.usfirst.frc.team340.robot.commands.AutoDefault;
+import org.usfirst.frc.team340.robot.commands.DriveForward;
+import org.usfirst.frc.team340.robot.subsystems.ClawArm;
+import org.usfirst.frc.team340.robot.subsystems.Drive;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team340.robot.commands.AutoDefault;
-import org.usfirst.frc.team340.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -24,6 +27,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
+    Command belowLowBar;
     SendableChooser chooser;
 
     /**
@@ -36,6 +40,8 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        
+        belowLowBar = new DriveForward(5, -1);
     }
 	
 	/**
@@ -76,6 +82,8 @@ public class Robot extends IterativeRobot {
     	
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        
+        belowLowBar.start();
     }
 
     /**
