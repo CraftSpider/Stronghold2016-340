@@ -17,6 +17,7 @@ public class OI {
     public OI() {
     	
     	
+    	Y1.whenPressed(new YButton());
     	//A1.whenPressed(new Score());
         LB1.whenPressed(new CollectingMode());
     }
