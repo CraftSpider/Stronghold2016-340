@@ -16,10 +16,9 @@ public class OI {
 	
     public OI() {
     	
-    	A1.whenPressed(new Score());
-    	B1.whenPressed(new DriveForward(1, 1));
+    	
+    	//A1.whenPressed(new Score());
         LB1.whenPressed(new CollectingMode());
-//    	A1.whenPressed(new DriveForward(1,1));
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
