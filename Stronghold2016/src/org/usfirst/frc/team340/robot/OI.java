@@ -19,6 +19,7 @@ public class OI {
     	
     	Y1.whenPressed(new YButton());
     	//A1.whenPressed(new Score());
+    	A1.whenPressed(new DriveForward(5, 1));
         LB1.whenPressed(new CollectingMode());
     }
     //// CREATING BUTTONS
@@ -133,4 +134,3 @@ public class OI {
 		return xBoxDriver.getRawAxis(1);
 	}
 }
-
