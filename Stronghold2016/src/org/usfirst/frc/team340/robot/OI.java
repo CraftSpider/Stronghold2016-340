@@ -17,7 +17,7 @@ public class OI {
     public OI() {
     	
     	A1.whenPressed(new Score());
-    	
+    	B1.whenPressed(new DriveForward(1, 1));
         LB1.whenPressed(new CollectingMode());
 //    	A1.whenPressed(new DriveForward(1,1));
     }
