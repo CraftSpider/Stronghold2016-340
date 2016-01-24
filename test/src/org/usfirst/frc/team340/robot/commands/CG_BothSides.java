@@ -26,6 +26,6 @@ public class CG_BothSides extends CommandGroup {
         // arm.
     	
     	addSequential(new RightSide());
-    	addParallel(new LeftSide());
+    	//addParallel(new LeftSide());
     }
 }
