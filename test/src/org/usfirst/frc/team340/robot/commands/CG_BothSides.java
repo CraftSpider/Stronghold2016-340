@@ -25,7 +25,7 @@ public class CG_BothSides extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
+    	addParallel(new LeftSide());
     	addSequential(new RightSide());
-    	//addParallel(new LeftSide());
     }
 }

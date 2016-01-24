@@ -32,6 +32,11 @@ public class Robot extends IterativeRobot {
     public static LeftDrive lDrive;
     public static RightDrive rDrive;
 
+    public Robot() {
+    	lDrive = new LeftDrive();
+        rDrive = new RightDrive();
+    }
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -40,8 +45,6 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new ExampleCommand());
-        lDrive = new LeftDrive();
-        rDrive = new RightDrive();
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
         SmartDashboard.putData(lDrive);
