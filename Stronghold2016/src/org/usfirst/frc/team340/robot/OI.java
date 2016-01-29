@@ -12,15 +12,7 @@ import org.usfirst.frc.team340.robot.commands.*;
  */
 public class OI {
 	
-    public OI() {
-    	
-    	X1.whenPressed(new CG_XButton());
-    	Y1.whenPressed(new CG_YButton());
-    	//A1.whenPressed(new Score());
-    	A1.whenPressed(new DriveForward(5, 1));
-        LB1.whenPressed(new CG_CollectingMode());
-        B1.whenPressed(new CG_ThingThatGoes());
-    }
+    
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -106,9 +98,22 @@ public class OI {
 	}
 	LeftTrig2 leftTrig2 = new LeftTrig2();
 	
+	public OI() {
+    	
+    	X1.whenPressed(new CG_XButton());
+    	Y1.whenPressed(new CG_YButton());
+    	//A1.whenPressed(new Score());
+    	Back1.whileHeld(new CG_DriveForwardFor5Seconds ());
+        LB1.whenPressed(new CG_CollectingMode());
+        B1.whenPressed(new CG_ThingThatGoes());
+    }
+	
 	public double getArcadeDriveMove() {
 		return xBoxDriver.getRawAxis(0);
 	}
+	
+	
+	
 	
 	/**
 	 * Get throttle for GTA (trigger-based) drive
