@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
 /**
@@ -25,6 +26,7 @@ public class Harvester extends Subsystem {
     // here. Call these from Commands.
 	
 	// Roller farthest from the robot, it is the shooter
+	
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
 	// Roller closest to the robot
@@ -62,13 +64,13 @@ public class Harvester extends Subsystem {
 		public void reset() {
 			offset = super.get();
 		}
-	}
+	}   
 	
 	//potentiometers
 	private ZeroablePotentiometer leftPot;
 	private ZeroablePotentiometer rightPot;
 	
-	public Harvester() {
+	public Harvester() {		
 		shooterWheelA = new CANTalon(RobotMap.HarvesterShooterWheelA);
 		shooterWheelB = new CANTalon(RobotMap.HarvesterShooterWheelB);
 		shooterWheelB.changeControlMode(CANTalon.TalonControlMode.Follower);
@@ -113,14 +115,19 @@ public class Harvester extends Subsystem {
     	shooterWheelA.changeControlMode(CANTalon.TalonControlMode.Voltage);
     }
     
+    /**
+     * 
+     */
     public void setEncSpd() {
     	shooterWheelA.disable();
     	shooterWheelA.changeControlMode(CANTalon.TalonControlMode.Speed);
     	shooterWheelA.enable();
+    	
     }
     
     /**
      * Drives the roller closest to the robot
+     * at a specific speed.
      * @param speed
      */
     public void setBallControl(double speed) {
