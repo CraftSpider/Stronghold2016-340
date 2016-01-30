@@ -11,18 +11,27 @@ import org.usfirst.frc.team340.robot.subsystems.Harvester;
 public class RobotMap {
 	
 	//
-	// Motor Ports
+	// PWM Motor Ports
 	//
 	
 	public static int DriveLeftMotor = 0;
-	public static int DriveRightMotor = 1;
+	public static int DriveRightMotor = 7;
 	
-	public static int HarvesterOuterMotor = 2;
-	public static int HarvesterInnerMotor = 3;
-	public static int HarvesterAimingMotor = 4;
+
+	public static int HarvesterAimingMotorA = 4;
+	public static int HarvesterAimingMotorB = 7;
 	
 	public static int ClimberMovementMotor = 5;
 	public static int ClimberWinchMotor = 6;
+	
+	
+	//
+	// CAN Talon Ports
+ 	//
+	
+	public static int HarvesterShooterWheelA = 1;
+	public static int HarvesterShooterWheelB = 2;
+	public static int HarvesterBallControl = 3;
 	
 	//
 	// Solenoid Ports
