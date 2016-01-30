@@ -23,7 +23,7 @@ public class Climb extends Command {
     protected void execute() {
     	Robot.drive.engageClutch();
     	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState && !Robot.climber.latchState) {
-    		Robot.drive.setBothDrive(-1, -1);
+    		Robot.drive.setBothDrive(1, 1);
     	}
     }
 
