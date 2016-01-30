@@ -4,6 +4,7 @@ import org.usfirst.frc.team340.robot.RobotMap;
 import org.usfirst.frc.team340.robot.commands.DriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,8 +19,8 @@ public class Drive extends Subsystem {
     // here. Call these from Commands.
 	
 	// Drive motors
-	private Talon leftDrive;
-	private Talon rightDrive;
+	public static Talon leftDrive;
+	public static Talon rightDrive;
 	
 	// Drive speed variables
 	private double leftMotorSpeed;
@@ -28,12 +29,20 @@ public class Drive extends Subsystem {
 	private Encoder leftDriveEncoder;
 	private Encoder rightDriveEncoder;
 	
+	//Clutch servo
+	private Servo clutch;
+	
+	//Is the clutch on or off?
+	public boolean clutchState;
+	
 	public Drive() {
 		leftDrive = new Talon(RobotMap.DriveLeftMotor);
 		rightDrive = new Talon(RobotMap.DriveRightMotor);
 		
 		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
+		
+		clutch = new Servo(1);
 	}
 	
     public void initDefaultCommand() {
@@ -89,6 +98,22 @@ public class Drive extends Subsystem {
     public void resetBothEncoders() {
     	resetLeftEncoder();
     	resetRightEncoder();
+    }
+    
+    /**
+     * Enables the clutch servo, enabling the arm to pull up the robot
+     */
+    public void engageClutch() {
+    	clutch.set(1);
+    	clutchState = true;
+    }
+    
+    /**
+     * Releases clutch
+     */
+    public void disengageClutch() {
+    	clutch.set(0);
+    	clutchState = false;
     }
     
     public void arcadeDrive(double moveValue, double rotateValue){

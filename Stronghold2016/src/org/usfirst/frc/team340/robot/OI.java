@@ -1,10 +1,12 @@
 package org.usfirst.frc.team340.robot;
 
+import org.usfirst.frc.team340.robot.commands.Climb;
+import org.usfirst.frc.team340.robot.commands.DriveWithJoysticks;
+import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
-import org.usfirst.frc.team340.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -13,7 +15,9 @@ import org.usfirst.frc.team340.robot.commands.*;
 public class OI {
 	
     public OI() {
-    	
+    	X1.whenPressed(new ReleaseLatch());
+    	Y1.whenPressed(new Climb());
+    	Y1.whenReleased(new DriveWithJoysticks());
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.

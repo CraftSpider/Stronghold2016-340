@@ -19,10 +19,12 @@ public class RobotMap {
 	
 
 	public static int HarvesterAimingMotorA = 4;
-	public static int HarvesterAimingMotorB = 7;
+	public static int HarvesterAimingMotorB = 8;
 	
 	public static int ClimberMovementMotor = 5;
 	public static int ClimberWinchMotor = 6;
+	
+	public static int Latch = 1;
 	
 	
 	//
@@ -50,6 +52,8 @@ public class RobotMap {
 	public static int LeftDriveEnocderPortB = 7;
 	public static int RightDriveEncoderPortA = 8;
 	public static int RightDriveEncoderPortB = 9;
+	
+	public static int BottomSensor = 2;
 	
 	//
 	// Analog I/O Ports
