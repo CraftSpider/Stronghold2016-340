@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team340.robot;
 
+import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 import org.usfirst.frc.team340.robot.subsystems.Harvester;
 
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static final Drive drive = new Drive();
 	public static final Harvester harvester = new Harvester();
 	public static OI oi;
+	public static final Climber climber = new Climber();
 
     Command autonomousCommand;
     Command belowLowBar;
@@ -38,6 +40,8 @@ public class Robot extends IterativeRobot {
 //        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        
+        
     }
 	
 	/**

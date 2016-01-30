@@ -8,14 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveWithJoysticks extends Command {
+public class Climb extends Command {
 
-	public boolean GTADrive = true;
-	
-    public DriveWithJoysticks() {
+    public Climb() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
@@ -24,13 +21,10 @@ public class DriveWithJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(GTADrive) {
-    		Robot.drive.arcadeDrive(Robot.oi.getGTADriveMove(), Robot.oi.getDriveRotate());
-    	} else {
-    		Robot.drive.arcadeDrive(Robot.oi.getArcadeDriveMove(), Robot.oi.getDriveRotate());
+    	Robot.drive.engageClutch();
+    	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState && !Robot.climber.latchState) {
+    		Robot.drive.setLeftDrive(1);
     	}
-    	
-    	Robot.drive.disengageClutch();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -45,6 +39,5 @@ public class DriveWithJoysticks extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
