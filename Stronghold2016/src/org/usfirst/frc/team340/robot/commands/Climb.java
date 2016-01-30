@@ -1,7 +1,6 @@
 package org.usfirst.frc.team340.robot.commands;
 
 import org.usfirst.frc.team340.robot.Robot;
-import org.usfirst.frc.team340.robot.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -13,6 +12,9 @@ public class Climb extends Command {
     public Climb() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	
+    	requires(Robot.climber);
+    	requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
