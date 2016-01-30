@@ -3,6 +3,7 @@ package org.usfirst.frc.team340.robot;
 import org.usfirst.frc.team340.robot.commands.Climb;
 import org.usfirst.frc.team340.robot.commands.DriveWithJoysticks;
 import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
+import org.usfirst.frc.team340.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -18,6 +19,8 @@ public class OI {
     	X1.whenPressed(new ReleaseLatch());
     	Y1.whenPressed(new Climb());
     	Y1.whenReleased(new DriveWithJoysticks());
+    	
+    	A1.whileActive(new Shooter());
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.

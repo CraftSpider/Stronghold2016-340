@@ -1,16 +1,12 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
-import java.nio.channels.Channel;
-
 import org.usfirst.frc.team340.robot.RobotMap;
 
-
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.TalonSRX;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
 /**
  * this is a dumb name because this mechanism will also shoot
@@ -67,7 +63,9 @@ public class Harvester extends Subsystem {
 	}   
 	
 	//potentiometers
+	@SuppressWarnings("unused")
 	private ZeroablePotentiometer leftPot;
+	@SuppressWarnings("unused")
 	private ZeroablePotentiometer rightPot;
 	
 	public Harvester() {		

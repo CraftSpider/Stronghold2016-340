@@ -12,6 +12,8 @@ public class ReleaseLatch extends Command {
     public ReleaseLatch() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	
+    	requires(Robot.climber);
     }
 
     // Called just before this Command runs the first time
