@@ -1,7 +1,5 @@
 package org.usfirst.frc.team340.robot;
 
-import org.usfirst.frc.team340.robot.subsystems.Harvester;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
