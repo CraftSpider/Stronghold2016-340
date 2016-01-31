@@ -26,11 +26,11 @@ public class Harvester extends Subsystem {
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
 	// Roller closest to the robot
-	private CANTalon harvesterBallControl;
+	private Victor harvesterBallControl;
 	
 	// not sure what type of motor this is gonna be
-	private Victor tiltLeft;
-	private Victor tiltRight;
+	private CANTalon tiltLeft;
+	private CANTalon tiltRight;
 	
 	//limit switches
 	private DigitalInput limitLeft;
@@ -63,27 +63,25 @@ public class Harvester extends Subsystem {
 	}   
 	
 	//potentiometers
-	@SuppressWarnings("unused")
 	private ZeroablePotentiometer leftPot;
-	@SuppressWarnings("unused")
 	private ZeroablePotentiometer rightPot;
 	
 	public Harvester() {		
-		shooterWheelA = new CANTalon(RobotMap.HarvesterShooterWheelA);
-		shooterWheelB = new CANTalon(RobotMap.HarvesterShooterWheelB);
-		shooterWheelB.changeControlMode(CANTalon.TalonControlMode.Follower);
-		shooterWheelB.set(shooterWheelA.getDeviceID());
+		shooterWheelA = new CANTalon(RobotMap.HarvesterShooterWheelA);//Construct shooter A as CANTalon, this should have encoder into it
+		shooterWheelB = new CANTalon(RobotMap.HarvesterShooterWheelB);//Construct shooter B as CANTalon
+		shooterWheelB.changeControlMode(CANTalon.TalonControlMode.Follower);//turn shooter motor B to a slave
+		shooterWheelB.set(shooterWheelA.getDeviceID());//slave shooter motor B to shooter motor A
 		
-		harvesterBallControl = new CANTalon(RobotMap.HarvesterBallControl);
+		harvesterBallControl = new Victor(RobotMap.HarvesterBallControl);
 		
-		tiltLeft = new Victor(RobotMap.HarvesterAimingMotorA);
-		tiltRight = new Victor(RobotMap.HarvesterAimingMotorB);
+		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
+		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
 		
-		limitLeft = new DigitalInput(0);
-		limitRight = new DigitalInput(1);
+		limitLeft = new DigitalInput(RobotMap.HarvesterLeftBump);
+		limitRight = new DigitalInput(RobotMap.HarvesterRightBump);
 		
-		leftPot = new ZeroablePotentiometer(0, 250);
-		rightPot = new ZeroablePotentiometer(1, 250);
+		leftPot = new ZeroablePotentiometer(RobotMap.LeftAimPot, 250);
+		rightPot = new ZeroablePotentiometer(RobotMap.RightAimPot, 250);
 	}
 	
     public void initDefaultCommand() {
@@ -108,19 +106,31 @@ public class Harvester extends Subsystem {
     	shooterWheelA.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     }
     
+    /**
+     * Set the shooter to absolute voltage mode. In this mode all set values 
+     * should be in volts from 12V to -12V. This will compensate for voltage 
+     * variation from the battery over the course of the match. Closed loop 
+     * control will be disabled before mode shifting
+     */
     public void setAbsVolt() {
     	shooterWheelA.disable();
     	shooterWheelA.changeControlMode(CANTalon.TalonControlMode.Voltage);
     }
     
     /**
-     * 
+     * Set the shooter to closed loop encoder control. Does not enable the closed loop.
      */
     public void setEncSpd() {
     	shooterWheelA.disable();
     	shooterWheelA.changeControlMode(CANTalon.TalonControlMode.Speed);
+    }
+    
+    public void enableClosedLoop(){
     	shooterWheelA.enable();
-    	
+    }
+    
+    public void disableClosedLoop(){
+    	shooterWheelA.disable();
     }
     
     /**
@@ -132,14 +142,14 @@ public class Harvester extends Subsystem {
     	harvesterBallControl.set(speed);
     }
     
-    /**
-     * Drives the motor that actuates the harvester/shooter
-     * @param speed
-     */
-    public void setTiltSpeed(double speed) {
-    	tiltLeft.set(-speed);
-    	tiltRight.set(speed);
-    }
+//    /**
+//     * Drives the motor that actuates the harvester/shooter
+//     * @param speed
+//     */
+//    public void setTiltSpeed(double speed) {
+//    	tiltLeft.set(-speed);
+//    	tiltRight.set(speed);
+//    }
     
     /**
      * Access right limit switch state
@@ -155,5 +165,20 @@ public class Harvester extends Subsystem {
      */
     public boolean getLeftLimit() {
     	return limitLeft.get();
+    }
+    
+    public double getLeftAimPot() {
+    	return leftPot.get();
+    }
+    
+    public double getRightAimPot() {
+    	return rightPot.get();
+    }
+    
+    public void setLeftTilt(double speed) {
+    	tiltLeft.set(speed);
+    }
+    public void setRightTilt(double speed) {
+    	tiltRight.set(speed);
     }
 }

@@ -1,7 +1,7 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
 import org.usfirst.frc.team340.robot.RobotMap;
-import org.usfirst.frc.team340.robot.commands.DriveWithJoysticks;
+import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Servo;
@@ -41,13 +41,13 @@ public class Drive extends Subsystem {
 		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 		
-		clutch = new Servo(1);
+		clutch = new Servo(RobotMap.Clutch);
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new DriveWithJoysticks());
+    	setDefaultCommand(new DriveWithXbox());
     }
     
     public void setLeftDrive(double speed) {

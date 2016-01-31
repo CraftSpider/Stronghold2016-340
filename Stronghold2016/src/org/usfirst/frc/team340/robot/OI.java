@@ -2,7 +2,7 @@ package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.Climb;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
-import org.usfirst.frc.team340.robot.commands.DriveWithJoysticks;
+import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
 import org.usfirst.frc.team340.robot.commands.Shooter;
 
@@ -17,12 +17,12 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
     public OI() {
-    	X1.whenPressed(new ReleaseLatch());
-    	Y1.whenPressed(new Climb());
-    	Y1.whenReleased(new DriveWithJoysticks());
-    	
-    	A1.whileActive(new Shooter());
-    	B1.whenPressed(new DischargeBall());
+//    	X1.whenPressed(new ReleaseLatch());
+//    	Y1.whenPressed(new Climb());
+//    	Y1.whenReleased(new DriveWithJoysticks());
+//    	
+//    	A1.whileActive(new Shooter());
+//    	B1.whenPressed(new DischargeBall());
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -109,22 +109,20 @@ public class OI {
 	}
 	LeftTrig2 leftTrig2 = new LeftTrig2();
 	
-	public double getArcadeDriveMove() {
-		return xBoxDriver.getRawAxis(0);
-	}
+	
 	
 	/**
 	 * Get throttle for GTA (trigger-based) drive
 	 * @return double throttle
 	 */
-	public double getGTADriveMove() {
+	public double getDriverSummedTriggers() {
 		//only return for the right trigger if it above 0.05 (dead zone)
 		if(xBoxDriver.getRawAxis(3) > 0.05) {
 			return xBoxDriver.getRawAxis(3);
 		//even though the right trigger isn't above 0.05, make sure the left is to avoid running the
 		//motors really slowly
 		} else if(xBoxDriver.getRawAxis(2) > 0.05) {
-			return xBoxDriver.getRawAxis(2);
+			return -xBoxDriver.getRawAxis(2);
 		}
 		//in case neither trigger is held down
 		return 0;
@@ -132,7 +130,19 @@ public class OI {
 		//todo: add a dead zone variable perhaps in robotmap
 	}
 	
-	public double getDriveRotate() {
-		return xBoxDriver.getRawAxis(1);
+	public double getDriverLeftY() {
+		return -xBoxDriver.getRawAxis(1);
 	}
+	
+	public double getDriverLeftX() {
+		return xBoxDriver.getRawAxis(0);
+	}
+	public double getDriverRightY() {
+		return -xBoxDriver.getRawAxis(5);
+	}
+	
+	public double getDriverRightX() {
+		return xBoxDriver.getRawAxis(4);
+	}
+	
 }

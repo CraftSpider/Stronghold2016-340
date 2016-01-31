@@ -7,29 +7,37 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveWithJoysticks extends Command {
+public class HarvesterActuateInSync extends Command {
 
-	public boolean GTADrive = true;
+	private double speed = 0.0;
 	
-    public DriveWithJoysticks() {
+    public HarvesterActuateInSync(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drive);
+    	this.speed = speed;
+    	requires(Robot.harvester);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(GTADrive) {
-    		Robot.drive.arcadeDrive(Robot.oi.getGTADriveMove(), Robot.oi.getDriveRotate());
+    	if(Math.abs(Robot.harvester.getLeftAimPot()-Robot.harvester.getRightAimPot()) < 5) {
+    		Robot.harvester.setLeftTilt(speed);
+    		Robot.harvester.setRightTilt(speed);
+    	} else if((Robot.harvester.getLeftAimPot() < Robot.harvester.getRightAimPot() &&
+    			speed > 0) || (
+    			Robot.harvester.getLeftAimPot() > Robot.harvester.getRightAimPot() &&
+    			speed < 0)) {
+    		Robot.harvester.setLeftTilt(speed);
+    		Robot.harvester.setRightTilt(speed/2.5);
     	} else {
-    		Robot.drive.arcadeDrive(Robot.oi.getArcadeDriveMove(), Robot.oi.getDriveRotate());
+    		Robot.harvester.setLeftTilt(speed/2.5);
+    		Robot.harvester.setRightTilt(speed);
     	}
-    	
-    	Robot.drive.disengageClutch();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -44,6 +52,5 @@ public class DriveWithJoysticks extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

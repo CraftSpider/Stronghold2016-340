@@ -12,18 +12,14 @@ public class RobotMap {
 	// PWM Motor Ports
 	//
 	
-	public static int DriveLeftMotor = 0;
-	public static int DriveRightMotor = 7;
-	
-
-	public static int HarvesterAimingMotorA = 4;
-	public static int HarvesterAimingMotorB = 8;
-	
+	public static int DriveLeftMotor = 1;
+	public static int DriveRightMotor = 2;
+	public static int HarvesterBallControl = 3;
 	public static int ClimberMovementMotor = 5;
 	public static int ClimberWinchMotor = 6;
 	
-	public static int Latch = 1;
-	
+	public static int Latch = 0;
+	public static int Clutch = 4;
 	
 	//
 	// CAN Talon Ports
@@ -31,8 +27,9 @@ public class RobotMap {
 	
 	public static int HarvesterShooterWheelA = 1;
 	public static int HarvesterShooterWheelB = 2;
-	public static int HarvesterBallControl = 3;
 	
+	public static int HarvesterAimingMotorLeft = 3;
+	public static int HarvesterAimingMotorRight = 4;	
 	//
 	// Solenoid Ports
 	//
@@ -53,8 +50,12 @@ public class RobotMap {
 	
 	public static int BottomSensor = 2;
 	
+	public static int HarvesterLeftBump = 3;
+	public static int HarvesterRightBump = 4;
+	
 	//
 	// Analog I/O Ports
 	//
-	
+	public static int LeftAimPot = 0;
+	public static int RightAimPot = 1;
 }

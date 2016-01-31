@@ -21,10 +21,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Drive drive = new Drive();
-	public static final Harvester harvester = new Harvester();
+	public static Drive drive;
+	public static Harvester harvester;
 	public static OI oi;
-	public static final Climber climber = new Climber();
+//	public static Climber climber = new Climber();
 
     Command autonomousCommand;
     Command belowLowBar;
@@ -36,7 +36,9 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+    	harvester = new Harvester();
         chooser = new SendableChooser();
+        drive = new Drive();
 //        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
