@@ -13,8 +13,8 @@ public class Climb extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	
-//    	requires(Robot.climber);
-//    	requires(Robot.drive);
+    	requires(Robot.climber);
+    	requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
@@ -23,10 +23,10 @@ public class Climb extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	Robot.drive.engageClutch();
-//    	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState && !Robot.climber.latchState) {
-//    		Robot.drive.setBothDrive(1, 1);
-//    	}
+    	Robot.drive.engageClutch();
+    	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState && !Robot.climber.latchState) {
+    		Robot.drive.setBothDrive(1, 1);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

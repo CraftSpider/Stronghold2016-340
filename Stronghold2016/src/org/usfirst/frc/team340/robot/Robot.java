@@ -20,11 +20,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
+	
+	public static Climber climber;
 	public static Drive drive;
 	public static Harvester harvester;
 	public static OI oi;
-//	public static Climber climber = new Climber();
 
     Command autonomousCommand;
     Command belowLowBar;
@@ -39,6 +39,7 @@ public class Robot extends IterativeRobot {
     	harvester = new Harvester();
         chooser = new SendableChooser();
         drive = new Drive();
+        climber = new Climber();
 //        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
