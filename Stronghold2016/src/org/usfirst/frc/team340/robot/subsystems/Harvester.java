@@ -176,7 +176,7 @@ public class Harvester extends Subsystem {
     }
     
     public void setLeftTilt(double speed) {
-    	tiltLeft.set(speed);
+    	tiltLeft.set(-speed);
     }
     public void setRightTilt(double speed) {
     	tiltRight.set(speed);
