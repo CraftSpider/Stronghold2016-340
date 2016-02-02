@@ -19,6 +19,9 @@ public class Climber extends Subsystem {
 	
 	public boolean latchState = true;
 	
+	/**
+	 * Instantiate latch and sensor
+	 */
 	public Climber() {
 		armLatch = new Servo(RobotMap.Latch);
 		atBottom = new DigitalInput(RobotMap.BottomSensor);
@@ -37,6 +40,10 @@ public class Climber extends Subsystem {
     	latchState = false;
     }
     
+    /**
+     * Checks if arm is at the bottom
+     * @return boolean is the arm at bottom
+     */
     public boolean isAtBottom() {
     	return atBottom.get();
     }

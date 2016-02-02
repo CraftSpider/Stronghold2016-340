@@ -9,6 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ReleaseLatch extends Command {
 
+	/**
+	 * Set requirements for latch releasing command.
+	 * Requires climber subsystem.
+	 * Releases the latch which lets the arm raise
+	 */
     public ReleaseLatch() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,11 +26,18 @@ public class ReleaseLatch extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
+    /**
+     * Releases the latch
+     */
     protected void execute() {
     	Robot.climber.releaseLatch();
     }
 
     // Make this return true when this Command no longer needs to run execute()
+    /**
+     * Sets command to completed
+     * @return boolean true
+     */
     protected boolean isFinished() {
         return true;
     }

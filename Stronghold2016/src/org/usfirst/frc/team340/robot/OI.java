@@ -17,12 +17,12 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
     public OI() {
-//    	X1.whenPressed(new ReleaseLatch());
-//    	Y1.whenPressed(new Climb());
-//    	Y1.whenReleased(new DriveWithJoysticks());
-//    	
-//    	A1.whileActive(new Shooter());
-//    	B1.whenPressed(new DischargeBall());
+    	X1.whenPressed(new ReleaseLatch());
+    	Y1.whenPressed(new Climb());
+    	Y1.whenReleased(new DriveWithXbox());
+    	
+    	A1.whileActive(new Shooter());
+    	B1.whenPressed(new DischargeBall());
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
