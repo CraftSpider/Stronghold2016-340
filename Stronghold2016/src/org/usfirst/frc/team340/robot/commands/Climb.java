@@ -33,7 +33,7 @@ public class Climb extends Command {
      * If the arm is not at the bottom AND the clutch is engaged AND the latch is open, set driverail motors to full speed
      */
     protected void execute() {
-    	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState && !Robot.climber.latchState) {
+    	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState) {
     		Robot.drive.setBothDrive(1, 1);
     	}
     }
