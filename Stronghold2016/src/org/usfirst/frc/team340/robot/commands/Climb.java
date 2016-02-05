@@ -24,6 +24,7 @@ public class Climb extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+	Robot.drive.engageClutch();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,7 +33,6 @@ public class Climb extends Command {
      * If the arm is not at the bottom AND the clutch is engaged AND the latch is open, set driverail motors to full speed
      */
     protected void execute() {
-    	Robot.drive.engageClutch();
     	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState && !Robot.climber.latchState) {
     		Robot.drive.setBothDrive(1, 1);
     	}
