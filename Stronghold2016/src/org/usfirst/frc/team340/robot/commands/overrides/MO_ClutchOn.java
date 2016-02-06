@@ -2,11 +2,15 @@ package org.usfirst.frc.team340.robot.commands.overrides;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 /**
  *
  */
 public class MO_ClutchOn extends Command {
+	
+	Logger logger = Robot.getLogger(MO_ClutchOn.class);
 	
 	/**
 	 * Set requirements for clutch operation
@@ -23,6 +27,7 @@ public class MO_ClutchOn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	logger.info("[Initializing: MO_ClutchOn]");
     }
 
     // Called repeatedly when this Command is scheduled to run

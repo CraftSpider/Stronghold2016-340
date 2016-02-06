@@ -11,7 +11,7 @@ import org.usfirst.frc.team340.robot.Robot;
  */
 public class CloseLatch extends Command {
 	
-	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
+	Logger logger = Robot.getLogger(DriveWithXbox.class);
 	/**
 	 * Set requirements for latch closing command.
 	 * Requires climber subsystem.

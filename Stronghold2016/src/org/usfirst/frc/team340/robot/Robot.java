@@ -61,6 +61,12 @@ public class Robot extends IterativeRobot {
     	logger.addHandler(logHandler);
     	return logger;
     }
+    
+    public static Logger getLogger(Class<?> _class) {
+    	Logger logger = Logger.getLogger(_class.getName());
+    	logger.addHandler(logHandler);
+    	return logger;
+    }
 	
 	/**
      * This function is called once each time the robot enters Disabled mode.
