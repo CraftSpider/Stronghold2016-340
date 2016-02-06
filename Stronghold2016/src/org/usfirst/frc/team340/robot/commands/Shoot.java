@@ -22,12 +22,12 @@ public class Shoot extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[Initializing: Shooter]");
-    	Robot.harvester.setBallControl(.5);
+    	Robot.harvester.setShooter(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.harvester.setShooter(1);
+    	Robot.harvester.setBallControl(.3);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,6 +39,7 @@ public class Shoot extends Command {
     protected void end() {
     	logger.info("[Ending]");
     	Robot.harvester.setShooter(0);
+    	Robot.harvester.setBallControl(0);
     }
 
     // Called when another command which requires one or more of the same
