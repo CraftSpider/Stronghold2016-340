@@ -4,7 +4,7 @@ import org.usfirst.frc.team340.robot.commands.Climb;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
-import org.usfirst.frc.team340.robot.commands.Shooter;
+import org.usfirst.frc.team340.robot.commands.Shoot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -21,7 +21,7 @@ public class OI {
     	Y1.whenPressed(new Climb());
     	Y1.whenReleased(new DriveWithXbox());
     	
-    	A1.whileActive(new Shooter());
+    	A1.whileActive(new Shoot());
     	B1.whenPressed(new DischargeBall());
     }
     //// CREATING BUTTONS

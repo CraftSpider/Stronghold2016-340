@@ -9,10 +9,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Shooter extends Command {
+public class Shoot extends Command {
 
-	Logger logger = Robot.getLogger(Shooter.class);
-    public Shooter() {
+	Logger logger = Robot.getLogger(Shoot.class);
+    public Shoot() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	
