@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot.commands;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DischargeBall extends Command {
 
+	Logger logger = Robot.getLogger(DischargeBall.class);
     public DischargeBall() {
     	requires(Robot.harvester);
     	setTimeout(1);
@@ -18,6 +21,7 @@ public class DischargeBall extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	logger.info("[Initializing]");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -33,6 +37,7 @@ public class DischargeBall extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	logger.info("[Ending]");
     	Robot.harvester.setBallControl(0);
     	Robot.harvester.setShooter(0);
     }
@@ -40,6 +45,7 @@ public class DischargeBall extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	logger.info("[Interrupted]");
     	end();
     }
 }

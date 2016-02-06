@@ -1,5 +1,8 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
+import java.util.logging.Logger;
+
+import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -14,6 +17,7 @@ public class Climber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands
 	
+	Logger logger = Robot.getLogger(Climber.class);
 	private Servo armLatch;
 	private DigitalInput atBottom;
 	
@@ -35,9 +39,10 @@ public class Climber extends Subsystem {
     /**
      * Releases latch to raise arm
      */
-    public void releaseLatch() {
+    public void releaseLatch() {  
     	armLatch.set(0);
     	latchState = false;
+    	logger.fine("Latch Released: " + "ArmLatch=" + armLatch.get());
     }
     /**
      * Closes latch over the arm
@@ -45,6 +50,7 @@ public class Climber extends Subsystem {
     public void closeLatch() {
     	armLatch.set(1);
     	latchState = true;
+    	logger.fine("Latch Closed: " + "ArmLatch=" + armLatch.get());
     }
     
     /**
