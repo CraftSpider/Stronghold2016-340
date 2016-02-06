@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot.commands.overrides;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,9 +9,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MO_BallContolIn extends Command {
+public class MO_BallControlIn extends Command {
+	private static final Logger logger = Robot.getLogger(MO_BallControlIn.class); 
 
-    public MO_BallContolIn() {
+    public MO_BallControlIn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.harvester);
@@ -17,6 +20,7 @@ public class MO_BallContolIn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	logger.info("[initializing]");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,12 +35,14 @@ public class MO_BallContolIn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	logger.info("[ending]");
     	Robot.harvester.setBallControl(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	logger.info("[interrupted]");
     	end();
     }
 }
