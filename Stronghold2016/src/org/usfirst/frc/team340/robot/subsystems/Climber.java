@@ -39,6 +39,13 @@ public class Climber extends Subsystem {
     	armLatch.set(0);
     	latchState = false;
     }
+    /**
+     * Closes latch over the arm
+     */
+    public void closeLatch() {
+    	armLatch.set(1);
+    	latchState = true;
+    }
     
     /**
      * Checks if arm is at the bottom
