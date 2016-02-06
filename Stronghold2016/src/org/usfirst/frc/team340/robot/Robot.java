@@ -1,6 +1,10 @@
 
 package org.usfirst.frc.team340.robot;
 
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 import org.usfirst.frc.team340.robot.subsystems.Harvester;
@@ -21,6 +25,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	
+	public Level logLevel = Level.FINE;
+	public static ConsoleHandler logHandler;
+	
 	public static Climber climber;
 	public static Drive drive;
 	public static Harvester harvester;
@@ -40,11 +47,19 @@ public class Robot extends IterativeRobot {
         chooser = new SendableChooser();
         drive = new Drive();
         climber = new Climber();
+        logHandler = new ConsoleHandler();
+        logHandler.setLevel(logLevel);
 //        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
         
         
+    }
+    
+    public static Logger getLogger(String name) {
+    	Logger logger = Logger.getLogger(name);
+    	logger.addHandler(logHandler);
+    	return logger;
     }
 	
 	/**
