@@ -5,7 +5,6 @@ import org.usfirst.frc.team340.robot.RobotMap;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -26,7 +25,7 @@ public class Harvester extends Subsystem {
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
 	// Roller closest to the robot
-	private Victor harvesterBallControl;
+	private CANTalon harvesterBallControl;
 	
 	// not sure what type of motor this is gonna be
 	private CANTalon tiltLeft;
@@ -72,7 +71,7 @@ public class Harvester extends Subsystem {
 		shooterWheelB.changeControlMode(CANTalon.TalonControlMode.Follower);//turn shooter motor B to a slave
 		shooterWheelB.set(shooterWheelA.getDeviceID());//slave shooter motor B to shooter motor A
 		
-		harvesterBallControl = new Victor(RobotMap.HarvesterBallControl);
+		harvesterBallControl = new CANTalon(RobotMap.HarvesterBallControl);
 		
 		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
@@ -91,7 +90,7 @@ public class Harvester extends Subsystem {
     
     /**
      * Drives the roller farthest from the robot
-     * @param value (this is percent voltage, absolute voltage, or encoder speed)
+     * @param value speed
      */
     public void setShooter(double value) {
     	shooterWheelA.set(value);
@@ -178,7 +177,12 @@ public class Harvester extends Subsystem {
     public void setLeftTilt(double speed) {
     	tiltLeft.set(-speed);
     }
+    
     public void setRightTilt(double speed) {
     	tiltRight.set(speed);
+    }
+    
+    public double getVoltage() {
+    	return harvesterBallControl.getOutputVoltage();
     }
 }
