@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ReleaseLatch extends Command {
 
-	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
+	Logger logger = Robot.getLogger(DriveWithXbox.class);
 	/**
 	 * Set requirements for latch releasing command.
 	 * Requires climber subsystem.
