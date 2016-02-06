@@ -1,61 +1,42 @@
-package org.usfirst.frc.team340.robot.commands;
-
-import edu.wpi.first.wpilibj.command.Command;
-
-import java.util.logging.Logger;
+package org.usfirst.frc.team340.robot.commands.overrides;
 
 import org.usfirst.frc.team340.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class CloseLatch extends Command {
-	
-	Logger logger = Robot.getLogger(CloseLatch.class);
-	/**
-	 * Set requirements for latch closing command.
-	 * Requires climber subsystem.
-	 * Closes the latch over the arm.
-	 */
-    public CloseLatch() {
-    	
-    	requires(Robot.climber);
-    	
+public class MO_BallControlOut extends Command {
+
+    public MO_BallControlOut() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.harvester);	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	logger.info("[Initializing]");
     }
 
     // Called repeatedly when this Command is scheduled to run
-    /**
-     * Closes the latch
-     */
     protected void execute() {
-    	Robot.climber.closeLatch();
+    	Robot.harvester.setBallControl(1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    /**
-     * Sets command to completed
-     * @return boolean true
-     */
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	logger.info("[Ending]");
+    	Robot.harvester.setBallControl(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	logger.info("[Interrupted]");
     	end();
     }
 }

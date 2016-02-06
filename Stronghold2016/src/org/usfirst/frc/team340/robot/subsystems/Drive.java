@@ -1,5 +1,8 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
+import java.util.logging.Logger;
+
+import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.RobotMap;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 
@@ -34,8 +37,11 @@ public class Drive extends Subsystem {
 	//Is the clutch on or off?
 	public boolean clutchState;
 	
+	//Logger
+	Logger logger = Robot.getLogger(Drive.class);
+	
 	/**
-	 * Instantiates objects
+	 * Code for driving robot
 	 */
 	public Drive() {
 		leftDrive = new Talon(RobotMap.DriveLeftMotor);
@@ -44,7 +50,7 @@ public class Drive extends Subsystem {
 		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 		
-		clutch = new Servo(RobotMap.Clutch);
+		clutch = new Servo(RobotMap.DriveClutch);
 	}
 	
 	/**
@@ -121,6 +127,7 @@ public class Drive extends Subsystem {
      */
     public void resetLeftEncoder() {
     	leftDriveEncoder.reset();
+    	logger.fine("Left encoder reset. Value: " + leftDriveEncoder.get());
     }
     
     /**
@@ -128,6 +135,7 @@ public class Drive extends Subsystem {
      */
     public void resetRightEncoder() {
     	rightDriveEncoder.reset();
+    	logger.fine("Right encoder reset. Value: " + rightDriveEncoder.get());
     }
     
     /**
