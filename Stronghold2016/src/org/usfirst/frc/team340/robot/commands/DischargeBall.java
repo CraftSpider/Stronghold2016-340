@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DischargeBall extends Command {
 
-	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
+	Logger logger = Robot.getLogger(DriveWithXbox.class);
     public DischargeBall() {
     	requires(Robot.harvester);
     	setTimeout(1);

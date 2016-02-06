@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveWithXbox extends Command {
 	
 	
-	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
+	Logger logger = Robot.getLogger(DriveWithXbox.class);
     public DriveWithXbox() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

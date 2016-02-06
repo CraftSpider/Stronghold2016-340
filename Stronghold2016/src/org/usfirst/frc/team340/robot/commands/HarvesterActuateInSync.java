@@ -13,7 +13,7 @@ public class HarvesterActuateInSync extends Command {
 
 	private double speed = 0.0;
 	
-	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
+	Logger logger = Robot.getLogger(DriveWithXbox.class);
     public HarvesterActuateInSync(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
