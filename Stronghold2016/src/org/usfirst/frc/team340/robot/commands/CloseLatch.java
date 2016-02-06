@@ -27,7 +27,7 @@ public class CloseLatch extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	logger.info("[Initializing: CloseLatch]");
+    	logger.info("[Initializing]");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -49,10 +49,13 @@ public class CloseLatch extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	logger.info("[Ending]");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	logger.info("[Interrupted]");
+    	end();
     }
 }

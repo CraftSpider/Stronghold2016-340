@@ -21,7 +21,7 @@ public class DischargeBall extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	logger.info("[Initializing: DischargeBall]");
+    	logger.info("[Initializing]");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -37,6 +37,7 @@ public class DischargeBall extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	logger.info("[Ending]");
     	Robot.harvester.setBallControl(0);
     	Robot.harvester.setShooter(0);
     }
@@ -44,6 +45,7 @@ public class DischargeBall extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	logger.info("[Interrupted]");
     	end();
     }
 }

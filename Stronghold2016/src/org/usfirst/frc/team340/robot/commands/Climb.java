@@ -27,7 +27,7 @@ public class Climb extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	logger.info("[Initializing: Climb]");
+    	logger.info("[Initializing]");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -57,6 +57,7 @@ public class Climb extends Command {
      * @return void
      */
     protected void end() {
+    	logger.info("[Ending]");
     	Robot.drive.setBothDrive(0, 0);
     }
 
@@ -67,6 +68,7 @@ public class Climb extends Command {
      * @return void
      */
     protected void interrupted() {
+    	logger.info("[Interrupted]");
     	end();
     }
 }
