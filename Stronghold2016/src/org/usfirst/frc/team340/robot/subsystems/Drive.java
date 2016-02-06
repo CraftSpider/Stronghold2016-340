@@ -44,7 +44,7 @@ public class Drive extends Subsystem {
 		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 		
-		clutch = new Servo(RobotMap.Clutch);
+		clutch = new Servo(RobotMap.DriveClutch);
 	}
 	
 	/**
