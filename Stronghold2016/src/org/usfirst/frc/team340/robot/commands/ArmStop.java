@@ -9,42 +9,53 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Shooter extends Command {
+public class ArmStop extends Command {
 
-	Logger logger = Robot.getLogger(Shooter.class);
-    public Shooter() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+	Logger logger = Robot.getLogger(ArmStop.class);
+	
+	/**
+	 * Set requirements for arm stop command
+	 * Requires harvester subsystem
+	 * Stops the arm's movement
+	 */
+    public ArmStop() {
     	
     	requires(Robot.harvester);
+    	
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	logger.info("[Initializing: Shooter]");
-    	Robot.harvester.setBallControl(.5);
+    	logger.info("[Initializing]");
     }
 
     // Called repeatedly when this Command is scheduled to run
+    /**
+     * Stops the arm
+     */
     protected void execute() {
-    	Robot.harvester.setShooter(1);
+    	Robot.harvester.setLeftTilt(0);
+    	Robot.harvester.setRightTilt(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
+    /**
+     * Sets command to completed
+     * @return boolean true
+     */
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	logger.info("[Ending]");
-    	Robot.harvester.setShooter(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	logger.info("[Interrupted]");
-    	end();
+    	logger.info("Interrupted");
     }
 }
