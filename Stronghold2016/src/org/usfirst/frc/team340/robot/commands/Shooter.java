@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Shooter extends Command {
 
-	Logger logger = Robot.getLogger(DriveWithXbox.class);
+	Logger logger = Robot.getLogger(Shooter.class);
     public Shooter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

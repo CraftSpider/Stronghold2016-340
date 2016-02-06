@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Climb extends Command {
 	
-	Logger logger = Robot.getLogger(DriveWithXbox.class);
+	Logger logger = Robot.getLogger(Climb.class);
 	/**
 	 * Set requirements for climb command.
 	 * Requires climber and drive.
