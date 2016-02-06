@@ -1,10 +1,8 @@
 package org.usfirst.frc.team340.robot.commands;
 
-import org.usfirst.frc.team340.robot.Robot;
-
-import java.util.logging.ConsoleHandler;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+
+import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
