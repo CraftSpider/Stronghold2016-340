@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot.commands;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DischargeBall extends Command {
 
+	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
     public DischargeBall() {
     	requires(Robot.harvester);
     	setTimeout(1);
@@ -18,6 +21,7 @@ public class DischargeBall extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	logger.info("[Initializing: DischargeBall]");
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot.commands;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Shooter extends Command {
 
+	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
     public Shooter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -18,6 +21,7 @@ public class Shooter extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	logger.info("[Initializing: Shooter]");
     	Robot.harvester.setBallControl(.5);
     }
 

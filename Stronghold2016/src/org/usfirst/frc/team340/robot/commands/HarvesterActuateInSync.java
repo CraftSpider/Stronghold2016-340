@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot.commands;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,6 +13,7 @@ public class HarvesterActuateInSync extends Command {
 
 	private double speed = 0.0;
 	
+	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
     public HarvesterActuateInSync(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -20,7 +23,7 @@ public class HarvesterActuateInSync extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	logger.info("[Initializing: HarvesterActuateInSync]");
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -2,6 +2,8 @@ package org.usfirst.frc.team340.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 
 /**
@@ -9,6 +11,7 @@ import org.usfirst.frc.team340.robot.Robot;
  */
 public class CloseLatch extends Command {
 	
+	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
 	/**
 	 * Set requirements for latch closing command.
 	 * Requires climber subsystem.
@@ -24,6 +27,7 @@ public class CloseLatch extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	logger.info("[Initializing: CloseLatch]");
     }
 
     // Called repeatedly when this Command is scheduled to run

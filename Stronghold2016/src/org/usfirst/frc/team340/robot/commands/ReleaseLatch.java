@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot.commands;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ReleaseLatch extends Command {
 
+	Logger logger = Robot.getLogger(DriveWithXbox.class.getCanonicalName());
 	/**
 	 * Set requirements for latch releasing command.
 	 * Requires climber subsystem.
@@ -23,6 +26,7 @@ public class ReleaseLatch extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	logger.info("[Initializing: ReleaseLatch]");
     }
 
     // Called repeatedly when this Command is scheduled to run
