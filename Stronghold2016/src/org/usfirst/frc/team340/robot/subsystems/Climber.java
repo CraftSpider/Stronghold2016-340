@@ -1,6 +1,5 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team340.robot.Robot;
