@@ -48,11 +48,11 @@ public class MoveArm extends Command {
     		rightSpeed = speed;
 //    		Robot.harvester.setRightTilt(speed);
     	}
-		if(Robot.harvester.getLeftLimit()) {
+		if(Robot.harvester.getLeftLimit() || Robot.harvester.getLeftAimPot() > 50) {
 			leftSpeed = 0;
 			rightSpeed /= 2;
 		}
-		if(Robot.harvester.getRightLimit()) {
+		if(Robot.harvester.getRightLimit() || Robot.harvester.getRightAimPot() > 50) {
 			rightSpeed = 0;
 			leftSpeed /= 2;
 		}
