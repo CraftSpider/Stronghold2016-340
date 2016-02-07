@@ -1,10 +1,6 @@
 package org.usfirst.frc.team340.robot;
 
-import org.usfirst.frc.team340.robot.commands.Climb;
-import org.usfirst.frc.team340.robot.commands.DischargeBall;
-import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
-import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
-import org.usfirst.frc.team340.robot.commands.Shoot;
+import org.usfirst.frc.team340.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -23,6 +19,9 @@ public class OI {
     	
     	A1.whileActive(new Shoot());
     	B1.whenPressed(new DischargeBall());
+    	
+    	Start1.whenPressed(new MoveArm(1));
+    	Back1.whenPressed(new MoveArm(-1));
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
