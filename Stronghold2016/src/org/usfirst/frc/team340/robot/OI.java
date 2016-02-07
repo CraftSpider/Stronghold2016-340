@@ -20,8 +20,8 @@ public class OI {
     	A1.whileActive(new Shoot());
     	B1.whenPressed(new DischargeBall());
     	
-    	Start1.whenPressed(new MoveArm(1));
-    	Back1.whenPressed(new MoveArm(-1));
+    	Start1.whenPressed(new MoveArm(0.1));
+    	Back1.whenPressed(new MoveArm(-0.1));
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
