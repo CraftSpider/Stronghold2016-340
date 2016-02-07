@@ -9,10 +9,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MO_ArmUp extends Command {
-	private static final Logger logger = Robot.getLogger(MO_ArmUp.class); 
+public class MO_BallControlIn extends Command {
+	private static final Logger logger = Robot.getLogger(MO_BallControlIn.class); 
 
-    public MO_ArmUp() {
+    public MO_BallControlIn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.harvester);
@@ -25,8 +25,7 @@ public class MO_ArmUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.harvester.setLeftTilt(1);
-    	Robot.harvester.setRightTilt(1);
+    	Robot.harvester.setBallControl(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,8 +36,7 @@ public class MO_ArmUp extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	logger.info("[ending]");
-    	Robot.harvester.setLeftTilt(0);
-    	Robot.harvester.setRightTilt(0);
+    	Robot.harvester.setBallControl(0);
     }
 
     // Called when another command which requires one or more of the same
