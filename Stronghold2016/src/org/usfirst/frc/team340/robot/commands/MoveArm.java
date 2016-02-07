@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class HarvesterActuateInSync extends Command {
+public class MoveArm extends Command {
 
 	private double speed = 0.0;
 	
-	Logger logger = Robot.getLogger(HarvesterActuateInSync.class);
-    public HarvesterActuateInSync(double speed) {
+	Logger logger = Robot.getLogger(MoveArm.class);
+    public MoveArm(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	this.speed = speed;
@@ -34,35 +34,31 @@ public class HarvesterActuateInSync extends Command {
 //    		Robot.harvester.setLeftTilt(speed);
 //    		Robot.harvester.setRightTilt(speed);
 //    	} else 
-    		if((Robot.harvester.getLeftAimPot() < Robot.harvester.getRightAimPot() &&
-    			speed > 0) || (
-    			Robot.harvester.getLeftAimPot() > Robot.harvester.getRightAimPot() &&
-    			speed < 0)) {
+    	if((Robot.harvester.getLeftAimPot() < Robot.harvester.getRightAimPot() && speed > 0) 
+    	|| (Robot.harvester.getLeftAimPot() > Robot.harvester.getRightAimPot() && speed < 0)) {
 //    		Robot.harvester.setLeftTilt(speed);
     			leftSpeed = speed;
     			rightSpeed = speed/2.5;
 //    		Robot.harvester.setRightTilt(speed/2.5);
     		
-    	} else if ((Robot.harvester.getRightAimPot() < Robot.harvester.getLeftAimPot() &&
-    			speed > 0) || (
-    			Robot.harvester.getRightAimPot() > Robot.harvester.getLeftAimPot() &&
-    			speed < 0)){
+    	} else if ((Robot.harvester.getRightAimPot() < Robot.harvester.getLeftAimPot() && speed > 0)
+    			|| (Robot.harvester.getRightAimPot() > Robot.harvester.getLeftAimPot() && speed < 0)){
 //    		Robot.harvester.setLeftTilt(speed/2.5);
     		leftSpeed = speed/2.5;
     		rightSpeed = speed;
 //    		Robot.harvester.setRightTilt(speed);
     	}
-    		if(Robot.harvester.getLeftLimit()) {
-    			leftSpeed = 0;
-    			rightSpeed /= 2;
-    		}
-    		if(Robot.harvester.getRightLimit()) {
-    			rightSpeed = 0;
-    			leftSpeed /= 2;
-    		}
-    		
-    		Robot.harvester.setLeftTilt(leftSpeed);
-    		Robot.harvester.setRightTilt(rightSpeed);
+		if(Robot.harvester.getLeftLimit()) {
+			leftSpeed = 0;
+			rightSpeed /= 2;
+		}
+		if(Robot.harvester.getRightLimit()) {
+			rightSpeed = 0;
+			leftSpeed /= 2;
+		}
+		
+		Robot.harvester.setLeftTilt(leftSpeed);
+		Robot.harvester.setRightTilt(rightSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
