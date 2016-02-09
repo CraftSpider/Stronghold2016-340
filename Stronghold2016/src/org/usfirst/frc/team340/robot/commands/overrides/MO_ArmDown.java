@@ -15,7 +15,7 @@ public class MO_ArmDown extends Command {
 	/**
 	 * Set requirements for arm down operation
 	 * Requires harvester subsystem
-	 * Will override and stop the arm down movement
+	 * Will cause the harvester arm to move downwards
 	 */
     public MO_ArmDown() {
         // Use requires() here to declare subsystem dependencies

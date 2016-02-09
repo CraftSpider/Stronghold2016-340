@@ -15,7 +15,7 @@ public class MO_ShooterOut extends Command {
 	/**
 	 * Set requirements for shooter out operation
 	 * Requires harvester subsystem
-	 * Will override and stop the shooter out
+	 * Will cause the shooter roller to rotate outwards
 	 */
     public MO_ShooterOut() {
         // Use requires() here to declare subsystem dependencies

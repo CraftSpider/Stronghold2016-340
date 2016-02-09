@@ -15,7 +15,7 @@ public class MO_BallControlIn extends Command {
 	/**
 	 * Set requirements for ball control in operation
 	 * Requires harvester subsystem
-	 * Will override and stop the ball control in
+	 * Will cause the harvester roller to rotate inwards
 	 */
     public MO_BallControlIn() {
         // Use requires() here to declare subsystem dependencies

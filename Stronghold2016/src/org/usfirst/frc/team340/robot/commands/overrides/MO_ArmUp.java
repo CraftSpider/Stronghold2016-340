@@ -15,7 +15,7 @@ public class MO_ArmUp extends Command {
 	/**
 	 * Set requirements for arm up operation
 	 * Requires harvester subsystem
-	 * Will override and stop the arm up movement
+	 * Will cause the harvester arm to move upwards
 	 */
     public MO_ArmUp() {
         // Use requires() here to declare subsystem dependencies
