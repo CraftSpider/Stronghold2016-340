@@ -68,7 +68,7 @@ public class Harvester extends Subsystem {
 	public Harvester() {		
 		shooterWheelA = new CANTalon(RobotMap.HarvesterShooterWheelA);//Construct shooter A as CANTalon, this should have encoder into it
 		shooterWheelB = new CANTalon(RobotMap.HarvesterShooterWheelB);//Construct shooter B as CANTalon
-		shooterWheelB.changeControlMode(CANTalon.ControlMode.Follower);//turn shooter motor B to a slave
+		shooterWheelB.changeControlMode(CANTalon.TalonControlMode.Follower);//turn shooter motor B to a slave
 		shooterWheelB.set(shooterWheelA.getDeviceID());//slave shooter motor B to shooter motor A
 		
 		harvesterBallControl = new CANTalon(RobotMap.HarvesterBallControl);
@@ -102,7 +102,7 @@ public class Harvester extends Subsystem {
      */
     public void setPercentVolt() {
     	shooterWheelA.disable();
-    	shooterWheelA.changeControlMode(CANTalon.ControlMode.PercentVbus);
+    	shooterWheelA.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
     }
     
     /**
@@ -113,7 +113,7 @@ public class Harvester extends Subsystem {
      */
     public void setAbsVolt() {
     	shooterWheelA.disable();
-    	shooterWheelA.changeControlMode(CANTalon.ControlMode.Voltage);
+    	shooterWheelA.changeControlMode(CANTalon.TalonControlMode.Voltage);
     }
     
     /**
@@ -121,7 +121,7 @@ public class Harvester extends Subsystem {
      */
     public void setEncSpd() {
     	shooterWheelA.disable();
-    	shooterWheelA.changeControlMode(CANTalon.ControlMode.Speed);
+    	shooterWheelA.changeControlMode(CANTalon.TalonControlMode.Speed);
     }
     
     public void enableClosedLoop(){
