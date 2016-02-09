@@ -11,7 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class MO_BallControlIn extends Command {
 	private static final Logger logger = Robot.getLogger(MO_BallControlIn.class); 
-
+	
+	/**
+	 * Set requirements for ball control in operation
+	 * Requires harvester subsystem
+	 * Will override and stop the ball control in
+	 */
     public MO_BallControlIn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,16 +29,26 @@ public class MO_BallControlIn extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
+    /**
+     * Sets the rotation of the ball control in
+     */
     protected void execute() {
     	Robot.harvester.setBallControl(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
+    /**
+     * Sets command to completed
+     * @return boolean false
+     */
     protected boolean isFinished() {
         return false;
     }
 
     // Called once after isFinished returns true
+    /**
+     * Stops the ball control in
+     */
     protected void end() {
     	logger.info("[ending]");
     	Robot.harvester.setBallControl(0);
@@ -41,6 +56,9 @@ public class MO_BallControlIn extends Command {
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
+    /**
+     * 
+     */
     protected void interrupted() {
     	logger.info("[interrupted]");
     	end();

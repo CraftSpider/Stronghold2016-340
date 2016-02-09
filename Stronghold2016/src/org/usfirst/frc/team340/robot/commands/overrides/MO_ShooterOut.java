@@ -12,6 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class MO_ShooterOut extends Command {
 	private static final Logger logger = Robot.getLogger(MO_ShooterOut.class); 
 	
+	/**
+	 * Set requirements for shooter out operation
+	 * Requires harvester subsystem
+	 * Will override and stop the shooter out
+	 */
     public MO_ShooterOut() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,16 +29,26 @@ public class MO_ShooterOut extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
+    /**
+     * Sets the rotation for the shooter out
+     */
     protected void execute() {
     	Robot.harvester.setShooter(1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
+    /**
+     * Sets command to completed
+     * @return boolean false
+     */
     protected boolean isFinished() {
         return false;
     }
 
     // Called once after isFinished returns true
+    /**
+     * Stops the shooter out
+     */
     protected void end() {
     	logger.info("[ending]");
     	Robot.harvester.setShooter(0);
@@ -41,6 +56,9 @@ public class MO_ShooterOut extends Command {
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
+    /**
+     * Ends
+     */
     protected void interrupted() {
     	logger.info("[interrupted]");
     	end();

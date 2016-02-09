@@ -11,8 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class MO_ArmDown extends Command {
 	private static final Logger logger = Robot.getLogger(MO_ArmDown.class); 
-
 	
+	/**
+	 * Set requirements for arm down operation
+	 * Requires harvester subsystem
+	 * Will override and stop the arm down movement
+	 */
     public MO_ArmDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -25,17 +29,27 @@ public class MO_ArmDown extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
+    /**
+     * Moves the arm down
+     */
     protected void execute() {
     	Robot.harvester.setLeftTilt(-1);
     	Robot.harvester.setRightTilt(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
+    /**
+     * Sets command to completed
+     * @return boolean false
+     */
     protected boolean isFinished() {
         return false;
     }
 
     // Called once after isFinished returns true
+    /**
+     * Stops the movement of the arm
+     */
     protected void end() {
     	logger.info("[ending]");
     	Robot.harvester.setLeftTilt(0);
@@ -44,6 +58,9 @@ public class MO_ArmDown extends Command {
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
+    /**
+     * Ends
+     */
     protected void interrupted() {
     	logger.info("[interrupted]");
     	end();
