@@ -1,14 +1,9 @@
 package org.usfirst.frc.team340.robot;
 
-import java.awt.geom.Area;
-
-import org.usfirst.frc.team340.robot.commands.*;
+import org.usfirst.frc.team340.robot.commands.ArmStop;
+import org.usfirst.frc.team340.robot.commands.MoveArm;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlIn;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlOut;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterIn;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -44,10 +39,10 @@ public class OI {
 //    	LB1.whenPressed(new MO_ShooterOut());
 //    	LB1.whenReleased(new StopShooter());
     	
-    	X1.whenPressed(new ManualShooting());
-    	Y1.whenPressed(new ManualShooting());
-    	RB1.whenPressed(new ManualShooting());
-    	LB1.whenPressed(new ManualShooting());
+//    	X1.whenPressed(new ManualShooting());
+//    	Y1.whenPressed(new ManualShooting());
+//    	RB1.whenPressed(new ManualShooting());
+//    	LB1.whenPressed(new ManualShooting());
     	
     	B1.whenPressed(new MO_ArmDown());
     	B1.whenReleased(new ArmStop());
