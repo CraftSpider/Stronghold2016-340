@@ -39,6 +39,10 @@ public class MO_ClutchOn extends Command {
     }
 
     // Make this return true when this Command no longer needs to run execute()
+    /**
+     * Sets command to completed
+     * @return boolean true
+     */
     protected boolean isFinished() {
         return true;
     }

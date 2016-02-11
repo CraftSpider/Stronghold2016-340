@@ -125,7 +125,7 @@ public class Harvester extends Subsystem {
     }
     
     public void enableClosedLoop(){
-    	shooterWheelA.enable();
+    	shooterWheelA.enableControl();
     }
     
     public void disableClosedLoop(){
