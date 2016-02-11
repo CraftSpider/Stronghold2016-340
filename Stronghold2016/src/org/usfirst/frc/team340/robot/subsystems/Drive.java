@@ -32,13 +32,14 @@ public class Drive extends Subsystem {
 	private Encoder rightDriveEncoder;
 	
 	//Clutch servo
-	private Servo clutch;
+	private Servo clutchLeft;
+	private Servo clutchRight;
 	
 	//Is the clutch on or off?
 	public boolean clutchState;
 	
 	//Logger
-	Logger logger = Robot.getLogger(Drive.class);
+	Logger logger = Robot.getLogger("drive");
 	
 	/**
 	 * Code for driving robot
@@ -50,7 +51,8 @@ public class Drive extends Subsystem {
 		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 		
-		clutch = new Servo(RobotMap.DriveClutch);
+		clutchLeft = new Servo(RobotMap.DriveClutchLeft);
+		clutchRight = new Servo(RobotMap.DriveClutchRight);
 	}
 	
 	/**
@@ -59,7 +61,7 @@ public class Drive extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new DriveWithXbox());
+//    	setDefaultCommand(new DriveWithXbox());
     }
     
     /**
@@ -94,8 +96,8 @@ public class Drive extends Subsystem {
      * @param rightOutput
      */
     public void setBothDrive(double leftOutput, double rightOutput){
-    	setLeftDrive(leftOutput);
-    	setRightDrive(-rightOutput);
+    	setLeftDrive(-leftOutput);
+    	setRightDrive(rightOutput);
     }
     
     /**
@@ -127,7 +129,7 @@ public class Drive extends Subsystem {
      */
     public void resetLeftEncoder() {
     	leftDriveEncoder.reset();
-    	logger.fine("Left encoder reset. Value: " + leftDriveEncoder.get());
+//    	logger.fine("Left encoder reset. Value: " + leftDriveEncoder.get());
     }
     
     /**
@@ -135,7 +137,7 @@ public class Drive extends Subsystem {
      */
     public void resetRightEncoder() {
     	rightDriveEncoder.reset();
-    	logger.fine("Right encoder reset. Value: " + rightDriveEncoder.get());
+//    	logger.fine("Right encoder reset. Value: " + rightDriveEncoder.get());
     }
     
     /**
@@ -150,7 +152,8 @@ public class Drive extends Subsystem {
      * Enables the clutch servo, enabling the arm to pull up the robot
      */
     public void engageClutch() {
-    	clutch.set(1);
+    	clutchLeft.set(1);
+    	clutchRight.set(1);
     	clutchState = true;
     }
     
@@ -158,7 +161,8 @@ public class Drive extends Subsystem {
      * Releases clutch
      */
     public void disengageClutch() {
-    	clutch.set(0);
+    	clutchLeft.set(0);
+    	clutchRight.set(0);
     	clutchState = false;
     }
     

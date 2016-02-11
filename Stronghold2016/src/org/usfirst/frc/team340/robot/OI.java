@@ -1,6 +1,14 @@
 package org.usfirst.frc.team340.robot;
 
+import java.awt.geom.Area;
+
 import org.usfirst.frc.team340.robot.commands.*;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlIn;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlOut;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterIn;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -13,15 +21,41 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
     public OI() {
-    	X1.whenPressed(new ReleaseLatch());
-    	Y1.whenPressed(new Climb());
-    	Y1.whenReleased(new DriveWithXbox());
+    	// commented out so we dont mess stuff up
+//    	X1.whenPressed(new ReleaseLatch());
+//    	Y1.whenPressed(new Climb());
+//    	Y1.whenReleased(new DriveWithXbox());
+//    	
+//    	A1.whileActive(new Shoot());
+//    	B1.whenPressed(new DischargeBall());
+//    	
+    	A1.whenPressed(new MO_ArmUp());
+    	A1.whenReleased(new ArmStop());
     	
-    	A1.whileActive(new Shoot());
-    	B1.whenPressed(new DischargeBall());
+//    	X1.whenPressed(new MO_BallControlIn());
+//    	X1.whenReleased(new BallControlOff());
+//    	
+//    	Y1.whenPressed(new MO_BallControlOut());
+//    	Y1.whenReleased(new BallControlOff());
     	
-    	Start1.whenPressed(new MoveArm(0.1));
-    	Back1.whenPressed(new MoveArm(-0.1));
+//    	RB1.whenPressed(new MO_ShooterIn());
+//    	RB1.whenReleased(new StopShooter());
+    	
+//    	LB1.whenPressed(new MO_ShooterOut());
+//    	LB1.whenReleased(new StopShooter());
+    	
+    	X1.whenPressed(new ManualShooting());
+    	Y1.whenPressed(new ManualShooting());
+    	RB1.whenPressed(new ManualShooting());
+    	LB1.whenPressed(new ManualShooting());
+    	
+    	B1.whenPressed(new MO_ArmDown());
+    	B1.whenReleased(new ArmStop());
+    	
+    	Start1.whenPressed(new MoveArm(0.55));
+    	Start1.whenReleased(new MoveArm(0));
+    	Back1.whenPressed(new MoveArm(-0.25));
+    	Back1.whenPressed(new MoveArm(0));
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -144,4 +178,23 @@ public class OI {
 		return xBoxDriver.getRawAxis(4);
 	}
 	
+	public int getDriverBumperState() {
+		if(RB1.get()) {
+			return 2;
+		} else if(LB1.get()) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
+	
+	public int getXYButtonState() {
+		if(X1.get()) {
+			return 2;
+		} else if(Y1.get()) {
+			return 0;
+		} else {
+			return 1;
+		}
+	}
 }

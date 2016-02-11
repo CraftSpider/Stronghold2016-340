@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	
-	public Level logLevel = Level.FINE;
+	public static Level logLevel = Level.FINE;
 	public static ConsoleHandler logHandler;
 	
 	public static Climber climber;
@@ -36,19 +36,30 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     Command belowLowBar;
     SendableChooser chooser;
+    
+    public Robot() {
+    	super();
+    	if(logHandler == null) {
+    		logHandler = new ConsoleHandler();
+            logHandler.setLevel(logLevel);
+    	}
+    }
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
+		
     	harvester = new Harvester();
         chooser = new SendableChooser();
         drive = new Drive();
         climber = new Climber();
         logHandler = new ConsoleHandler();
         logHandler.setLevel(logLevel);
+        
+        oi = new OI();
+        
 //        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
@@ -57,12 +68,20 @@ public class Robot extends IterativeRobot {
     }
     
     public static Logger getLogger(String name) {
+    	if(logHandler == null) {
+    		logHandler = new ConsoleHandler();
+            logHandler.setLevel(logLevel);
+    	}
     	Logger logger = Logger.getLogger(name);
     	logger.addHandler(logHandler);
     	return logger;
     }
     
     public static Logger getLogger(Class<?> _class) {
+    	if(logHandler == null) {
+    		logHandler = new ConsoleHandler();
+            logHandler.setLevel(logLevel);
+    	}
     	Logger logger = Logger.getLogger(_class.getName());
     	logger.addHandler(logHandler);
     	return logger;

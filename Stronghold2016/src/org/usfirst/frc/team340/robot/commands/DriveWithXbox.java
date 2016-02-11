@@ -25,6 +25,15 @@ public class DriveWithXbox extends Command {
     // Called repeatedly when this Command is scheduled to run
     private double moveSlowScale = 0.6;
     private double rotateSlowScale = 0.7;
+    
+    public double throttleThrottling(double input) {
+    	if(input < 0) {
+    		return Math.sqrt(-Math.pow((input-1),2)+1);
+    	} else {
+    		return -Math.sqrt(-Math.pow((-input-1),2)+1);
+    	}
+    }
+    
     protected void execute() { 
     	//Clutch should never be engaged while we are under human control
     	Robot.drive.disengageClutch();
@@ -34,14 +43,15 @@ public class DriveWithXbox extends Command {
     	// 2. Use right joystick for slow motion
     	// 3. Use left joystick for normal arcadeDrive
     	if(Math.abs(Robot.oi.getDriverSummedTriggers()) > .1) {
-    		Robot.drive.arcadeDrive(Robot.oi.getDriverSummedTriggers(), 
-    				Robot.oi.getDriverLeftX());
+    		Robot.drive.arcadeDrive(throttleThrottling(Robot.oi.getDriverSummedTriggers()), 
+    				throttleThrottling(-Robot.oi.getDriverLeftX()));
     	} else if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
     			|| Math.abs(Robot.oi.getDriverRightX()) > 0.1) {
-    		Robot.drive.arcadeDrive(Robot.oi.getDriverRightY()*moveSlowScale, 
-    				Robot.oi.getDriverRightX()*rotateSlowScale);
+    		Robot.drive.arcadeDrive(throttleThrottling(Robot.oi.getDriverRightY())*moveSlowScale, 
+    				throttleThrottling(-Robot.oi.getDriverRightX())*rotateSlowScale);
     	} else {
-    		Robot.drive.arcadeDrive(Robot.oi.getDriverLeftY(), Robot.oi.getDriverLeftX());
+    		Robot.drive.arcadeDrive(throttleThrottling(Robot.oi.getDriverLeftY()), 
+    				throttleThrottling(-Robot.oi.getDriverLeftX()));
     	}
     }
 

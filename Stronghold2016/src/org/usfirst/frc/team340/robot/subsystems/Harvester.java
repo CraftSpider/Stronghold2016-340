@@ -155,7 +155,7 @@ public class Harvester extends Subsystem {
      * @return boolean limit switch state
      */
     public boolean getRightLimit() {
-    	return limitRight.get();
+    	return !limitRight.get();
     }
     
     /**
@@ -163,7 +163,7 @@ public class Harvester extends Subsystem {
      * @return boolean limit switch state
      */
     public boolean getLeftLimit() {
-    	return limitLeft.get();
+    	return !limitLeft.get();
     }
     
     public double getLeftAimPot() {
@@ -172,6 +172,18 @@ public class Harvester extends Subsystem {
     
     public double getRightAimPot() {
     	return rightPot.get();
+    }
+    
+    public void resetLeftPot() {
+    	leftPot.reset();
+    }
+    public void resetRightPot() {
+    	rightPot.reset();
+    }
+    
+    public void resetBothPots() {
+    	resetLeftPot();
+    	resetRightPot();
     }
     
     public void setLeftTilt(double speed) {

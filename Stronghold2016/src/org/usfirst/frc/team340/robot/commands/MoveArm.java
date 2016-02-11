@@ -30,35 +30,49 @@ public class MoveArm extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-//    	if(Math.abs(Robot.harvester.getLeftAimPot()-Robot.harvester.getRightAimPot()) < 5) {
+//    	if(Math.abs(leftPot-rightPot) < 5) {
 //    		Robot.harvester.setLeftTilt(speed);
 //    		Robot.harvester.setRightTilt(speed);
 //    	} else 
-    	if((Robot.harvester.getLeftAimPot() < Robot.harvester.getRightAimPot() && speed > 0) 
-    	|| (Robot.harvester.getLeftAimPot() > Robot.harvester.getRightAimPot() && speed < 0)) {
-//    		Robot.harvester.setLeftTilt(speed);
-    			leftSpeed = speed;
-    			rightSpeed = speed/2.5;
-//    		Robot.harvester.setRightTilt(speed/2.5);
-    		
-    	} else if ((Robot.harvester.getRightAimPot() < Robot.harvester.getLeftAimPot() && speed > 0)
-    			|| (Robot.harvester.getRightAimPot() > Robot.harvester.getLeftAimPot() && speed < 0)){
-//    		Robot.harvester.setLeftTilt(speed/2.5);
-    		leftSpeed = speed/2.5;
-    		rightSpeed = speed;
-//    		Robot.harvester.setRightTilt(speed);
-    	}
-		if(Robot.harvester.getLeftLimit() || Robot.harvester.getLeftAimPot() > 50) {
+    	
+    	double leftPot = Robot.harvester.getLeftAimPot();
+    	double rightPot = Robot.harvester.getRightAimPot();
+    	
+//    	if((leftPot < rightPot && speed > 0) 
+//    			|| (leftPot > rightPot && speed < 0)) {
+////    		Robot.harvester.setLeftTilt(speed);
+//    			leftSpeed = speed;
+//    			rightSpeed = speed/2.5;
+////    		Robot.harvester.setRightTilt(speed/2.5);
+//    		
+//    	} else if ((rightPot < leftPot && speed > 0)
+//    			|| (rightPot > leftPot && speed < 0)){
+////    		Robot.harvester.setLeftTilt(speed/2.5);
+//    		leftSpeed = speed/2.5;
+//    		rightSpeed = speed;
+////    		Robot.harvester.setRightTilt(speed);
+//    	}
+    	leftSpeed = speed;
+    	rightSpeed = speed;
+    	
+		if(Robot.harvester.getLeftLimit() /*|| leftPot > 50*/) {
 			leftSpeed = 0;
 			rightSpeed /= 2;
 		}
-		if(Robot.harvester.getRightLimit() || Robot.harvester.getRightAimPot() > 50) {
+		if(Robot.harvester.getRightLimit() /*|| rightPot > 50*/) {
 			rightSpeed = 0;
 			leftSpeed /= 2;
 		}
 		
 		Robot.harvester.setLeftTilt(leftSpeed);
 		Robot.harvester.setRightTilt(rightSpeed);
+		
+//		logger.info("Execute: leftSpeed: " + leftSpeed + " rightSpeed: " + rightSpeed);
+		
+		logger.info("      ");
+		logger.info("left pot: " + leftPot + " right pot: " + rightPot);
+		logger.info("left Pot: " + Robot.harvester.getLeftLimit()  + " right pot: " + Robot.harvester.getRightLimit());
+		
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -68,7 +82,7 @@ public class MoveArm extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	logger.info("[Ending]");
+//    	logger.info("[Ending]");
     	Robot.harvester.setLeftTilt(0);
     	Robot.harvester.setRightTilt(0);
     }
@@ -76,7 +90,7 @@ public class MoveArm extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	logger.info("[Interrupted]");
+//    	logger.info("[Interrupted]");
     	end();
     }
 }

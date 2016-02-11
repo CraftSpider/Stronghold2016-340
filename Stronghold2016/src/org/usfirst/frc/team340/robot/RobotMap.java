@@ -14,22 +14,24 @@ public class RobotMap {
 	
 	public static int DriveLeftMotor = 1;
 	public static int DriveRightMotor = 2;
-	public static int HarvesterBallControl = 3;
+//	public static int HarvesterBallControl = 3;
 	public static int ClimberMovementMotor = 5;
 	public static int ClimberWinchMotor = 6;
 	
 	public static int ClimberLatch = 0;
-	public static int DriveClutch = 4;
+	public static int DriveClutchLeft = 4;
+	public static int DriveClutchRight = 7;
 	
 	//
 	// CAN Talon Ports
  	//
 	
-	public static int HarvesterShooterWheelA = 1;
-	public static int HarvesterShooterWheelB = 2;
+	public static int HarvesterShooterWheelA = 3;
+	public static int HarvesterShooterWheelB = 4;
+	public static int HarvesterBallControl = 2;
 	
-	public static int HarvesterAimingMotorLeft = 3;
-	public static int HarvesterAimingMotorRight = 4;	
+	public static int HarvesterAimingMotorLeft = 1;
+	public static int HarvesterAimingMotorRight = 5;	
 	//
 	// Solenoid Ports
 	//
@@ -40,8 +42,8 @@ public class RobotMap {
 	// Digital I/O Ports
 	//
 	
-	public static int HarvesterEncoderPortA = 0;
-	public static int HarvesterEncoderPortB = 1;
+	public static int HarvesterEncoderPortA = 3;
+	public static int HarvesterEncoderPortB = 4;
 	
 	public static int LeftDriveEncoderPortA = 6;
 	public static int LeftDriveEnocderPortB = 7;
@@ -50,8 +52,8 @@ public class RobotMap {
 	
 	public static int ClimberBottomSensor = 2;
 	
-	public static int HarvesterLeftBump = 3;
-	public static int HarvesterRightBump = 4;
+	public static int HarvesterLeftBump = 1;
+	public static int HarvesterRightBump = 0;
 	
 	//
 	// Analog I/O Ports
