@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class MoveArm extends Command {
 
+	Logger logger = Robot.getLogger(MoveArm.class);
 	private double speed = 0.0;
 	
-	Logger logger = Robot.getLogger(MoveArm.class);
     public MoveArm(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -30,28 +30,28 @@ public class MoveArm extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-//    	if(Math.abs(leftPot-rightPot) < 5) {
-//    		Robot.harvester.setLeftTilt(speed);
-//    		Robot.harvester.setRightTilt(speed);
-//    	} else 
+    	/*if(Math.abs(leftPot-rightPot) < 5) {
+    		Robot.harvester.setLeftTilt(speed);
+    		Robot.harvester.setRightTilt(speed);
+    	} else*/ 
     	
     	double leftPot = Robot.harvester.getLeftAimPot();
     	double rightPot = Robot.harvester.getRightAimPot();
     	
-//    	if((leftPot < rightPot && speed > 0) 
-//    			|| (leftPot > rightPot && speed < 0)) {
-////    		Robot.harvester.setLeftTilt(speed);
-//    			leftSpeed = speed;
-//    			rightSpeed = speed/2.5;
-////    		Robot.harvester.setRightTilt(speed/2.5);
-//    		
-//    	} else if ((rightPot < leftPot && speed > 0)
-//    			|| (rightPot > leftPot && speed < 0)){
-////    		Robot.harvester.setLeftTilt(speed/2.5);
-//    		leftSpeed = speed/2.5;
-//    		rightSpeed = speed;
-////    		Robot.harvester.setRightTilt(speed);
-//    	}
+    	/*if((leftPot < rightPot && speed > 0) 
+    			|| (leftPot > rightPot && speed < 0)) {
+    		Robot.harvester.setLeftTilt(speed);
+    		leftSpeed = speed;
+    		rightSpeed = speed/2.5;
+    		Robot.harvester.setRightTilt(speed/2.5);
+    		
+    	} else if ((rightPot < leftPot && speed > 0)
+    			|| (rightPot > leftPot && speed < 0)){
+    		Robot.harvester.setLeftTilt(speed/2.5);
+    		leftSpeed = speed/2.5;
+    		rightSpeed = speed;
+    		Robot.harvester.setRightTilt(speed);
+    	}*/
     	leftSpeed = speed;
     	rightSpeed = speed;
     	
