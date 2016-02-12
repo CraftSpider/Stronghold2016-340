@@ -174,6 +174,7 @@ public class OI {
 		return xBoxDriver.getRawAxis(4);
 	}
 	
+	//Returns which of the bumpers is pressed. Returned as high for right, low for left, mid value for neither.
 	public int getDriverBumperState() {
 		if(RB1.get()) {
 			return 2;
@@ -184,6 +185,7 @@ public class OI {
 		}
 	}
 	
+	//Returns which button, X or Y, is pressed. Returned as high for X, low for Y and mid for neither.
 	public int getXYButtonState() {
 		if(X1.get()) {
 			return 2;
