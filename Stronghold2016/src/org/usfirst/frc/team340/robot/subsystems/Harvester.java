@@ -73,6 +73,7 @@ public class Harvester extends Subsystem {
 		
 		harvesterBallControl = new CANTalon(RobotMap.HarvesterBallControl);
 		
+		//TODO: sync left/right motors
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
 		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
 		tiltLeft.changeControlMode(CANTalon.TalonControlMode.Follower); //Sets left tilting motor to slave to the right
