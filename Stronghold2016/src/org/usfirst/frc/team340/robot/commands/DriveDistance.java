@@ -7,6 +7,9 @@ import org.usfirst.frc.team340.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
+ * Basically PID
+ * <!-- DON'T USE THIS CODE -->
+ * @author wundrweapon
  *
  */
 public class DriveDistance extends Command {

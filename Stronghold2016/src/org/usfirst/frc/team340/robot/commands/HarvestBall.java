@@ -14,8 +14,9 @@ public class HarvestBall extends Command {
 	//Logger
 	Logger logger = Robot.getLogger(HarvestBall.class);
 	
-	//Speed variable
+	//Variables
 	double speed;
+	double stallVoltage = 42; //This will be replaced with the actual stall voltage
 	
     public HarvestBall(double speed) {
         // Use requires() here to declare subsystem dependencies
@@ -37,7 +38,7 @@ public class HarvestBall extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(Robot.harvester.getVoltage() == 42) {
+        if(Robot.harvester.getVoltage() == stallVoltage) {
         	return true;
         } else {
         	return false;
