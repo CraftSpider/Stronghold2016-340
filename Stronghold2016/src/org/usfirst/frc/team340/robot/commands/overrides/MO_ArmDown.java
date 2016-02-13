@@ -33,8 +33,7 @@ public class MO_ArmDown extends Command {
      * Moves the arm down
      */
     protected void execute() {
-    	Robot.harvester.setLeftTilt(-0.25);
-    	Robot.harvester.setRightTilt(-0.25);
+    	Robot.harvester.setTilt(-0.25);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -52,8 +51,7 @@ public class MO_ArmDown extends Command {
      */
     protected void end() {
     	logger.info("[ending]");
-    	Robot.harvester.setLeftTilt(0);
-    	Robot.harvester.setRightTilt(0);
+    	Robot.harvester.setTilt(0);
     }
 
     // Called when another command which requires one or more of the same

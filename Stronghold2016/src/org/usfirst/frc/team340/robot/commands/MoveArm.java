@@ -64,8 +64,7 @@ public class MoveArm extends Command {
 			leftSpeed /= 2;
 		}
 		
-		Robot.harvester.setLeftTilt(leftSpeed);
-		Robot.harvester.setRightTilt(rightSpeed);
+		Robot.harvester.setTilt(rightSpeed);
 		
 //		logger.info("Execute: leftSpeed: " + leftSpeed + " rightSpeed: " + rightSpeed);
 		
@@ -83,8 +82,7 @@ public class MoveArm extends Command {
     // Called once after isFinished returns true
     protected void end() {
 //    	logger.info("[Ending]");
-    	Robot.harvester.setLeftTilt(0);
-    	Robot.harvester.setRightTilt(0);
+    	Robot.harvester.setTilt(0);
     }
 
     // Called when another command which requires one or more of the same

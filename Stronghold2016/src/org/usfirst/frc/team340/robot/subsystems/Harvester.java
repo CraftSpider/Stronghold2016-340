@@ -69,12 +69,14 @@ public class Harvester extends Subsystem {
 		shooterWheelA = new CANTalon(RobotMap.HarvesterShooterWheelA);//Construct shooter A as CANTalon, this should have encoder into it
 		shooterWheelB = new CANTalon(RobotMap.HarvesterShooterWheelB);//Construct shooter B as CANTalon
 		shooterWheelB.changeControlMode(CANTalon.TalonControlMode.Follower);//turn shooter motor B to a slave
-		shooterWheelB.set(shooterWheelA.getDeviceID());//slave shooter motor B to shooter motor A
+		shooterWheelB.set(shooterWheelA.get());//slave shooter motor B to shooter motor A
 		
 		harvesterBallControl = new CANTalon(RobotMap.HarvesterBallControl);
 		
-		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
+		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
+		tiltLeft.changeControlMode(CANTalon.TalonControlMode.Follower); //Sets left tilting motor to slave to the right
+		tiltLeft.set(-tiltRight.get()); //Sets left tilt's speed to the negative of the right's
 		
 		limitLeft = new DigitalInput(RobotMap.HarvesterLeftBump);
 		limitRight = new DigitalInput(RobotMap.HarvesterRightBump);
@@ -186,11 +188,12 @@ public class Harvester extends Subsystem {
     	resetRightPot();
     }
     
-    public void setLeftTilt(double speed) {
-    	tiltLeft.set(-speed);
-    }
-    
-    public void setRightTilt(double speed) {
+    /**
+     * Sets tilting speed of harvester.
+     * Positive numbers go up, negative numbers go down
+     * @param speed
+     */
+    public void setTilt(double speed) {
     	tiltRight.set(speed);
     }
     

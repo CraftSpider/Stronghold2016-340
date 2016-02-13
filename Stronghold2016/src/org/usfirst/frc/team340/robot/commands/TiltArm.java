@@ -1,4 +1,4 @@
-package org.usfirst.frc.team340.robot.commands.overrides;
+package org.usfirst.frc.team340.robot.commands;
 
 import java.util.logging.Logger;
 
@@ -7,61 +7,63 @@ import org.usfirst.frc.team340.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * 
  */
-public class MO_ArmUp extends Command {
-	private static final Logger logger = Robot.getLogger(MO_ArmUp.class); 
+public class TiltArm extends Command {
+	
+	//Logger
+	Logger logger = Robot.getLogger(TiltArm.class);
+	
+	//Variables
+	double endPos;
+	double dist;
 
 	/**
-	 * Set requirements for arm up operation
-	 * Requires harvester subsystem
-	 * Will cause the harvester arm to move upwards
+	 * Tilts the harvester
+	 * @param dist
 	 */
-    public MO_ArmUp() {
+    public TiltArm(double endPos) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.harvester);
+    	
+    	this.endPos = endPos;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	logger.info("[initializing]");
-//    	Robot.harvester;
+    	logger.info("[Initializing]");
+    	dist = endPos - Robot.harvester.getLeftAimPot();
     }
 
     // Called repeatedly when this Command is scheduled to run
-    /**
-     * Moves the arm up
-     */
     protected void execute() {
-    	Robot.harvester.setTilt(1);
+    	if(dist > 0) {
+    		Robot.harvester.setTilt(1);
+    	} else {
+    		Robot.harvester.setTilt(-1);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    /**
-     * Sets command to completed
-     * @return boolean false
-     */
     protected boolean isFinished() {
-        return false;
+        if(dist == 0) {
+        	return true;
+        } else {
+        	return false;
+        }
     }
 
     // Called once after isFinished returns true
-    /**
-     * Stops the movement of the arm
-     */
     protected void end() {
-    	logger.info("[ending]");
+    	logger.info("[Ending]");
     	Robot.harvester.setTilt(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    /**
-     * Ends
-     */
     protected void interrupted() {
-    	logger.info("[interrupted]");
+    	logger.info("[Interrupted]");
     	end();
     }
 }
