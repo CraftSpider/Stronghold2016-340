@@ -76,8 +76,8 @@ public class Harvester extends Subsystem {
 		//TODO: sync left/right motors
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
 		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
-		tiltLeft.changeControlMode(CANTalon.TalonControlMode.Follower); //Sets left tilting motor to slave to the right
-		tiltLeft.set(-tiltRight.get()); //Sets left tilt's speed to the negative of the right's
+		//tiltLeft.changeControlMode(CANTalon.TalonControlMode.Follower); //Sets left tilting motor to slave to the right
+		//tiltLeft.set(-tiltRight.get()); //Sets left tilt's speed to the negative of the right's
 		
 		limitLeft = new DigitalInput(RobotMap.HarvesterLeftBump);
 		limitRight = new DigitalInput(RobotMap.HarvesterRightBump);
@@ -196,6 +196,7 @@ public class Harvester extends Subsystem {
      */
     public void setTilt(double speed) {
     	tiltRight.set(speed);
+    	tiltLeft.set(-speed);
     }
     
     public double getVoltage() {
