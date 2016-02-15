@@ -29,7 +29,8 @@ public class CG_AutoBeam extends CommandGroup {
         // arm.
     	
     	addSequential(new ArmToPosition(60));
+    	addSequential(new DriveDistance(10, 100));
     	addParallel(new DriveDistance(10, 500));
-    	addParallel(new ArmToPosition(0));
+    	addSequential(new ArmToPosition(0));
     }
 }
