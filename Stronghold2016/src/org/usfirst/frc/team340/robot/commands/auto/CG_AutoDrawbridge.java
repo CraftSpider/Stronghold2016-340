@@ -31,7 +31,7 @@ public class CG_AutoDrawbridge extends CommandGroup {
     	addSequential(new ArmToPosition(90));
     	addSequential(new DriveDistance(1, 10));
     	addParallel(new ArmToPosition(5));
-    	addParallel(new DriveDistance(0, 0)); //TODO have to make this go backwards
+    	addParallel(new DriveDistance(-5, -50)); //TODO have to make this go backwards
     	addSequential(new DriveDistance(10, 100));
     }
 }
