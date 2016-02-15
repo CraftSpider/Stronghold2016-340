@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import org.usfirst.frc.team340.robot.Robot;
 
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -13,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutoPortcullis extends Command {
 
 	Logger logger = Robot.getLogger(AutoPortcullis.class);
+	
 	double potAverage;
 	double encAverage;
 	
