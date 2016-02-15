@@ -58,6 +58,13 @@ public class RobotMap {
 	//
 	// Analog I/O Ports
 	//
+	
 	public static int LeftAimPot = 0;
 	public static int RightAimPot = 1;
+	
+	//
+	// Constants
+	//
+	
+	public static int ENCODER_TICKS_PER_REV = 100;
 }
