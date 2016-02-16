@@ -95,14 +95,15 @@ public class Harvester extends Subsystem {
 		shooterWheelA = new CANTalon(RobotMap.HarvesterShooterWheelA);//Construct shooter A as CANTalon, this should have encoder into it
 		shooterWheelB = new CANTalon(RobotMap.HarvesterShooterWheelB);//Construct shooter B as CANTalon
 		shooterWheelB.changeControlMode(CANTalon.TalonControlMode.Follower);//turn shooter motor B to a slave
-		shooterWheelB.set(shooterWheelA.getDeviceID());//slave shooter motor B to shooter motor A
+		shooterWheelB.set(shooterWheelA.get());//slave shooter motor B to shooter motor A
 		
 		harvesterBallControl = new CANTalon(RobotMap.HarvesterBallControl);
 		
-		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
+		//TODO: sync left/right motors
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
+		
 		//tiltLeft.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
-		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness		
+		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
 		
 		limitLeft = new DigitalInput(RobotMap.HarvesterLeftBump);
 		limitRight = new DigitalInput(RobotMap.HarvesterRightBump);
@@ -124,7 +125,7 @@ public class Harvester extends Subsystem {
     public void setShooter(double value) {
     	shooterWheelA.set(value);
     }
-    
+   
     /**
      * all methods begin by disabling the wheels. changes controlling mode to voltage %,
      * absolute voltage (voltage compensation), and encoder speed, respectively. latter also reenables
@@ -225,6 +226,11 @@ public class Harvester extends Subsystem {
     
     public void setRightTilt(double speed) {
     	tiltRight.set(speed);
+    }
+    
+    public void setTilt(double speed) {
+    	this.setRightTilt(speed);
+    	this.setLeftTilt(speed);
     }
     
     public double getControlCurrent() {

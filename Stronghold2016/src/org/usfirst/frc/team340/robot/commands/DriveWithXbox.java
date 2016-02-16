@@ -9,19 +9,19 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveWithXbox extends Command {
 	
-	
 	Logger logger = Robot.getLogger(DriveWithXbox.class);
+	
     public DriveWithXbox() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drive);
+		requires(Robot.drive);
     }
-
+	
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[Initializing]Drive?");
     }
-
+	
     // Called repeatedly when this Command is scheduled to run
     private double moveSlowScale = 0.6;
     private double rotateSlowScale = 0.7;

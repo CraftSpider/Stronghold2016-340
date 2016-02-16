@@ -36,8 +36,7 @@ public class ArmStop extends Command {
      * Stops the arm
      */
     protected void execute() {
-    	Robot.harvester.setLeftTilt(0);
-    	Robot.harvester.setRightTilt(0);
+    	Robot.harvester.setTilt(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

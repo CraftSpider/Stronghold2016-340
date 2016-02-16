@@ -89,7 +89,7 @@ public class Drive extends Subsystem {
     	} else if(speed < -1) {
     		speed = -1;
     	}
-    	rightDrive.set(speed);
+    	rightDrive.set(-speed);
     }
     
     /**

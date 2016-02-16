@@ -7,43 +7,57 @@ import org.usfirst.frc.team340.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * 
  */
-public class HarvestBall extends Command {
-
-
-	//Logger
-	Logger logger = Robot.getLogger(HarvestBall.class);
+public class TiltArm extends Command {
 	
-    public HarvestBall() {
+	//Logger
+	Logger logger = Robot.getLogger(TiltArm.class);
+	
+	//Variables
+	double endPos;
+	double dist;
+
+	/**
+	 * Tilts the harvester
+	 * @param dist
+	 */
+    public TiltArm(double endPos) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.harvester);
     	
+    	this.endPos = endPos;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[Initializing]");
+    	dist = endPos - Robot.harvester.getLeftAimPot();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_HARVEST_V_BUS);
-    	Robot.harvester.setShooter(Robot.harvester.SHOOTER_HARVEST_V_BUS);
-    	logger.info("Harvester Control Current: " + Robot.harvester.getControlCurrent());
+    	if(dist > 0) {
+    		Robot.harvester.setTilt(1);
+    	} else {
+    		Robot.harvester.setTilt(-1);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return false;
+        if(dist == 0) {
+        	return true;
+        } else {
+        	return false;
+        }
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	logger.info("[Ending]");
-//    	Robot.harvester.setBallControl(0);
-//    	Robot.harvester.setShooter(0);
+    	Robot.harvester.setTilt(0);
     }
 
     // Called when another command which requires one or more of the same

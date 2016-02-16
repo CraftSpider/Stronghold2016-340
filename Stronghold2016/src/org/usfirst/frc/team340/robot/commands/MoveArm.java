@@ -11,9 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class MoveArm extends Command {
 
-	private double speed = 0.0;
-	
 	Logger logger = Robot.getLogger(MoveArm.class);
+	private double speed = 0.0;
 	
 	private double leftSpeed = 0;
 	private double rightSpeed = 0;
@@ -36,32 +35,13 @@ public class MoveArm extends Command {
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     	double leftPot = Robot.harvester.getLeftAimPot();
     	double rightPot = Robot.harvester.getRightAimPot();
     	
     	this.leftSpeed = this.speed;
     	this.rightSpeed = this.speed;
-    	
-//    	if(Math.abs(leftPot-rightPot) < 1) {
-//    		Robot.harvester.setLeftTilt(speed);
-//    		Robot.harvester.setRightTilt(speed);
-//    	} else if((leftPot < rightPot && speed > 0) 
-//    			|| (leftPot > rightPot && speed < 0)) {
-////    		Robot.harvester.setLeftTilt(speed);
-//    			leftSpeed = speed;
-//    			rightSpeed = speed/2.5;
-////    		Robot.harvester.setRightTilt(speed/2.5);
-//    		
-//    	} else if ((rightPot < leftPot && speed > 0)
-//    			|| (rightPot > leftPot && speed < 0)){
-////    		Robot.harvester.setLeftTilt(speed/2.5);
-//    		leftSpeed = speed/2.5;
-//    		rightSpeed = speed;
-////    		Robot.harvester.setRightTilt(speed);
-//    	}
-//    	leftSpeed = speed;
-//    	rightSpeed = speed;
-    	
+    	    	
     	if(!Robot.harvester.hasReset()) {
     		leftSpeed *= 0.5;
     		rightSpeed *= 0.5;
@@ -106,8 +86,7 @@ public class MoveArm extends Command {
 		
 //		logger.info("left speed: " + leftSpeed + " right speed: " + rightSpeed);
 		
-		Robot.harvester.setLeftTilt(leftSpeed);
-		Robot.harvester.setRightTilt(rightSpeed);
+		Robot.harvester.setTilt(rightSpeed);
 		
 //		logger.info("Execute: leftSpeed: " + leftSpeed + " rightSpeed: " + rightSpeed);
 		
@@ -126,8 +105,7 @@ public class MoveArm extends Command {
     // Called once after isFinished returns true
     protected void end() {
 //    	logger.info("[Ending]");
-    	Robot.harvester.setLeftTilt(0);
-    	Robot.harvester.setRightTilt(0);
+    	Robot.harvester.setTilt(0);
     }
 
     // Called when another command which requires one or more of the same

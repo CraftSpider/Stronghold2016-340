@@ -56,8 +56,7 @@ public class MO_ArmDown extends Command {
      */
     protected void end() {
     	logger.info("[ending]");
-    	Robot.harvester.setLeftTilt(0);
-    	Robot.harvester.setRightTilt(0);
+    	Robot.harvester.setTilt(0);
     }
 
     // Called when another command which requires one or more of the same
