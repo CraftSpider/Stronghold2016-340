@@ -24,7 +24,7 @@ public class Harvester extends Subsystem {
 	
 	public static final double SHOOTER_SHOOT_V_BUS = -1.0;
 	public static final double SHOOTER_HARVEST_V_BUS = 0.35;
-	public static final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.31;
+	public static final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.6;
 	public static final double HARVESTER_RELEASE_BALL_V_BUS = .25;
 	public static final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
 	public static final int HARVESTER_CONTROL_STALL_CURRENT = 42;
@@ -42,6 +42,9 @@ public class Harvester extends Subsystem {
 	//limit switches
 	private DigitalInput limitLeft;
 	private DigitalInput limitRight;
+	
+	private DigitalInput ballSensorLeft;
+	private DigitalInput ballSensorRight;
 	
 	public class ZeroablePotentiometer extends AnalogPotentiometer {
 		
@@ -112,6 +115,9 @@ public class Harvester extends Subsystem {
 		leftPot = new ZeroablePotentiometer(RobotMap.LeftAimPot, 250);
 		rightPot = new ZeroablePotentiometer(RobotMap.RightAimPot, 250);
 		rightPot.setInverted(true);
+		
+		ballSensorLeft = new DigitalInput(RobotMap.BallSensorLeftPort);
+		ballSensorRight = new DigitalInput(RobotMap.BallSensorRightPort);
 	}
 	
     public void initDefaultCommand() {
@@ -236,5 +242,9 @@ public class Harvester extends Subsystem {
     
     public double getControlCurrent() {
     	return harvesterBallControl.getOutputCurrent();
+    }
+    
+    public boolean hasBall() {
+    	return !ballSensorLeft.get() && !ballSensorRight.get();
     }
 }

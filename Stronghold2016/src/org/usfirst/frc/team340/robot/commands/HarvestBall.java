@@ -31,19 +31,19 @@ public class HarvestBall extends Command {
     protected void execute() {
     	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_HARVEST_V_BUS);
     	Robot.harvester.setShooter(Robot.harvester.SHOOTER_HARVEST_V_BUS);
-    	logger.info("Harvester Control Current: " + Robot.harvester.getControlCurrent());
+    	logger.info("Harvester Ball Sensor: " + Robot.harvester.hasBall());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return false;
+    	return Robot.harvester.hasBall();
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	logger.info("[Ending]");
-//    	Robot.harvester.setBallControl(0);
-//    	Robot.harvester.setShooter(0);
+    	Robot.harvester.setBallControl(0);
+    	Robot.harvester.setShooter(0);
     }
 
     // Called when another command which requires one or more of the same
