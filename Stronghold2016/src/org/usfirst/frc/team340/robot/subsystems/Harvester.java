@@ -101,6 +101,7 @@ public class Harvester extends Subsystem {
 		
 		//TODO: sync left/right motors
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
+		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
 		
 		//tiltLeft.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
 		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
