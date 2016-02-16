@@ -27,18 +27,20 @@ public class DischargeBall extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.harvester.setBallControl(.25);
-    	Robot.harvester.setShooter(.2);
+    	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_DISCHARGE_BALL_V_BUS);
+    	Robot.harvester.setShooter(Robot.harvester.SHOOTER_DISCHARGE_BALL_V_BUS);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	logger.info("[Ending]");
+    	Robot.harvester.setBallControl(0);
+    	Robot.harvester.setShooter(0);
     }
 
     // Called when another command which requires one or more of the same

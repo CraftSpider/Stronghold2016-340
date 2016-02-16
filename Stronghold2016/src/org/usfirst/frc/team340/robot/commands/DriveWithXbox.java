@@ -19,7 +19,7 @@ public class DriveWithXbox extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	logger.info("[Initializing]");
+    	logger.info("[Initializing]Drive?");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,11 +27,12 @@ public class DriveWithXbox extends Command {
     private double rotateSlowScale = 0.7;
     
     public double throttleThrottling(double input) {
-    	if(input < 0) {
-    		return Math.sqrt(-Math.pow((input-1),2)+1);
-    	} else {
+    	if(input > 0.05) {
+    		return 	Math.sqrt(-Math.pow((input-1),2)+1);
+    	} else if (input < 0.05){
     		return -Math.sqrt(-Math.pow((-input-1),2)+1);
     	}
+    	return 0;
     }
     
     protected void execute() { 
@@ -43,15 +44,15 @@ public class DriveWithXbox extends Command {
     	// 2. Use right joystick for slow motion
     	// 3. Use left joystick for normal arcadeDrive
     	if(Math.abs(Robot.oi.getDriverSummedTriggers()) > .1) {
-    		Robot.drive.arcadeDrive(throttleThrottling(Robot.oi.getDriverSummedTriggers()), 
-    				throttleThrottling(-Robot.oi.getDriverLeftX()));
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers()), 
+    				(Robot.oi.getDriverLeftX()));
     	} else if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
     			|| Math.abs(Robot.oi.getDriverRightX()) > 0.1) {
-    		Robot.drive.arcadeDrive(throttleThrottling(Robot.oi.getDriverRightY())*moveSlowScale, 
-    				throttleThrottling(-Robot.oi.getDriverRightX())*rotateSlowScale);
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverRightY())*moveSlowScale, 
+    				(Robot.oi.getDriverRightX())*rotateSlowScale);
     	} else {
-    		Robot.drive.arcadeDrive(throttleThrottling(Robot.oi.getDriverLeftY()), 
-    				throttleThrottling(-Robot.oi.getDriverLeftX()));
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY()), 
+    				(Robot.oi.getDriverLeftX()));
     	}
     }
 
@@ -62,13 +63,13 @@ public class DriveWithXbox extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	logger.info("[Ending]");
+    	logger.info("[Ending]Drive?");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	logger.info("[Interrupted]");
+    	logger.info("[Interrupted]Drive?");
     	end();
     }
 }

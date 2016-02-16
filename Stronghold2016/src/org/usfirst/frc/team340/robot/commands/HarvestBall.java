@@ -11,17 +11,16 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class HarvestBall extends Command {
 
+
 	//Logger
 	Logger logger = Robot.getLogger(HarvestBall.class);
 	
-	//Speed variable
-	double speed;
 	
-    public HarvestBall(double speed) {
+    public HarvestBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.harvester);
-    	this.speed = speed;
+    	
     }
 
     // Called just before this Command runs the first time
@@ -31,17 +30,19 @@ public class HarvestBall extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.harvester.setBallControl(speed);
-    	Robot.harvester.setShooter(-speed);
+    	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_HARVEST_V_BUS);
+    	Robot.harvester.setShooter(Robot.harvester.SHOOTER_HARVEST_V_BUS);
+    	logger.info("Harvester Control Current: " + Robot.harvester.getControlCurrent());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(Robot.harvester.getVoltage() == 42) {
-        	return true;
-        } else {
-        	return false;
-        }
+    	return false;
+//        if(Robot.harvester.getControlCurrent() == Robot.harvester.HARVESTER_CONTROL_STALL_CURRENT) {
+//        	return true;
+//        } else {
+//        	return false;
+//        }
     }
 
     // Called once after isFinished returns true

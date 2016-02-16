@@ -1,14 +1,20 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ArmStop;
+import org.usfirst.frc.team340.robot.commands.CG_Shoot;
+import org.usfirst.frc.team340.robot.commands.DischargeBall;
+import org.usfirst.frc.team340.robot.commands.HarvestBall;
 import org.usfirst.frc.team340.robot.commands.ManualShooting;
 import org.usfirst.frc.team340.robot.commands.MoveArm;
+import org.usfirst.frc.team340.robot.commands.Shoot;
+import org.usfirst.frc.team340.robot.commands.StopShooter;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -25,8 +31,7 @@ public class OI {
 //    	A1.whileActive(new Shoot());
 //    	B1.whenPressed(new DischargeBall());
 //    	
-    	A1.whenPressed(new MO_ArmUp());
-    	A1.whenReleased(new ArmStop());
+//    	
     	
 //    	X1.whenPressed(new MO_BallControlIn());
 //    	X1.whenReleased(new BallControlOff());
@@ -40,18 +45,30 @@ public class OI {
 //    	LB1.whenPressed(new MO_ShooterOut());
 //    	LB1.whenReleased(new StopShooter());
     	
-    	X1.whenPressed(new ManualShooting());
-    	Y1.whenPressed(new ManualShooting());
-    	RB1.whenPressed(new ManualShooting());
-    	LB1.whenPressed(new ManualShooting());
+//    	X1.whenPressed(new ManualShooting());
+//    	Y1.whenPressed(new ManualShooting());
+//    	RB1.whenPressed(new ManualShooting());
+//    	LB1.whenPressed(new ManualShooting());
+//    	
+    	Y1.whenPressed(new DischargeBall());
+    	Y1.whenReleased(new StopShooter());
+//    	
+    	X1.whenPressed(new HarvestBall());
+    	X1.whenReleased(new StopShooter());
     	
-    	B1.whenPressed(new MO_ArmDown());
+    	RB1.whenPressed(new Shoot());
+    	RB1.whenReleased(new StopShooter());
+    	
+    	Start1.whenPressed(new MO_ArmUp());
+    	Start1.whenReleased(new ArmStop());
+    	Back1.whenPressed(new MO_ArmDown());
+    	Back1.whenReleased(new ArmStop());
+    	
+    	
+    	A1.whenPressed(new MoveArm(0.80));
+    	A1.whenReleased(new ArmStop());
+    	B1.whenPressed(new MoveArm(-0.75));
     	B1.whenReleased(new ArmStop());
-    	
-    	Start1.whenPressed(new MoveArm(0.55));
-    	Start1.whenReleased(new MoveArm(0));
-    	Back1.whenPressed(new MoveArm(-0.25));
-    	Back1.whenPressed(new MoveArm(0));
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -95,20 +112,20 @@ public class OI {
 	Button LeftStick1 = new JoystickButton(xBoxDriver, 9);
 	
 	//Turn driver triggers to buttons
-	public class RightTrig1 extends Button {
-		public boolean get() {
-			return xBoxDriver.getRawAxis(3) > .5;
-		}
-	}
-	RightTrig1 rightTrig1 = new RightTrig1();
-	
-	public class LeftTrig1 extends Button {
-		public boolean get() {
-			return xBoxDriver.getRawAxis(2) > .5;
-		}
-	}
-	LeftTrig1 leftTrig1 = new LeftTrig1();
-	
+//	public class RightTrig1 extends Button {
+//		public boolean get() {
+//			return xBoxDriver.getRawAxis(3) > .5;
+//		}
+//	}
+//	RightTrig1 rightTrig1 = new RightTrig1();
+//	
+//	public class LeftTrig1 extends Button {
+//		public boolean get() {
+//			return xBoxDriver.getRawAxis(2) > .5;
+//		}
+//	}
+//	LeftTrig1 leftTrig1 = new LeftTrig1();
+//	
 	//Init & construct co-driver controller
 	Joystick xBoxCoDriver = new Joystick(1);
 	
@@ -124,20 +141,20 @@ public class OI {
 	Button LeftStick2 = new JoystickButton(xBoxCoDriver, 9);
 	
 	//Turn co-driver triggers to buttons
-	public class RightTrig2 extends Button {
-		public boolean get() {
-			return xBoxCoDriver.getRawAxis(3) > .5;
-		}
-	}
-	RightTrig2 rightTrig2 = new RightTrig2();
-	
-	public class LeftTrig2 extends Button {
-		public boolean get() {
-			return xBoxCoDriver.getRawAxis(2) > .5;
-		}
-	}
-	LeftTrig2 leftTrig2 = new LeftTrig2();
-	
+//	public class RightTrig2 extends Button {
+//		public boolean get() {
+//			return xBoxCoDriver.getRawAxis(3) > .5;
+//		}
+//	}
+//	RightTrig2 rightTrig2 = new RightTrig2();
+//	
+//	public class LeftTrig2 extends Button {
+//		public boolean get() {
+//			return xBoxCoDriver.getRawAxis(2) > .5;
+//		}
+//	}
+//	LeftTrig2 leftTrig2 = new LeftTrig2();
+//	
 	
 	
 	/**
@@ -174,6 +191,12 @@ public class OI {
 		return xBoxDriver.getRawAxis(4);
 	}
 	
+	/**
+	 * returns 0 if LB1 is pressed
+	 * returns 2 if RB1 is pressed
+	 * returns 1 if neither are pressed
+	 * @return
+	 */
 	public int getDriverBumperState() {
 		if(RB1.get()) {
 			return 2;
@@ -183,7 +206,12 @@ public class OI {
 			return 1;
 		}
 	}
-	
+	/**
+	 * returns 2 if X1 is pressed
+	 * returns 0 if Y1 is pressed
+	 * returns 1 if neither
+	 * @return
+	 */
 	public int getXYButtonState() {
 		if(X1.get()) {
 			return 2;

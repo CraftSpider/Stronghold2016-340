@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import org.usfirst.frc.team340.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -11,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Shoot extends Command {
 
+	
 	Logger logger = Robot.getLogger(Shoot.class);
     public Shoot() {
         // Use requires() here to declare subsystem dependencies
@@ -22,12 +24,14 @@ public class Shoot extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[Initializing: Shooter]");
-    	Robot.harvester.setShooter(1);
+    	double speed = Robot.harvester.SHOOTER_SHOOT_V_BUS;
+    	Robot.harvester.setShooter(speed);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.harvester.setBallControl(.25);
+    	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_RELEASE_BALL_V_BUS);
     }
 
     // Make this return true when this Command no longer needs to run execute()

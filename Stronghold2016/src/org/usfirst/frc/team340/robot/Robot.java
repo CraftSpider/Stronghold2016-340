@@ -2,8 +2,11 @@
 package org.usfirst.frc.team340.robot;
 
 import java.util.logging.ConsoleHandler;
+import java.util.logging.Formatter;
 import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
@@ -42,6 +45,13 @@ public class Robot extends IterativeRobot {
     	if(logHandler == null) {
     		logHandler = new ConsoleHandler();
             logHandler.setLevel(logLevel);
+            logHandler.setFormatter(new Formatter() {
+    			@Override
+    			public String format(LogRecord record) {
+    				String t = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage(); 
+    				return t;
+    			}
+    		});
     	}
     }
 
@@ -57,7 +67,13 @@ public class Robot extends IterativeRobot {
         climber = new Climber();
         logHandler = new ConsoleHandler();
         logHandler.setLevel(logLevel);
-        
+        logHandler.setFormatter(new Formatter() {
+			@Override
+			public String format(LogRecord record) {
+				String t = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage(); 
+				return t;
+			}
+		});
         oi = new OI();
         
 //        chooser.addDefault("Default Auto", new AutoDefault());
@@ -70,6 +86,15 @@ public class Robot extends IterativeRobot {
     public static Logger getLogger(String name) {
     	if(logHandler == null) {
     		logHandler = new ConsoleHandler();
+    		logHandler.setFormatter(new Formatter() {
+				
+				@Override
+				public String format(LogRecord record) {
+					//record.getLoggerName();
+					String t = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage(); 
+					return t;
+				}
+			});
             logHandler.setLevel(logLevel);
     	}
     	Logger logger = Logger.getLogger(name);
@@ -78,12 +103,8 @@ public class Robot extends IterativeRobot {
     }
     
     public static Logger getLogger(Class<?> _class) {
-    	if(logHandler == null) {
-    		logHandler = new ConsoleHandler();
-            logHandler.setLevel(logLevel);
-    	}
-    	Logger logger = Logger.getLogger(_class.getName());
-    	logger.addHandler(logHandler);
+    	Logger logger = getLogger(_class.getName());
+    	
     	return logger;
     }
 	

@@ -22,6 +22,14 @@ public class Harvester extends Subsystem {
 	
 	// Roller farthest from the robot, it is the shooter
 	
+	public static final double SHOOTER_SHOOT_V_BUS = -1.0;
+	public static final double SHOOTER_HARVEST_V_BUS = 0.35;
+	public static final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.31;
+	public static final double HARVESTER_RELEASE_BALL_V_BUS = .25;
+	public static final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
+	public static final int HARVESTER_CONTROL_STALL_CURRENT = 42;
+	public static final double HARVESTER_HARVEST_V_BUS = -0.2;
+	
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
 	// Roller closest to the robot
@@ -38,7 +46,7 @@ public class Harvester extends Subsystem {
 	public class ZeroablePotentiometer extends AnalogPotentiometer {
 		
 		private double offset = 0.0;
-		
+		private int invert = 1;
 		public ZeroablePotentiometer(int channel) {
 			super(channel);
 		}
@@ -53,11 +61,29 @@ public class Harvester extends Subsystem {
 		}
 		
 		public double get() {
-			return super.get() - offset;
+			return (super.get() - offset) * invert;
 		}
+		
+		private boolean hasReset = false;
 		
 		public void reset() {
 			offset = super.get();
+			hasReset = true;
+		}
+		public boolean isReset() {
+			return hasReset;
+		}
+		
+		public void setInverted(boolean invert){
+			if(invert){
+				this.invert = -1;
+			}else{
+				this.invert = 1;
+			}
+		}
+		
+		public boolean isInverted(){
+			return this.invert == -1;
 		}
 	}   
 	
@@ -75,12 +101,15 @@ public class Harvester extends Subsystem {
 		
 		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
+		//tiltLeft.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
+		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness		
 		
 		limitLeft = new DigitalInput(RobotMap.HarvesterLeftBump);
 		limitRight = new DigitalInput(RobotMap.HarvesterRightBump);
 		
 		leftPot = new ZeroablePotentiometer(RobotMap.LeftAimPot, 250);
 		rightPot = new ZeroablePotentiometer(RobotMap.RightAimPot, 250);
+		rightPot.setInverted(true);
 	}
 	
     public void initDefaultCommand() {
@@ -186,6 +215,10 @@ public class Harvester extends Subsystem {
     	resetRightPot();
     }
     
+    public boolean hasReset() {
+    	return leftPot.isReset() && rightPot.isReset();
+    }
+    
     public void setLeftTilt(double speed) {
     	tiltLeft.set(-speed);
     }
@@ -194,7 +227,7 @@ public class Harvester extends Subsystem {
     	tiltRight.set(speed);
     }
     
-    public double getVoltage() {
-    	return harvesterBallControl.getOutputVoltage();
+    public double getControlCurrent() {
+    	return harvesterBallControl.getOutputCurrent();
     }
 }
