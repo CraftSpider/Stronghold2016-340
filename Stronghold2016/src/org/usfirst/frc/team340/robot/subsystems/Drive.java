@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.RobotMap;
+import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Servo;
@@ -18,6 +19,8 @@ public class Drive extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+	
+	public static final double CLIMB_DRIVE_SPEED = 0.5;
 	
 	// Drive motors
 	public static Talon leftDrive;
@@ -60,7 +63,7 @@ public class Drive extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-//    	setDefaultCommand(new DriveWithXbox());
+    	setDefaultCommand(new DriveWithXbox());
     }
     
     /**
@@ -96,7 +99,7 @@ public class Drive extends Subsystem {
      */
     public void setBothDrive(double leftOutput, double rightOutput){
     	setLeftDrive(leftOutput);
-    	setRightDrive(rightOutput);
+    	setRightDrive(-rightOutput);
     }
     
     /**

@@ -19,41 +19,41 @@ public class DriveWithXbox extends Command {
 	
     // Called just before this Command runs the first time
     protected void initialize() {
-		logger.info("[Initializing]");
+    	logger.info("[Initializing]Drive?");
     }
 	
     // Called repeatedly when this Command is scheduled to run
     private double moveSlowScale = 0.6;
     private double rotateSlowScale = 0.7;
-	
-    //Takes the input and maps it to a circle equation, so as to smooth input.
-	public double throttleThrottling(double input) {
-		if(input < 0) {
-			return Math.sqrt(-Math.pow((input-1),2)+1);
-		} else {
-			return -Math.sqrt(-Math.pow((-input-1),2)+1);
-		}
-	}
-	
+    
+    public double throttleThrottling(double input) {
+    	if(input > 0.05) {
+    		return 	Math.sqrt(-Math.pow((input-1),2)+1);
+    	} else if (input < 0.05){
+    		return -Math.sqrt(-Math.pow((-input-1),2)+1);
+    	}
+    	return 0;
+    }
+    
     protected void execute() { 
-		//Clutch should never be engaged while we are under human control
-		Robot.drive.disengageClutch();
-		
-		//Allow driver to drive in any of three modes.
-		// 1. Use triggers for speed, joystick for turning
-		// 2. Use right joystick for slow motion
-		// 3. Use left joystick for normal arcadeDrive
-		if(Math.abs(Robot.oi.getDriverSummedTriggers()) > .1) {
-			Robot.drive.arcadeDrive(throttleThrottling(Robot.oi.getDriverSummedTriggers()), 
-					throttleThrottling(-Robot.oi.getDriverLeftX()));
-		} else if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
-				|| Math.abs(Robot.oi.getDriverRightX()) > 0.1) {
-			Robot.drive.arcadeDrive(throttleThrottling(Robot.oi.getDriverRightY())*moveSlowScale, 
-					throttleThrottling(-Robot.oi.getDriverRightX())*rotateSlowScale);
-		} else {
-			Robot.drive.arcadeDrive(throttleThrottling(Robot.oi.getDriverLeftY()), 
-					throttleThrottling(-Robot.oi.getDriverLeftX()));
-		}
+    	//Clutch should never be engaged while we are under human control
+    	Robot.drive.disengageClutch();
+    	
+    	//Allow driver to drive in any of three modes.
+    	// 1. Use triggers for speed, joystick for turning
+    	// 2. Use right joystick for slow motion
+    	// 3. Use left joystick for normal arcadeDrive
+    	if(Math.abs(Robot.oi.getDriverSummedTriggers()) > .1) {
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers()), 
+    				(Robot.oi.getDriverLeftX()));
+    	} else if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
+    			|| Math.abs(Robot.oi.getDriverRightX()) > 0.1) {
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverRightY())*moveSlowScale, 
+    				(Robot.oi.getDriverRightX())*rotateSlowScale);
+    	} else {
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY()), 
+    				(Robot.oi.getDriverLeftX()));
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -63,13 +63,13 @@ public class DriveWithXbox extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-		logger.info("[Ending]");
+    	logger.info("[Ending]Drive?");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-		logger.info("[Interrupted]");
-		end();
+    	logger.info("[Interrupted]Drive?");
+    	end();
     }
 }

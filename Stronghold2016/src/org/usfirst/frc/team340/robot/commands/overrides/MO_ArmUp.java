@@ -34,7 +34,12 @@ public class MO_ArmUp extends Command {
      * Moves the arm up
      */
     protected void execute() {
-    	Robot.harvester.setTilt(1);
+    	logger.info("left bump: " + Robot.harvester.getLeftLimit() + 
+    			" right bump: " + Robot.harvester.getRightLimit() +
+    			" left pot: " + Robot.harvester.getLeftAimPot() +  
+    			" right pot: " + Robot.harvester.getRightAimPot());
+    	Robot.harvester.setLeftTilt(0.75);
+    	Robot.harvester.setRightTilt(0.75);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -52,7 +57,8 @@ public class MO_ArmUp extends Command {
      */
     protected void end() {
     	logger.info("[ending]");
-    	Robot.harvester.setTilt(0);
+    	Robot.harvester.setLeftTilt(0);
+    	Robot.harvester.setRightTilt(0);
     }
 
     // Called when another command which requires one or more of the same

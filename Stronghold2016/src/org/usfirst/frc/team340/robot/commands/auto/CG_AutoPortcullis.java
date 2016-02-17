@@ -31,6 +31,6 @@ public class CG_AutoPortcullis extends CommandGroup {
     	addSequential(new ArmToPosition(0));
     	addSequential(new DriveDistance(1, 10));
     	addParallel(new ArmToPosition(110));
-    	addParallel(new DriveDistance(10, 100));
+    	addSequential(new DriveDistance(10, 100));
     }
 }

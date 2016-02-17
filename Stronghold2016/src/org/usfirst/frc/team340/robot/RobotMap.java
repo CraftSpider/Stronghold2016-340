@@ -50,10 +50,13 @@ public class RobotMap {
 	public static int RightDriveEncoderPortA = 8;
 	public static int RightDriveEncoderPortB = 9;
 	
-	public static int ClimberBottomSensor = 2;
+	public static int ClimberBottomSensor = 5;
 	
 	public static int HarvesterLeftBump = 1;
 	public static int HarvesterRightBump = 0;
+	
+	public static int BallSensorLeftPort = 2;
+	public static int BallSensorRightPort;
 	
 	//
 	// Analog I/O Ports

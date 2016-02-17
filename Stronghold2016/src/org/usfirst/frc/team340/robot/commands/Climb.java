@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Climb extends Command {
 	
+	
 	Logger logger = Robot.getLogger(Climb.class);
 	/**
 	 * Set requirements for climb command.
@@ -38,7 +39,7 @@ public class Climb extends Command {
     protected void execute() {
     	Robot.drive.engageClutch();
     	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState) {
-    		Robot.drive.setBothDrive(1, 1);
+    		Robot.drive.setBothDrive(Robot.drive.CLIMB_DRIVE_SPEED, Robot.drive.CLIMB_DRIVE_SPEED);
     	}
     }
 

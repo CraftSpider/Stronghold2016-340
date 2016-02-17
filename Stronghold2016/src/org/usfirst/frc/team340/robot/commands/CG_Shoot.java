@@ -1,16 +1,15 @@
-package org.usfirst.frc.team340.robot.commands.auto;
+package org.usfirst.frc.team340.robot.commands;
 
-import org.usfirst.frc.team340.robot.commands.ArmToPosition;
-import org.usfirst.frc.team340.robot.commands.DriveDistance;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class CG_AutoDrawbridge extends CommandGroup {
+public class CG_Shoot extends CommandGroup {
     
-    public  CG_AutoDrawbridge() {
+    public  CG_Shoot() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -27,11 +26,7 @@ public class CG_AutoDrawbridge extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-    	addSequential(new ArmToPosition(90));
-    	addSequential(new DriveDistance(1, 10));
-    	addParallel(new ArmToPosition(5));
-    	addParallel(new DriveDistance(-5, -50)); //TODO have to make this go backwards
-    	addSequential(new DriveDistance(10, 100));
+    	addSequential(new MO_ShooterOut(), 0.5);
+    	addSequential(new Shoot());
     }
 }

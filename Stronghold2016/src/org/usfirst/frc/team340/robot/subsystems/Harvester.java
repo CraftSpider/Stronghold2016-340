@@ -24,6 +24,14 @@ public class Harvester extends Subsystem {
 	
 	// Roller farthest from the robot, it is the shooter
 	
+	public static final double SHOOTER_SHOOT_V_BUS = -1.0;
+	public static final double SHOOTER_HARVEST_V_BUS = 0.35;
+	public static final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.6;
+	public static final double HARVESTER_RELEASE_BALL_V_BUS = .25;
+	public static final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
+	public static final int HARVESTER_CONTROL_STALL_CURRENT = 42;
+	public static final double HARVESTER_HARVEST_V_BUS = -0.2;
+	
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
 	// Roller closest to the robot
@@ -37,10 +45,13 @@ public class Harvester extends Subsystem {
 	private DigitalInput limitLeft;
 	private DigitalInput limitRight;
 	
+	private DigitalInput ballSensorLeft;
+	private DigitalInput ballSensorRight;
+	
 	public class ZeroablePotentiometer extends AnalogPotentiometer {
 		
 		private double offset = 0.0;
-		
+		private int invert = 1;
 		public ZeroablePotentiometer(int channel) {
 			super(channel);
 		}
@@ -55,11 +66,29 @@ public class Harvester extends Subsystem {
 		}
 		
 		public double get() {
-			return super.get() - offset;
+			return (super.get() - offset) * invert;
 		}
+		
+		private boolean hasReset = false;
 		
 		public void reset() {
 			offset = super.get();
+			hasReset = true;
+		}
+		public boolean isReset() {
+			return hasReset;
+		}
+		
+		public void setInverted(boolean invert){
+			if(invert){
+				this.invert = -1;
+			}else{
+				this.invert = 1;
+			}
+		}
+		
+		public boolean isInverted(){
+			return this.invert == -1;
 		}
 	}   
 	
@@ -78,14 +107,19 @@ public class Harvester extends Subsystem {
 		//TODO: sync left/right motors
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
 		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
-		//tiltLeft.changeControlMode(CANTalon.TalonControlMode.Follower); //Sets left tilting motor to slave to the right
-		//tiltLeft.set(-tiltRight.get()); //Sets left tilt's speed to the negative of the right's
+		
+		//tiltLeft.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
+		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
 		
 		limitLeft = new DigitalInput(RobotMap.HarvesterLeftBump);
 		limitRight = new DigitalInput(RobotMap.HarvesterRightBump);
 		
 		leftPot = new ZeroablePotentiometer(RobotMap.LeftAimPot, 250);
 		rightPot = new ZeroablePotentiometer(RobotMap.RightAimPot, 250);
+		rightPot.setInverted(true);
+		
+		ballSensorLeft = new DigitalInput(RobotMap.BallSensorLeftPort);
+		ballSensorRight = new DigitalInput(RobotMap.BallSensorRightPort);
 	}
 	
     public void initDefaultCommand() {
@@ -100,7 +134,7 @@ public class Harvester extends Subsystem {
     public void setShooter(double value) {
     	shooterWheelA.set(value);
     }
-    
+   
     /**
      * all methods begin by disabling the wheels. changes controlling mode to voltage %,
      * absolute voltage (voltage compensation), and encoder speed, respectively. latter also reenables
@@ -191,17 +225,28 @@ public class Harvester extends Subsystem {
     	resetRightPot();
     }
     
-    /**
-     * Sets tilting speed of harvester.
-     * Positive numbers go up, negative numbers go down
-     * @param speed
-     */
-    public void setTilt(double speed) {
-    	tiltRight.set(speed);
+    public boolean hasReset() {
+    	return leftPot.isReset() && rightPot.isReset();
+    }
+    
+    public void setLeftTilt(double speed) {
     	tiltLeft.set(-speed);
     }
     
-    public double getVoltage() {
-    	return harvesterBallControl.getOutputVoltage();
+    public void setRightTilt(double speed) {
+    	tiltRight.set(speed);
+    }
+    
+    public void setTilt(double speed) {
+    	this.setRightTilt(speed);
+    	this.setLeftTilt(speed);
+    }
+    
+    public double getControlCurrent() {
+    	return harvesterBallControl.getOutputCurrent();
+    }
+    
+    public boolean hasBall() {
+    	return !ballSensorLeft.get() && !ballSensorRight.get();
     }
 }

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot.commands;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,6 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ManualShooting extends Command {
 
+	private final static Logger log = Robot.getLogger(ManualShooting.class);
+			
     public ManualShooting() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,20 +25,33 @@ public class ManualShooting extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.getDriverBumperState() == 2) {
+    	
+//    	log.info("Arm Potentiometers left: " + Robot.harvester.getLeftAimPot() + " right: " + Robot.harvester.getRightAimPot() + " left switch:" + Robot.harvester.getLeftLimit()  + " right switch:" + Robot.harvester.getRightLimit());
+    	
+    	//SET SHOOTER SPEED
+    	if(Robot.oi.getDriverBumperState() == 2) { //if RB1 is pressed
+    		// Feed in
+    		log.info("RB1 pressed Shooter Speed is 1");
     		Robot.harvester.setShooter(1);
-    	} else if(Robot.oi.getDriverBumperState() == 0) {
+    	} else if(Robot.oi.getDriverBumperState() == 0) { // if LB1 is pressed
+    		// Feeds out
+    		log.info("LB1 pressed Shooter Speed is -1");
     		Robot.harvester.setShooter(-1);
     	} else {
     		Robot.harvester.setShooter(0);
+    		log.info("RB1 and LB1 not pressed Stop Shooter");
     	}
     	
-    	if(Robot.oi.getXYButtonState() == 2) {
-    		Robot.harvester.setBallControl(1);;
-    	} else if(Robot.oi.getXYButtonState() == 0) {
+    	//SET HARVESTER SPEED
+    	if(Robot.oi.getXYButtonState() == 2) { //if X1 is pressed
+    		log.info("X 1 pressed Ball Control is 1");
+    		Robot.harvester.setBallControl(1);
+    	} else if(Robot.oi.getXYButtonState() == 0) { //if Y1 is pressed
+    		log.info("Y 1 pressed Ball Control is -1");
     		Robot.harvester.setBallControl(-1);
     	} else {
     		Robot.harvester.setBallControl(0);
+    		log.info("X 1 and Y 1 not pressed Ball Control Stop");
     	}
     }
 
@@ -46,7 +63,7 @@ public class ManualShooting extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.harvester.setBallControl(0);
-    	Robot.harvester.setBallControl(0);
+    	Robot.harvester.setShooter(0);
     }
 
     // Called when another command which requires one or more of the same
