@@ -50,25 +50,42 @@ public class OI {
 //    	RB1.whenPressed(new ManualShooting());
 //    	LB1.whenPressed(new ManualShooting());
 //    	
+    	// DRIVER
+    	
     	Y1.whenPressed(new DischargeBall());
     	Y1.whenReleased(new StopShooter());
 //    	
-    	X1.whenPressed(new HarvestBall());
-    	X1.whenReleased(new StopShooter());
+    	LB1.whenPressed(new HarvestBall());
+    	LB1.whenReleased(new StopShooter());
     	
     	RB1.whenPressed(new Shoot());
     	RB1.whenReleased(new StopShooter());
-    	
-    	Start1.whenPressed(new MO_ArmUp());
-    	Start1.whenReleased(new ArmStop());
-    	Back1.whenPressed(new MO_ArmDown());
-    	Back1.whenReleased(new ArmStop());
-    	
     	
     	A1.whenPressed(new MoveArm(0.80));
     	A1.whenReleased(new ArmStop());
     	B1.whenPressed(new MoveArm(-0.75));
     	B1.whenReleased(new ArmStop());
+    	
+    	// CO DRIVER
+    	
+    	Y2.whenPressed(new DischargeBall());
+    	Y2.whenReleased(new StopShooter());
+    	
+    	A2.whenPressed(new MoveArm(0.80));
+    	A2.whenReleased(new ArmStop());
+    	B2.whenPressed(new MoveArm(-0.75));
+    	B2.whenReleased(new ArmStop());
+    	
+    	Start2.whenPressed(new MO_ArmUp());
+    	Start2.whenReleased(new ArmStop());
+    	Back2.whenPressed(new MO_ArmDown());
+    	Back2.whenReleased(new ArmStop());
+    	
+    	LB2.whenPressed(new HarvestBall());
+    	LB2.whenReleased(new StopShooter());
+    	
+    	RB2.whenPressed(new Shoot());
+    	RB2.whenReleased(new StopShooter());
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
