@@ -20,6 +20,8 @@ public class Harvester extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
+	public final double ArmClear = 30; //Pot val to clear harvester of obstacle
+	
 	// Roller farthest from the robot, it is the shooter
 	
 	public static final double SHOOTER_SHOOT_V_BUS = -1.0;
