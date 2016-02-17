@@ -99,7 +99,7 @@ public class Drive extends Subsystem {
      */
     public void setBothDrive(double leftOutput, double rightOutput){
     	setLeftDrive(leftOutput);
-    	setRightDrive(-rightOutput);
+    	setRightDrive(rightOutput);
     }
     
     /**

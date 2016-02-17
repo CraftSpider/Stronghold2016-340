@@ -31,6 +31,8 @@ public class Shoot extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double speed = Robot.harvester.SHOOTER_SHOOT_V_BUS;
+    	Robot.harvester.setShooter(speed);
     	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_RELEASE_BALL_V_BUS);
     }
 
