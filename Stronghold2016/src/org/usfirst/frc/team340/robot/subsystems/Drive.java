@@ -106,8 +106,8 @@ public class Drive extends Subsystem {
      * Stops both driverail motors
      */
     public void stopBothDrive() {
-    	leftDrive.set(0);
-    	rightDrive.set(0);
+    	setLeftDrive(0);
+    	setRightDrive(0);
     }
     
     /**

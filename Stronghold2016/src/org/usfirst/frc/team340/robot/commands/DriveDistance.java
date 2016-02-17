@@ -7,10 +7,7 @@ import org.usfirst.frc.team340.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Basically PID
- * <!-- DON'T USE THIS CODE -->
- * @author wundrweapon
- *
+ * 
  */
 public class DriveDistance extends Command {
 	
@@ -18,22 +15,18 @@ public class DriveDistance extends Command {
 	Logger logger = Robot.getLogger(DriveDistance.class);
 	
 	//Value inits
-	double tolerance;
-	/*double targetDist;
-	double delta = 0;
-	double prevDelta = 0;
-	double changeInDelta = 0;*/
-	
-	double cmdSpeed;
-	double currPos;
-	double tgtPos;
-	double potAverage = (Robot.harvester.getLeftAimPot() + Robot.harvester.getRightAimPot()) / 2;
-	double ThV = 0;
-	double maxAcc = 0.05;  //Increases speed every tick. This will be changed possibly, not sure.
-	double vBound = 1;
+	int direction; //0 means no movement, 1 means reverse, 2 means forward. I did this because I code weirdly
+	double tolerance; //Distance from tgtPos that the robot can stop at without any trouble
+	double speed; //Speed to set motors to
+	double currPos = 0; //Current position. Starts at 0 to simply everything and make it all work
+	double tgtPos; //Target position
+	double ThV = 0; //Theoretical velocity. Starts at 0 to simply everything and make it all work
+	double maxAcc = 0.05; //Increases speed every tick. Currently a magic number
+	double vBound = 1; //Velocity boundary
 
 	/**
-	 * Allows the robot to travel to a given distance
+	 * Allows the robot to travel to a given distance.
+	 * Put negative tgtPos values for reverse travel
 	 * @param tolerance
 	 * @param targetDist
 	 */
@@ -49,37 +42,60 @@ public class DriveDistance extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[Initializing]");
-    	Robot.drive.resetLeftEncoder();
+    	Robot.drive.resetBothEncoders();
     }
 
     // Called repeatedly when this Command is scheduled to run
+    //Someone, at some point, needs to optimize this
     protected void execute() {
-    	if(currPos < (tgtPos / 2)) {
-    		ThV += maxAcc;
-    	} else if(currPos < tgtPos) {
-    		ThV -= maxAcc;
+    	if(currPos < (tgtPos - tolerance)) {
+    		direction = 2;
+    		
+    		//Deals with variance in our velocity
+    		if(currPos < (tgtPos / 2)) {
+    			ThV += maxAcc;
+    		} else if(currPos < tgtPos) {
+    			ThV -= maxAcc;
+    		} else {
+    			ThV = 0;
+    		}
+    		
+    		//Sets velocity
+    		if(ThV < vBound) {
+    			speed = ThV;
+    		} else {
+    			speed = vBound;
+    		}
     	} else {
-    		ThV = 0;
+    		//This if/else just sets the direction value to simplify isFinished()
+    		if(currPos > (tgtPos + tolerance)) {
+    			direction = 1;
+    		} else {
+    			direction = 0;
+    		}
+    		
+    		//The actual reversing code is here, essentially the opposite of forwards code
+    		if(currPos > (tgtPos / 2)) {
+    			ThV -= maxAcc;
+    		} else if(currPos > tgtPos) {
+    			ThV += maxAcc;
+    		} else {
+    			ThV = 0;
+    		}
+    		
+    		if(ThV > -vBound) {
+    			speed = ThV;
+    		} else {
+    			speed = -vBound;
+    		}
     	}
     	
-    	if(ThV < vBound) {
-    		cmdSpeed = ThV;
-    	} else {
-    		cmdSpeed = vBound;
-    	}
-    	
-    	if(currPos > tgtPos) {
-    		Robot.drive.setBothDrive(-cmdSpeed, -cmdSpeed);
-    	} else if(currPos < tgtPos) {
-    		Robot.drive.setBothDrive(cmdSpeed, cmdSpeed);
-    	} else {
-    		Robot.drive.setBothDrive(0, 0);
-    	}
+    	currPos = (Robot.drive.getLeftEncoder() + Robot.drive.getRightEncoder()) / 2; //Sets our current position to the average of the encoders for the next run of execute()
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.drive.getLeftEncoder() == (tgtPos - tolerance);
+        return direction == 0;
     }
 
     // Called once after isFinished returns true
