@@ -90,7 +90,7 @@ public class Robot extends IterativeRobot {
         chooser = new SendableChooser();
 //        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+        SmartDashboard.putData("AutoSelect", chooser);
         
         
     }

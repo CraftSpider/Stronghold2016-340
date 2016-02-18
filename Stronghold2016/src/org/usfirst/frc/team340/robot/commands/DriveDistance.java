@@ -16,17 +16,17 @@ public class DriveDistance extends Command {
 	
 	//Value inits
 	int direction; //0 means no movement, 1 means reverse, 2 means forward. I did this because I code weirdly
-	double tolerance; //Distance from tgtPos that the robot can stop at without any trouble
+	double tolerance; //Distance from targetPosition that the robot can stop at without any trouble
 	double speed; //Speed to set motors to
-	double currPos = 0; //Current position. Starts at 0 to simply everything and make it all work
-	double tgtPos; //Target position
-	double ThV = 0; //Theoretical velocity. Starts at 0 to simply everything and make it all work
-	double maxAcc = 0.05; //Increases speed every tick. Currently a magic number
-	double vBound = 1; //Velocity boundary
+	double currentPosition = 0; //Starts at 0 to simply everything and make it all work
+	double targetPosition; //Target position
+	double theoreticalVelocity = 0; //Starts at 0 to simply everything and make it all work
+	double maxAccelleration = 0.05; //Increases speed every tick. Currently a magic number
+	double velocityBound = 1; //Sets a boundary for velocity
 
 	/**
 	 * Allows the robot to travel to a given distance.
-	 * Put negative tgtPos values for reverse travel
+	 * Put negative targetPosition values for reverse travel
 	 * @param tolerance
 	 * @param targetDist
 	 */
@@ -35,7 +35,7 @@ public class DriveDistance extends Command {
         // eg. requires(chassis);
     	requires(Robot.drive);
     	
-    	this.tgtPos = targetPos;
+    	this.targetPosition = targetPos;
     	this.tolerance = tolerance;
     }
 
@@ -48,49 +48,49 @@ public class DriveDistance extends Command {
     // Called repeatedly when this Command is scheduled to run
     //Someone, at some point, needs to optimize this
     protected void execute() {
-    	if(currPos < (tgtPos - tolerance)) {
+    	currentPosition = (Robot.drive.getLeftEncoder() + Robot.drive.getRightEncoder()) / 2; //Sets our current position to the average of the encoders for the next run of execute()
+    	
+    	if(currentPosition < (targetPosition - tolerance)) {
     		direction = 2;
     		
     		//Deals with variance in our velocity
-    		if(currPos < (tgtPos / 2)) {
-    			ThV += maxAcc;
-    		} else if(currPos < tgtPos) {
-    			ThV -= maxAcc;
+    		if(currentPosition < (targetPosition / 2)) {
+    			theoreticalVelocity += maxAccelleration;
+    		} else if(currentPosition < targetPosition) {
+    			theoreticalVelocity -= maxAccelleration;
     		} else {
-    			ThV = 0;
+    			theoreticalVelocity = 0;
     		}
     		
     		//Sets velocity
-    		if(ThV < vBound) {
-    			speed = ThV;
+    		if(theoreticalVelocity < velocityBound) {
+    			speed = theoreticalVelocity;
     		} else {
-    			speed = vBound;
+    			speed = velocityBound;
     		}
-    	} else {
-    		//This if/else just sets the direction value to simplify isFinished()
-    		if(currPos > (tgtPos + tolerance)) {
-    			direction = 1;
-    		} else {
-    			direction = 0;
-    		}
+    	} else if(currentPosition > (targetPosition + tolerance)) {
+    		direction = 1;
     		
     		//The actual reversing code is here, essentially the opposite of forwards code
-    		if(currPos > (tgtPos / 2)) {
-    			ThV -= maxAcc;
-    		} else if(currPos > tgtPos) {
-    			ThV += maxAcc;
+    		if(currentPosition > (targetPosition / 2)) {
+    			theoreticalVelocity -= maxAccelleration;
+    		} else if(currentPosition > targetPosition) {
+    			theoreticalVelocity += maxAccelleration;
     		} else {
-    			ThV = 0;
+    			theoreticalVelocity = 0;
     		}
     		
-    		if(ThV > -vBound) {
-    			speed = ThV;
+    		if(theoreticalVelocity > -velocityBound) {
+    			speed = theoreticalVelocity;
     		} else {
-    			speed = -vBound;
+    			speed = -velocityBound;
     		}
+    	} else {
+    		direction = 0;
+    		speed = 0;
     	}
     	
-    	currPos = (Robot.drive.getLeftEncoder() + Robot.drive.getRightEncoder()) / 2; //Sets our current position to the average of the encoders for the next run of execute()
+    	Robot.drive.setBothDrive(speed, speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

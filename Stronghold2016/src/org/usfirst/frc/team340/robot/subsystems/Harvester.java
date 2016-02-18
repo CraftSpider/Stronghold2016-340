@@ -1,11 +1,13 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
+import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * this is a dumb name because this mechanism will also shoot
@@ -232,6 +234,7 @@ public class Harvester extends Subsystem {
     
     public void setLeftTilt(double speed) {
     	tiltLeft.set(-speed);
+    	SmartDashboard.putNumber("LeftPotValue", leftPot.get());
     }
     
     public void setRightTilt(double speed) {
@@ -241,6 +244,7 @@ public class Harvester extends Subsystem {
     public void setTilt(double speed) {
     	this.setRightTilt(speed);
     	this.setLeftTilt(speed);
+    	
     }
     
     public double getControlCurrent() {
