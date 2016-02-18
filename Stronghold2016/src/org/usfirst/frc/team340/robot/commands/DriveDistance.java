@@ -48,6 +48,8 @@ public class DriveDistance extends Command {
     // Called repeatedly when this Command is scheduled to run
     //Someone, at some point, needs to optimize this
     protected void execute() {
+    	currPos = (Robot.drive.getLeftEncoder() + Robot.drive.getRightEncoder()) / 2; //Sets our current position to the average of the encoders for the next run of execute()
+    	
     	if(currPos < (tgtPos - tolerance)) {
     		direction = 2;
     		
@@ -66,13 +68,8 @@ public class DriveDistance extends Command {
     		} else {
     			speed = vBound;
     		}
-    	} else {
-    		//This if/else just sets the direction value to simplify isFinished()
-    		if(currPos > (tgtPos + tolerance)) {
-    			direction = 1;
-    		} else {
-    			direction = 0;
-    		}
+    	} else if(currPos > (tgtPos + tolerance)) {
+    		direction = 1;
     		
     		//The actual reversing code is here, essentially the opposite of forwards code
     		if(currPos > (tgtPos / 2)) {
@@ -88,9 +85,12 @@ public class DriveDistance extends Command {
     		} else {
     			speed = -vBound;
     		}
+    	} else {
+    		direction = 0;
+    		speed = 0;
     	}
     	
-    	currPos = (Robot.drive.getLeftEncoder() + Robot.drive.getRightEncoder()) / 2; //Sets our current position to the average of the encoders for the next run of execute()
+    	Robot.drive.setBothDrive(speed, speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
