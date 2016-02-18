@@ -1,5 +1,6 @@
 package org.usfirst.frc.team340.robot.commands.auto;
 
+import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.commands.ArmToPosition;
 import org.usfirst.frc.team340.robot.commands.DriveDistance;
 
@@ -28,7 +29,7 @@ public class CG_AutoRamparts extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new ArmToPosition(30));
+    	addSequential(new ArmToPosition(Robot.harvester.ArmClear));
     	addSequential(new DriveDistance(10, 500));
     }
 }
