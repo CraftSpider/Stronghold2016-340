@@ -1,5 +1,6 @@
 package org.usfirst.frc.team340.robot.commands.auto;
 
+import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.commands.ArmToPosition;
 import org.usfirst.frc.team340.robot.commands.DriveDistance;
 
@@ -28,7 +29,7 @@ public class CG_AutoChevalDeFrise extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addSequential(new ArmToPosition(45));
+    	addSequential(new ArmToPosition(Robot.harvester.ArmClear * 1.5));
     	addSequential(new DriveDistance(1, 10));
     	addSequential(new ArmToPosition(5));
     	addSequential(new DriveDistance(10, 100));
