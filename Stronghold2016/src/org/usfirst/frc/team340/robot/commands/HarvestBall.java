@@ -7,7 +7,7 @@ import org.usfirst.frc.team340.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * What John calls ingest
  */
 public class HarvestBall extends Command {
 

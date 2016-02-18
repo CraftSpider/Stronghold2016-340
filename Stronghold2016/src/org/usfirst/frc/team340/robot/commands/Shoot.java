@@ -16,23 +16,20 @@ public class Shoot extends Command {
 	Logger logger = Robot.getLogger(Shoot.class);
     public Shoot() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
+        // eg. requires(chassis);    	
     	requires(Robot.harvester);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[Initializing: Shooter]");
-    	double speed = Robot.harvester.SHOOTER_SHOOT_V_BUS;
-    	Robot.harvester.setShooter(speed);
+    	Robot.harvester.setShooter(Robot.harvester.SHOOTER_SHOOT_V_BUS);
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double speed = Robot.harvester.SHOOTER_SHOOT_V_BUS;
-    	Robot.harvester.setShooter(speed);
+    	Robot.harvester.setShooter(Robot.harvester.SHOOTER_SHOOT_V_BUS);
     	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_RELEASE_BALL_V_BUS);
     }
 

@@ -20,7 +20,7 @@ public class Drive extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	public static final double CLIMB_DRIVE_SPEED = 0.5;
+	public final double CLIMB_DRIVE_SPEED = 0.5;
 	
 	// Drive motors
 	public static Talon leftDrive;
@@ -106,8 +106,8 @@ public class Drive extends Subsystem {
      * Stops both driverail motors
      */
     public void stopBothDrive() {
-    	leftDrive.set(0);
-    	rightDrive.set(0);
+    	setLeftDrive(0);
+    	setRightDrive(0);
     }
     
     /**

@@ -61,9 +61,11 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		
     	harvester = new Harvester();
-        chooser = new SendableChooser();
         drive = new Drive();
         climber = new Climber();
+        SmartDashboard.putData(harvester);
+        SmartDashboard.putData(drive);
+        SmartDashboard.putData(climber);
         logHandler = new ConsoleHandler();
         logHandler.setLevel(logLevel);
         logHandler.setFormatter(new Formatter() {
@@ -74,7 +76,8 @@ public class Robot extends IterativeRobot {
 			}
 		});
         oi = new OI();
-        
+
+        chooser = new SendableChooser();
 //        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);

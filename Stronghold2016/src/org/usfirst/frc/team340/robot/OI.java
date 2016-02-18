@@ -4,12 +4,12 @@ import org.usfirst.frc.team340.robot.commands.ArmStop;
 import org.usfirst.frc.team340.robot.commands.CG_Shoot;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
 import org.usfirst.frc.team340.robot.commands.HarvestBall;
-import org.usfirst.frc.team340.robot.commands.ManualShooting;
 import org.usfirst.frc.team340.robot.commands.MoveArm;
 import org.usfirst.frc.team340.robot.commands.Shoot;
 import org.usfirst.frc.team340.robot.commands.StopShooter;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ManualShooting;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;

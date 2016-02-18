@@ -1,4 +1,4 @@
-package org.usfirst.frc.team340.robot.commands;
+package org.usfirst.frc.team340.robot.commands.overrides;
 
 import java.util.logging.Logger;
 
@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ManualShooting extends Command {
+public class MO_ManualShooting extends Command {
 
-	private final static Logger log = Robot.getLogger(ManualShooting.class);
+	private final static Logger log = Robot.getLogger(MO_ManualShooting.class);
 			
-    public ManualShooting() {
+    public MO_ManualShooting() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.harvester);

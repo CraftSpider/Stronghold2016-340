@@ -21,16 +21,11 @@ public class MoveArm extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	this.speed = speed;
-//    	logger.info("construct left speed: " + leftSpeed + " right speed: " + rightSpeed);
-		
-    	
     	requires(Robot.harvester);
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-//    	logger.info("[Initializing]");
-    	
+    protected void initialize() {    	
     }
     
     // Called repeatedly when this Command is scheduled to run
@@ -50,51 +45,45 @@ public class MoveArm extends Command {
     	double max = 110;
     	
     	// slow down as we get higher
-    	//
+    	// will not slow down below 20% of start speed
     	if(speed > 0 && Robot.harvester.hasReset()) {
-    		leftSpeed *= (-(leftPot+rightPot)/2/225+1);
-    		rightSpeed *= (-(leftPot+rightPot)/2/225+1);
+    		leftSpeed *= (-(leftPot+rightPot)/2.0/225.0+1);
+    		rightSpeed *= (-(leftPot+rightPot)/2.0/225.0+1);
     	}
+    	
+    	//Slow down as we get lower
     	if(speed < 0 && Robot.harvester.hasReset()) {
     		leftSpeed = leftSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);
     		rightSpeed = rightSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);
-//    		logger.info("formula: " + ((1/150.0)*((leftPot+rightPot)/2.0-max)+1));
     	}
     	
     	// stop left if bump slow right
-		if((Robot.harvester.getLeftLimit() && speed < 0)) {
+		if(Robot.harvester.getLeftLimit() && speed < 0) {
 			leftSpeed = 0;
 			rightSpeed /= 2;
 			Robot.harvester.resetLeftPot();
 		}
 		// stop left slow right if pot is too high and we have reset
-		if((leftPot > max && speed > 0 && Robot.harvester.hasReset())) {
+		if(leftPot > max && speed > 0 && Robot.harvester.hasReset()) {
 			leftSpeed = 0;
 			rightSpeed /= 2;
 		}
 		// stop right if bump slow left
-		if((Robot.harvester.getRightLimit() && speed < 0)) {
+		if(Robot.harvester.getRightLimit() && speed < 0) {
 			rightSpeed = 0;
 			leftSpeed /= 2;
 			Robot.harvester.resetRightPot();
 		}
 		// stop right slow left if pot is too high and we have reset
-		if((rightPot > max && speed > 0 && Robot.harvester.hasReset())) {
+		if(rightPot > max && speed > 0 && Robot.harvester.hasReset()) {
 			rightSpeed = 0;
 			leftSpeed /= 2;
 		}
 		
-//		logger.info("left speed: " + leftSpeed + " right speed: " + rightSpeed);
-		
 		Robot.harvester.setTilt(rightSpeed);
 		
-//		logger.info("Execute: leftSpeed: " + leftSpeed + " rightSpeed: " + rightSpeed);
-		
-//		logger.info("      ");
 		logger.info("left pot: " + leftPot + " right pot: " + rightPot + 
-				" left limit: " + Robot.harvester.getLeftLimit()  + " right limit: " + Robot.harvester.getRightLimit());
-//		logger.info();
-		
+				" left limit: " + Robot.harvester.getLeftLimit()  + " right limit: " + Robot.harvester.getRightLimit());		
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -104,14 +93,12 @@ public class MoveArm extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-//    	logger.info("[Ending]");
     	Robot.harvester.setTilt(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-//    	logger.info("[Interrupted]");
     	end();
     }
-}
+}//EOF
