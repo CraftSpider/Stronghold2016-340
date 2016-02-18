@@ -27,10 +27,10 @@ public class DriveWithXbox extends Command {
     private double rotateSlowScale = 0.7;
     
     public double throttleThrottling(double input) {
-    	if(input > 0.05) {
-    		return 	Math.sqrt(-Math.pow((input-1),2)+1);
-    	} else if (input < 0.05){
-    		return -Math.sqrt(-Math.pow((-input-1),2)+1);
+    	if(input > 0.1) {
+    		return 	-Math.sqrt(-Math.pow((input-1),2)+1);
+    	} else if (input < -0.1){
+    		return Math.sqrt(-Math.pow((-input-1),2)+1);
     	}
     	return 0;
     }

@@ -62,6 +62,9 @@ public class OI {
     	RB1.whenPressed(new Shoot());
     	RB1.whenReleased(new StopShooter());
     	
+    	Start1.whenPressed(new MO_ArmUp());
+    	Start1.whenReleased(new ArmStop());
+    	
     	A1.whenPressed(new MoveArm(0.80));
     	A1.whenReleased(new ArmStop());
     	B1.whenPressed(new MoveArm(-0.75));
