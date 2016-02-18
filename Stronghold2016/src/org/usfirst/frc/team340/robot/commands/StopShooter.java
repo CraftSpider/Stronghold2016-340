@@ -18,10 +18,8 @@ public class StopShooter extends Command {
 	 * Requires harvester subsystem
 	 * Stops the shooter
 	 */
-    public StopShooter() {
-    	
-    	requires(Robot.harvester);
-    	
+    public StopShooter() {    	
+    	requires(Robot.harvester);    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

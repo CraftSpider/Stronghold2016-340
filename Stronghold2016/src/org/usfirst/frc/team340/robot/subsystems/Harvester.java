@@ -24,13 +24,13 @@ public class Harvester extends Subsystem {
 	
 	// Roller farthest from the robot, it is the shooter
 	
-	public static final double SHOOTER_SHOOT_V_BUS = -1.0;
-	public static final double SHOOTER_HARVEST_V_BUS = 0.35;
-	public static final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.6;
-	public static final double HARVESTER_RELEASE_BALL_V_BUS = .25;
-	public static final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
-	public static final int HARVESTER_CONTROL_STALL_CURRENT = 42;
-	public static final double HARVESTER_HARVEST_V_BUS = -0.2;
+	public final double SHOOTER_SHOOT_V_BUS = -1.0;
+	public final double SHOOTER_HARVEST_V_BUS = 0.35;
+	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.6;
+	public final double HARVESTER_RELEASE_BALL_V_BUS = .25;
+	public final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
+	public final int HARVESTER_CONTROL_STALL_CURRENT = 42;
+	public final double HARVESTER_HARVEST_V_BUS = -0.2;
 	
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
@@ -247,6 +247,9 @@ public class Harvester extends Subsystem {
     	return harvesterBallControl.getOutputCurrent();
     }
     
+    /**
+     * Had to invert these because sensor outputs true if ball is not there.
+     */
     public boolean hasBall() {
     	return !ballSensorLeft.get() && !ballSensorRight.get();
     }
