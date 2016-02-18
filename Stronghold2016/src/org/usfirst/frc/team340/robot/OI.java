@@ -2,7 +2,9 @@ package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ArmStop;
 import org.usfirst.frc.team340.robot.commands.CG_Shoot;
+import org.usfirst.frc.team340.robot.commands.Climb;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
+import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 import org.usfirst.frc.team340.robot.commands.HarvestBall;
 import org.usfirst.frc.team340.robot.commands.MoveArm;
 import org.usfirst.frc.team340.robot.commands.Shoot;
@@ -69,6 +71,9 @@ public class OI {
     	A1.whenReleased(new ArmStop());
     	B1.whenPressed(new MoveArm(-0.75));
     	B1.whenReleased(new ArmStop());
+    	
+    	X1.whenPressed(new Climb());
+    	X1.whenReleased(new DriveWithXbox());
     	
     	// CO DRIVER
     	

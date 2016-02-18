@@ -46,12 +46,14 @@ public class MoveArm extends Command {
     	
     	// slow down as we get higher
     	// will not slow down below 20% of start speed
-    	if(speed > 0 && Robot.harvester.hasReset()) {
-    		leftSpeed *= (-(leftPot+rightPot)/2.0/225.0+1);
-    		rightSpeed *= (-(leftPot+rightPot)/2.0/225.0+1);
-    	}
+//    	if(speed > 0 && Robot.harvester.hasReset()) {
+//    		leftSpeed *= (-(leftPot+rightPot)/2.0/225.0+1);
+//    		rightSpeed *= (-(leftPot+rightPot)/2.0/225.0+1);
+//    		logger.info("Formula: " + (-(leftPot+rightPot)/2.0/225.0+1));
+//    	}
     	
     	//Slow down as we get lower
+    	logger.info("reset: ??  ??? ?  " + Robot.harvester.hasReset());
     	if(speed < 0 && Robot.harvester.hasReset()) {
     		leftSpeed = leftSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);
     		rightSpeed = rightSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);

@@ -11,12 +11,14 @@ import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 import org.usfirst.frc.team340.robot.subsystems.Harvester;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,6 +41,8 @@ public class Robot extends IterativeRobot {
     Command belowLowBar;
     SendableChooser chooser;
     
+    CameraServer server;
+    
     public Robot() {
     	super();
     	if(logHandler == null) {
@@ -52,6 +56,12 @@ public class Robot extends IterativeRobot {
     			}
     		});
     	}
+    	USBCamera camera = new USBCamera("cam0");
+//    	camera.setExposureManual(0);
+        server = CameraServer.getInstance();
+        server.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture(camera);
     }
 
     /**
