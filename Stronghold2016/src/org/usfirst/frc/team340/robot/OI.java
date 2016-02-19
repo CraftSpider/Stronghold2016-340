@@ -260,6 +260,8 @@ public class OI {
 	
 	/**
 	 * For button-based shooter/ball control desync.
+	 * Allows Shoot.java to test whether or not Back is pressed.
+	 * See the note there for extra explanation.
 	 * TODO: make button-based shooter/ball control desync better
 	 * @return state of Back button
 	 */
@@ -269,6 +271,8 @@ public class OI {
 	
 	/**
 	 * For button-based shooter/ball control desync.
+	 * Allows Shoot.java to test whether or not Start is pressed.
+	 * See the note there for extra explanation.
 	 * TODO: make button-based shooter/ball control desync better
 	 * @return state of Start button
 	 */
