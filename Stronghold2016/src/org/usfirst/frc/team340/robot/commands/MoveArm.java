@@ -53,7 +53,7 @@ public class MoveArm extends Command {
 //    	}
     	
     	//Slow down as we get lower
-    	logger.info("reset: ??  ??? ?  " + Robot.harvester.hasReset());
+    	//logger.info("reset:" + Robot.harvester.hasReset());
     	if(speed < 0 && Robot.harvester.hasReset()) {
     		leftSpeed = leftSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);
     		rightSpeed = rightSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);
@@ -82,10 +82,11 @@ public class MoveArm extends Command {
 			leftSpeed /= 2;
 		}
 		
-		Robot.harvester.setTilt(rightSpeed);
+		Robot.harvester.setRightTilt(rightSpeed);
+		Robot.harvester.setLeftTilt(leftSpeed);
 		
-		logger.info("left pot: " + leftPot + " right pot: " + rightPot + 
-				" left limit: " + Robot.harvester.getLeftLimit()  + " right limit: " + Robot.harvester.getRightLimit());		
+		logger.info("left pot: " + leftPot + " right pot: " + rightPot + " hasReset" + Robot.harvester.hasReset());//+ 
+				//" left limit: " + Robot.harvester.getLeftLimit()  + " right limit: " + Robot.harvester.getRightLimit());		
     }
 
     // Make this return true when this Command no longer needs to run execute()

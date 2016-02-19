@@ -1,6 +1,7 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ArmStop;
+import org.usfirst.frc.team340.robot.commands.ArmToZero;
 import org.usfirst.frc.team340.robot.commands.CG_Shoot;
 import org.usfirst.frc.team340.robot.commands.Climb;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
@@ -64,7 +65,7 @@ public class OI {
     	RB1.whenPressed(new Shoot());
     	RB1.whenReleased(new StopShooter());
     	
-    	Start1.whenPressed(new MO_ArmUp());
+    	Start1.whenPressed(new ArmToZero());
     	Start1.whenReleased(new ArmStop());
     	
     	A1.whenPressed(new MoveArm(0.80));

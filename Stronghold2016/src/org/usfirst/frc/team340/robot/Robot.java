@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
+import org.usfirst.frc.team340.robot.commands.auto.CG_AutoLowBar;
 import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 import org.usfirst.frc.team340.robot.subsystems.Harvester;
@@ -14,6 +15,7 @@ import org.usfirst.frc.team340.robot.subsystems.Harvester;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -38,7 +40,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
-    Command belowLowBar;
+    CommandGroup belowLowBar;
     SendableChooser chooser;
     
     CameraServer server;
@@ -51,7 +53,7 @@ public class Robot extends IterativeRobot {
             logHandler.setFormatter(new Formatter() {
     			@Override
     			public String format(LogRecord record) {
-    				String t = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage(); 
+    				String t = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage() + "\n"; 
     				return t;
     			}
     		});
@@ -76,15 +78,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(harvester);
         SmartDashboard.putData(drive);
         SmartDashboard.putData(climber);
-        logHandler = new ConsoleHandler();
-        logHandler.setLevel(logLevel);
-        logHandler.setFormatter(new Formatter() {
-			@Override
-			public String format(LogRecord record) {
-				String t = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage(); 
-				return t;
-			}
-		});
         oi = new OI();
 
         chooser = new SendableChooser();
@@ -96,19 +89,6 @@ public class Robot extends IterativeRobot {
     }
     
     public static Logger getLogger(String name) {
-    	if(logHandler == null) {
-    		logHandler = new ConsoleHandler();
-    		logHandler.setFormatter(new Formatter() {
-				
-				@Override
-				public String format(LogRecord record) {
-					//record.getLoggerName();
-					String t = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage(); 
-					return t;
-				}
-			});
-            logHandler.setLevel(logLevel);
-    	}
     	Logger logger = Logger.getLogger(name);
     	logger.addHandler(logHandler);
     	return logger;
@@ -116,7 +96,6 @@ public class Robot extends IterativeRobot {
     
     public static Logger getLogger(Class<?> _class) {
     	Logger logger = getLogger(_class.getName());
-    	
     	return logger;
     }
 	
@@ -143,22 +122,11 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
-        
-		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
-		case "My Auto":
-			autonomousCommand = new MyAutoCommand();
-			break;
-		case "Default Auto":
-		default:
-			autonomousCommand = new ExampleCommand();
-			break;
-		} */
+        //autonomousCommand = (Command) chooser.getSelected();
     	
     	// schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
-        
+        //if (autonomousCommand != null) autonomousCommand.start();
+    	belowLowBar = new CG_AutoLowBar();
         belowLowBar.start();
     }
 
