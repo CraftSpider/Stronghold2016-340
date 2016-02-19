@@ -3,6 +3,7 @@ package org.usfirst.frc.team340.robot;
 import org.usfirst.frc.team340.robot.commands.ArmStop;
 import org.usfirst.frc.team340.robot.commands.CG_Shoot;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
+import org.usfirst.frc.team340.robot.commands.DriveDistance;
 import org.usfirst.frc.team340.robot.commands.HarvestBall;
 import org.usfirst.frc.team340.robot.commands.MoveArm;
 import org.usfirst.frc.team340.robot.commands.Shoot;
@@ -52,7 +53,7 @@ public class OI {
 //    	LB1.whenPressed(new ManualShooting());
 //    	
     	// DRIVER
-    	
+    	/*
     	Y1.whenPressed(new DischargeBall());
     	Y1.whenReleased(new StopShooter());
     	
@@ -90,6 +91,10 @@ public class OI {
     	
     	RB2.whenPressed(new Shoot());
     	RB2.whenReleased(new StopShooter());
+    	*/
+    	
+    	A1.whenPressed(new DriveDistance(5,20));
+    	B1.whenPressed(new DriveDistance(5,-20));
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.

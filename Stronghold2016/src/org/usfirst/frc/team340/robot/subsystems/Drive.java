@@ -121,7 +121,7 @@ public class Drive extends Subsystem {
     /**
      * Finds state of right driverail encoder
      * @return double right driverail encoder count
-     */
+     */ 
     public double getRightEncoder() {
     	return rightDriveEncoder.get();
     }
@@ -144,7 +144,7 @@ public class Drive extends Subsystem {
     
     /**
      * Resets the count of both driverail encoders
-     */
+     */ 
     public void resetBothEncoders() {
     	resetLeftEncoder();
     	resetRightEncoder();
