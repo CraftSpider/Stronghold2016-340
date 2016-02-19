@@ -29,34 +29,34 @@ public class OI {
 	
     public OI() {
     	// commented out so we dont mess stuff up
-//    	X1.whenPressed(new ReleaseLatch());
-//    	Y1.whenPressed(new Climb());
-//    	Y1.whenReleased(new DriveWithXbox());
-//    	
-//    	A1.whileActive(new Shoot());
-//    	B1.whenPressed(new DischargeBall());
-//    	
-//    	
+    	/*X1.whenPressed(new ReleaseLatch());
+    	Y1.whenPressed(new Climb());
+    	Y1.whenReleased(new DriveWithXbox());
     	
-//    	X1.whenPressed(new MO_BallControlIn());
-//    	X1.whenReleased(new BallControlOff());
-//    	
-//    	Y1.whenPressed(new MO_BallControlOut());
-//    	Y1.whenReleased(new BallControlOff());
+    	A1.whileActive(new Shoot());
+    	B1.whenPressed(new DischargeBall());
     	
-//    	RB1.whenPressed(new MO_ShooterIn());
-//    	RB1.whenReleased(new StopShooter());
     	
-//    	LB1.whenPressed(new MO_ShooterOut());
-//    	LB1.whenReleased(new StopShooter());
     	
-//    	X1.whenPressed(new ManualShooting());
-//    	Y1.whenPressed(new ManualShooting());
-//    	RB1.whenPressed(new ManualShooting());
-//    	LB1.whenPressed(new ManualShooting());
-//    	
+    	X1.whenPressed(new MO_BallControlIn());
+    	X1.whenReleased(new BallControlOff());
+    	
+    	Y1.whenPressed(new MO_BallControlOut());
+    	Y1.whenReleased(new BallControlOff());
+    	
+    	RB1.whenPressed(new MO_ShooterIn());
+    	RB1.whenReleased(new StopShooter());
+    	
+    	LB1.whenPressed(new MO_ShooterOut());
+    	LB1.whenReleased(new StopShooter());
+    	
+    	X1.whenPressed(new ManualShooting());
+    	Y1.whenPressed(new ManualShooting());
+    	RB1.whenPressed(new ManualShooting());
+    	LB1.whenPressed(new ManualShooting());
+    	
     	// DRIVER
-    	/*
+    	
     	Y1.whenPressed(new DischargeBall());
     	Y1.whenReleased(new StopShooter());
     	
@@ -102,6 +102,8 @@ public class OI {
     	
     	A1.whenPressed(new DriveDistance(5,20));
     	B1.whenPressed(new DriveDistance(5,-20));
+    	
+    	Back1.whenPressed(new Shoot());
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -254,5 +256,23 @@ public class OI {
 		} else {
 			return 1;
 		}
+	}
+	
+	/**
+	 * For button-based shooter/ball control desync.
+	 * TODO: make button-based shooter/ball control desync better
+	 * @return state of Back button
+	 */
+	public boolean getBackState() {
+		return Back1.get();
+	}
+	
+	/**
+	 * For button-based shooter/ball control desync.
+	 * TODO: make button-based shooter/ball control desync better
+	 * @return state of Start button
+	 */
+	public boolean getStartState() {
+		return Start1.get();
 	}
 }
