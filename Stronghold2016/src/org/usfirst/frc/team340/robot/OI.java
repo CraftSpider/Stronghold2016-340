@@ -1,6 +1,7 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ArmStop;
+import org.usfirst.frc.team340.robot.commands.ArmToPosition;
 import org.usfirst.frc.team340.robot.commands.ArmToZero;
 import org.usfirst.frc.team340.robot.commands.CG_Shoot;
 import org.usfirst.frc.team340.robot.commands.Climb;
@@ -88,6 +89,7 @@ public class OI {
     	
     	Start2.whenPressed(new MO_ArmUp());
     	Start2.whenReleased(new ArmStop());
+    	//Start2.whenPressed(new ArmToPosition(12));
     	Back2.whenPressed(new MO_ArmDown());
     	Back2.whenReleased(new ArmStop());
     	
