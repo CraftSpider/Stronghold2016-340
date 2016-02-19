@@ -1,9 +1,12 @@
 package org.usfirst.frc.team340.robot.commands.auto;
 
 import org.usfirst.frc.team340.robot.commands.ArmToPosition;
+import org.usfirst.frc.team340.robot.commands.ArmToZero;
 import org.usfirst.frc.team340.robot.commands.DriveDistance;
+import org.usfirst.frc.team340.robot.commands.Shoot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.PrintCommand;
 
 /**
  *
@@ -28,7 +31,10 @@ public class CG_AutoLowBar extends CommandGroup {
          a CommandGroup containing them would require both the chassis and the
          arm.*/
     	
-    	addSequential(new ArmToPosition(0));
-    	addSequential(new DriveDistance(10, 500));
+    	addSequential(new ArmToZero());
+    	addSequential(new PrintCommand("Autonomous finished"));
+    	addSequential(new ArmToPosition(30));
+    	//addSequential(new Shoot(),1.0 );
+    	//addSequential(new DriveDistance(10, 500));
     }
 }

@@ -7,16 +7,20 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
+import org.usfirst.frc.team340.robot.commands.auto.CG_AutoLowBar;
 import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 import org.usfirst.frc.team340.robot.subsystems.Harvester;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,8 +40,10 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
-    Command belowLowBar;
+    CommandGroup belowLowBar;
     SendableChooser chooser;
+    
+    CameraServer server;
     
     public Robot() {
     	super();
@@ -52,6 +58,12 @@ public class Robot extends IterativeRobot {
     			}
     		});
     	}
+    	USBCamera camera = new USBCamera("cam0");
+//    	camera.setExposureManual(0);
+        server = CameraServer.getInstance();
+        server.setQuality(50);
+        //the camera name (ex "cam0") can be found through the roborio web interface
+        server.startAutomaticCapture(camera);
     }
 
     /**
@@ -106,7 +118,6 @@ public class Robot extends IterativeRobot {
     
     public static Logger getLogger(Class<?> _class) {
     	Logger logger = getLogger(_class.getName());
-    	
     	return logger;
     }
 	
@@ -133,22 +144,11 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
-        
-		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
-		case "My Auto":
-			autonomousCommand = new MyAutoCommand();
-			break;
-		case "Default Auto":
-		default:
-			autonomousCommand = new ExampleCommand();
-			break;
-		} */
+        //autonomousCommand = (Command) chooser.getSelected();
     	
     	// schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
-        
+        //if (autonomousCommand != null) autonomousCommand.start();
+    	belowLowBar = new CG_AutoLowBar();
         belowLowBar.start();
     }
 

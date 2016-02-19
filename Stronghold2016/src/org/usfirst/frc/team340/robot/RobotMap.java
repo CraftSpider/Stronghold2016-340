@@ -19,8 +19,7 @@ public class RobotMap {
 	public static int ClimberWinchMotor = 6;
 	
 	public static int ClimberLatch = 0;
-	public static int DriveClutchLeft = 4;
-	public static int DriveClutchRight = 7;
+	public static int DriveClutchLeft = 9;
 	
 	//
 	// CAN Talon Ports

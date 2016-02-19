@@ -7,8 +7,10 @@ import org.usfirst.frc.team340.robot.RobotMap;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -34,8 +36,7 @@ public class Drive extends Subsystem {
 	private Encoder rightDriveEncoder;
 	
 	//Clutch servo
-	private Servo clutchLeft;
-	private Servo clutchRight;
+	private PWM clutchMotor;
 	
 	//Is the clutch on or off?
 	public boolean clutchState;
@@ -53,8 +54,8 @@ public class Drive extends Subsystem {
 		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 		
-		clutchLeft = new Servo(RobotMap.DriveClutchLeft);
-		clutchRight = new Servo(RobotMap.DriveClutchRight);
+		clutchMotor = new PWM(RobotMap.DriveClutchLeft);
+//		clutchMotor.setRaw(126);
 	}
 	
 	/**
@@ -154,8 +155,7 @@ public class Drive extends Subsystem {
      * Enables the clutch servo, enabling the arm to pull up the robot
      */
     public void engageClutch() {
-    	clutchLeft.set(1);
-    	clutchRight.set(1);
+    	clutchMotor.setRaw(255);
     	clutchState = true;
     }
     
@@ -163,8 +163,7 @@ public class Drive extends Subsystem {
      * Releases clutch
      */
     public void disengageClutch() {
-    	clutchLeft.set(0);
-    	clutchRight.set(0);
+    	clutchMotor.setRaw(126);
     	clutchState = false;
     }
     

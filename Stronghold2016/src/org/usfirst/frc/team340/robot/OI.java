@@ -1,7 +1,10 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ArmStop;
+import org.usfirst.frc.team340.robot.commands.ArmToPosition;
+import org.usfirst.frc.team340.robot.commands.ArmToZero;
 import org.usfirst.frc.team340.robot.commands.CG_Shoot;
+import org.usfirst.frc.team340.robot.commands.Climb;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
 import org.usfirst.frc.team340.robot.commands.DriveDistance;
 import org.usfirst.frc.team340.robot.commands.HarvestBall;
@@ -63,13 +66,16 @@ public class OI {
     	RB1.whenPressed(new Shoot());
     	RB1.whenReleased(new StopShooter());
     	
-    	Start1.whenPressed(new MO_ArmUp());
+    	Start1.whenPressed(new ArmToZero());
     	Start1.whenReleased(new ArmStop());
     	
     	A1.whenPressed(new MoveArm(0.80));
     	A1.whenReleased(new ArmStop());
     	B1.whenPressed(new MoveArm(-0.75));
     	B1.whenReleased(new ArmStop());
+    	
+    	X1.whenPressed(new Climb());
+    	X1.whenReleased(new DriveWithXbox());
     	
     	// CO DRIVER
     	
@@ -83,6 +89,7 @@ public class OI {
     	
     	Start2.whenPressed(new MO_ArmUp());
     	Start2.whenReleased(new ArmStop());
+    	//Start2.whenPressed(new ArmToPosition(12));
     	Back2.whenPressed(new MO_ArmDown());
     	Back2.whenReleased(new ArmStop());
     	

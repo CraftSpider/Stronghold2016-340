@@ -38,9 +38,9 @@ public class Climb extends Command {
      */
     protected void execute() {
     	Robot.drive.engageClutch();
-    	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState) {
-    		Robot.drive.setBothDrive(Robot.drive.CLIMB_DRIVE_SPEED, Robot.drive.CLIMB_DRIVE_SPEED);
-    	}
+//    	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState) {
+//    		Robot.drive.setBothDrive(Robot.drive.CLIMB_DRIVE_SPEED, Robot.drive.CLIMB_DRIVE_SPEED);
+//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -49,7 +49,8 @@ public class Climb extends Command {
      * @return boolean is climber arm at bottom
      */
     protected boolean isFinished() {
-        return Robot.climber.isAtBottom();
+    	return false;
+//        return Robot.climber.isAtBottom();
     }
 
     // Called once after isFinished returns true
