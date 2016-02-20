@@ -19,8 +19,7 @@ public class ArmToPosition extends Command {
 	public double ThV = 0;
 	private double initPos;
 	public double maxAcc = 0.05; // Increases speed every tick. This will be changed possibly.
-	boolean rightIsAtBottom = false,
-			leftIsAtBottom = false;
+	boolean rightIsAtBottom = false, leftIsAtBottom = false;
 	public static double vBound = 1;
 	double midPoint;
 
@@ -43,35 +42,35 @@ public class ArmToPosition extends Command {
 		potAverage = (Robot.harvester.getLeftAimPot() + Robot.harvester.getRightAimPot()) / 2;
 		currPos = potAverage;
 		initPos = potAverage;
-		midPoint = initPos + ((tgtPos - initPos)/2);
-		logger.info("init:" + initPos + " midPoint: " + midPoint + " curr:" + currPos);
+		midPoint = initPos + ((tgtPos - initPos) / 2);
+		logger.info("init:" + initPos + "; midPoint: " + midPoint + "; curr: " + currPos);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		logger.info("[Executing]");
 		if (Robot.harvester.getLeftLimit() && tgtPos < currPos) {
 			Robot.harvester.resetLeftPot();
 			leftIsAtBottom = true;
 		}
+		
 		if (Robot.harvester.getRightLimit() && tgtPos < currPos) {
 			Robot.harvester.resetRightPot();
 			rightIsAtBottom = true;
 		}
 
-		if(currPos <= midPoint && currPos < tgtPos){
-			logger.info("moving up increase speed");
+		if(currPos <= midPoint && currPos < tgtPos) {
+			logger.info("moving up, increase speed");
 			ThV += maxAcc;			
-		}else if (currPos > midPoint && currPos < tgtPos){
+		} else if (currPos > midPoint && currPos < tgtPos) {
 			ThV -= maxAcc;
-			logger.info("moving up decrease speed");
-		}else if( currPos >= midPoint && currPos > tgtPos){
+			logger.info("moving up, decrease speed");
+		} else if( currPos >= midPoint && currPos > tgtPos) {
 			ThV -= maxAcc;
-			logger.info("moving down increase speed");
-		}else if( currPos < midPoint && currPos > tgtPos){
+			logger.info("moving down, increase speed");
+		} else if( currPos < midPoint && currPos > tgtPos) {
 			ThV += maxAcc;
-			logger.info("moving down decrease speed");
-		}else{
+			logger.info("moving down, decrease speed");
+		} else {
 			ThV = 0;
 		}
 //		if (currPos < tgtPos / 2) {
@@ -86,33 +85,33 @@ public class ArmToPosition extends Command {
 //			ThV = 0;
 //		}
 
-		if (ThV < vBound && ThV > -vBound) {
+		if(ThV < vBound && ThV > -vBound) {
 			logger.info("ThV is ok");
 			cmdSpeed = ThV;
-		} else if (ThV >= vBound) {
+		} else if(ThV >= vBound) {
 			logger.info("ThV is too high");
 			cmdSpeed = vBound;
-		} else if (ThV <= -vBound) {
+		} else if(ThV <= -vBound) {
 			logger.info("ThV is too low");
 			cmdSpeed = -vBound;
 		} else {
 			cmdSpeed = 0;
 		}
-		logger.info("cmdSpeed " + cmdSpeed);
+		logger.info("cmdSpeed: " + cmdSpeed);
 
 		if (currPos > tgtPos -1) {
 			Robot.harvester.setLeftTilt(leftIsAtBottom ? 0 : -cmdSpeed);
 			Robot.harvester.setRightTilt(rightIsAtBottom ? 0 : -cmdSpeed);
-			logger.info("tilt" + -cmdSpeed + " th " + ThV);
+			logger.info("tilt: " + -cmdSpeed + "; ThV: " + ThV);
 		} else if (currPos < tgtPos + 1) {
 			Robot.harvester.setLeftTilt(cmdSpeed);
 			Robot.harvester.setRightTilt(cmdSpeed);
-			logger.info("tilt" + cmdSpeed + " th " + ThV);
+			logger.info("tilt: " + cmdSpeed + "; ThV: " + ThV);
 		} else {
 			Robot.harvester.setTilt(0);
 		}
 		
-		logger.info("tgt:" + tgtPos + " currnt:" + currPos);
+		logger.info("target: " + tgtPos + "; current: " + currPos);
 		potAverage = (Robot.harvester.getLeftAimPot() + Robot.harvester.getRightAimPot()) / 2;
 		currPos = potAverage;
 	}
