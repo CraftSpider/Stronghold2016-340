@@ -12,10 +12,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ArmToNicerPosition extends Command {
 	
 	private final double KP = 0.05;
-	private final double tolPos = 2;
+	private final double tolPos = 2; //tolerance position
+	private final double balancePos = 75; //balanced arm position, where no feedforward is needed.
+	private final double maxPos = 150; //max arm position
+	private final double negFFwdCmd = -0.4; //max feedforward amount for negative direction moving
+	private final double posFFwdCmd = 0.5; //max feedforward amount for positive direction moving
 	private double tgtPos;
-	public double minPosCmdSpd = 0.15;
-	public double maxNegCmdSpd = -0.1;
+	public double minPosCmdSpd = 0.15; //positive direction command will be at least this much
+	public double maxNegCmdSpd = -0.1; //negative direction command will be at liast this much
 	private Logger logger = Robot.getLogger("ArmToNicerPosition");
 	double currPos =0;
 
@@ -36,25 +40,38 @@ public class ArmToNicerPosition extends Command {
     	logger.info("executing");
     	currPos = Robot.harvester.getRightAimPot();//(Robot.harvester.getLeftAimPot() + Robot.harvester.getRightAimPot()) / 2;
     	double deltaPos = this.tgtPos - currPos;
-    	double desiredSpd = 0;
-    	desiredSpd += deltaPos * KP;
+    	double cmdSpd = 0;
+    	double cmdFF;
+    	cmdSpd += deltaPos * KP;
     	
     	//ramp? or something else?
     	//desiredSpd  += ??
     	
-    	if(desiredSpd > 1) {
-    		desiredSpd = 1;
-    	} else if(desiredSpd < -1) {
-    		desiredSpd = -1;
+    	if(deltaPos > 0 && currPos >= 0 && currPos <= balancePos) { //checking positive direction lifting
+    		cmdFF = ((-posFFwdCmd/balancePos) * currPos) + posFFwdCmd;
+    	} else if(deltaPos < 0 && currPos >= balancePos && currPos <= maxPos) { //checking negative direction lifting
+    		cmdFF = ((negFFwdCmd * currPos) - (negFFwdCmd * balancePos)) / (maxPos - balancePos);
+    	} else {
+    		cmdFF = 0;
     	}
     	
-    	if(desiredSpd > 0 && desiredSpd < minPosCmdSpd) {
-    		desiredSpd = minPosCmdSpd;
-    	} else if(desiredSpd < 0 && desiredSpd > maxNegCmdSpd) {
-    		desiredSpd = maxNegCmdSpd;
+    	cmdSpd += cmdFF;
+    	
+    	//clamp command speed
+    	
+    	if(cmdSpd > 1) {
+    		cmdSpd = 1;
+    	} else if(cmdSpd < -1) {
+    		cmdSpd = -1;
     	}
-    	logger.info("desired speed:" + desiredSpd + " currPos:" + currPos + " Target:" + tgtPos);
-    	Robot.harvester.setTilt(desiredSpd);
+    	
+    	if(cmdSpd > 0 && cmdSpd < minPosCmdSpd) {
+    		cmdSpd = minPosCmdSpd;
+    	} else if(cmdSpd < 0 && cmdSpd > maxNegCmdSpd) {
+    		cmdSpd = maxNegCmdSpd;
+    	}
+    	logger.info("commandFF:" + cmdFF + " command speed:" + cmdSpd + " currPos:" + currPos + " Target:" + tgtPos);
+    	Robot.harvester.setTilt(cmdSpd);
     }
 
     // Make this return true when this Command no longer needs to run execute()
