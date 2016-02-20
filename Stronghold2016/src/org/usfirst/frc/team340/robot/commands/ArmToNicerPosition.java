@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ArmToNicerPosition extends Command {
 	
 	private final double KP = 0.05;
+	private final double NKP = 0.02;
 	private final double tolPos = 2; //tolerance position
 	private final double balancePos = 75; //balanced arm position, where no feedforward is needed.
 	private final double maxPos = 150; //max arm position
@@ -42,16 +43,26 @@ public class ArmToNicerPosition extends Command {
     	double deltaPos = this.tgtPos - currPos;
     	double cmdSpd = 0;
     	double cmdFF;
-    	cmdSpd += deltaPos * KP;
     	
+    	if(deltaPos >= 0 ) {
+    		cmdSpd += deltaPos * KP;
+    	} else {
+    		cmdSpd += deltaPos * NKP;
+    	}
+    	
+    	
+    	logger.info("Command speed is: " + cmdSpd);
     	//ramp? or something else?
     	//desiredSpd  += ??
     	
     	if(deltaPos > 0 && currPos >= 0 && currPos <= balancePos) { //checking positive direction lifting
+    		logger.info("Is positive lifting");
     		cmdFF = ((-posFFwdCmd/balancePos) * currPos) + posFFwdCmd;
     	} else if(deltaPos < 0 && currPos >= balancePos && currPos <= maxPos) { //checking negative direction lifting
+    		logger.info("Is negative lifting");
     		cmdFF = ((negFFwdCmd * currPos) - (negFFwdCmd * balancePos)) / (maxPos - balancePos);
     	} else {
+    		logger.info("No lifting");
     		cmdFF = 0;
     	}
     	
@@ -82,6 +93,8 @@ public class ArmToNicerPosition extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	logger.info("Ending ArmToNicerPosition");
+    	Robot.harvester.setTilt(0);
     }
 
     // Called when another command which requires one or more of the same

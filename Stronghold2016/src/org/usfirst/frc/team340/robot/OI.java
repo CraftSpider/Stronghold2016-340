@@ -77,7 +77,7 @@ public class OI {
     	Start1.whenPressed(new ArmToZero());
     	Start1.whenReleased(new ArmStop());
     	
-//    	Back1.whenPressed(new ArmToNicerPosition(20) );
+    	Back1.whenPressed(new ArmToNicerPosition(20) );
     	
     	A1.whenPressed(new MoveArm(0.80));
     	A1.whenReleased(new ArmStop());
