@@ -27,6 +27,8 @@ public class Harvester extends Subsystem {
 	public final double SHOOTER_SHOOT_V_BUS = -1.0;
 	public final double SHOOTER_HARVEST_V_BUS = 0.35;
 	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.6;
+	public final double SHOOTER_SHOOT_SPINUP_TIME = 1.8;
+	
 	public final double HARVESTER_RELEASE_BALL_V_BUS = .25;
 	public final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
 	public final int HARVESTER_CONTROL_STALL_CURRENT = 42;

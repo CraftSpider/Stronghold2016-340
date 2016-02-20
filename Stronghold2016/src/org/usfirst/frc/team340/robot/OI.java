@@ -61,22 +61,22 @@ public class OI {
     	
     	// DRIVER
     	
-    	//Y1.whenPressed(new DischargeBall());
-    	//Y1.whenReleased(new StopShooter());
-    	Y1.whenPressed(new DriveTime(1, .5));
+    	Y1.whenPressed(new DischargeBall());
+    	Y1.whenReleased(new StopShooter());
+//    	Y1.whenPressed(new DriveTime(1, .5));
     	
     	LB1.whenPressed(new HarvestBall());
     	LB1.whenReleased(new StopShooter());
     	
-    	//RB1.whenPressed(new Shoot());
-    	//RB1.whenReleased(new StopShooter());
-    	RB1.whenPressed(new DischargeBall());
+    	RB1.whenPressed(new Shoot());
     	RB1.whenReleased(new StopShooter());
-    	
+//    	RB1.whenPressed(new DischargeBall());
+//    	RB1.whenReleased(new StopShooter());
+//    	
     	Start1.whenPressed(new ArmToZero());
     	Start1.whenReleased(new ArmStop());
     	
-    	Back1.whenPressed(new ArmToNicerPosition(20) );
+//    	Back1.whenPressed(new ArmToNicerPosition(20) );
     	
     	A1.whenPressed(new MoveArm(0.80));
     	A1.whenReleased(new ArmStop());
@@ -97,9 +97,9 @@ public class OI {
     	B2.whenPressed(new MoveArm(-0.75));
     	B2.whenReleased(new ArmStop());
     	
-    	Start2.whenPressed(new MO_ArmUp());
-    	Start2.whenReleased(new ArmStop());
-    	//Start2.whenPressed(new ArmToPosition(12));
+    	//Start2.whenPressed(new MO_ArmUp());
+    	//Start2.whenReleased(new ArmStop());
+    	Start2.whenPressed(new ArmToNicerPosition(12));
     	Back2.whenPressed(new MO_ArmDown());
     	Back2.whenReleased(new ArmStop());
     	
