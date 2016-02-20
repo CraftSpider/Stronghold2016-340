@@ -64,7 +64,7 @@ public class OI {
     	Y1.whenPressed(new DischargeBall());
     	Y1.whenReleased(new StopShooter());
     	
-    	X1.whenPressed(new DriveTime(1, .5));
+    	//X1.whenPressed(new DriveTime(1, .5));
     	
     	LB1.whenPressed(new HarvestBall());
     	LB1.whenReleased(new StopShooter());

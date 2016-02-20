@@ -49,7 +49,7 @@ public class DriveWithXbox extends Command {
     			|| Math.abs(Robot.oi.getDriverRightX()) > 0.1) {
     		Robot.drive.arcadeDrive((Robot.oi.getDriverRightY())*moveSlowScale, (Robot.oi.getDriverRightX())*rotateSlowScale);
     	} else {
-    		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY()), 			(Robot.oi.getDriverLeftX()));
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY()),(Robot.oi.getDriverLeftX()));
     	}
     }
 
