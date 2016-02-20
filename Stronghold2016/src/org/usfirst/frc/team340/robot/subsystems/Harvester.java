@@ -5,6 +5,7 @@ import org.usfirst.frc.team340.robot.RobotMap;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -20,19 +21,19 @@ public class Harvester extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	
+
 	public final double ArmClear = 30; //Pot val to clear harvester of obstacle
 	
 	// Roller farthest from the robot, it is the shooter
 	public final double SHOOTER_SHOOT_V_BUS = -1.0;
-	public final double SHOOTER_HARVEST_V_BUS = 0.35;
+	public final double SHOOTER_HARVEST_V_BUS = 0.7;
 	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.6;
 	public final double SHOOTER_SHOOT_SPINUP_TIME = 1.8;
 	
-	public final double HARVESTER_RELEASE_BALL_V_BUS = .25;
+	public final double HARVESTER_RELEASE_BALL_V_BUS = .6;
 	public final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
 	public final int HARVESTER_CONTROL_STALL_CURRENT = 42;
-	public final double HARVESTER_HARVEST_V_BUS = -0.2;
+	public final double HARVESTER_HARVEST_V_BUS = -0.4;
 	
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;

@@ -44,12 +44,12 @@ public class DriveWithXbox extends Command {
     	// 2. Use right joystick for slow motion
     	// 3. Use left joystick for normal arcadeDrive
     	if(Math.abs(Robot.oi.getDriverSummedTriggers()) > .1) {
-    		Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers()), (Robot.oi.getDriverLeftX()));
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers())*moveSlowScale, (Robot.oi.getDriverLeftX())*rotateSlowScale);
     	} else if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
     			|| Math.abs(Robot.oi.getDriverRightX()) > 0.1) {
     		Robot.drive.arcadeDrive((Robot.oi.getDriverRightY())*moveSlowScale, (Robot.oi.getDriverRightX())*rotateSlowScale);
     	} else {
-    		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY()), 			(Robot.oi.getDriverLeftX()));
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY())*moveSlowScale,(Robot.oi.getDriverLeftX())*rotateSlowScale);
     	}
     }
 
