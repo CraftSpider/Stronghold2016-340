@@ -78,15 +78,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(harvester);
         SmartDashboard.putData(drive);
         SmartDashboard.putData(climber);
-        logHandler = new ConsoleHandler();
-        logHandler.setLevel(logLevel);
-        logHandler.setFormatter(new Formatter() {
-			@Override
-			public String format(LogRecord record) {
-				String nameLvl = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage(); 
-				return nameLvl;
-			}
-		});
         oi = new OI();
 
         chooser = new SendableChooser();
@@ -98,19 +89,6 @@ public class Robot extends IterativeRobot {
     }
     
     public static Logger getLogger(String name) {
-    	if(logHandler == null) {
-    		logHandler = new ConsoleHandler();
-    		logHandler.setFormatter(new Formatter() {
-				
-				@Override
-				public String format(LogRecord record) {
-					//record.getLoggerName();
-					String nameLvl = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage(); 
-					return nameLvl;
-				}
-			});
-            logHandler.setLevel(logLevel);
-    	}
     	Logger logger = Logger.getLogger(name);
     	logger.addHandler(logHandler);
     	return logger;

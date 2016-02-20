@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot.commands;
 
+import java.util.logging.Logger;
+
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -10,9 +12,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ArmToNicerPosition extends Command {
 	
 	private final double KP = 0.05;
+	private final double tolPos = 2;
 	private double tgtPos;
-	public double minPosCmdSpd = 0.1;
+	public double minPosCmdSpd = 0.15;
 	public double maxNegCmdSpd = -0.1;
+	private Logger logger = Robot.getLogger("ArmToNicerPosition");
+	double currPos =0;
 
     public ArmToNicerPosition(double tgt) {
         // Use requires() here to declare subsystem dependencies
@@ -23,11 +28,13 @@ public class ArmToNicerPosition extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	logger.info("initializing");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double currPos = (Robot.harvester.getLeftAimPot() + Robot.harvester.getRightAimPot()) / 2;
+    	logger.info("executing");
+    	currPos = Robot.harvester.getRightAimPot();//(Robot.harvester.getLeftAimPot() + Robot.harvester.getRightAimPot()) / 2;
     	double deltaPos = this.tgtPos - currPos;
     	double desiredSpd = 0;
     	desiredSpd += deltaPos * KP;
@@ -46,13 +53,14 @@ public class ArmToNicerPosition extends Command {
     	} else if(desiredSpd < 0 && desiredSpd > maxNegCmdSpd) {
     		desiredSpd = maxNegCmdSpd;
     	}
-    	
+    	logger.info("desired speed:" + desiredSpd + " currPos:" + currPos + " Target:" + tgtPos);
     	Robot.harvester.setTilt(desiredSpd);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	//we're done when we're 2 away from our target
+        return Math.abs(tgtPos - currPos) < tolPos;
     }
 
     // Called once after isFinished returns true
