@@ -1,24 +1,12 @@
 package org.usfirst.frc.team340.robot;
 
-import org.usfirst.frc.team340.robot.commands.ArmStop;
-import org.usfirst.frc.team340.robot.commands.ArmToPosition;
-import org.usfirst.frc.team340.robot.commands.ArmToZero;
-import org.usfirst.frc.team340.robot.commands.CG_Shoot;
-import org.usfirst.frc.team340.robot.commands.Climb;
-import org.usfirst.frc.team340.robot.commands.DischargeBall;
 import org.usfirst.frc.team340.robot.commands.DriveDistance;
-import org.usfirst.frc.team340.robot.commands.HarvestBall;
-import org.usfirst.frc.team340.robot.commands.MoveArm;
+import org.usfirst.frc.team340.robot.commands.DriveTime;
 import org.usfirst.frc.team340.robot.commands.Shoot;
-import org.usfirst.frc.team340.robot.commands.StopShooter;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_ManualShooting;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -104,6 +92,8 @@ public class OI {
     	B1.whenPressed(new DriveDistance(5,-20));
     	
     	Back1.whenPressed(new Shoot());
+    	
+    	Y1.whenPressed(new DriveTime(.25, .5));
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
