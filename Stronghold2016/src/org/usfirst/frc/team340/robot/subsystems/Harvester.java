@@ -24,7 +24,6 @@ public class Harvester extends Subsystem {
 	public final double ArmClear = 30; //Pot val to clear harvester of obstacle
 	
 	// Roller farthest from the robot, it is the shooter
-	
 	public final double SHOOTER_SHOOT_V_BUS = -1.0;
 	public final double SHOOTER_HARVEST_V_BUS = 0.35;
 	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.6;
@@ -35,10 +34,11 @@ public class Harvester extends Subsystem {
 	
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
+	
 	// Roller closest to the robot
 	private CANTalon harvesterBallControl;
 	
-	// not sure what type of motor this is gonna be
+	//Tilting
 	private CANTalon tiltLeft;
 	private CANTalon tiltRight;
 	
@@ -46,6 +46,7 @@ public class Harvester extends Subsystem {
 	private DigitalInput limitLeft;
 	private DigitalInput limitRight;
 	
+	//Sensors determine whether or not we have the ball
 	private DigitalInput ballSensorLeft;
 	private DigitalInput ballSensorRight;
 	
@@ -80,15 +81,15 @@ public class Harvester extends Subsystem {
 			return hasReset;
 		}
 		
-		public void setInverted(boolean invert){
-			if(invert){
+		public void setInverted(boolean invert) {
+			if(invert) {
 				this.invert = -1;
-			}else{
+			} else {
 				this.invert = 1;
 			}
 		}
 		
-		public boolean isInverted(){
+		public boolean isInverted() {
 			return this.invert == -1;
 		}
 	}   
