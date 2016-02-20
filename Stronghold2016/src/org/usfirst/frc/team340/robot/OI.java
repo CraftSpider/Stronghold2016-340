@@ -1,8 +1,23 @@
 package org.usfirst.frc.team340.robot;
 
-import org.usfirst.frc.team340.robot.commands.DriveDistance;
+import org.usfirst.frc.team340.robot.commands.ArmStop;
+import org.usfirst.frc.team340.robot.commands.ArmToZero;
+import org.usfirst.frc.team340.robot.commands.BallControlOff;
+import org.usfirst.frc.team340.robot.commands.Climb;
+import org.usfirst.frc.team340.robot.commands.DischargeBall;
 import org.usfirst.frc.team340.robot.commands.DriveTime;
+import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
+import org.usfirst.frc.team340.robot.commands.HarvestBall;
+import org.usfirst.frc.team340.robot.commands.MoveArm;
+import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
 import org.usfirst.frc.team340.robot.commands.Shoot;
+import org.usfirst.frc.team340.robot.commands.StopShooter;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlIn;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlOut;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterIn;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -17,53 +32,59 @@ public class OI {
 	
     public OI() {
     	// commented out so we dont mess stuff up
-    	/*X1.whenPressed(new ReleaseLatch());
-    	Y1.whenPressed(new Climb());
-    	Y1.whenReleased(new DriveWithXbox());
+    	//X1.whenPressed(new ReleaseLatch());
+    	//Y1.whenPressed(new Climb());
+    	//Y1.whenReleased(new DriveWithXbox());
     	
-    	A1.whileActive(new Shoot());
-    	B1.whenPressed(new DischargeBall());
+    	//A1.whileActive(new Shoot());
+    	//B1.whenPressed(new DischargeBall());
     	
     	
     	
-    	X1.whenPressed(new MO_BallControlIn());
-    	X1.whenReleased(new BallControlOff());
+    	//X1.whenPressed(new MO_BallControlIn());
+    	//X1.whenReleased(new BallControlOff());
     	
-    	Y1.whenPressed(new MO_BallControlOut());
-    	Y1.whenReleased(new BallControlOff());
+    	//Y1.whenPressed(new MO_BallControlOut());
+    	//Y1.whenReleased(new BallControlOff());
     	
-    	RB1.whenPressed(new MO_ShooterIn());
-    	RB1.whenReleased(new StopShooter());
+    	//RB1.whenPressed(new MO_ShooterIn());
+    	//RB1.whenReleased(new StopShooter());
     	
-    	LB1.whenPressed(new MO_ShooterOut());
-    	LB1.whenReleased(new StopShooter());
+    	//LB1.whenPressed(new MO_ShooterOut());
+    	//LB1.whenReleased(new StopShooter());
     	
-    	X1.whenPressed(new ManualShooting());
-    	Y1.whenPressed(new ManualShooting());
-    	RB1.whenPressed(new ManualShooting());
-    	LB1.whenPressed(new ManualShooting());
+    	//X1.whenPressed(new ManualShooting());
+    	//Y1.whenPressed(new ManualShooting());
+    	//RB1.whenPressed(new ManualShooting());
+    	//LB1.whenPressed(new ManualShooting());
     	
     	// DRIVER
     	
-    	Y1.whenPressed(new DischargeBall());
-    	Y1.whenReleased(new StopShooter());
+    	//Y1.whenPressed(new DischargeBall());
+    	//Y1.whenReleased(new StopShooter());
+    	Y1.whenPressed(new DriveTime(1, .5));
     	
     	LB1.whenPressed(new HarvestBall());
     	LB1.whenReleased(new StopShooter());
     	
-    	RB1.whenPressed(new Shoot());
+    	//RB1.whenPressed(new Shoot());
+    	//RB1.whenReleased(new StopShooter());
+    	RB1.whenPressed(new DischargeBall());
     	RB1.whenReleased(new StopShooter());
     	
     	Start1.whenPressed(new ArmToZero());
     	Start1.whenReleased(new ArmStop());
+    	
+    	//Back1.whenPressed(new Shoot());
     	
     	A1.whenPressed(new MoveArm(0.80));
     	A1.whenReleased(new ArmStop());
     	B1.whenPressed(new MoveArm(-0.75));
     	B1.whenReleased(new ArmStop());
     	
-    	X1.whenPressed(new Climb());
-    	X1.whenReleased(new DriveWithXbox());
+    	//X1.whenPressed(new Climb());
+    	//X1.whenReleased(new DriveWithXbox());
+    	
     	
     	// CO DRIVER
     	
@@ -86,14 +107,13 @@ public class OI {
     	
     	RB2.whenPressed(new Shoot());
     	RB2.whenReleased(new StopShooter());
-    	*/
     	
-    	A1.whenPressed(new DriveDistance(5,20));
-    	B1.whenPressed(new DriveDistance(5,-20));
     	
-    	Back1.whenPressed(new Shoot());
+    	//A1.whenPressed(new DriveDistance(5,20));
+    	//B1.whenPressed(new DriveDistance(5,-20));
     	
-    	Y1.whenPressed(new DriveTime(.25, .5));
+    	
+
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
