@@ -19,7 +19,7 @@ public class RobotMap {
 	public static int ClimberWinchMotor = 6;
 	
 	public static int ClimberLatch = 0;
-	public static int DriveClutchLeft = 9;
+	public static int DriveClutch = 9;
 	
 	//
 	// CAN Talon Ports
@@ -41,8 +41,8 @@ public class RobotMap {
 	// Digital I/O Ports
 	//
 	
-	public static int HarvesterEncoderPortA = 3;
-	public static int HarvesterEncoderPortB = 4;
+//	public static int HarvesterEncoderPortA = 3;
+//	public static int HarvesterEncoderPortB = 4;
 	
 	public static int LeftDriveEncoderPortA = 6;
 	public static int LeftDriveEnocderPortB = 7;
@@ -55,7 +55,7 @@ public class RobotMap {
 	public static int HarvesterRightBump = 0;
 	
 	public static int BallSensorLeftPort = 2;
-	public static int BallSensorRightPort = 10;
+	public static int BallSensorRightPort = 4;
 	
 	//
 	// Analog I/O Ports

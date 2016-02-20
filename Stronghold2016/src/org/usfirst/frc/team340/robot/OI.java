@@ -63,7 +63,8 @@ public class OI {
     	
     	Y1.whenPressed(new DischargeBall());
     	Y1.whenReleased(new StopShooter());
-//    	Y1.whenPressed(new DriveTime(1, .5));
+    	
+    	X1.whenPressed(new DriveTime(1, .5));
     	
     	LB1.whenPressed(new HarvestBall());
     	LB1.whenReleased(new StopShooter());
@@ -227,14 +228,14 @@ public class OI {
 	}
 	
 	public double getDriverLeftX() {
-		return xBoxDriver.getRawAxis(0);
+		return -xBoxDriver.getRawAxis(0);
 	}
 	public double getDriverRightY() {
 		return -xBoxDriver.getRawAxis(5);
 	}
 	
 	public double getDriverRightX() {
-		return xBoxDriver.getRawAxis(4);
+		return -xBoxDriver.getRawAxis(4);
 	}
 	
 	/**
