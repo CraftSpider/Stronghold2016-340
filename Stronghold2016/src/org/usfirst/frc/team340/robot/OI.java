@@ -98,7 +98,7 @@ public class OI {
     	B2.whenPressed(new MoveArm(-0.75));
     	B2.whenReleased(new ArmStop());
     	
-    	//Start2.whenPressed(new MO_ArmUp());
+    	Start2.whenPressed(new MO_ArmUp());
     	//Start2.whenReleased(new ArmStop());
     	//Start2.whenPressed(new ArmToNicerPosition(12));
     	Back2.whenPressed(new MO_ArmDown());

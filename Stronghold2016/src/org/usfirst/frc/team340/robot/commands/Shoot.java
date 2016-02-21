@@ -37,10 +37,18 @@ public class Shoot extends Command {
     
     protected void execute() {
     	Robot.harvester.setShooter(Robot.harvester.SHOOTER_SHOOT_V_BUS);
+    	double desiredBallControlSpeed = 0;
+    	//if we have the ball stop
+    	if(Robot.harvester.hasBall()){
+    		desiredBallControlSpeed = 0;
+    	}else{
+    		desiredBallControlSpeed = Robot.harvester.HARVESTER_HARVEST_V_BUS;
+    	}
     	
     	if(t.get() > Robot.harvester.SHOOTER_SHOOT_SPINUP_TIME) {
-    		Robot.harvester.setBallControl(Robot.harvester.HARVESTER_RELEASE_BALL_V_BUS);
+    		desiredBallControlSpeed = Robot.harvester.HARVESTER_RELEASE_BALL_V_BUS;
     	}
+    	Robot.harvester.setBallControl(desiredBallControlSpeed);
 //    	if(Robot.oi.getBackState()) {
 //    		Robot.harvester.setShooter(Robot.harvester.SHOOTER_SHOOT_V_BUS);
 //    	}
