@@ -31,7 +31,7 @@ public class AutoPortcullis extends Command {
     	//	derivative X = (588/23)*sin(0.913043 (-13.2857+θ))
     	//θ = 13.2857-1.09524 cos^(-1)(X/28), x from -28 to 28
     	//	derivative θ = 1.09524/(sqrt(28-x) * sqrt(28+x))
-    	tgtDist = -(armLength * Math.cos(Robot.harvester.getLeftAimPot() - 18));
+    	tgtDist = -(armLength * Math.cos(Robot.harvester.getLeftAimPot() - potFlatDifference));
     	tgtVelocity = (588/23) * (Math.sin(0.913043 * (-13.2857 + Robot.harvester.getLeftAimPot())));
     	
     }
