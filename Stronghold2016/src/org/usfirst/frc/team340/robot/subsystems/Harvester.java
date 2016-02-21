@@ -1,6 +1,5 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
-import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
@@ -21,25 +20,27 @@ public class Harvester extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	
+
 	public final double ArmClear = 30; //Pot val to clear harvester of obstacle
 	
 	// Roller farthest from the robot, it is the shooter
-	
 	public final double SHOOTER_SHOOT_V_BUS = -1.0;
-	public final double SHOOTER_HARVEST_V_BUS = 0.35;
+	public final double SHOOTER_HARVEST_V_BUS = 0.7;
 	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.6;
-	public final double HARVESTER_RELEASE_BALL_V_BUS = .25;
+	public final double SHOOTER_SHOOT_SPINUP_TIME = 1.8;
+	
+	public final double HARVESTER_RELEASE_BALL_V_BUS = .6;
 	public final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
 	public final int HARVESTER_CONTROL_STALL_CURRENT = 42;
-	public final double HARVESTER_HARVEST_V_BUS = -0.2;
+	public final double HARVESTER_HARVEST_V_BUS = -0.4;
 	
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
+	
 	// Roller closest to the robot
 	private CANTalon harvesterBallControl;
 	
-	// not sure what type of motor this is gonna be
+	//Tilting
 	private CANTalon tiltLeft;
 	private CANTalon tiltRight;
 	
@@ -47,6 +48,7 @@ public class Harvester extends Subsystem {
 	private DigitalInput limitLeft;
 	private DigitalInput limitRight;
 	
+	//Sensors determine whether or not we have the ball
 	private DigitalInput ballSensorLeft;
 	private DigitalInput ballSensorRight;
 	
@@ -81,15 +83,15 @@ public class Harvester extends Subsystem {
 			return hasReset;
 		}
 		
-		public void setInverted(boolean invert){
-			if(invert){
+		public void setInverted(boolean invert) {
+			if(invert) {
 				this.invert = -1;
-			}else{
+			} else {
 				this.invert = 1;
 			}
 		}
 		
-		public boolean isInverted(){
+		public boolean isInverted() {
 			return this.invert == -1;
 		}
 	}   

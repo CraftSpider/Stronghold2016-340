@@ -54,8 +54,8 @@ public class Robot extends IterativeRobot {
             logHandler.setFormatter(new Formatter() {
     			@Override
     			public String format(LogRecord record) {
-    				String t = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage() + "\n"; 
-    				return t;
+    				String nameLvl = record.getLoggerName()+ "[" + record.getLevel() + "]" + record.getMessage(); 
+    				return nameLvl;
     			}
     		});
     	}
