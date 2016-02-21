@@ -99,7 +99,7 @@ public class OI {
     	B2.whenReleased(new ArmStop());
     	
     	Start2.whenPressed(new MO_ArmUp());
-    	//Start2.whenReleased(new ArmStop());
+    	Start2.whenReleased(new ArmStop());
     	//Start2.whenPressed(new ArmToNicerPosition(12));
     	Back2.whenPressed(new MO_ArmDown());
     	Back2.whenReleased(new ArmStop());

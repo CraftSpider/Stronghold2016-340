@@ -55,6 +55,9 @@ public class MoveArm extends Command {
     	//Slow down as we get lower
     	//logger.info("reset:" + Robot.harvester.hasReset());
     	if(speed < 0 && Robot.harvester.hasReset()) {
+    		//what happens when we get negative values passed in here?
+    		//  need to figure out how to deal with this...
+    		//  Maybe special case for negativ pot values
     		leftSpeed = leftSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);
     		rightSpeed = rightSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);
     	}
