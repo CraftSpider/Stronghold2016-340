@@ -46,7 +46,8 @@ public class Robot extends IterativeRobot {
     CameraServer server;
     
     public Robot() {
-    	super();
+    	super(); // the following newline was from joey gmitter dropping a cup off his head and hitting the laptop
+    	
     	if(logHandler == null) {
     		logHandler = new ConsoleHandler();
             logHandler.setLevel(logLevel);
@@ -58,12 +59,12 @@ public class Robot extends IterativeRobot {
     			}
     		});
     	}
-    	USBCamera camera = new USBCamera("cam0");
-//    	camera.setExposureManual(0);
-        server = CameraServer.getInstance();
-        server.setQuality(50);
-        //the camera name (ex "cam0") can be found through the roborio web interface
-        server.startAutomaticCapture(camera);
+//    	USBCamera camera = new USBCamera("cam0");
+////    	camera.setExposureManual(0);
+//        server = CameraServer.getInstance();
+//        server.setQuality(50);
+//        //the camera name (ex "cam0") can be found through the roborio web interface
+//        server.startAutomaticCapture(camera);
     }
 
     /**
