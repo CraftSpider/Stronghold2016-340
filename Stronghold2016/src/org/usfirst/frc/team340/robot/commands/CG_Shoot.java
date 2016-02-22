@@ -5,7 +5,7 @@ import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * Lets see if we can remove this file since the shoot command has done a bunch of this already.
  */
 public class CG_Shoot extends CommandGroup {
     
