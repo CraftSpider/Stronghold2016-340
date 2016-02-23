@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="var" path="wpilib" sourcepath="/networktables">
+	<classpathentry kind="var" path="wpilib" sourcepath="/wpilib.sources">
 		<attributes>
 			<attribute name="javadoc_location" value="file:/C:/Users/340_/wpilib/java/current/javadoc/"/>
 		</attributes>

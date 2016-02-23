@@ -12,7 +12,7 @@ import org.usfirst.frc.team340.robot.Robot;
  */
 public class ArmToZero extends Command {
 
-	//This is bound to half the max speed for armToPosition.
+	//This is bound to 1/3 the max speed for armToPosition.
 	private double maxV = vBound/3;
 	//May need to be changed later to be bound to ArmToPosition maxAcc
 	private double maxA = 0.05;

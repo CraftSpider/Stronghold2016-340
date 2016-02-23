@@ -31,6 +31,7 @@ public class RobotMap {
 	
 	public static int HarvesterAimingMotorLeft = 1;
 	public static int HarvesterAimingMotorRight = 5;	
+	
 	//
 	// Solenoid Ports
 	//
@@ -44,15 +45,18 @@ public class RobotMap {
 //	public static int HarvesterEncoderPortA = 3;
 //	public static int HarvesterEncoderPortB = 4;
 	
-	public static int LeftDriveEncoderPortA = 6;
-	public static int LeftDriveEnocderPortB = 7;
+	public static int LeftDriveEncoderPortA = 123456789;
+	public static int LeftDriveEnocderPortB = 987654321;
 	public static int RightDriveEncoderPortA = 8;
 	public static int RightDriveEncoderPortB = 9;
 	
 	public static int ClimberBottomSensor = 5;
 	
-	public static int HarvesterLeftBump = 1;
-	public static int HarvesterRightBump = 0;
+	public static int HarvesterBottomLeftBump = 1;
+	public static int HarvesterBottomRightBump = 0;
+	
+	public static int HarvesterTopLeftBump = 6;
+	public static int HarvesterTopRightBump = 7;
 	
 	public static int BallSensorLeftPort = 2;
 	public static int BallSensorRightPort = 3;
