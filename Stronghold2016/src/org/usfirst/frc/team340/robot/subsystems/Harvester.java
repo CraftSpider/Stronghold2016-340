@@ -23,16 +23,20 @@ public class Harvester extends Subsystem {
 
 	public final double ArmClear = 30; //Pot val to clear harvester of obstacle
 	
-	// Roller farthest from the robot, it is the shooter
+	// Important shooter constants
 	public final double SHOOTER_SHOOT_V_BUS = -1.0;
 	public final double SHOOTER_HARVEST_V_BUS = 1;
 	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.75;
 	public final double SHOOTER_SHOOT_SPINUP_TIME = 2.7;
 	
+	// Important ball control constants
 	public final double HARVESTER_RELEASE_BALL_V_BUS = .6;
 	public final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
 	public final int HARVESTER_CONTROL_STALL_CURRENT = 42;
 	public final double HARVESTER_HARVEST_V_BUS = -0.4;
+	
+	// Max harvester angle
+	public static final double HARVESTER_MAX_ANGLE = 150;
 	
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
@@ -47,6 +51,8 @@ public class Harvester extends Subsystem {
 	//limit switches
 	private DigitalInput limitLeft;
 	private DigitalInput limitRight;
+	private DigitalInput limitLeftTop;
+	private DigitalInput limitRightTop;
 	
 	//Sensors determine whether or not we have the ball
 	private DigitalInput ballSensorLeft;
@@ -115,8 +121,10 @@ public class Harvester extends Subsystem {
 		//tiltLeft.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
 		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
 		
-		limitLeft = new DigitalInput(RobotMap.HarvesterLeftBump);
-		limitRight = new DigitalInput(RobotMap.HarvesterRightBump);
+		limitLeft = new DigitalInput(RobotMap.HarvesterBottomLeftBump);
+		limitRight = new DigitalInput(RobotMap.HarvesterBottomRightBump);
+		limitLeftTop = new DigitalInput(RobotMap.HarvesterTopLeftBump);
+		limitRightTop = new DigitalInput(RobotMap.HarvesterTopRightBump);
 		
 		leftPot = new ZeroablePotentiometer(RobotMap.LeftAimPot, 250);
 		rightPot = new ZeroablePotentiometer(RobotMap.RightAimPot, 250);
@@ -208,6 +216,22 @@ public class Harvester extends Subsystem {
      */
     public boolean getLeftLimit() {
     	return !limitLeft.get();
+    }
+    
+    /**
+     * Access top left limit switch state
+     * @return boolean top left limit switch state
+     */
+    public boolean getTopLeftLimit() {
+    	return !limitLeftTop.get();
+    }
+    
+    /**
+     * Access top right limit switch state
+     * @return boolean top right limit switch state
+     */
+    public boolean getTopRightLimit() {
+    	return !limitRightTop.get();
     }
     
     public double getLeftAimPot() {
