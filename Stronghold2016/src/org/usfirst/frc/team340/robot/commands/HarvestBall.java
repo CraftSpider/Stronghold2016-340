@@ -25,12 +25,33 @@ public class HarvestBall extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[Initializing]");
+    	Robot.oi.driverRumbleRight(1);
+    	Robot.oi.driverRumbleLeft(1);
+    	Robot.oi.coDriverRumbleLeft(1);
+    	Robot.oi.coDriverRumbleRight(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double desiredShooterSpeed = Robot.harvester.SHOOTER_HARVEST_V_BUS; 
+    	if(Robot.harvester.hasBallLeft()) {
+    		Robot.oi.driverRumbleLeft(0);
+    		Robot.oi.coDriverRumbleLeft(0);
+    		desiredShooterSpeed /= 2;
+    	} else {
+    		Robot.oi.driverRumbleLeft(1);
+    		Robot.oi.coDriverRumbleLeft(1);
+    	}
+    	if(Robot.harvester.hasBallRight()) {
+    		Robot.oi.driverRumbleRight(0);
+    		Robot.oi.coDriverRumbleRight(0);
+    		desiredShooterSpeed /= 2;
+    	} else {
+    		Robot.oi.driverRumbleRight(1);
+    		Robot.oi.coDriverRumbleRight(1);
+    	}
     	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_HARVEST_V_BUS);
-    	Robot.harvester.setShooter(Robot.harvester.SHOOTER_HARVEST_V_BUS);
+    	Robot.harvester.setShooter(desiredShooterSpeed);
     	logger.info("Harvester Ball Sensor: " + Robot.harvester.hasBall());
     }
 
@@ -44,6 +65,12 @@ public class HarvestBall extends Command {
     	logger.info("[Ending]");
     	Robot.harvester.setBallControl(0);
     	Robot.harvester.setShooter(0);
+    	
+    	Robot.oi.driverRumbleLeft(0);
+    	Robot.oi.driverRumbleRight(0);
+    	
+    	Robot.oi.coDriverRumbleLeft(0);
+    	Robot.oi.coDriverRumbleRight(0);
     }
 
     // Called when another command which requires one or more of the same

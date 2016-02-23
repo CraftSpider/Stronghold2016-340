@@ -27,7 +27,7 @@ public class Harvester extends Subsystem {
 	public final double SHOOTER_SHOOT_V_BUS = -1.0;
 	public final double SHOOTER_HARVEST_V_BUS = 1;
 	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.75;
-	public final double SHOOTER_SHOOT_SPINUP_TIME = 2.7;
+	public final double SHOOTER_SHOOT_SPINUP_TIME = 3.5;
 	
 	public final double HARVESTER_RELEASE_BALL_V_BUS = .6;
 	public final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
@@ -255,8 +255,16 @@ public class Harvester extends Subsystem {
     
     /**
      * Had to invert these because sensor outputs true if ball is not there.
+     * this is not a javadoc, this should be a comment
      */
     public boolean hasBall() {
     	return !ballSensorLeft.get() && !ballSensorRight.get();
+    }
+    
+    public boolean hasBallLeft() {
+    	return !ballSensorLeft.get();
+    }
+    public boolean hasBallRight() {
+    	return !ballSensorRight.get();
     }
 }

@@ -21,6 +21,7 @@ import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -290,5 +291,33 @@ public class OI {
 	 */
 	public boolean getStartState() {
 		return Start1.get();
+	}
+	
+	/**
+	 * Rumbles the right side of the driver controller at given speed
+	 */
+	public void driverRumbleRight(float strength) {
+		xBoxDriver.setRumble(RumbleType.kRightRumble, strength);
+	}
+	
+	/**
+	 * Rumbles the right side of the driver controller at given speed
+	 */
+	public void driverRumbleLeft(float strength) {
+		xBoxDriver.setRumble(RumbleType.kLeftRumble, strength);
+	}
+	
+	/**
+	 * Rumbles the right side of the driver controller at given speed
+	 */
+	public void coDriverRumbleRight(float strength) {
+		xBoxCoDriver.setRumble(RumbleType.kRightRumble, strength);
+	}
+	
+	/**
+	 * Rumbles the right side of the driver controller at given speed
+	 */
+	public void coDriverRumbleLeft(float strength) {
+		xBoxCoDriver.setRumble(RumbleType.kLeftRumble, strength);
 	}
 }

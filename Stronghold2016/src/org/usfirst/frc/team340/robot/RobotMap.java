@@ -55,7 +55,7 @@ public class RobotMap {
 	public static int HarvesterRightBump = 0;
 	
 	public static int BallSensorLeftPort = 2;
-	public static int BallSensorRightPort = 4;
+	public static int BallSensorRightPort = 3;
 	
 	//
 	// Analog I/O Ports
