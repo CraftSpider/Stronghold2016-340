@@ -12,6 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ReleaseLatch extends Command {
 
 	Logger logger = Robot.getLogger(ReleaseLatch.class);
+	
+	private static boolean latchReleased = false;
+	
 	/**
 	 * Set requirements for latch releasing command.
 	 * Requires climber subsystem.
@@ -34,7 +37,10 @@ public class ReleaseLatch extends Command {
      * Releases the latch
      */
     protected void execute() {
-    	Robot.climber.releaseLatch();
+    	if(Robot.isEndGame()) {
+    		Robot.climber.releaseLatch();
+    		latchReleased = true;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -43,7 +49,7 @@ public class ReleaseLatch extends Command {
      * @return boolean true
      */
     protected boolean isFinished() {
-        return true;
+        return latchReleased ? true:false;
     }
 
     // Called once after isFinished returns true
