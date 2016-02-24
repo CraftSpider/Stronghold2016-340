@@ -10,8 +10,7 @@ import org.usfirst.frc.team340.robot.subsystems.Harvester;
  */
 public class RobotMap {
 	
-	//why
-	//change here
+	//
 	// Motor Ports
 	//
 	
@@ -39,6 +38,7 @@ public class RobotMap {
 	//
 	
 	public static int ClawArmAngleSensor = 0;
+	public static int DriveGyro = 1;
 	
 	//wundr doesn't quite know where to put this
 	public Harvester harvester = new Harvester();
