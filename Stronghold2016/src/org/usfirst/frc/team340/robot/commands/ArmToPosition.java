@@ -7,7 +7,7 @@ import org.usfirst.frc.team340.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * <!-- OLD CODE, USE ArmToNicerPoition UNLESS NECESSARY -->
  */
 public class ArmToPosition extends Command {
 

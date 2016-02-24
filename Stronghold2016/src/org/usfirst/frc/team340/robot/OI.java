@@ -1,6 +1,7 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ArmStop;
+import org.usfirst.frc.team340.robot.commands.ArmToMax;
 import org.usfirst.frc.team340.robot.commands.ArmToNicerPosition;
 import org.usfirst.frc.team340.robot.commands.ArmToZero;
 import org.usfirst.frc.team340.robot.commands.BallControlOff;
@@ -21,6 +22,7 @@ import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick.RumbleType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -71,6 +73,8 @@ public class OI {
     	
     	RB1.whenPressed(new Shoot());
     	RB1.whenReleased(new StopShooter());
+    	Back1.whenPressed(new MO_ShooterOut());
+    	Back1.whenReleased(new StopShooter());
 //    	RB1.whenPressed(new DischargeBall());
 //    	RB1.whenReleased(new StopShooter());
 //    	
@@ -84,6 +88,9 @@ public class OI {
     	B1.whenPressed(new MoveArm(-0.75));
     	B1.whenReleased(new ArmStop());
     	
+    	
+    	X1.whenPressed(new ArmToMax());
+    	X1.whenReleased(new ArmStop());
     	//X1.whenPressed(new Climb());
     	//X1.whenReleased(new DriveWithXbox());
     	
@@ -290,5 +297,33 @@ public class OI {
 	 */
 	public boolean getStartState() {
 		return Start1.get();
+	}
+	
+	/**
+	 * Rumbles the right side of the driver controller at given speed
+	 */
+	public void driverRumbleRight(float strength) {
+		xBoxDriver.setRumble(RumbleType.kRightRumble, strength);
+	}
+	
+	/**
+	 * Rumbles the right side of the driver controller at given speed
+	 */
+	public void driverRumbleLeft(float strength) {
+		xBoxDriver.setRumble(RumbleType.kLeftRumble, strength);
+	}
+	
+	/**
+	 * Rumbles the right side of the driver controller at given speed
+	 */
+	public void coDriverRumbleRight(float strength) {
+		xBoxCoDriver.setRumble(RumbleType.kRightRumble, strength);
+	}
+	
+	/**
+	 * Rumbles the right side of the driver controller at given speed
+	 */
+	public void coDriverRumbleLeft(float strength) {
+		xBoxCoDriver.setRumble(RumbleType.kLeftRumble, strength);
 	}
 }

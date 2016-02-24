@@ -42,7 +42,6 @@ public class MoveArm extends Command {
     		rightSpeed *= 0.5;
     	}
     	
-    	double max = 110;
     	
     	// slow down as we get higher
     	// will not slow down below 20% of start speed
@@ -58,8 +57,8 @@ public class MoveArm extends Command {
     		//what happens when we get negative values passed in here?
     		//  need to figure out how to deal with this...
     		//  Maybe special case for negativ pot values
-    		leftSpeed = leftSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);
-    		rightSpeed = rightSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-max)+1);
+    		leftSpeed = leftSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-Robot.harvester.HARVESTER_MAX_ANGLE)+1);
+    		rightSpeed = rightSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-Robot.harvester.HARVESTER_MAX_ANGLE)+1);
     	}
     	
     	// stop left if bump slow right
@@ -68,8 +67,13 @@ public class MoveArm extends Command {
 			rightSpeed /= 2;
 			Robot.harvester.resetLeftPot();
 		}
+		
+		if(Robot.harvester.getTopLeftLimit() && speed > 0) {
+			leftSpeed = 0;
+			rightSpeed /= 2;
+		}
 		// stop left slow right if pot is too high and we have reset
-		if(leftPot > max && speed > 0 && Robot.harvester.hasReset()) {
+		if(leftPot > Robot.harvester.HARVESTER_MAX_ANGLE && speed > 0 && Robot.harvester.hasReset()) {
 			leftSpeed = 0;
 			rightSpeed /= 2;
 		}
@@ -79,8 +83,13 @@ public class MoveArm extends Command {
 			leftSpeed /= 2;
 			Robot.harvester.resetRightPot();
 		}
+		
+		if(Robot.harvester.getTopRightLimit() && speed > 0) {
+			rightSpeed = 0;
+			leftSpeed /= 2;
+		}
 		// stop right slow left if pot is too high and we have reset
-		if(rightPot > max && speed > 0 && Robot.harvester.hasReset()) {
+		if(rightPot > Robot.harvester.HARVESTER_MAX_ANGLE && speed > 0 && Robot.harvester.hasReset()) {
 			rightSpeed = 0;
 			leftSpeed /= 2;
 		}
@@ -89,7 +98,8 @@ public class MoveArm extends Command {
 		Robot.harvester.setLeftTilt(leftSpeed);
 		
 		logger.info("left pot: " + leftPot + " right pot: " + rightPot + " hasReset" + Robot.harvester.hasReset());//+ 
-				//" left limit: " + Robot.harvester.getLeftLimit()  + " right limit: " + Robot.harvester.getRightLimit());		
+				//" left limit: " + Robot.harvester.getLeftLimit()  + " right limit: " + Robot.harvester.getRightLimit());
+		logger.info("getTopLeftLimit: " + Robot.harvester.getTopLeftLimit() + " getTopRightLimit: " + Robot.harvester.getTopRightLimit());
     }
 
     // Make this return true when this Command no longer needs to run execute()

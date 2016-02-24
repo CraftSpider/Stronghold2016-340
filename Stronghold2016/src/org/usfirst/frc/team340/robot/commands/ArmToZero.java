@@ -1,6 +1,8 @@
 package org.usfirst.frc.team340.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.AccumulatorResult;
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import static org.usfirst.frc.team340.robot.commands.ArmToPosition.vBound;
 
 import java.util.logging.Logger;
@@ -11,9 +13,10 @@ import org.usfirst.frc.team340.robot.Robot;
  *
  */
 public class ArmToZero extends Command {
+	 BuiltInAccelerometer accel = new BuiltInAccelerometer();
 
-	//This is bound to half the max speed for armToPosition.
-	private double maxV = vBound/3;
+	//This is bound to 1/3 the max speed for armToPosition.
+	private double maxV = vBound/2;
 	//May need to be changed later to be bound to ArmToPosition maxAcc
 	private double maxA = 0.05;
 	private double cmdV = 0;

@@ -37,6 +37,7 @@ public class Shoot extends Command {
     
     protected void execute() {
     	Robot.harvester.setShooter(Robot.harvester.SHOOTER_SHOOT_V_BUS);
+    	logger.info("current: " + Robot.harvester.harvesterCurrent());
     	double desiredBallControlSpeed = 0;
     	//if we have the ball stop
     	if(Robot.harvester.hasBall()){
