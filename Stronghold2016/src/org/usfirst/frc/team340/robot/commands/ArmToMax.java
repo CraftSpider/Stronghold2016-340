@@ -30,6 +30,8 @@ public class ArmToMax extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[Initializing]");
+    	lSpd = 0.5;
+    	rSpd = 0.5;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -59,11 +61,12 @@ public class ArmToMax extends Command {
     	
     	Robot.harvester.setLeftTilt(lSpd);
     	Robot.harvester.setRightTilt(rSpd);
+    	logger.info("lftSw: " + Robot.harvester.getTopLeftLimit() + " rgtSw:" + Robot.harvester.getTopRightLimit() + "lft:" + lSpd + " rgt:" + rSpd);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.harvester.getTopLeftLimit() && Robot.harvester.getTopRightLimit();
+        return isTimedOut() || (Robot.harvester.getTopLeftLimit() && Robot.harvester.getTopRightLimit());
     }
 
     // Called once after isFinished returns true

@@ -45,10 +45,10 @@ public class RobotMap {
 //	public static int HarvesterEncoderPortA = 3;
 //	public static int HarvesterEncoderPortB = 4;
 	
-	public static int LeftDriveEncoderPortA = 123456789;
-	public static int LeftDriveEnocderPortB = 987654321;
-	public static int RightDriveEncoderPortA = 8;
-	public static int RightDriveEncoderPortB = 9;
+//	public static int LeftDriveEncoderPortA = 123,456,789;
+//	public static int LeftDriveEnocderPortB = 987654321;
+//	public static int RightDriveEncoderPortA = 8;
+//	public static int RightDriveEncoderPortB = 9;
 	
 	public static int ClimberBottomSensor = 5;
 	

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ArmStop;
+import org.usfirst.frc.team340.robot.commands.ArmToMax;
 import org.usfirst.frc.team340.robot.commands.ArmToNicerPosition;
 import org.usfirst.frc.team340.robot.commands.ArmToZero;
 import org.usfirst.frc.team340.robot.commands.BallControlOff;
@@ -72,6 +73,8 @@ public class OI {
     	
     	RB1.whenPressed(new Shoot());
     	RB1.whenReleased(new StopShooter());
+    	Back1.whenPressed(new MO_ShooterOut());
+    	Back1.whenReleased(new StopShooter());
 //    	RB1.whenPressed(new DischargeBall());
 //    	RB1.whenReleased(new StopShooter());
 //    	
@@ -85,6 +88,9 @@ public class OI {
     	B1.whenPressed(new MoveArm(-0.75));
     	B1.whenReleased(new ArmStop());
     	
+    	
+    	X1.whenPressed(new ArmToMax());
+    	X1.whenReleased(new ArmStop());
     	//X1.whenPressed(new Climb());
     	//X1.whenReleased(new DriveWithXbox());
     	

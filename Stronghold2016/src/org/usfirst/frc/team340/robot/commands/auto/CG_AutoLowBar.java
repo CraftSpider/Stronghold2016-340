@@ -1,5 +1,6 @@
 package org.usfirst.frc.team340.robot.commands.auto;
 
+import org.usfirst.frc.team340.robot.commands.ArmToMax;
 import org.usfirst.frc.team340.robot.commands.ArmToPosition;
 import org.usfirst.frc.team340.robot.commands.ArmToZero;
 import org.usfirst.frc.team340.robot.commands.DriveDistance;
@@ -32,10 +33,10 @@ public class CG_AutoLowBar extends CommandGroup {
          a CommandGroup containing them would require both the chassis and the
          arm.*/
     	
-    	addSequential(new ArmToZero());
+    	addSequential(new ArmToMax());
     	addSequential(new PrintCommand("Autonomous finished"));
-    	addSequential(new DriveTime(3, .5));
-    	addSequential(new Shoot(), 3.0);
+//    	addSequential(new DriveTime(3, .5));
+    	addSequential(new Shoot(), 4.0);
     	//addSequential(new DriveDistance(10, 500));
     }
 }

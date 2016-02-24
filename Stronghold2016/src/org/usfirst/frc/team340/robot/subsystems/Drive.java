@@ -50,8 +50,8 @@ public class Drive extends Subsystem {
 		leftDrive = new Talon(RobotMap.DriveLeftMotor);
 		rightDrive = new Talon(RobotMap.DriveRightMotor);
 
-		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
-		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
+//		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
+//		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 
 		clutchMotor = new PWM(RobotMap.DriveClutch);
 		// clutchMotor.setRaw(126);
@@ -119,7 +119,8 @@ public class Drive extends Subsystem {
 	 * @return double left driverail encoder count
 	 */
 	public double getLeftEncoder() {
-		return leftDriveEncoder.get();
+//		return leftDriveEncoder.get();
+		return 0;
 	}
 
 	/**
@@ -128,14 +129,15 @@ public class Drive extends Subsystem {
 	 * @return double right driverail encoder count
 	 */
 	public double getRightEncoder() {
-		return rightDriveEncoder.get();
+//		return rightDriveEncoder.get();
+		return 0;
 	}
 
 	/**
 	 * Resets the count of the left driverail encoder
 	 */
 	public void resetLeftEncoder() {
-		leftDriveEncoder.reset();
+//		leftDriveEncoder.reset();
 		// logger.fine("Left encoder reset. Value: " + leftDriveEncoder.get());
 	}
 
@@ -143,7 +145,7 @@ public class Drive extends Subsystem {
 	 * Resets the count of the right driverail encoder
 	 */
 	public void resetRightEncoder() {
-		rightDriveEncoder.reset();
+//		rightDriveEncoder.reset();
 		// logger.fine("Right encoder reset. Value: " +
 		// rightDriveEncoder.get());
 	}

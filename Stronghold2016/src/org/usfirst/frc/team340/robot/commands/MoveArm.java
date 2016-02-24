@@ -68,6 +68,11 @@ public class MoveArm extends Command {
 			rightSpeed /= 2;
 			Robot.harvester.resetLeftPot();
 		}
+		
+		if(Robot.harvester.getTopLeftLimit() && speed > 0) {
+			leftSpeed = 0;
+			rightSpeed /= 2;
+		}
 		// stop left slow right if pot is too high and we have reset
 		if(leftPot > max && speed > 0 && Robot.harvester.hasReset()) {
 			leftSpeed = 0;
@@ -79,6 +84,11 @@ public class MoveArm extends Command {
 			leftSpeed /= 2;
 			Robot.harvester.resetRightPot();
 		}
+		
+		if(Robot.harvester.getTopRightLimit() && speed > 0) {
+			rightSpeed = 0;
+			leftSpeed /= 2;
+		}
 		// stop right slow left if pot is too high and we have reset
 		if(rightPot > max && speed > 0 && Robot.harvester.hasReset()) {
 			rightSpeed = 0;
@@ -89,7 +99,8 @@ public class MoveArm extends Command {
 		Robot.harvester.setLeftTilt(leftSpeed);
 		
 		logger.info("left pot: " + leftPot + " right pot: " + rightPot + " hasReset" + Robot.harvester.hasReset());//+ 
-				//" left limit: " + Robot.harvester.getLeftLimit()  + " right limit: " + Robot.harvester.getRightLimit());		
+				//" left limit: " + Robot.harvester.getLeftLimit()  + " right limit: " + Robot.harvester.getRightLimit());
+		logger.info("getTopLeftLimit: " + Robot.harvester.getTopLeftLimit() + " getTopRightLimit: " + Robot.harvester.getTopRightLimit());
     }
 
     // Make this return true when this Command no longer needs to run execute()
