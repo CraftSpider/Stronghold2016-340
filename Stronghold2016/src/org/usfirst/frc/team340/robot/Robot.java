@@ -14,6 +14,7 @@ import org.usfirst.frc.team340.robot.subsystems.Harvester;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -38,6 +39,8 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static Harvester harvester;
 	public static OI oi;
+	
+	public static Timer climberFailsafe;
 
     Command autonomousCommand;
     CommandGroup belowLowBar;
@@ -87,8 +90,6 @@ public class Robot extends IterativeRobot {
 //        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("AutoSelect", chooser);
-        
-        
     }
     
     public static Logger getLogger(String name) {
@@ -146,6 +147,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
+        climberFailsafe.start();
     }
 
     /**
@@ -160,5 +163,18 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+    }
+    
+    /**
+     * Basic failsafe to prevent climber from being raised at the wrong time.
+     * I can't stop the timer from here, so I did it in the command
+     * @return boolean are we at the end of the match
+     */
+    public static boolean isEndGame() {
+    	if(climberFailsafe.get() >= 110) {
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
 }

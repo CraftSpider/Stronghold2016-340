@@ -33,26 +33,34 @@ public class HarvestBall extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double desiredShooterSpeed = Robot.harvester.SHOOTER_HARVEST_V_BUS; 
+    	double desiredShooterWheelHarvestSpeed = Robot.harvester.SHOOTER_HARVEST_V_BUS;
+    	
     	if(Robot.harvester.hasBallLeft()) {
     		Robot.oi.driverRumbleLeft(0);
     		Robot.oi.coDriverRumbleLeft(0);
-    		desiredShooterSpeed /= 2;
+    		desiredShooterWheelHarvestSpeed /= 2;
     	} else {
     		Robot.oi.driverRumbleLeft(1);
     		Robot.oi.coDriverRumbleLeft(1);
     	}
+    	
     	if(Robot.harvester.hasBallRight()) {
     		Robot.oi.driverRumbleRight(0);
     		Robot.oi.coDriverRumbleRight(0);
-    		desiredShooterSpeed /= 2;
+    		desiredShooterWheelHarvestSpeed /= 2;
     	} else {
     		Robot.oi.driverRumbleRight(1);
     		Robot.oi.coDriverRumbleRight(1);
     	}
+    	
     	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_HARVEST_V_BUS);
-    	Robot.harvester.setShooter(desiredShooterSpeed);
-    	logger.info("Harvester Ball Sensor: " + Robot.harvester.hasBall());
+    	Robot.harvester.setShooter(desiredShooterWheelHarvestSpeed);
+    	
+    	if(Robot.harvester.hasBall()) {
+    		logger.info("Both sensors tripped; ball harvested");
+    	} else {
+    		logger.info("Left sensor: " + Robot.harvester.hasBallLeft() + "; right sensor: " + Robot.harvester.hasBallRight());
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
