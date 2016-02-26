@@ -47,6 +47,10 @@ public class Drive extends Subsystem {
     	return gyro.getRate();
     }
     
+    public void resetGyro() {
+    	gyro.calibrate();
+    }
+    
     public void setLeftDrive(double speed) {
     	if(speed > 1) {
     		speed = 1;
