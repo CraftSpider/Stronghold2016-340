@@ -38,7 +38,7 @@ public class Drive extends Subsystem {
 	private PWM clutchMotor;
 
 	// Is the clutch on or off?
-	public boolean clutchState;
+	public boolean clutchState = false;
 
 	// Logger
 	Logger logger = Robot.getLogger("drive");
