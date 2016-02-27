@@ -38,7 +38,7 @@ public class MO_ClutchToggle extends Command {
     	//latchState default is true which means the climber arm is down
     	//clutchState default is false which means the clutch is disengaged
     	if(!Robot.climber.latchState && Robot.drive.PTOState) {
-    		Robot.drive.disengagePTO();;
+    		Robot.drive.disengagePTO();
     	}
     	else {
     		Robot.drive.engagePTO();
