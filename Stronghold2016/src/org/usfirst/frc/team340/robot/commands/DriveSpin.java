@@ -1,7 +1,6 @@
 package org.usfirst.frc.team340.robot.commands;
 
 import org.usfirst.frc.team340.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -40,7 +39,7 @@ public class DriveSpin extends Command {
     protected boolean isFinished() {
         return this.isTimedOut();
     }
-
+    
     // Called once after isFinished returns true
     protected void end() {
     	Robot.drive.setBothDrive(0, 0);

@@ -33,6 +33,7 @@ public class CG_AutoLowBar extends CommandGroup {
          a CommandGroup containing them would require both the chassis and the
          arm.*/
     	
+    	
     	addSequential(new ArmToMax());
     	addSequential(new PrintCommand("Autonomous finished"));
 //    	addSequential(new DriveTime(3, .5));
