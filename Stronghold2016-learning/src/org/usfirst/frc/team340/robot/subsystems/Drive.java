@@ -5,6 +5,7 @@ import org.usfirst.frc.team340.robot.commands.DriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.AnalogGyro;
 
 /**
  *Dummy subsystem for simple drive code, including motors and encoders.
@@ -19,6 +20,8 @@ public class Drive extends Subsystem {
 	private TalonSRX leftDrive;
 	private TalonSRX rightDrive;
 	
+	private AnalogGyro gyro;
+	
 	// Drive speed variables
 	public double leftMotorSpeed;
 	public double rightMotorSpeed;
@@ -26,12 +29,26 @@ public class Drive extends Subsystem {
 	public Drive() {
 		leftDrive = new TalonSRX(RobotMap.DriveLeftMotor);
 		rightDrive = new TalonSRX(RobotMap.DriveRightMotor);
+		
+		gyro = new AnalogGyro(RobotMap.DriveGyro);
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new DriveWithJoysticks());
+    }
+    
+    public double getAngle() {
+    	return gyro.getAngle();
+    }
+    
+    public double getRate() {
+    	return gyro.getRate();
+    }
+    
+    public void resetGyro() {
+    	gyro.calibrate();
     }
     
     public void setLeftDrive(double speed) {

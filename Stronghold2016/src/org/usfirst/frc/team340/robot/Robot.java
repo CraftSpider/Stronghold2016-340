@@ -87,6 +87,7 @@ public class Robot extends IterativeRobot {
         oi = new OI();
 
         chooser = new SendableChooser();
+        
 //        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("AutoSelect", chooser);
@@ -130,6 +131,10 @@ public class Robot extends IterativeRobot {
     	
     	// schedule the autonomous command (example)
         //if (autonomousCommand != null) autonomousCommand.start();
+    	
+    	//Calibrates Gyro at beginning of auto.
+        drive.calibrateGyro();
+    	
     	belowLowBar = new CG_AutoLowBar();
         belowLowBar.start();
     }

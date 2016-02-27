@@ -29,7 +29,8 @@ public class MoveArm extends Command {
     }
     
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    @SuppressWarnings("static-access")
+	protected void execute() {
     	
     	double leftPot = Robot.harvester.getLeftAimPot();
     	double rightPot = Robot.harvester.getRightAimPot();
