@@ -69,6 +69,12 @@ public class RobotMap {
 	public static int RightAimPot = 1;
 	
 	//
+	// SPI Ports
+	//
+	
+	public static int DriveGyroPort = 0;
+	
+	//
 	// Constants
 	//
 	

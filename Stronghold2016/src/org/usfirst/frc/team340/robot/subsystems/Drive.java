@@ -10,6 +10,7 @@ import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.AnalogGyro;
 
 /**
  * drive code including motors and encoders.
@@ -30,6 +31,9 @@ public class Drive extends Subsystem {
 	// Drive speed variables
 	private double leftMotorSpeed;
 	private double rightMotorSpeed;
+	
+	// Drive Gyro Sensor
+	private AnalogGyro driveGyro;
 
 	//private Encoder leftDriveEncoder;
 	//private Encoder rightDriveEncoder;
@@ -49,6 +53,8 @@ public class Drive extends Subsystem {
 	public Drive() {
 		leftDrive = new Talon(RobotMap.DriveLeftMotor);
 		rightDrive = new Talon(RobotMap.DriveRightMotor);
+		
+		driveGyro = new AnalogGyro(RobotMap.DriveGyroPort);
 
 //		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 //		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
@@ -111,6 +117,18 @@ public class Drive extends Subsystem {
 	public void stopBothDrive() {
 		setLeftDrive(0);
 		setRightDrive(0);
+	}
+	
+	public double getGyroAngle() {
+		return driveGyro.getAngle();
+	}
+	
+	public void calibrateGyro() {
+		driveGyro.calibrate();
+	}
+	
+	public void resetGyro() {
+		driveGyro.reset();
 	}
 
 	/**
