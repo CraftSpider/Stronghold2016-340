@@ -35,7 +35,7 @@ public class MO_ClutchOn extends Command {
      * Engages the clutch
      */
     protected void execute() {
-    	Robot.drive.engageClutch();
+    	Robot.drive.engagePTO();
     }
 
     // Make this return true when this Command no longer needs to run execute()

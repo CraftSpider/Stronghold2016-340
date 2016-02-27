@@ -91,8 +91,8 @@ public class OI {
     	
     	X1.whenPressed(new ArmToMax());
     	X1.whenReleased(new ArmStop());
-    	//X1.whenPressed(new Climb());
-    	//X1.whenReleased(new DriveWithXbox());
+    	X1.whenPressed(new Climb());
+//    	X1.whenReleased(new DriveWithXbox());
     	
     	
     	// CO DRIVER

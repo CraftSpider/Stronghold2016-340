@@ -35,10 +35,10 @@ public class Drive extends Subsystem {
 	private Encoder rightDriveEncoder;
 
 	// Clutch servo
-	private PWM clutchMotor;
+	private PWM PTOMotor;
 
 	// Is the clutch on or off?
-	public boolean clutchState;
+	public boolean PTOState;
 
 	// Logger
 	Logger logger = Robot.getLogger("drive");
@@ -53,7 +53,7 @@ public class Drive extends Subsystem {
 //		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 //		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 
-		clutchMotor = new PWM(RobotMap.DriveClutch);
+		PTOMotor = new PWM(RobotMap.DrivePTO);
 		// clutchMotor.setRaw(126);
 	}
 
@@ -161,17 +161,17 @@ public class Drive extends Subsystem {
 	/**
 	 * Enables the clutch servo, enabling the arm to pull up the robot
 	 */
-	public void engageClutch() {
-		clutchMotor.setRaw(255);
-		clutchState = true;
+	public void engagePTO() {
+		PTOMotor.setRaw(255);
+		PTOState = true;
 	}
 
 	/**
 	 * Releases clutch
 	 */
-	public void disengageClutch() {
-		clutchMotor.setRaw(126);
-		clutchState = false;
+	public void disengagePTO() {
+		PTOMotor.setRaw(126);
+		PTOState = false;
 	}
 
 	/**
