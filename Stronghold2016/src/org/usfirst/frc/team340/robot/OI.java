@@ -13,11 +13,15 @@ import org.usfirst.frc.team340.robot.commands.HarvestBall;
 import org.usfirst.frc.team340.robot.commands.MoveArm;
 import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
 import org.usfirst.frc.team340.robot.commands.Shoot;
+import org.usfirst.frc.team340.robot.commands.StopDrive;
 import org.usfirst.frc.team340.robot.commands.StopShooter;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlOut;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchOff;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchOn;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchToggle;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 
@@ -117,7 +121,14 @@ public class OI {
     	RB2.whenPressed(new Shoot());
     	RB2.whenReleased(new StopShooter());
     	
+    	//rightTrig2.whenPressed(new MO_ClutchToggle());
     	
+    	//rightTrig2.whenPressed(new MO_ClutchOn());
+    	
+    	//leftTrig2.whenPressed(new MO_ClutchOff());
+    	
+    	X2.whenPressed(new Climb());
+    	X2.whenReleased(new StopDrive());
     	//A1.whenPressed(new DriveDistance(5,20));
     	//B1.whenPressed(new DriveDistance(5,-20));
     	
@@ -195,20 +206,20 @@ public class OI {
 	Button LeftStick2 = new JoystickButton(xBoxCoDriver, 9);
 	
 	//Turn co-driver triggers to buttons
-//	public class RightTrig2 extends Button {
-//		public boolean get() {
-//			return xBoxCoDriver.getRawAxis(3) > .5;
-//		}
-//	}
-//	RightTrig2 rightTrig2 = new RightTrig2();
-//	
-//	public class LeftTrig2 extends Button {
-//		public boolean get() {
-//			return xBoxCoDriver.getRawAxis(2) > .5;
-//		}
-//	}
-//	LeftTrig2 leftTrig2 = new LeftTrig2();
-//	
+	public class RightTrig2 extends Button {
+		public boolean get() {
+			return xBoxCoDriver.getRawAxis(3) > .5;
+		}
+	}
+	RightTrig2 rightTrig2 = new RightTrig2();
+	
+	public class LeftTrig2 extends Button {
+		public boolean get() {
+			return xBoxCoDriver.getRawAxis(2) > .5;
+		}
+	}
+	LeftTrig2 leftTrig2 = new LeftTrig2();
+	
 	
 	
 	/**
