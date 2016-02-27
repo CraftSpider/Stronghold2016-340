@@ -5,7 +5,9 @@ import org.usfirst.frc.team340.robot.Robot;
 
 /**
  *
+ * @deprecated
  */
+@SuppressWarnings("unused")
 public class AutoPortcullis extends Command {
 	
 	private double armLength = 28;
@@ -33,7 +35,6 @@ public class AutoPortcullis extends Command {
     	//	derivative θ = 1.09524/(sqrt(28-x) * sqrt(28+x))
     	tgtDist = -(armLength * Math.cos(Robot.harvester.getLeftAimPot() - potFlatDifference));
     	tgtVelocity = (588/23) * (Math.sin(0.913043 * (-13.2857 + Robot.harvester.getLeftAimPot())));
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

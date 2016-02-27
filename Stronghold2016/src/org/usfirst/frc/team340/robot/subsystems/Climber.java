@@ -1,5 +1,8 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
+import java.util.logging.Logger;
+
+import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -14,7 +17,7 @@ public class Climber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands
 	
-//	Logger logger = Robot.getLogger(Climber.class);
+	Logger logger = Robot.getLogger("climber");
 	private Servo armLatch;
 	private DigitalInput atBottom;
 	

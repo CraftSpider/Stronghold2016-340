@@ -6,7 +6,7 @@ import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.RobotMap;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 
-import edu.wpi.first.wpilibj.Encoder;
+//import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -31,8 +31,8 @@ public class Drive extends Subsystem {
 	private double leftMotorSpeed;
 	private double rightMotorSpeed;
 
-	private Encoder leftDriveEncoder;
-	private Encoder rightDriveEncoder;
+	//private Encoder leftDriveEncoder;
+	//private Encoder rightDriveEncoder;
 
 	// Clutch servo
 	private PWM clutchMotor;
@@ -86,7 +86,7 @@ public class Drive extends Subsystem {
 	 * @param speed
 	 */
 	public void setRightDrive(double speed) {
-		if (speed>1	) {
+		if (speed > 1) {
 			speed =	1;
 		} else if (speed < -1) {
 			speed = -1;
