@@ -35,7 +35,7 @@ public class MO_ClutchOff extends Command {
      * Disengages the clutch
      */
     protected void execute() {
-    	Robot.drive.disengageClutch();
+    	Robot.drive.disengagePTO();
     }
 
     // Make this return true when this Command no longer needs to run execute()

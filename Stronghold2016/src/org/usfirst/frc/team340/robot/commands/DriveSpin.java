@@ -1,58 +1,54 @@
-package org.usfirst.frc.team340.robot.commands.overrides;
+package org.usfirst.frc.team340.robot.commands;
+
+import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import java.util.logging.Logger;
-
-import org.usfirst.frc.team340.robot.Robot;
 /**
  *
  */
-public class MO_ClutchOn extends Command {
+public class DriveSpin extends Command {
+
+	double speed = 0.0;
 	
-	Logger logger = Robot.getLogger(MO_ClutchOn.class);
-	
-	/**
-	 * Set requirements for clutch operation
-	 * Requires driver subsystem
-	 * Engages the clutch that drives the climbing arm mechanism
-	 */
-    public MO_ClutchOn() {
-    	
-    	requires(Robot.drive);
-    	
+    public DriveSpin(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	this.speed = speed;
+    	requires(Robot.drive);
+    }
+    
+    public DriveSpin(double speed, double timeOut) {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	this.speed = speed;
+    	this.setTimeout(timeOut);
+    	requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	logger.info("[Initializing: MO_ClutchOn]");
+    	Robot.drive.arcadeDrive(0, speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
-    /**
-     * Engages the clutch
-     */
     protected void execute() {
-    	Robot.drive.engagePTO();
+    	Robot.drive.arcadeDrive(0, speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    /**
-     * Sets command to completed
-     * @return boolean true
-     */
     protected boolean isFinished() {
-        return true;
+        return this.isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drive.setBothDrive(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
