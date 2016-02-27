@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
  * HarvestShooter?
  * HaversterAndShooter?
  * 
- * todo: robotmap this and write commands
- * todo: modify as design changes (updated as of 1/25/16)
+ * TODO: robotmap this and write commands
+ * TODO: modify as design changes (updated as of 1/25/16)
  */
 public class Harvester extends Subsystem {
     
@@ -121,8 +121,8 @@ public class Harvester extends Subsystem {
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
 		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
 		
-		//tiltLeft.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
-		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue ie smooth out the jerkieness
+		//tiltLeft.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue IE smooth out the jerkiness
+		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue IE smooth out the jerkiness
 		
 		limitLeft = new DigitalInput(RobotMap.HarvesterBottomLeftBump);
 		limitRight = new DigitalInput(RobotMap.HarvesterBottomRightBump);

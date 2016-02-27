@@ -75,9 +75,9 @@ public class OI {
     	RB1.whenReleased(new StopShooter());
     	Back1.whenPressed(new MO_ShooterOut());
     	Back1.whenReleased(new StopShooter());
-//    	RB1.whenPressed(new DischargeBall());
-//    	RB1.whenReleased(new StopShooter());
-//    	
+    	//RB1.whenPressed(new DischargeBall());
+    	//RB1.whenReleased(new StopShooter());
+    	
     	Start1.whenPressed(new ArmToZero());
     	Start1.whenReleased(new ArmStop());
     	
