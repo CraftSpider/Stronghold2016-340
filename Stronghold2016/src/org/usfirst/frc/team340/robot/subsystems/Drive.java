@@ -8,6 +8,7 @@ import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 
 //import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PWM;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.AnalogGyro;
@@ -33,13 +34,13 @@ public class Drive extends Subsystem {
 	private double rightMotorSpeed;
 	
 	// Drive Gyro Sensor
-	private AnalogGyro driveGyro;
+//	private AnalogGyro driveGyro;
 
 	//private Encoder leftDriveEncoder;
 	//private Encoder rightDriveEncoder;
  
 	// Clutch servo
-	private PWM PTOMotor;
+	private Servo PTOMotor;
 
 	// Is the clutch on or off?
 	public boolean PTOState = false;
@@ -54,12 +55,15 @@ public class Drive extends Subsystem {
 		leftDrive = new Talon(RobotMap.DriveLeftMotor);
 		rightDrive = new Talon(RobotMap.DriveRightMotor);
 		
-		driveGyro = new AnalogGyro(RobotMap.DriveGyroPort);
+//		driveGyro = new AnalogGyro(RobotMap.DriveGyroPort);
 
 //		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 //		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 
-		PTOMotor = new PWM(RobotMap.DrivePTO);
+//		PTOMotor = new PWM(RobotMap.DrivePTO);
+		PTOMotor = new Servo(RobotMap.DrivePTO);
+				
+		
 		// clutchMotor.setRaw(126);
 	}
 
@@ -119,17 +123,17 @@ public class Drive extends Subsystem {
 		setRightDrive(0);
 	}
 	
-	public double getGyroAngle() {
-		return driveGyro.getAngle();
-	}
-	
-	public void calibrateGyro() {
-		driveGyro.calibrate();
-	}
-	
-	public void resetGyro() {
-		driveGyro.reset();
-	}
+//	public double getGyroAngle() {
+//		return driveGyro.getAngle();
+//	}
+//	
+//	public void calibrateGyro() {
+//		driveGyro.calibrate();
+//	}
+//	
+//	public void resetGyro() {
+//		driveGyro.reset();
+//	}
 
 	/**
 	 * Finds state of left driverail encoder
@@ -180,7 +184,8 @@ public class Drive extends Subsystem {
 	 * Enables the clutch servo, enabling the arm to pull up the robot
 	 */
 	public void engagePTO() {
-		PTOMotor.setRaw(255);
+//		PTOMotor.setRaw(256);
+		PTOMotor.set(1);
 		PTOState = true;
 	}
 
@@ -188,7 +193,7 @@ public class Drive extends Subsystem {
 	 * Releases clutch
 	 */
 	public void disengagePTO() {
-		PTOMotor.setRaw(126);
+		PTOMotor.set(0);
 		PTOState = false;
 	}
 

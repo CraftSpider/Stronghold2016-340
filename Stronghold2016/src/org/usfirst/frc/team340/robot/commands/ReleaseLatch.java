@@ -34,10 +34,10 @@ public class ReleaseLatch extends Command {
      * Releases the latch
      */
     protected void execute() {
-    	if(Robot.isEndGame()) {
-    		Robot.climber.releaseLatch();
-    		latchReleased = true;
-    	}
+//    	if(Robot.isEndGame()) {
+//    		Robot.climber.releaseLatch();
+//    		latchReleased = true;
+//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

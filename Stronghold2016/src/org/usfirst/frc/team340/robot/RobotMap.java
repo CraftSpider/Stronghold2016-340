@@ -18,7 +18,7 @@ public class RobotMap {
 	public static int ClimberMovementMotor = 5;
 	public static int ClimberWinchMotor = 6;
 	
-	public static int ClimberLatch = 0;
+	public static int ClimberLatch = 3;
 	public static int DrivePTO = 9;
 	
 	//
@@ -71,7 +71,7 @@ public class RobotMap {
 	// SPI Ports
 	//
 	
-	public static int DriveGyroPort = 0;
+	public static int DriveGyroPort = 2;
 	
 	//
 	// Constants

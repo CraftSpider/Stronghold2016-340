@@ -37,7 +37,16 @@ public class DriveWithXbox extends Command {
     
     protected void execute() { 
     	//Clutch should never be engaged while we are under human control
-    	Robot.drive.disengagePTO();
+//    	Robot.drive.disengagePTO();
+    	
+    	if(Robot.oi.getXYButtonState() == 2) {
+    		Robot.drive.engagePTO();
+    	} else if(Robot.oi.getXYButtonState() == 0) {
+    		Robot.climber.releaseLatch();
+    	} else {
+    		Robot.climber.closeLatch();
+    		Robot.drive.disengagePTO();
+    	}
     	
     	//Allow driver to drive in any of three modes.
     	// 1. Use triggers for speed, joystick for turning

@@ -41,7 +41,7 @@ public class Climber extends Subsystem {
      * Releases latch to raise arm
      */
     public void releaseLatch() {  
-    	armLatch.set(0);
+    	armLatch.set(1);
     	latchState = false;
 //    	logger.fine("Latch Released: " + "ArmLatch=" + armLatch.get());
     }
@@ -49,7 +49,7 @@ public class Climber extends Subsystem {
      * Closes latch over the arm
      */
     public void closeLatch() {
-    	armLatch.set(1);
+    	armLatch.set(0);
     	latchState = true;
 //    	logger.fine("Latch Closed: " + "ArmLatch=" + armLatch.get());
     }

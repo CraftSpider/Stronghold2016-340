@@ -60,6 +60,7 @@ public class Climb extends Command {
      */
     protected void end() {
     	logger.info("[Ending]");
+    	Robot.drive.disengagePTO();
     	Robot.drive.setBothDrive(0, 0);
     }
 

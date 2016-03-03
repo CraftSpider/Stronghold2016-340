@@ -67,8 +67,8 @@ public class OI {
     	
     	// DRIVER
     	
-    	Y1.whenPressed(new DischargeBall());
-    	Y1.whenReleased(new StopShooter());
+//    	Y1.whenPressed(new DischargeBall());
+//    	Y1.whenReleased(new StopShooter());
     	
     	//X1.whenPressed(new DriveTime(1, .5));
     	
@@ -77,8 +77,8 @@ public class OI {
     	
     	RB1.whenPressed(new Shoot());
     	RB1.whenReleased(new StopShooter());
-    	Back1.whenPressed(new MO_ShooterOut());
-    	Back1.whenReleased(new StopShooter());
+//    	Back1.whenPressed(new MO_ShooterOut());
+//    	Back1.whenReleased(new StopShooter());
     	//RB1.whenPressed(new DischargeBall());
     	//RB1.whenReleased(new StopShooter());
     	
@@ -93,9 +93,9 @@ public class OI {
     	B1.whenReleased(new ArmStop());
     	
     	
-    	X1.whenPressed(new ArmToMax());
-    	X1.whenReleased(new ArmStop());
-    	X1.whenPressed(new Climb());
+    	Back1.whenPressed(new ArmToMax());
+    	Back1.whenReleased(new ArmStop());
+//    	X1.whenPressed(new Climb());
 //    	X1.whenReleased(new DriveWithXbox());
     	
     	
@@ -104,9 +104,9 @@ public class OI {
     	Y2.whenPressed(new DischargeBall());
     	Y2.whenReleased(new StopShooter());
     	
-    	A2.whenPressed(new MoveArm(0.80));
+    	A2.whenPressed(new MoveArm(0.90));
     	A2.whenReleased(new ArmStop());
-    	B2.whenPressed(new MoveArm(-0.75));
+    	B2.whenPressed(new MoveArm(-0.8));
     	B2.whenReleased(new ArmStop());
     	
     	Start2.whenPressed(new MO_ArmUp());

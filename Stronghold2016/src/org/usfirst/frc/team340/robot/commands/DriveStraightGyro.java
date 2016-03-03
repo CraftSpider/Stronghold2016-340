@@ -20,14 +20,14 @@ public class DriveStraightGyro extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drive.resetGyro();
+//    	Robot.drive.resetGyro();
     	setTimeout(2);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	angle = Robot.drive.getGyroAngle();
-    	Robot.drive.arcadeDrive(.75, angle*Kp);
+//    	angle = Robot.drive.getGyroAngle();
+//    	Robot.drive.arcadeDrive(.75, angle*Kp);
     }
 
     // Make this return true when this Command no longer needs to run execute()

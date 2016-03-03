@@ -28,22 +28,42 @@ public class MoveArm extends Command {
     protected void initialize() {    	
     }
     
-    // Called repeatedly when this Command is scheduled to run
-    @SuppressWarnings("static-access")
+	// Called repeatedly when this Command is scheduled to run
+	@SuppressWarnings("static-access")
 	protected void execute() {
-    	
-    	double leftPot = Robot.harvester.getLeftAimPot();
-    	double rightPot = Robot.harvester.getRightAimPot();
-    	
-    	this.leftSpeed = this.speed;
-    	this.rightSpeed = this.speed;
-    	    	
-    	if(!Robot.harvester.hasReset()) {
-    		leftSpeed *= 0.5;
-    		rightSpeed *= 0.5;
-    	}
-    	
-    	
+
+		double leftPot = Robot.harvester.getLeftAimPot();
+		double rightPot = Robot.harvester.getRightAimPot();
+
+		this.leftSpeed = this.speed;
+		this.rightSpeed = this.speed;
+
+		if (!Robot.harvester.hasReset()) {
+			leftSpeed *= 0.75;
+			rightSpeed *= 0.75;
+		} else if(Robot.harvester.hasReset() && Math.abs(Robot.harvester.getLeftAimPot()-Robot.harvester.getRightAimPot()) < 1) {
+			// do nothing we have arms in sync and speeds are already set
+		}else {
+
+			if (Math.abs(leftPot - rightPot) < 1) {
+				Robot.harvester.setLeftTilt(speed);
+				Robot.harvester.setRightTilt(speed);
+			} else if ((leftPot < rightPot && speed > 0) || (leftPot > rightPot && speed < 0)) {
+				// Robot.harvester.setLeftTilt(speed);
+				leftSpeed = speed;
+				rightSpeed = speed / 2.5;
+				// Robot.harvester.setRightTilt(speed/2.5);
+
+			} else if ((rightPot < leftPot && speed > 0) || (rightPot > leftPot && speed < 0)) {
+				// Robot.harvester.setLeftTilt(speed/2.5);
+				leftSpeed = speed / 2.5;
+				rightSpeed = speed;
+				// Robot.harvester.setRightTilt(speed);
+			}
+		}
+		// leftSpeed = speed;
+		// rightSpeed = speed;
+
     	// slow down as we get higher
     	// will not slow down below 20% of start speed
 //    	if(speed > 0 && Robot.harvester.hasReset()) {
@@ -54,13 +74,13 @@ public class MoveArm extends Command {
     	
     	//Slow down as we get lower
     	//logger.info("reset:" + Robot.harvester.hasReset());
-    	if(speed < 0 && Robot.harvester.hasReset()) {
-    		//what happens when we get negative values passed in here?
-    		//  need to figure out how to deal with this...
-    		//  Maybe special case for negativ pot values
-    		leftSpeed = leftSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-Robot.harvester.HARVESTER_MAX_ANGLE)+1);
-    		rightSpeed = rightSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-Robot.harvester.HARVESTER_MAX_ANGLE)+1);
-    	}
+//    	if(speed < 0 && Robot.harvester.hasReset()) {
+//    		//what happens when we get negative values passed in here?
+//    		//  need to figure out how to deal with this...
+//    		//  Maybe special case for negativ pot values
+//    		leftSpeed = leftSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-Robot.harvester.HARVESTER_MAX_ANGLE)+1);
+//    		rightSpeed = rightSpeed * ((1/150.0)*((leftPot+rightPot)/2.0-Robot.harvester.HARVESTER_MAX_ANGLE)+1);
+//    	}
     	
     	// stop left if bump slow right
 		if(Robot.harvester.getLeftLimit() && speed < 0) {

@@ -131,7 +131,7 @@ public class Harvester extends Subsystem {
 		
 		leftPot = new ZeroablePotentiometer(RobotMap.LeftAimPot, 250);
 		rightPot = new ZeroablePotentiometer(RobotMap.RightAimPot, 250);
-		rightPot.setInverted(true);
+		leftPot.setInverted(true);
 		
 		ballSensorLeft = new DigitalInput(RobotMap.BallSensorLeftPort);
 		ballSensorRight = new DigitalInput(RobotMap.BallSensorRightPort);
@@ -263,12 +263,12 @@ public class Harvester extends Subsystem {
     }
     
     public void setLeftTilt(double speed) {
-    	tiltLeft.set(-speed);
+    	tiltLeft.set(speed);
     	SmartDashboard.putNumber("LeftPotValue", leftPot.get());
     }
     
     public void setRightTilt(double speed) {
-    	tiltRight.set(speed);
+    	tiltRight.set(-speed);
     }
     
     public void setTilt(double speed) {

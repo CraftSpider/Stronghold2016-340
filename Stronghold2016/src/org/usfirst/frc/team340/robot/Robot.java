@@ -40,7 +40,7 @@ public class Robot extends IterativeRobot {
 	public static Harvester harvester;
 	public static OI oi;
 	
-	public static Timer climberFailsafe;
+//	public static Timer climberFailsafe;
 
     Command autonomousCommand;
     CommandGroup belowLowBar;
@@ -133,7 +133,7 @@ public class Robot extends IterativeRobot {
         //if (autonomousCommand != null) autonomousCommand.start();
     	
     	//Calibrates Gyro at beginning of auto.
-        drive.calibrateGyro();
+//        drive.calibrateGyro();
     	
     	belowLowBar = new CG_AutoLowBar();
         belowLowBar.start();
@@ -153,7 +153,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         
-        climberFailsafe.start();
+//        climberFailsafe.start();
     }
 
     /**
@@ -175,11 +175,11 @@ public class Robot extends IterativeRobot {
      * I can't stop the timer from here, so I did it in the command
      * @return boolean are we at the end of the match
      */
-    public static boolean isEndGame() {
-    	if(climberFailsafe.get() >= 110) {
-    		return true;
-    	} else {
-    		return false;
-    	}
-    }
+//    public static boolean isEndGame() {
+//    	if(climberFailsafe.get() >= 110) {
+//    		return true;
+//    	} else {
+//    		return false;
+//    	}
+//    }
 }
