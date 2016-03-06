@@ -20,7 +20,7 @@ public class MO_BallControlIn extends Command {
     public MO_BallControlIn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.harvester);
+    	requires(Robot.harvesterRollers);
     }
 
     // Called just before this Command runs the first time
@@ -33,7 +33,7 @@ public class MO_BallControlIn extends Command {
      * Sets the rotation of the ball control in
      */
     protected void execute() {
-    	Robot.harvester.setBallControl(-1);
+    	Robot.harvesterRollers.setBallControl(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -51,7 +51,7 @@ public class MO_BallControlIn extends Command {
      */
     protected void end() {
     	logger.info("[ending]");
-    	Robot.harvester.setBallControl(0);
+    	Robot.harvesterRollers.setBallControl(0);
     }
 
     // Called when another command which requires one or more of the same

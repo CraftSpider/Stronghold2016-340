@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * drive code including motors and encoders.
@@ -36,7 +37,7 @@ public class Drive extends Subsystem {
 	// Drive Gyro Sensor
 //	private AnalogGyro driveGyro;
 
-	//private Encoder leftDriveEncoder;
+	private Encoder leftDriveEncoder;
 	//private Encoder rightDriveEncoder;
  
 	// Clutch servo
@@ -60,6 +61,8 @@ public class Drive extends Subsystem {
 //		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
 //		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 
+		leftDriveEncoder = new Encoder(10, 11);
+		
 //		PTOMotor = new PWM(RobotMap.DrivePTO);
 		PTOMotor = new Servo(RobotMap.DrivePTO);
 				
@@ -199,13 +202,15 @@ public class Drive extends Subsystem {
 
 	/**
 	 * One joystick drive mode.
-	 * 
+u	 * 
 	 * @param moveValue
 	 * @param rotateValue
 	 */
 	public void arcadeDrive(double moveValue, double rotateValue) {
+//		System.out.println("left encoder " + leftDriveEncoder.get());
 		if (moveValue >= 0.0) {
 			moveValue = (moveValue * moveValue);
+
 		} else {
 			moveValue = -(moveValue * moveValue);
 

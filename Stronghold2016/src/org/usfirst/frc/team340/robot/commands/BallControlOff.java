@@ -20,7 +20,7 @@ public class BallControlOff extends Command {
 	 */
     public BallControlOff() {
     	
-    	requires(Robot.harvester);
+    	requires(Robot.harvesterRollers);
     	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -36,7 +36,7 @@ public class BallControlOff extends Command {
      * Turns off the ball control
      */
     protected void execute() {
-    	Robot.harvester.setBallControl(0);
+    	Robot.harvesterRollers.setBallControl(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

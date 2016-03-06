@@ -15,6 +15,7 @@ import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
 import org.usfirst.frc.team340.robot.commands.Shoot;
 import org.usfirst.frc.team340.robot.commands.StopDrive;
 import org.usfirst.frc.team340.robot.commands.StopShooter;
+import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlIn;
@@ -22,6 +23,7 @@ import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlOut;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchOff;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchOn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchToggle;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ManualShooting;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 
@@ -71,6 +73,8 @@ public class OI {
 //    	Y1.whenReleased(new StopShooter());
     	
     	//X1.whenPressed(new DriveTime(1, .5));
+
+    	Start1.whenPressed(new MO_ManualShooting());
     	
     	LB1.whenPressed(new HarvestBall());
     	LB1.whenReleased(new StopShooter());
@@ -82,8 +86,8 @@ public class OI {
     	//RB1.whenPressed(new DischargeBall());
     	//RB1.whenReleased(new StopShooter());
     	
-    	Start1.whenPressed(new ArmToZero());
-    	Start1.whenReleased(new ArmStop());
+//    	Start1.whenPressed(new ArmToZero());
+//    	Start1.whenReleased(new ArmStop());
     	
     	//Back1.whenPressed(new ArmToNicerPosition(20) );
     	
@@ -93,8 +97,10 @@ public class OI {
     	B1.whenReleased(new ArmStop());
     	
     	
-    	Back1.whenPressed(new ArmToMax());
-    	Back1.whenReleased(new ArmStop());
+//    	Back1.whenPressed(new ArmToMax());
+//    	Back1.whenReleased(new ArmStop());
+    	
+    	dPadUp1.whenPressed(new CG_SpyBot());
 //    	X1.whenPressed(new Climb());
 //    	X1.whenReleased(new DriveWithXbox());
     	
@@ -109,8 +115,8 @@ public class OI {
     	B2.whenPressed(new MoveArm(-0.8));
     	B2.whenReleased(new ArmStop());
     	
-    	Start2.whenPressed(new MO_ArmUp());
-    	Start2.whenReleased(new ArmStop());
+//    	Start2.whenPressed(new MO_ArmUp());
+//    	Start2.whenReleased(new ArmStop());
     	//Start2.whenPressed(new ArmToNicerPosition(12));
     	Back2.whenPressed(new MO_ArmDown());
     	Back2.whenReleased(new ArmStop());
@@ -191,6 +197,16 @@ public class OI {
 //	}
 //	LeftTrig1 leftTrig1 = new LeftTrig1();
 //	
+	
+	public class DPadUp1 extends Button {
+		public boolean get() {
+//			System.out.println(xBoxDriver.getPOV());
+			return xBoxDriver.getPOV() == 0;
+		}
+	}
+	
+	DPadUp1 dPadUp1 = new DPadUp1();
+	
 	//Init & construct co-driver controller
 	Joystick xBoxCoDriver = new Joystick(1);
 	
@@ -220,7 +236,23 @@ public class OI {
 	}
 	LeftTrig2 leftTrig2 = new LeftTrig2();
 	
+	public class DPadUp2 extends Button {
+		public boolean get() {
+//			System.out.println(xBoxDriver.getPOV());
+			return xBoxCoDriver.getPOV() == 0;
+		}
+	}
 	
+	DPadUp2 dPadUp2 = new DPadUp2();
+	
+	public class DPadDown2 extends Button {
+		public boolean get() {
+//			System.out.println(xBoxDriver.getPOV());
+			return xBoxCoDriver.getPOV() == 180;
+		}
+	}
+	
+	DPadDown2 dPadDown2 = new DPadDown2();
 	
 	/**
 	 * Get throttle for GTA (trigger-based) drive

@@ -15,7 +15,7 @@ public class DischargeBall extends Command {
 	Logger logger = Robot.getLogger(DischargeBall.class);
 	
     public DischargeBall() {
-    	requires(Robot.harvester);
+    	requires(Robot.harvesterRollers);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -27,8 +27,8 @@ public class DischargeBall extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_DISCHARGE_BALL_V_BUS);
-    	Robot.harvester.setShooter(Robot.harvester.SHOOTER_DISCHARGE_BALL_V_BUS);
+    	Robot.harvesterRollers.setBallControl(Robot.harvesterRollers.HARVESTER_DISCHARGE_BALL_V_BUS);
+    	Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_DISCHARGE_BALL_V_BUS);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,8 +39,8 @@ public class DischargeBall extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	logger.info("[Ending]");
-    	Robot.harvester.setBallControl(0);
-    	Robot.harvester.setShooter(0);
+    	Robot.harvesterRollers.setBallControl(0);
+    	Robot.harvesterRollers.setShooter(0);
     }
 
     // Called when another command which requires one or more of the same

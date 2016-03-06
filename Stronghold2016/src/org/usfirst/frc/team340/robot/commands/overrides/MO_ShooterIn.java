@@ -20,7 +20,7 @@ public class MO_ShooterIn extends Command {
     public MO_ShooterIn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.harvester);
+    	requires(Robot.harvesterRollers);
     }
 
     // Called just before this Command runs the first time
@@ -33,7 +33,7 @@ public class MO_ShooterIn extends Command {
      * Sets the rotation for the shooter in
      */
     protected void execute() {
-    	Robot.harvester.setShooter(-1);
+    	Robot.harvesterRollers.setShooter(-1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -51,7 +51,7 @@ public class MO_ShooterIn extends Command {
      */
     protected void end() {
     	logger.info("[ending]");
-    	Robot.harvester.setShooter(0);
+    	Robot.harvesterRollers.setShooter(0);
     }
 
     // Called when another command which requires one or more of the same

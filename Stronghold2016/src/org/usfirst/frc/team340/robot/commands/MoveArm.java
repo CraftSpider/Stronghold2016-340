@@ -41,14 +41,10 @@ public class MoveArm extends Command {
 		if (!Robot.harvester.hasReset()) {
 			leftSpeed *= 0.75;
 			rightSpeed *= 0.75;
-		} else if(Robot.harvester.hasReset() && Math.abs(Robot.harvester.getLeftAimPot()-Robot.harvester.getRightAimPot()) < 1) {
+		}/* else if(Robot.harvester.hasReset() && Math.abs(Robot.harvester.getLeftAimPot()-Robot.harvester.getRightAimPot()) < 1) {
 			// do nothing we have arms in sync and speeds are already set
 		}else {
-
-			if (Math.abs(leftPot - rightPot) < 1) {
-				Robot.harvester.setLeftTilt(speed);
-				Robot.harvester.setRightTilt(speed);
-			} else if ((leftPot < rightPot && speed > 0) || (leftPot > rightPot && speed < 0)) {
+			if ((leftPot < rightPot && speed > 0) || (leftPot > rightPot && speed < 0)) {
 				// Robot.harvester.setLeftTilt(speed);
 				leftSpeed = speed;
 				rightSpeed = speed / 2.5;
@@ -60,7 +56,7 @@ public class MoveArm extends Command {
 				rightSpeed = speed;
 				// Robot.harvester.setRightTilt(speed);
 			}
-		}
+		}*/
 		// leftSpeed = speed;
 		// rightSpeed = speed;
 

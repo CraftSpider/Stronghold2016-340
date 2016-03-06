@@ -18,7 +18,7 @@ public class HarvestBall extends Command {
     public HarvestBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.harvester);
+    	requires(Robot.harvesterRollers);
     	
     }
 
@@ -33,9 +33,9 @@ public class HarvestBall extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double desiredShooterWheelHarvestSpeed = Robot.harvester.SHOOTER_HARVEST_V_BUS;
+    	double desiredShooterWheelHarvestSpeed = Robot.harvesterRollers.SHOOTER_HARVEST_V_BUS;
     	
-    	if(Robot.harvester.hasBallLeft()) {
+    	if(Robot.harvesterRollers.hasBallLeft()) {
     		Robot.oi.driverRumbleLeft(0);
     		Robot.oi.coDriverRumbleLeft(0);
     		desiredShooterWheelHarvestSpeed /= 2;
@@ -44,7 +44,7 @@ public class HarvestBall extends Command {
     		Robot.oi.coDriverRumbleLeft(1);
     	}
     	
-    	if(Robot.harvester.hasBallRight()) {
+    	if(Robot.harvesterRollers.hasBallRight()) {
     		Robot.oi.driverRumbleRight(0);
     		Robot.oi.coDriverRumbleRight(0);
     		desiredShooterWheelHarvestSpeed /= 2;
@@ -53,26 +53,26 @@ public class HarvestBall extends Command {
     		Robot.oi.coDriverRumbleRight(1);
     	}
     	
-    	Robot.harvester.setBallControl(Robot.harvester.HARVESTER_HARVEST_V_BUS);
-    	Robot.harvester.setShooter(desiredShooterWheelHarvestSpeed);
+    	Robot.harvesterRollers.setBallControl(Robot.harvesterRollers.HARVESTER_HARVEST_V_BUS);
+    	Robot.harvesterRollers.setShooter(desiredShooterWheelHarvestSpeed);
     	
-    	if(Robot.harvester.hasBall()) {
+    	if(Robot.harvesterRollers.hasBall()) {
     		logger.info("Both sensors tripped; ball harvested");
     	} else {
-    		logger.info("Left sensor: " + Robot.harvester.hasBallLeft() + "; right sensor: " + Robot.harvester.hasBallRight());
+    		logger.info("Left sensor: " + Robot.harvesterRollers.hasBallLeft() + "; right sensor: " + Robot.harvesterRollers.hasBallRight());
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.harvester.hasBall();
+    	return Robot.harvesterRollers.hasBall();
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	logger.info("[Ending]");
-    	Robot.harvester.setBallControl(0);
-    	Robot.harvester.setShooter(0);
+    	Robot.harvesterRollers.setBallControl(0);
+    	Robot.harvesterRollers.setShooter(0);
     	
     	Robot.oi.driverRumbleLeft(0);
     	Robot.oi.driverRumbleRight(0);

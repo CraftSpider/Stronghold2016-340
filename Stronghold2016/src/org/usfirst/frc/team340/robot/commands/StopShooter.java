@@ -19,7 +19,7 @@ public class StopShooter extends Command {
 	 * Stops the shooter
 	 */
     public StopShooter() {    	
-    	requires(Robot.harvester);    	
+    	requires(Robot.harvesterRollers);    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -34,8 +34,8 @@ public class StopShooter extends Command {
      * Stops the shooter
      */
     protected void execute() {
-    	Robot.harvester.setBallControl(0);
-    	Robot.harvester.setShooter(0);
+    	Robot.harvesterRollers.setBallControl(0);
+    	Robot.harvesterRollers.setShooter(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

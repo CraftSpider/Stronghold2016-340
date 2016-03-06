@@ -17,7 +17,7 @@ public class Shoot extends Command {
     public Shoot() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);    	
-    	requires(Robot.harvester);
+    	requires(Robot.harvesterRollers);
     }
     
     Timer t = new Timer();
@@ -26,30 +26,30 @@ public class Shoot extends Command {
     protected void initialize() {
     	t.start();
     	logger.info("[Initializing: Shooter]");
-    	Robot.harvester.setShooter(Robot.harvester.SHOOTER_SHOOT_V_BUS);
+    	Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
     	
     }
-
+    
     // Called repeatedly when this Command is scheduled to run
     //Allows the shooter wheel to speed up before the ball is shot
     //Hold Back on controller 1 to keep the command going and roll the shooter wheel
     //Hold Start on controller 1 to begin rolling the ball control wheel
     
     protected void execute() {
-    	Robot.harvester.setShooter(Robot.harvester.SHOOTER_SHOOT_V_BUS);
-    	logger.info("current: " + Robot.harvester.harvesterCurrent());
+    	Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
+    	logger.info("current: " + Robot.harvesterRollers.harvesterCurrent());
     	double desiredBallControlSpeed = 0;
     	//if we have the ball stop
-    	if(Robot.harvester.hasBall()){
+    	if(Robot.harvesterRollers.hasBall()){
     		desiredBallControlSpeed = 0;
     	}else{
-    		desiredBallControlSpeed = Robot.harvester.HARVESTER_HARVEST_V_BUS;
+    		desiredBallControlSpeed = Robot.harvesterRollers.HARVESTER_HARVEST_V_BUS;
     	}
     	
-    	if(t.get() > Robot.harvester.SHOOTER_SHOOT_SPINUP_TIME) {
-    		desiredBallControlSpeed = Robot.harvester.HARVESTER_RELEASE_BALL_V_BUS;
+    	if(t.get() > Robot.harvesterRollers.SHOOTER_SHOOT_SPINUP_TIME) {
+    		desiredBallControlSpeed = Robot.harvesterRollers.HARVESTER_RELEASE_BALL_V_BUS;
     	}
-    	Robot.harvester.setBallControl(desiredBallControlSpeed);
+    	Robot.harvesterRollers.setBallControl(desiredBallControlSpeed);
 //    	if(Robot.oi.getBackState()) {
 //    		Robot.harvester.setShooter(Robot.harvester.SHOOTER_SHOOT_V_BUS);
 //    	}
@@ -67,8 +67,8 @@ public class Shoot extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	logger.info("[Ending]");
-    	Robot.harvester.setShooter(0);
-    	Robot.harvester.setBallControl(0);
+    	Robot.harvesterRollers.setShooter(0);
+    	Robot.harvesterRollers.setBallControl(0);
     }
 
     // Called when another command which requires one or more of the same

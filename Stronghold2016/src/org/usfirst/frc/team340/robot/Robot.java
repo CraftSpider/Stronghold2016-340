@@ -8,9 +8,11 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team340.robot.commands.auto.CG_AutoLowBar;
+import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
 import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 import org.usfirst.frc.team340.robot.subsystems.Harvester;
+import org.usfirst.frc.team340.robot.subsystems.HarvesterRollers;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -38,6 +40,7 @@ public class Robot extends IterativeRobot {
 	public static Climber climber;
 	public static Drive drive;
 	public static Harvester harvester;
+	public static HarvesterRollers harvesterRollers;
 	public static OI oi;
 	
 //	public static Timer climberFailsafe;
@@ -81,15 +84,16 @@ public class Robot extends IterativeRobot {
     	harvester = new Harvester();
         drive = new Drive();
         climber = new Climber();
+        harvesterRollers = new HarvesterRollers();
         SmartDashboard.putData(harvester);
         SmartDashboard.putData(drive);
         SmartDashboard.putData(climber);
+        SmartDashboard.putData(harvesterRollers);
         oi = new OI();
-
+//ppim.pm.ip.mip.mi.p.miipmmip.ip.m.pimmmpim.m.ipm..ipmmpimipmipm.mmipipm.pipmi.pmipmmpimipmpi..lmmmplip.mimp.im..p.ppn.p.pp.p.ppp.p
         chooser = new SendableChooser();
-        
-//        chooser.addDefault("Default Auto", new AutoDefault());
-//        chooser.addObject("My Auto", new MyAutoCommand());
+        chooser.addObject("Spy Bot Low Bar", new CG_SpyBot());
+//        chooser.addObject("Middle to Low Bar", new MyAutoCommand());
         SmartDashboard.putData("AutoSelect", chooser);
     }
     
@@ -127,16 +131,16 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        //autonomousCommand = (Command) chooser.getSelected();
+        autonomousCommand = (Command) chooser.getSelected();
     	
     	// schedule the autonomous command (example)
-        //if (autonomousCommand != null) autonomousCommand.start();
+        if (autonomousCommand != null) autonomousCommand.start();
     	
     	//Calibrates Gyro at beginning of auto.
 //        drive.calibrateGyro();
     	
-    	belowLowBar = new CG_AutoLowBar();
-        belowLowBar.start();
+//    	belowLowBar = new CG_AutoLowBar();
+//        belowLowBar.start();
     }
 
     /**
