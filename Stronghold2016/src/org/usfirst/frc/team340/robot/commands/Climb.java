@@ -13,15 +13,17 @@ public class Climb extends Command {
 	
 	Logger logger = Robot.getLogger(Climb.class);
 	
+	private double speed = 0;
+	
 	/**
 	 * Set requirements for climb command.
 	 * Requires climber and drive.
 	 * Pulls down the arm to raise the robot
 	 */
-    public Climb() {
+    public Climb(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	
+    	this.speed = speed;
     	requires(Robot.climber);
     	requires(Robot.drive);
     }
@@ -37,7 +39,8 @@ public class Climb extends Command {
      * If the arm is not at the bottom AND the clutch is engaged AND the latch is open, set driverail motors to full speed
      */
     protected void execute() {
-    	Robot.drive.engagePTO();
+    	Robot.climber.runDart(this.speed);
+//    	Robot.drive.engagePTO();
 //    	if(!Robot.climber.isAtBottom() && Robot.drive.clutchState) {
 //    		Robot.drive.setBothDrive(Robot.drive.CLIMB_DRIVE_SPEED, Robot.drive.CLIMB_DRIVE_SPEED);
 //    	}

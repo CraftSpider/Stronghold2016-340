@@ -7,6 +7,7 @@ import org.usfirst.frc.team340.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -21,6 +22,8 @@ public class Climber extends Subsystem {
 	private Servo armLatch;
 	private DigitalInput atBottom;
 	
+	private VictorSP dart;
+	
 	public boolean latchState = true;
 	
 	/**
@@ -28,6 +31,7 @@ public class Climber extends Subsystem {
 	 */
 	public Climber() {
 		armLatch = new Servo(RobotMap.ClimberLatch);
+		dart = new VictorSP(4);
 		atBottom = new DigitalInput(RobotMap.ClimberBottomSensor);
 	}
 
@@ -60,5 +64,9 @@ public class Climber extends Subsystem {
      */
     public boolean isAtBottom() {
     	return atBottom.get();
+    }
+    
+    public void runDart(double speed) {
+    	dart.set(speed);
     }
 }

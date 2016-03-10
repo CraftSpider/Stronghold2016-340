@@ -11,12 +11,16 @@ import org.usfirst.frc.team340.robot.commands.DriveTime;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 import org.usfirst.frc.team340.robot.commands.HarvestBall;
 import org.usfirst.frc.team340.robot.commands.MoveArm;
+import org.usfirst.frc.team340.robot.commands.MoveArmVariable;
 import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
 import org.usfirst.frc.team340.robot.commands.Shoot;
+import org.usfirst.frc.team340.robot.commands.StopBallControl;
 import org.usfirst.frc.team340.robot.commands.StopDrive;
 import org.usfirst.frc.team340.robot.commands.StopShooter;
+import org.usfirst.frc.team340.robot.commands.StopShooterWheels;
 import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
+import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmStop;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlOut;
@@ -73,8 +77,19 @@ public class OI {
 //    	Y1.whenReleased(new StopShooter());
     	
     	//X1.whenPressed(new DriveTime(1, .5));
+    	
+    	A2.whenPressed(new ArmToZero());
+    	A2.whenReleased(new ArmStop());
+    	
+    	B2.whenPressed(new ArmToMax());
+    	B2.whenReleased(new ArmStop());
 
-    	Start1.whenPressed(new MO_ManualShooting());
+//    	Start1.whenPressed(new MO_ManualShooting());
+    	Start1.whenPressed(new Climb(1));
+    	Start1.whenReleased(new Climb(0));
+    	Back1.whenPressed(new Climb(-0.5));
+    	Back1.whenReleased(new Climb(0));
+    	
     	
     	LB1.whenPressed(new HarvestBall());
     	LB1.whenReleased(new StopShooter());
@@ -91,16 +106,16 @@ public class OI {
     	
     	//Back1.whenPressed(new ArmToNicerPosition(20) );
     	
-    	A1.whenPressed(new MoveArm(0.80));
-    	A1.whenReleased(new ArmStop());
-    	B1.whenPressed(new MoveArm(-0.75));
-    	B1.whenReleased(new ArmStop());
+    	dPadUp1.whenPressed(new MoveArm(0.80));
+    	dPadUp1.whenReleased(new ArmStop());
+    	dPadDown1.whenPressed(new MoveArm(-0.75));
+    	dPadDown1.whenReleased(new ArmStop());
     	
     	
 //    	Back1.whenPressed(new ArmToMax());
 //    	Back1.whenReleased(new ArmStop());
     	
-    	dPadUp1.whenPressed(new CG_SpyBot());
+//    	dPadUp1.whenPressed(new CG_SpyBot());
 //    	X1.whenPressed(new Climb());
 //    	X1.whenReleased(new DriveWithXbox());
     	
@@ -110,10 +125,10 @@ public class OI {
     	Y2.whenPressed(new DischargeBall());
     	Y2.whenReleased(new StopShooter());
     	
-    	A2.whenPressed(new MoveArm(0.90));
-    	A2.whenReleased(new ArmStop());
-    	B2.whenPressed(new MoveArm(-0.8));
-    	B2.whenReleased(new ArmStop());
+    	dPadUp2.whenPressed(new MoveArm(0.90));
+    	dPadUp2.whenReleased(new ArmStop());
+    	dPadDown2.whenPressed(new MoveArm(-0.8));
+    	dPadDown2.whenReleased(new ArmStop());
     	
 //    	Start2.whenPressed(new MO_ArmUp());
 //    	Start2.whenReleased(new ArmStop());
@@ -133,13 +148,36 @@ public class OI {
     	
     	//leftTrig2.whenPressed(new MO_ClutchOff());
     	
-    	X2.whenPressed(new Climb());
-    	X2.whenReleased(new StopDrive());
+//    	X2.whenPressed(new Climb());
+//    	X2.whenReleased(new StopDrive());
+    	
+    	coDriverLeftStick.whenPressed(new MoveArmVariable());
+    	coDriverLeftStick.whenReleased(new StopDrive());
+    	
+    	coDriverTrigs.whenPressed(new MO_ManualShooting());
     	//A1.whenPressed(new DriveDistance(5,20));
     	//B1.whenPressed(new DriveDistance(5,-20));
     	
+    	//////////////////////////////////////////
+    	//			  MANUAL BOARD				//
+    	//////////////////////////////////////////
     	
-
+    	HarvesterUp.whenPressed(new MO_ArmUp());
+    	HarvesterUp.whenReleased(new MO_ArmStop());
+    	HarvesterDown.whenPressed(new MO_ArmDown());
+    	HarvesterDown.whenReleased(new MO_ArmStop());
+    	
+    	RollerIn.whenPressed(new MO_BallControlIn());
+    	RollerIn.whenReleased(new StopBallControl());
+    	RollerOut.whenPressed(new MO_BallControlOut());
+    	RollerOut.whenReleased(new StopBallControl());
+    	
+    	ShooterIn.whenPressed(new MO_ShooterIn());
+    	ShooterIn.whenReleased(new StopShooterWheels());
+    	ShooterOut.whenPressed(new MO_ShooterOut());
+    	ShooterOut.whenReleased(new StopShooterWheels());
+    	
+    	
     }
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -168,6 +206,27 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	
+    Joystick ManualBoard = new Joystick(2);
+    
+    Button HarvesterUp = new JoystickButton(ManualBoard, 2);
+    Button HarvesterDown = new JoystickButton(ManualBoard, 1);
+    Button RollerIn = new JoystickButton(ManualBoard, 10);
+    Button RollerOut = new JoystickButton(ManualBoard, 13);
+    Button ShooterIn = new JoystickButton(ManualBoard, 5);
+    Button ShooterOut = new JoystickButton(ManualBoard, 6);
+    Button ClimberUp = new JoystickButton(ManualBoard, 4);
+    Button ClimberDown = new JoystickButton(ManualBoard, 3);
+    Button ClimberEngage = new JoystickButton(ManualBoard, 9);
+    
+    public class climberDisengage extends Button {
+		public boolean get() {
+//			System.out.println(xBoxDriver.getPOV());
+			return ManualBoard.getPOV() == 0;
+		}
+	}
+    	
+    climberDisengage ClimberDisengage = new climberDisengage();
+    
 	//Init & Construct driver controller
 	Joystick xBoxDriver = new Joystick(0);
 	
@@ -206,6 +265,15 @@ public class OI {
 	}
 	
 	DPadUp1 dPadUp1 = new DPadUp1();
+	
+	public class DPadDown1 extends Button {
+		public boolean get() {
+//			System.out.println(xBoxDriver.getPOV());
+			return xBoxDriver.getPOV() == 180;
+		}
+	}
+	
+	DPadDown1 dPadDown1 = new DPadDown1();
 	
 	//Init & construct co-driver controller
 	Joystick xBoxCoDriver = new Joystick(1);
@@ -273,6 +341,30 @@ public class OI {
 		//todo: add a dead zone variable perhaps in robotmap
 	}
 	
+	public double getCoDriverSummedTriggers() {
+		//only return for the right trigger if it above 0.05 (dead zone)
+		if(xBoxCoDriver.getRawAxis(3) > 0.05) {
+			return xBoxCoDriver.getRawAxis(3);
+		//even though the right trigger isn't above 0.05, make sure the left is to avoid running the
+		//motors really slowly
+		} else if(xBoxCoDriver.getRawAxis(2) > 0.05) {
+			return -xBoxCoDriver.getRawAxis(2);
+		}
+		//in case neither trigger is held down
+		return 0;
+		
+		//todo: add a dead zone variable perhaps in robotmap
+	}
+	
+	public class CoDriverTrigs extends Button {
+		public boolean get() {
+//			System.out.println(xBoxDriver.getPOV());
+			return Math.abs(getCoDriverSummedTriggers()) < 0.5;
+		}
+	}
+	
+	CoDriverTrigs coDriverTrigs = new CoDriverTrigs();
+	
 	public double getDriverLeftY() {
 		return -xBoxDriver.getRawAxis(1);
 	}
@@ -287,6 +379,19 @@ public class OI {
 	public double getDriverRightX() {
 		return -xBoxDriver.getRawAxis(4);
 	}
+	
+	public double getCoDriverLeftY() {
+		return -xBoxCoDriver.getRawAxis(1);
+	}
+	
+	public class CoDriverLeftStick extends Button {
+		public boolean get() {
+//			System.out.println(xBoxDriver.getPOV());
+			return Math.abs(getCoDriverLeftY()) > 0.1;
+		}
+	}
+	
+	CoDriverLeftStick coDriverLeftStick = new CoDriverLeftStick();
 	
 	/**
 	 * returns 0 if LB1 is pressed
@@ -340,6 +445,13 @@ public class OI {
 	 */
 	public boolean getStartState() {
 		return Start1.get();
+	}
+	
+	public boolean getDPadUpState2() {
+		return dPadUp2.get();
+	}
+	public boolean getDPadDownState2() {
+		return dPadDown2.get();
 	}
 	
 	/**

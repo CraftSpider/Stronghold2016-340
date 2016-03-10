@@ -19,35 +19,54 @@ public class MO_ManualShooting extends Command {
     	requires(Robot.harvesterRollers);
     }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-    
-    private boolean startPressed = false;
-    private boolean startReleased = false;
+    private boolean leftTrigPressed = false;
+    private boolean leftTrigReleased = false;
     
     private boolean backPressed = false;
     private boolean backReleased = false;
+    
+    // Called just before this Command runs the first time
+    protected void initialize() {
+    	leftTrigPressed = false;
+    	leftTrigReleased = false;
+        
+        backPressed = false;
+        backReleased = false;
+    }
+    
+    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	if(Robot.oi.getStartState()) {
-    		System.out.println("start pressed");
-    		if(!startPressed && !startReleased) {
+    	// if left trig is pressed
+    	if(Robot.oi.getCoDriverSummedTriggers() < -0.5) {
+    		System.out.println("trig pressed");
+    		// if it has not already been pressed nor released
+    		if(!leftTrigPressed && !leftTrigReleased) {
     			System.out.println("setting shooter full");
-    			startPressed = true;
+    			// set left trig to true (it has been pressed)
+    			leftTrigPressed = true;
+    			// shoot spin up
     			Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
-    		} else if (startReleased) {
+    		// if we have already released
+    		} else if (leftTrigReleased) {
     			System.out.println("setting shooter off");
+    			// turn shooter off
     			Robot.harvesterRollers.setShooter(0);
-    			startReleased = false;
+    			// set left trig to true (it has been pressed)
+    			leftTrigPressed = true;
+    			// we have not released yet
+    			leftTrigReleased = false;
     		}
+    	// if left trig is not pressed
     	} else {
-    		if(startPressed && !startReleased) {
-    			startReleased = true;
-    			startPressed = false;
+    		// if we have pressed but not released yet
+    		if(leftTrigPressed && !leftTrigReleased) {
+    			// we have released
+    			leftTrigReleased = true;
     		}
+    		// we aren't pressed any more
+			leftTrigPressed = false;
     	}
     	
 //    	log.info("Arm Potentiometers left: " + Robot.harvester.getLeftAimPot() + " right: " + Robot.harvester.getRightAimPot() + " left switch:" + Robot.harvester.getLeftLimit()  + " right switch:" + Robot.harvester.getRightLimit());

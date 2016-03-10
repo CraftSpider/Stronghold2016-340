@@ -33,7 +33,7 @@ public class MO_ShooterIn extends Command {
      * Sets the rotation for the shooter in
      */
     protected void execute() {
-    	Robot.harvesterRollers.setShooter(-1);
+    	Robot.harvesterRollers.setShooter(1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
