@@ -15,14 +15,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CG_SpyBot extends CommandGroup {
     
     public  CG_SpyBot() {
-    	addSequential(new ArmToMax(), 4);
+    		
+    	//  simple just shoot 
+    	addSequential(new ArmToMax(), 5);
+    	addSequential(new Shoot(-0.65), 7);
+    	
+    	
+    	/*addSequential(new ArmToMax(), 4);
     	addSequential(new Shoot(), 7.5);
     	addSequential(new DriveSpin(-1), .375);
     	addSequential(new DriveTime(1, -0.75));
     	addSequential(new DriveSpin(0.75), 1.15);
     	addSequential(new ArmToZero(), 7);
     	addSequential(new MO_ArmUp(), 0.2);
-    	addSequential(new DriveTime(1, 0.75));
+    	addSequential(new DriveTime(1, 0.75));*/
     	
     	// uncomment these when driveSpin has been tested
     	

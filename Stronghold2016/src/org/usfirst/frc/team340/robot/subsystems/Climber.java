@@ -21,6 +21,8 @@ public class Climber extends Subsystem {
 	Logger logger = Robot.getLogger("climber");
 	private Servo armLatch;
 	private DigitalInput atBottom;
+	private DigitalInput dartLimit;
+	private DigitalInput winchBanner;
 	
 	private VictorSP dart;
 	
@@ -32,7 +34,9 @@ public class Climber extends Subsystem {
 	public Climber() {
 		armLatch = new Servo(RobotMap.ClimberLatch);
 		dart = new VictorSP(4);
-		atBottom = new DigitalInput(RobotMap.ClimberBottomSensor);
+//		atBottom = new DigitalInput(RobotMap.ClimberBottomSensor);
+		dartLimit = new DigitalInput(RobotMap.ClimberDartLimit);
+		winchBanner = new DigitalInput(RobotMap.ClimberBanner);
 	}
 
     public void initDefaultCommand() {
@@ -68,5 +72,12 @@ public class Climber extends Subsystem {
     
     public void runDart(double speed) {
     	dart.set(speed);
+    }
+    
+    public boolean getDartLimit() {
+    	return !dartLimit.get();
+    }
+    public boolean getWinchBanner() {
+    	return winchBanner.get();
     }
 }

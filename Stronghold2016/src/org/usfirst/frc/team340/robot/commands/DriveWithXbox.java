@@ -48,6 +48,12 @@ public class DriveWithXbox extends Command {
     		Robot.drive.disengagePTO();
     	}*/
     	
+    	if(Robot.drive.PTOState) {
+    		Robot.drive.engagePTO();
+    	} else {
+    		Robot.drive.disengagePTO();
+    	}
+    	
     	//Allow driver to drive in any of three modes.
     	// 1. Use triggers for speed, joystick for turning
     	// 2. Use right joystick for slow motion

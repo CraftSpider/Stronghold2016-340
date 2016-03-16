@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Shoot extends Command {
 
+	private double speedOverride = 100;
 	
 	Logger logger = Robot.getLogger(Shoot.class);
     public Shoot() {
@@ -20,14 +21,22 @@ public class Shoot extends Command {
     	requires(Robot.harvesterRollers);
     }
     
+    public Shoot(double speed) {
+    	requires(Robot.harvesterRollers);
+    	speedOverride = speed;
+    }
+    
     Timer t = new Timer();
     
     // Called just before this Command runs the first time
     protected void initialize() {
     	t.start();
     	logger.info("[Initializing: Shooter]");
-    	Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
-    	
+    	if(speedOverride == 100) {
+    		Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
+    	} else {
+    		Robot.harvesterRollers.setShooter(speedOverride);
+    	}
     }
     
     // Called repeatedly when this Command is scheduled to run
@@ -36,7 +45,11 @@ public class Shoot extends Command {
     //Hold Start on controller 1 to begin rolling the ball control wheel
     
     protected void execute() {
-    	Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
+    	if(speedOverride == 100) {
+    		Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
+    	} else {
+    		Robot.harvesterRollers.setShooter(speedOverride);
+    	}
     	logger.info("current: " + Robot.harvesterRollers.harvesterCurrent());
     	double desiredBallControlSpeed = 0;
     	//if we have the ball stop

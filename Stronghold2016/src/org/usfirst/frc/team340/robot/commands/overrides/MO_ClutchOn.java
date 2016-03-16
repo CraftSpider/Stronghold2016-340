@@ -44,7 +44,7 @@ public class MO_ClutchOn extends Command {
      * @return boolean true
      */
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

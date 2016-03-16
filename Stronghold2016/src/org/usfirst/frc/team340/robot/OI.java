@@ -85,10 +85,10 @@ public class OI {
     	B2.whenReleased(new ArmStop());
 
 //    	Start1.whenPressed(new MO_ManualShooting());
-    	Start1.whenPressed(new Climb(1));
-    	Start1.whenReleased(new Climb(0));
-    	Back1.whenPressed(new Climb(-0.5));
-    	Back1.whenReleased(new Climb(0));
+    	Start1.whenPressed(new Climb(0.7));
+    	Start1.whenReleased(new DriveWithXbox());
+    	Back1.whenPressed(new Climb(-1));
+    	Back1.whenReleased(new DriveWithXbox());
     	
     	
     	LB1.whenPressed(new HarvestBall());
@@ -177,6 +177,10 @@ public class OI {
     	ShooterOut.whenPressed(new MO_ShooterOut());
     	ShooterOut.whenReleased(new StopShooterWheels());
     	
+    	ClimberEngage.whenPressed(new MO_ClutchOn());
+    	ClimberEngage.whenReleased(new DriveWithXbox());
+    	ClimberDisengage.whenPressed(new MO_ClutchOff());
+    	ClimberDisengage.whenPressed(new DriveWithXbox());
     	
     }
     //// CREATING BUTTONS

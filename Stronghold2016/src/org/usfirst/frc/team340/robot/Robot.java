@@ -7,7 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
+import org.usfirst.frc.team340.robot.commands.DriveTime;
+import org.usfirst.frc.team340.robot.commands.auto.AutoDoNothing;
 import org.usfirst.frc.team340.robot.commands.auto.CG_AutoLowBar;
+import org.usfirst.frc.team340.robot.commands.auto.CG_LowBarAndShoot;
 import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
 import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
@@ -92,7 +95,10 @@ public class Robot extends IterativeRobot {
         oi = new OI();
 //ppim.pm.ip.mip.mi.p.miipmmip.ip.m.pimmmpim.m.ipm..ipmmpimipmipm.mmipipm.pipmi.pmipmmpimipmpi..lmmmplip.mimp.im..p.ppn.p.pp.p.ppp.p
         chooser = new SendableChooser();
-        chooser.addObject("Spy Bot Low Bar", new CG_SpyBot());
+        chooser.addDefault("Do nothing", new AutoDoNothing());
+        chooser.addObject("Spy Bot", new CG_SpyBot());
+        chooser.addObject("Drive straight 2.5 seconds", new DriveTime(2.5, 1));
+        chooser.addObject("Low bar", new CG_LowBarAndShoot());
 //        chooser.addObject("Middle to Low Bar", new MyAutoCommand());
         SmartDashboard.putData("AutoSelect", chooser);
     }

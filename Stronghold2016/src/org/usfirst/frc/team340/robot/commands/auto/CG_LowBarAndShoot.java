@@ -14,12 +14,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class CG_LowBarAndShoot extends CommandGroup {
     
     public  CG_LowBarAndShoot() {
-    	
-    			addSequential(new ArmToZero());
-                addSequential(new DriveTime(1.5, .75));
-                addSequential(new ArmToMax());
-                addSequential(new DriveSpin(.75), .5);
-    	        addSequential(new Shoot());
+    			addSequential(new DriveTime(1, -.65));
+    			addSequential(new ArmToZero(), 3);
+                addSequential(new DriveTime(3.75, -.65));
+//                addSequential(new ArmToMax());
+//                addSequential(new DriveSpin(.75), .5);
+//    	        addSequential(new Shoot());
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

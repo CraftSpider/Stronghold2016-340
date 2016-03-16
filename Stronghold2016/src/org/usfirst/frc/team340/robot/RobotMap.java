@@ -19,6 +19,7 @@ public class RobotMap {
 	public static int ClimberWinchMotor = 6;
 	
 	public static int ClimberLatch = 3;
+	
 	public static int DrivePTO = 9;
 	
 	//
@@ -52,7 +53,8 @@ public class RobotMap {
 	
 	public static int LeftDriveEncoder = 10;
 	
-	public static int ClimberBottomSensor = 5;
+	public static int ClimberBanner = 8;
+	public static int ClimberDartLimit = 9;
 	
 	public static int HarvesterBottomLeftBump = 1;
 	public static int HarvesterBottomRightBump = 0;
