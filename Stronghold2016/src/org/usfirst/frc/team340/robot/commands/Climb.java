@@ -46,7 +46,12 @@ public class Climb extends Command {
     private double dartInSpeed = -1;
     
     protected void execute() {
-    	Robot.climber.runDart(this.speed);
+    	
+    	if(Robot.climber.getDartLimit() && this.speed > 0) {
+    		Robot.climber.runDart(0);
+    	} else {
+    		Robot.climber.runDart(this.speed);
+    	}
     	System.out.println("Limit: " + Robot.climber.getDartLimit()  + " and Banner: " + Robot.climber.getWinchBanner());
 //    	if(!dartStage) {
 //    		Robot.climber.runDart(dartExtendSpeed);

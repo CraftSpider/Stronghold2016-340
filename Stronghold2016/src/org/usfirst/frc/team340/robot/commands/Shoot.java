@@ -50,7 +50,8 @@ public class Shoot extends Command {
     	} else {
     		Robot.harvesterRollers.setShooter(speedOverride);
     	}
-    	logger.info("current: " + Robot.harvesterRollers.harvesterCurrent());
+//    	logger.info("current: " + Robot.harvesterRollers.harvesterCurrent());
+    	Robot.harvesterRollers.harvesterCurrent();;
     	double desiredBallControlSpeed = 0;
     	//if we have the ball stop
     	if(Robot.harvesterRollers.hasBall()){

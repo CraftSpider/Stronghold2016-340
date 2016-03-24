@@ -14,6 +14,7 @@ import org.usfirst.frc.team340.robot.commands.auto.CG_LowBarAndShoot;
 import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
 import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
+import org.usfirst.frc.team340.robot.subsystems.Flashlight;
 import org.usfirst.frc.team340.robot.subsystems.Harvester;
 import org.usfirst.frc.team340.robot.subsystems.HarvesterRollers;
 
@@ -44,6 +45,7 @@ public class Robot extends IterativeRobot {
 	public static Drive drive;
 	public static Harvester harvester;
 	public static HarvesterRollers harvesterRollers;
+	public static Flashlight flashlight;
 	public static OI oi;
 	
 //	public static Timer climberFailsafe;
@@ -88,6 +90,7 @@ public class Robot extends IterativeRobot {
         drive = new Drive();
         climber = new Climber();
         harvesterRollers = new HarvesterRollers();
+        flashlight = new Flashlight();
         SmartDashboard.putData(harvester);
         SmartDashboard.putData(drive);
         SmartDashboard.putData(climber);

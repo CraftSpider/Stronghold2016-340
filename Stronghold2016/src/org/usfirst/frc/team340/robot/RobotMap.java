@@ -82,4 +82,10 @@ public class RobotMap {
 	//
 	
 	public static int ENCODER_TICKS_PER_REV = 100;
+	
+	//
+	// Relay ports
+	//
+	
+	public static int Flashlight = 0;
 }

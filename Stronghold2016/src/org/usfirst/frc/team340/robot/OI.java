@@ -18,6 +18,7 @@ import org.usfirst.frc.team340.robot.commands.StopBallControl;
 import org.usfirst.frc.team340.robot.commands.StopDrive;
 import org.usfirst.frc.team340.robot.commands.StopShooter;
 import org.usfirst.frc.team340.robot.commands.StopShooterWheels;
+import org.usfirst.frc.team340.robot.commands.ToggleFlashlight;
 import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmStop;
@@ -150,6 +151,8 @@ public class OI {
     	
 //    	X2.whenPressed(new Climb());
 //    	X2.whenReleased(new StopDrive());
+    	
+    	dPadRight2.whenPressed(new ToggleFlashlight());
     	
     	coDriverLeftStick.whenPressed(new MoveArmVariable());
     	coDriverLeftStick.whenReleased(new StopDrive());
@@ -316,6 +319,15 @@ public class OI {
 	}
 	
 	DPadUp2 dPadUp2 = new DPadUp2();
+	
+	public class DPadRight2 extends Button {
+		public boolean get() {
+//			System.out.println(xBoxDriver.getPOV());
+			return xBoxCoDriver.getPOV() == 90;
+		}
+	}
+	
+	DPadRight2 dPadRight2 = new DPadRight2();
 	
 	public class DPadDown2 extends Button {
 		public boolean get() {
