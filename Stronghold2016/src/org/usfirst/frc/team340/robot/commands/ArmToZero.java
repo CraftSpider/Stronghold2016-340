@@ -49,7 +49,7 @@ public class ArmToZero extends Command {
     	}
     	
     	Robot.harvester.setLeftTilt(leftSpeed);
-    	Robot.harvester.setLeftTilt(rightSpeed);
+    	Robot.harvester.setRightTilt(rightSpeed);
     	/*
     	//this ramps up cmdV to the max v which is half of the max speed we use in the arm to pos command
     	deltaV = maxV - cmdV;

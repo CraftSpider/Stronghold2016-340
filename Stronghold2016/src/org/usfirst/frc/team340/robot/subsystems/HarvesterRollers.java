@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
+
 public class HarvesterRollers extends Subsystem {
     
     // Put methods for controlling this subsystem
@@ -129,8 +130,8 @@ public class HarvesterRollers extends Subsystem {
     	return !ballSensorRight.get();
     }
     public void harvesterCurrent(){
-    	double current = pdp.getCurrent(14);
-    	double current2 = pdp.getCurrent(15);
+    	double current = pdp.getCurrent(0);
+    	double current2 = pdp.getCurrent(1);
     	System.out.println(current + ": port 14" + current2 + ": port 15");
     	
     	//return current;

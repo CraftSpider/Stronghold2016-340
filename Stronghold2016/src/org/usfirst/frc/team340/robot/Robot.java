@@ -12,6 +12,7 @@ import org.usfirst.frc.team340.robot.commands.auto.AutoDoNothing;
 import org.usfirst.frc.team340.robot.commands.auto.CG_AutoLowBar;
 import org.usfirst.frc.team340.robot.commands.auto.CG_LowBarAndShoot;
 import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
+import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBotTurn;
 import org.usfirst.frc.team340.robot.subsystems.Climber;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 import org.usfirst.frc.team340.robot.subsystems.Flashlight;
@@ -100,6 +101,7 @@ public class Robot extends IterativeRobot {
         chooser = new SendableChooser();
         chooser.addDefault("Do nothing", new AutoDoNothing());
         chooser.addObject("Spy Bot", new CG_SpyBot());
+        chooser.addObject("Spy Bot and Turn", new CG_SpyBotTurn());
         chooser.addObject("Drive straight 2.5 seconds", new DriveTime(2.5, 1));
         chooser.addObject("Low bar", new CG_LowBarAndShoot());
 //        chooser.addObject("Middle to Low Bar", new MyAutoCommand());

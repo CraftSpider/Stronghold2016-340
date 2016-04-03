@@ -4,6 +4,7 @@ import org.usfirst.frc.team340.robot.commands.ArmToMax;
 import org.usfirst.frc.team340.robot.commands.ArmToZero;
 import org.usfirst.frc.team340.robot.commands.DriveSpin;
 import org.usfirst.frc.team340.robot.commands.DriveTime;
+import org.usfirst.frc.team340.robot.commands.MoveArm;
 import org.usfirst.frc.team340.robot.commands.Shoot;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
 
@@ -18,8 +19,8 @@ public class CG_SpyBot extends CommandGroup {
     		
     	//  simple just shoot 
     	addSequential(new ArmToMax(), 5);
-    	addSequential(new Shoot(-0.65), 7);
-    	
+    	addSequential(new Shoot(-0.67), 7);
+    	addSequential(new MoveArm(-1.0), 1);
     	
     	/*addSequential(new ArmToMax(), 4);
     	addSequential(new Shoot(), 7.5);
