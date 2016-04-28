@@ -8,6 +8,7 @@ import org.usfirst.frc.team340.robot.commands.BallControlOff;
 import org.usfirst.frc.team340.robot.commands.Climb;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
 import org.usfirst.frc.team340.robot.commands.DriveTime;
+import org.usfirst.frc.team340.robot.commands.DriveTurn90;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 import org.usfirst.frc.team340.robot.commands.HarvestBall;
 import org.usfirst.frc.team340.robot.commands.MoveArm;
@@ -53,7 +54,8 @@ public class OI {
     	//A1.whileActive(new Shoot());
     	//B1.whenPressed(new DischargeBall());
     	
-    	
+    	X1.whenPressed(new DriveTurn90());
+    	X1.whenReleased(new StopDrive());
     	
     	//X1.whenPressed(new MO_BallControlIn());
     	//X1.whenReleased(new BallControlOff());

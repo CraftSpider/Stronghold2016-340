@@ -11,7 +11,10 @@ import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Accelerometer;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
 
 /**
@@ -49,6 +52,8 @@ public class Drive extends Subsystem {
 	// Logger
 	Logger logger = Robot.getLogger("drive");
 
+	private Accelerometer accel;
+	private AnalogGyro gyro;
 	/**
 	 * Code for driving robot
 	 */
@@ -66,8 +71,9 @@ public class Drive extends Subsystem {
 //		PTOMotor = new PWM(RobotMap.DrivePTO);
 		PTOMotor = new Servo(RobotMap.DrivePTO);
 				
-		
+		accel = new BuiltInAccelerometer();
 		// clutchMotor.setRaw(126);
+		gyro = new AnalogGyro(0);
 	}
 
 	/**
@@ -243,5 +249,9 @@ u	 *
 			}
 		}
 		setBothDrive(leftMotorSpeed, rightMotorSpeed);
+	}
+	
+	public double getGyroAngle() {
+		return gyro.getAngle();
 	}
 }

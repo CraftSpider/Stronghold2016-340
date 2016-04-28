@@ -69,8 +69,8 @@ public class RobotMap {
 	// Analog I/O Ports
 	//
 	
-	public static int LeftAimPot = 0;
-	public static int RightAimPot = 1;
+	public static int LeftAimPot = 2;
+	public static int RightAimPot = 3;
 	//
 	// SPI Ports
 	//
@@ -87,5 +87,5 @@ public class RobotMap {
 	// Relay ports
 	//
 	
-	public static int Flashlight = 0;
+	public static int Flashlight = 2;
 }

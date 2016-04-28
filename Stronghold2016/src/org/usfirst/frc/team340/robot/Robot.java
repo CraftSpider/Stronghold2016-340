@@ -73,11 +73,11 @@ public class Robot extends IterativeRobot {
     	}
 //    	USBCamera camera = new USBCamera("cam0");
 ////    	camera.
-////    	camera.setExposureManual(0);
+//    	camera.setExposureManual(0);
 //        server = CameraServer.getInstance();
 //        server.setQuality(	50);
-    	
-//        //the camera name (ex "cam0") can be found through the roborio web interface
+//    	
+////        //the camera name (ex "cam0") can be found through the roborio web interface
 //        server.startAutomaticCapture(camera);
     }
 

@@ -18,7 +18,7 @@ public class HarvesterRollers extends Subsystem {
 	public final double SHOOTER_SHOOT_V_BUS = -1.0;
 	public final double SHOOTER_HARVEST_V_BUS = .55;
 	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.75;
-	public final double SHOOTER_SHOOT_SPINUP_TIME = 3.8;
+	public final double SHOOTER_SHOOT_SPINUP_TIME = 1.5;
 	
 	// Important ball control constants
 	public final double HARVESTER_RELEASE_BALL_V_BUS = .6;
@@ -135,6 +135,10 @@ public class HarvesterRollers extends Subsystem {
     	System.out.println(current + ": port 14" + current2 + ": port 15");
     	
     	//return current;
+    }
+    
+    public double getShooterSpeed() {
+    	return shooterWheelB.getSpeed();
     }
 }
 
