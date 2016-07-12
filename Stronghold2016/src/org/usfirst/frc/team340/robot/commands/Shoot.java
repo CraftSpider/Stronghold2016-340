@@ -53,8 +53,10 @@ public class Shoot extends Command {
     //Hold Back on controller 1 to keep the command going and roll the shooter wheel
     //Hold Start on controller 1 to begin rolling the ball control wheel
     
-    private boolean speed = false;
-    private boolean align = false;
+    //private boolean speed = false;
+    //private boolean align = false;
+    private boolean speed = true;
+    private boolean align = true;
     private boolean liningUp = false;
     
     private double checkDelay = 0.6;
@@ -178,7 +180,11 @@ public class Shoot extends Command {
     		// do nothing
     		Robot.drive.setRightDrive(0);
     		Robot.drive.setLeftDrive(0);
-    		align = false;
+
+if(t.get() > Robot.harvesterRollers.SHOOTER_SHOOT_SPINUP_TIME) {
+desiredBallControlSpeed = Robot.harvesterRollers.HARVESTER_RELEASE_BALL_V_BUS;
+}
+    //		align = false;
     	}
     }
 
