@@ -1,48 +1,41 @@
-package org.usfirst.frc.team340.robot.commands.overrides;
-
-import edu.wpi.first.wpilibj.command.Command;
+package org.usfirst.frc.team340.robot.commands;
 
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team340.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
+
 /**
  *
  */
-public class MO_ClutchToggle extends Command {
+public class RollersStopShooter extends Command {
 	
-	Logger logger = Robot.getLogger(MO_ClutchToggle.class);
-	
+	Logger logger = Robot.getLogger(RollersStopShooter.class);
+
 	/**
-	 * Set requirements for clutch operation
-	 * Requires driver subsystem
-	 * Engages the clutch that drives the climbing arm mechanism
+	 * Set requirements for stop shooter command
+	 * Requires harvester subsystem
+	 * Stops the shooter
 	 */
-    public MO_ClutchToggle() {
-    	
-    	requires(Robot.drive);
-    	
+    public RollersStopShooter() {    	
+    	requires(Robot.harvesterRollers);    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	logger.info("[Initializing: MO_ClutchOn]");
+    	logger.info("[Initializing]");
     }
 
     // Called repeatedly when this Command is scheduled to run
     /**
-     * Engages the clutch
+     * Stops the shooter
      */
     protected void execute() {
-    	//latchState default is true which means the climber arm is down
-    	//clutchState default is false which means the clutch is disengaged
-//    	if(!Robot.climber.latchState && Robot.drive.PTOState) {
-//    		Robot.drive.disengagePTO();
-//    	}
-//    	else {
-//    		Robot.drive.engagePTO();
-//    	}
+    	Robot.harvesterRollers.setBallControl(0);
+    	Robot.harvesterRollers.setShooter(0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -61,5 +54,6 @@ public class MO_ClutchToggle extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	logger.info("Interrupted");
     }
 }

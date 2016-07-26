@@ -2,7 +2,7 @@ package org.usfirst.frc.team340.robot.commands.auto;
 
 import org.usfirst.frc.team340.robot.commands.ArmToMax;
 import org.usfirst.frc.team340.robot.commands.DriveTurn;
-import org.usfirst.frc.team340.robot.commands.MoveArm;
+import org.usfirst.frc.team340.robot.commands.ArmMove;
 import org.usfirst.frc.team340.robot.commands.Shoot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -19,7 +19,7 @@ public class CG_SpyBotTurn extends CommandGroup {
         // these will run in order.
     	addSequential(new ArmToMax(), 5);
     	addSequential(new Shoot(-0.67), 7);
-    	addSequential(new MoveArm(-1.0), 1);
+    	addSequential(new ArmMove(-1.0), 1);
     	addSequential(new DriveTurn(-0.55, -0.3), 3);
     	
         // To run multiple commands at the same time,

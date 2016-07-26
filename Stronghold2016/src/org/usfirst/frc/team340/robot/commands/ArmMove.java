@@ -9,15 +9,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MoveArm extends Command {
+public class ArmMove extends Command {
 
-	Logger logger = Robot.getLogger(MoveArm.class);
+	Logger logger = Robot.getLogger(ArmMove.class);
 	private double speed = 0.0;
 	
 	private double leftSpeed = 0;
 	private double rightSpeed = 0;
 	
-    public MoveArm(double speed) {
+    public ArmMove(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	this.speed = speed;
