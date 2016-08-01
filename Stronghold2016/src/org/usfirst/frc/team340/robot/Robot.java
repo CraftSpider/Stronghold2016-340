@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import org.usfirst.frc.team340.robot.commands.DriveTime;
 import org.usfirst.frc.team340.robot.commands.auto.AutoDoNothing;
 import org.usfirst.frc.team340.robot.commands.auto.CG_AutoLowBar;
+import org.usfirst.frc.team340.robot.commands.auto.CG_DefenseAndShoot;
 import org.usfirst.frc.team340.robot.commands.auto.CG_LowBarAndShoot;
 import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
 import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBotTurn;
@@ -104,6 +105,7 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Spy Bot and Turn", new CG_SpyBotTurn());
         chooser.addObject("Drive straight 2.5 seconds", new DriveTime(2.5, 1));
         chooser.addObject("Low bar", new CG_LowBarAndShoot());
+        chooser.addObject("Shoot", new CG_DefenseAndShoot());
 //        chooser.addObject("Middle to Low Bar", new MyAutoCommand());
         SmartDashboard.putData("AutoSelect", chooser);
     }

@@ -97,7 +97,7 @@ public class OI {
     	LB1.whenPressed(new HarvestBall());
     	LB1.whenReleased(new StopShooter());
     	
-    	RB1.whenPressed(new Shoot());
+    	RB1.whenPressed(new DischargeBall());
     	RB1.whenReleased(new StopShooter());
 //    	Back1.whenPressed(new MO_ShooterOut());
 //    	Back1.whenReleased(new StopShooter());

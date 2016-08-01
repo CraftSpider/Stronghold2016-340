@@ -214,7 +214,7 @@ u	 *
 	 */
 	public void arcadeDrive(double moveValue, double rotateValue) {
 //		System.out.println("left encoder " + leftDriveEncoder.get());
-		if (moveValue >= 0.0) {
+		/*if (moveValue >= 0.0) {
 			moveValue = (moveValue * moveValue);
 
 		} else {
@@ -225,7 +225,15 @@ u	 *
 			rotateValue = (rotateValue * rotateValue);
 		} else {
 			rotateValue = -(rotateValue * rotateValue);
-		}
+		}*/
+		/*if(rotateValue >= 0.02) {
+			rotateValue = Math.sqrt(rotateValue);
+		} else if (rotateValue <= -0.02){
+			rotateValue = -Math.sqrt(-rotateValue);
+		} else  {
+			rotateValue = 0;
+		}*/
+		
 		if (moveValue > 0.0) {
 
 			if (rotateValue > 0.0) {

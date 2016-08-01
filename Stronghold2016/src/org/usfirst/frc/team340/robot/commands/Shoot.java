@@ -37,6 +37,7 @@ public class Shoot extends Command {
 //    	t.start();
     	t.stop();
     	t.reset();
+    	t.start();
     	logger.info("[Initializing: Shooter]");
     	liningUp = false;
     	align = false;
@@ -90,7 +91,7 @@ public class Shoot extends Command {
     	if(Robot.harvesterRollers.getShooterSpeed() < -55000 || t.get() > Robot.harvesterRollers.SHOOTER_SHOOT_SPINUP_TIME) {
     		speed = true;
     	}
-    	if(speed && align) {
+    	if(speed) {
     		desiredBallControlSpeed = Robot.harvesterRollers.HARVESTER_RELEASE_BALL_V_BUS;
     	}
     	Robot.harvesterRollers.setBallControl(desiredBallControlSpeed);
@@ -147,7 +148,7 @@ public class Shoot extends Command {
     			liningUp = true;
     		} else {
     			if(t.get() > checkDelay) {
-	    			align = false;
+//	    			align = false;
 	    			liningUp = false;
     			}
     		}
@@ -178,7 +179,7 @@ public class Shoot extends Command {
     		// do nothing
     		Robot.drive.setRightDrive(0);
     		Robot.drive.setLeftDrive(0);
-    		align = false;
+//    		align = false;
     	}
     }
 

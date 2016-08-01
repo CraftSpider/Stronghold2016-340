@@ -17,8 +17,12 @@ public class DriveWithXbox extends Command {
 		requires(Robot.drive);
     }
 	
+    private boolean locked = false;
+    private double lockedAngle = 0;
+    
     // Called just before this Command runs the first time
     protected void initialize() {
+    	locked = false;
     	logger.info("[Initializing]Drive?");
     }
 	
@@ -55,17 +59,34 @@ public class DriveWithXbox extends Command {
     		Robot.drive.disengagePTO();
     	}
     	
+    	double off = 0;
+    	
     	//Allow driver to drive in any of three modes.
     	// 1. Use triggers for speed, joystick for turning
     	// 2. Use right joystick for slow motion
     	// 3. Use left joystick for normal arcadeDrive
     	if(Math.abs(Robot.oi.getDriverSummedTriggers()) > .1) {
-    		Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers()), (Robot.oi.getDriverLeftX()));
+//    		if(Math.abs(Robot.oi.getDriverLeftX()) < .05) {
+//    			if(!locked) {
+//    				lockedAngle = Robot.drive.getGyroAngle();
+//    				locked = true;
+//    			} else {
+//    				off = (Robot.drive.getGyroAngle() - lockedAngle)/20;
+//    				System.out.println(lockedAngle);
+//    				Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers()), (off));
+//    			}
+//    		} else {
+//    			locked = false;
+//    			lockedAngle = Robot.drive.getGyroAngle();
+	    		Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers()/**.85*/), (Robot.oi.getDriverLeftX())/**.85*/);
+//	    	}
     	} else if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
     			|| Math.abs(Robot.oi.getDriverRightX()) > 0.1) {
     		Robot.drive.arcadeDrive((Robot.oi.getDriverRightY())*moveSlowScale, (Robot.oi.getDriverRightX())*rotateSlowScale);
+    		locked = false;
     	} else {
     		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY()),(Robot.oi.getDriverLeftX()));
+    		locked = false;
     	}
     }
 
