@@ -60,84 +60,84 @@ public class MO_ManualShooting extends Command {
     	System.out.println("trig pressed : " + leftTrigPressed + " trig released: "+ leftTrigReleased);
     	
     	// if left trig is pressed
-    	if(Robot.oi.getCoDriverSummedTriggers() < -0.5) {
-    		System.out.println("trig pressed");
-    		// if it has not already been pressed nor released
-    		if(!leftTrigPressed && !leftTrigReleased) {
-    			System.out.println("setting shooter full");
-    			// set left trig to true (it has been pressed)
-    			leftTrigPressed = true;
-    			rumble = true;
-    			// shoot spin up
-    			Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
-    		// if we have already released
-    		} else if (leftTrigReleased) {
-    			System.out.println("trig pressed : " + leftTrigPressed + " trig released: "+ leftTrigReleased);
-    			
-    			System.out.println("setting shooter off");
-    			// turn shooter off
-    			Robot.harvesterRollers.setShooter(0);
-    			// set left trig to true (it has been pressed)
-    			leftTrigPressed = true;
-    			// we have not released yet
-    			leftTrigReleased = false;
-    		}
-    	// if left and right trigs are not pressed
-    	} else if(Math.abs(Robot.oi.getCoDriverSummedTriggers()) < 0.1 ){
-    		// if we have pressed but not released yet
-    		if(leftTrigPressed && !leftTrigReleased) {
-    			// we have released
-    			leftTrigReleased = true;
-    		}
-    		
-//    		if(rightTrigPressed && !rightTrigReleased) {
-    			
-//    			rightTrigReleased = true;
+//    	if(Robot.oi.getCoDriverSummedTriggers() < -0.5) {
+//    		System.out.println("trig pressed");
+//    		// if it has not already been pressed nor released
+//    		if(!leftTrigPressed && !leftTrigReleased) {
+//    			System.out.println("setting shooter full");
+//    			// set left trig to true (it has been pressed)
+//    			leftTrigPressed = true;
+//    			rumble = true;
+//    			// shoot spin up
+//    			Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
+//    		// if we have already released
+//    		} else if (leftTrigReleased) {
+//    			System.out.println("trig pressed : " + leftTrigPressed + " trig released: "+ leftTrigReleased);
+//    			
+//    			System.out.println("setting shooter off");
+//    			// turn shooter off
+//    			Robot.harvesterRollers.setShooter(0);
+//    			// set left trig to true (it has been pressed)
+//    			leftTrigPressed = true;
+//    			// we have not released yet
+//    			leftTrigReleased = false;
 //    		}
-    		// we aren't pressed any more
-//    		rightTrigPressed = false;
-			leftTrigPressed = false;
-    	} else if(Robot.oi.getCoDriverSummedTriggers() > 0.5) {
-    		System.out.println("right trig");
-    		Robot.harvesterRollers.setBallControl(Robot.harvesterRollers.HARVESTER_DISCHARGE_BALL_V_BUS);
-    		t.start();
-    	}
-    	if(t.get() > 2) {
-    		ended = true;
-    	}
-    	if(rumble) {
-    		Robot.oi.coDriverRumbleLeft((float) 0.5);
-    		Robot.oi.coDriverRumbleRight((float) 0.5);
-    		
-    	}
-    	
-    	
-//    	log.info("Arm Potentiometers left: " + Robot.harvester.getLeftAimPot() + " right: " + Robot.harvester.getRightAimPot() + " left switch:" + Robot.harvester.getLeftLimit()  + " right switch:" + Robot.harvester.getRightLimit());
-    	
-    	//SET SHOOTER SPEED
-//    	if(Robot.oi.getDriverBumperState() == 2) { //if RB1 is pressed
-//    		// Feed in
-//    		log.info("RB1 pressed Shooter Speed is 1");
-//    		Robot.harvester.setShooter(1);
-//    	} else if(Robot.oi.getDriverBumperState() == 0) { // if LB1 is pressed
-//    		// Feeds out
-//    		log.info("LB1 pressed Shooter Speed is -1");
-//    		Robot.harvester.setShooter(-1);
-//    	} else {
-//    		Robot.harvester.setShooter(0);
-//    		log.info("RB1 and LB1 not pressed Stop Shooter");
+//    	// if left and right trigs are not pressed
+//    	} else if(Math.abs(Robot.oi.getCoDriverSummedTriggers()) < 0.1 ){
+//    		// if we have pressed but not released yet
+//    		if(leftTrigPressed && !leftTrigReleased) {
+//    			// we have released
+//    			leftTrigReleased = true;
+//    		}
+//    		
+////    		if(rightTrigPressed && !rightTrigReleased) {
+//    			
+////    			rightTrigReleased = true;
+////    		}
+//    		// we aren't pressed any more
+////    		rightTrigPressed = false;
+//			leftTrigPressed = false;
+//    	} else if(Robot.oi.getCoDriverSummedTriggers() > 0.5) {
+//    		System.out.println("right trig");
+//    		Robot.harvesterRollers.setBallControl(Robot.harvesterRollers.HARVESTER_DISCHARGE_BALL_V_BUS);
+//    		t.start();
 //    	}
-    	
-    	//SET HARVESTER SPEED
-//    	if(Robot.oi.getXYButtonState() == 2) { //if X1 is pressed
-//    		log.info("X 1 pressed Ball Control is 1");
-//    		Robot.harvester.setBallControl(1);
-//    	} else if(Robot.oi.getXYButtonState() == 0) { //if Y1 is pressed
-//    		log.info("Y 1 pressed Ball Control is -1");
-//    		Robot.harvester.setBallControl(-1);
-//    	} else {
-//    		Robot.harvester.setBallControl(0);
-//    		log.info("X 1 and Y 1 not pressed Ball Control Stop");
+//    	if(t.get() > 2) {
+//    		ended = true;
+//    	}
+//    	if(rumble) {
+//    		Robot.oi.coDriverRumbleLeft((float) 0.5);
+//    		Robot.oi.coDriverRumbleRight((float) 0.5);
+//    		
+//    	}
+//    	
+//    	
+////    	log.info("Arm Potentiometers left: " + Robot.harvester.getLeftAimPot() + " right: " + Robot.harvester.getRightAimPot() + " left switch:" + Robot.harvester.getLeftLimit()  + " right switch:" + Robot.harvester.getRightLimit());
+//    	
+//    	//SET SHOOTER SPEED
+////    	if(Robot.oi.getDriverBumperState() == 2) { //if RB1 is pressed
+////    		// Feed in
+////    		log.info("RB1 pressed Shooter Speed is 1");
+////    		Robot.harvester.setShooter(1);
+////    	} else if(Robot.oi.getDriverBumperState() == 0) { // if LB1 is pressed
+////    		// Feeds out
+////    		log.info("LB1 pressed Shooter Speed is -1");
+////    		Robot.harvester.setShooter(-1);
+////    	} else {
+////    		Robot.harvester.setShooter(0);
+////    		log.info("RB1 and LB1 not pressed Stop Shooter");
+////    	}
+//    	
+//    	//SET HARVESTER SPEED
+////    	if(Robot.oi.getXYButtonState() == 2) { //if X1 is pressed
+////    		log.info("X 1 pressed Ball Control is 1");
+////    		Robot.harvester.setBallControl(1);
+////    	} else if(Robot.oi.getXYButtonState() == 0) { //if Y1 is pressed
+////    		log.info("Y 1 pressed Ball Control is -1");
+////    		Robot.harvester.setBallControl(-1);
+////    	} else {
+////    		Robot.harvester.setBallControl(0);
+////    		log.info("X 1 and Y 1 not pressed Ball Control Stop");
 //    	}
     }
 

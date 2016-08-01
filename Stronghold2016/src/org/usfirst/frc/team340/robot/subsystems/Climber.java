@@ -27,7 +27,7 @@ public class Climber extends Subsystem {
 	
 	private Talon dart;
 	
-	public boolean latchState = true;
+	private boolean latchState = true;
 	
 	/**
 	 * Instantiate latch and sensor

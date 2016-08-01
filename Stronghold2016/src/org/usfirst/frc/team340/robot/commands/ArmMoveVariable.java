@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MoveArmVariable extends Command {
+public class ArmMoveVariable extends Command {
 
-    public MoveArmVariable() {
+    public ArmMoveVariable() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.harvester);

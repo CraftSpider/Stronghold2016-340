@@ -11,13 +11,14 @@ import org.usfirst.frc.team340.robot.commands.DriveTime;
 import org.usfirst.frc.team340.robot.commands.DriveTurn90;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 import org.usfirst.frc.team340.robot.commands.HarvestBall;
-import org.usfirst.frc.team340.robot.commands.MoveArm;
-import org.usfirst.frc.team340.robot.commands.MoveArmVariable;
+import org.usfirst.frc.team340.robot.commands.ArmMove;
+import org.usfirst.frc.team340.robot.commands.ArmMoveVariable;
 import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
+import org.usfirst.frc.team340.robot.commands.RollersShootFire;
 import org.usfirst.frc.team340.robot.commands.Shoot;
 import org.usfirst.frc.team340.robot.commands.StopBallControl;
 import org.usfirst.frc.team340.robot.commands.StopDrive;
-import org.usfirst.frc.team340.robot.commands.StopShooter;
+import org.usfirst.frc.team340.robot.commands.RollersStopShooter;
 import org.usfirst.frc.team340.robot.commands.StopShooterWheels;
 import org.usfirst.frc.team340.robot.commands.ToggleFlashlight;
 import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
@@ -46,9 +47,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
     public OI() {
-    	// commented out so we dont mess stuff up
+    
+    	// DRIVER
+    	
+//    	Y1.whenPressed(new DischargeBall());
+//    	Y1.whenReleased(new StopShooter());
     	//X1.whenPressed(new ReleaseLatch());
-    	//Y1.whenPressed(new Climb());
+//    	Y1.whenPressed(new Climb());
     	//Y1.whenReleased(new DriveWithXbox());
     	
     	//A1.whileActive(new Shoot());
@@ -73,20 +78,10 @@ public class OI {
     	//Y1.whenPressed(new ManualShooting());
     	//RB1.whenPressed(new ManualShooting());
     	//LB1.whenPressed(new ManualShooting());
-    	
-    	// DRIVER
-    	
-//    	Y1.whenPressed(new DischargeBall());
-//    	Y1.whenReleased(new StopShooter());
-    	
+    		
     	//X1.whenPressed(new DriveTime(1, .5));
     	
-    	A2.whenPressed(new ArmToZero());
-    	A2.whenReleased(new ArmStop());
-    	
-    	B2.whenPressed(new ArmToMax());
-    	B2.whenReleased(new ArmStop());
-
+  
 //    	Start1.whenPressed(new MO_ManualShooting());
     	Start1.whenPressed(new Climb(0.7));
     	Start1.whenReleased(new DriveWithXbox());
@@ -95,10 +90,13 @@ public class OI {
     	
     	
     	LB1.whenPressed(new HarvestBall());
-    	LB1.whenReleased(new StopShooter());
+    	LB1.whenReleased(new RollersStopShooter());
     	
-    	RB1.whenPressed(new DischargeBall());
-    	RB1.whenReleased(new StopShooter());
+    	RB1.whenPressed(new Shoot());
+//    	
+    	rightTrig1.whenPressed(new RollersShootFire());
+    	rightTrig1.whenReleased(new RollersStopShooter());
+    	//RB1.whenReleased(new RollersStopShooter());
 //    	Back1.whenPressed(new MO_ShooterOut());
 //    	Back1.whenReleased(new StopShooter());
     	//RB1.whenPressed(new DischargeBall());
@@ -109,9 +107,9 @@ public class OI {
     	
     	//Back1.whenPressed(new ArmToNicerPosition(20) );
     	
-    	dPadUp1.whenPressed(new MoveArm(0.80));
+    	dPadUp1.whenPressed(new ArmMove(0.80));
     	dPadUp1.whenReleased(new ArmStop());
-    	dPadDown1.whenPressed(new MoveArm(-0.75));
+    	dPadDown1.whenPressed(new ArmMove(-0.75));
     	dPadDown1.whenReleased(new ArmStop());
     	
     	
@@ -124,13 +122,18 @@ public class OI {
     	
     	
     	// CO DRIVER
+      	A2.whenPressed(new ArmToZero());
+    	A2.whenReleased(new ArmStop());
     	
+    	B2.whenPressed(new ArmToMax());
+    	B2.whenReleased(new ArmStop());
+  	
     	Y2.whenPressed(new DischargeBall());
-    	Y2.whenReleased(new StopShooter());
+    	Y2.whenReleased(new RollersStopShooter());
     	
-    	dPadUp2.whenPressed(new MoveArm(0.90));
+    	dPadUp2.whenPressed(new ArmMove(0.90));
     	dPadUp2.whenReleased(new ArmStop());
-    	dPadDown2.whenPressed(new MoveArm(-0.8));
+    	dPadDown2.whenPressed(new ArmMove(-0.8));
     	dPadDown2.whenReleased(new ArmStop());
     	
 //    	Start2.whenPressed(new MO_ArmUp());
@@ -140,14 +143,13 @@ public class OI {
     	Back2.whenReleased(new ArmStop());
     	
     	LB2.whenPressed(new HarvestBall());
-    	LB2.whenReleased(new StopShooter());
+    	LB2.whenReleased(new RollersStopShooter());
     	
     	RB2.whenPressed(new Shoot());
-    	RB2.whenReleased(new StopShooter());
+//    	RB2.whenReleased(new RollersStopShooter());
     	
-    	//rightTrig2.whenPressed(new MO_ClutchToggle());
-    	
-    	//rightTrig2.whenPressed(new MO_ClutchOn());
+    	rightTrig2.whenPressed(new RollersShootFire());
+    	rightTrig2.whenReleased(new RollersStopShooter());
     	
     	//leftTrig2.whenPressed(new MO_ClutchOff());
     	
@@ -156,10 +158,10 @@ public class OI {
     	
     	dPadRight2.whenPressed(new ToggleFlashlight());
     	
-    	coDriverLeftStick.whenPressed(new MoveArmVariable());
+    	coDriverLeftStick.whenPressed(new ArmMoveVariable());
     	coDriverLeftStick.whenReleased(new StopDrive());
     	
-    	coDriverTrigs.whenPressed(new MO_ManualShooting());
+//    	coDriverTrigs.whenPressed(new MO_ManualShooting());
     	//A1.whenPressed(new DriveDistance(5,20));
     	//B1.whenPressed(new DriveDistance(5,-20));
     	
@@ -251,13 +253,13 @@ public class OI {
 	Button LeftStick1 = new JoystickButton(xBoxDriver, 9);
 	
 	//Turn driver triggers to buttons
-//	public class RightTrig1 extends Button {
-//		public boolean get() {
-//			return xBoxDriver.getRawAxis(3) > .5;
-//		}
-//	}
-//	RightTrig1 rightTrig1 = new RightTrig1();
-//	
+	public class RightTrig1 extends Button {
+		public boolean get() {
+			return xBoxDriver.getRawAxis(3) > .5;
+		}
+	}
+	RightTrig1 rightTrig1 = new RightTrig1();
+
 //	public class LeftTrig1 extends Button {
 //		public boolean get() {
 //			return xBoxDriver.getRawAxis(2) > .5;
@@ -315,74 +317,66 @@ public class OI {
 	
 	public class DPadUp2 extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return xBoxCoDriver.getPOV() == 0;
 		}
 	}
-	
 	DPadUp2 dPadUp2 = new DPadUp2();
 	
 	public class DPadRight2 extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return xBoxCoDriver.getPOV() == 90;
 		}
 	}
-	
 	DPadRight2 dPadRight2 = new DPadRight2();
 	
 	public class DPadDown2 extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return xBoxCoDriver.getPOV() == 180;
 		}
 	}
-	
 	DPadDown2 dPadDown2 = new DPadDown2();
 	
 	/**
 	 * Get throttle for GTA (trigger-based) drive
 	 * @return double throttle
 	 */
-	public double getDriverSummedTriggers() {
-		//only return for the right trigger if it above 0.05 (dead zone)
-		if(xBoxDriver.getRawAxis(3) > 0.05) {
-			return xBoxDriver.getRawAxis(3);
-		//even though the right trigger isn't above 0.05, make sure the left is to avoid running the
-		//motors really slowly
-		} else if(xBoxDriver.getRawAxis(2) > 0.05) {
-			return -xBoxDriver.getRawAxis(2);
-		}
-		//in case neither trigger is held down
-		return 0;
-		
-		//todo: add a dead zone variable perhaps in robotmap
-	}
+//	public double getDriverSummedTriggers() {
+//		//only return for the right trigger if it above 0.05 (dead zone)
+//		if(xBoxDriver.getRawAxis(3) > 0.05) {
+//			return xBoxDriver.getRawAxis(3);
+//		//even though the right trigger isn't above 0.05, make sure the left is to avoid running the
+//		//motors really slowly
+//		} else if(xBoxDriver.getRawAxis(2) > 0.05) {
+//			return -xBoxDriver.getRawAxis(2);
+//		}
+//		//in case neither trigger is held down
+//		return 0;
+//		
+//		//todo: add a dead zone variable perhaps in robotmap
+//	}
 	
-	public double getCoDriverSummedTriggers() {
-		//only return for the right trigger if it above 0.05 (dead zone)
-		if(xBoxCoDriver.getRawAxis(3) > 0.05) {
-			return xBoxCoDriver.getRawAxis(3);
-		//even though the right trigger isn't above 0.05, make sure the left is to avoid running the
-		//motors really slowly
-		} else if(xBoxCoDriver.getRawAxis(2) > 0.05) {
-			return -xBoxCoDriver.getRawAxis(2);
-		}
-		//in case neither trigger is held down
-		return 0;
-		
-		//todo: add a dead zone variable perhaps in robotmap
-	}
+//	public double getCoDriverSummedTriggers() {
+//		//only return for the right trigger if it above 0.05 (dead zone)
+//		if(xBoxCoDriver.getRawAxis(3) > 0.05) {
+//			return xBoxCoDriver.getRawAxis(3);
+//		//even though the right trigger isn't above 0.05, make sure the left is to avoid running the
+//		//motors really slowly
+//		} else if(xBoxCoDriver.getRawAxis(2) > 0.05) {
+//			return -xBoxCoDriver.getRawAxis(2);
+//		}
+//		//in case neither trigger is held down
+//		return 0;
+//		
+//		//todo: add a dead zone variable perhaps in robotmap
+//	}
 	
-	public class CoDriverTrigs extends Button {
-		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
-			return Math.abs(getCoDriverSummedTriggers()) < 0.5;
-		}
-	}
-	
-	CoDriverTrigs coDriverTrigs = new CoDriverTrigs();
-	
+//	public class CoDriverTrigs extends Button {
+//		public boolean get() {
+//			return Math.abs(getCoDriverSummedTriggers()) < 0.5;
+//		}
+//	}	
+//	CoDriverTrigs coDriverTrigs = new CoDriverTrigs();
+//	
 	public double getDriverLeftY() {
 		return -xBoxDriver.getRawAxis(1);
 	}
@@ -408,7 +402,6 @@ public class OI {
 			return Math.abs(getCoDriverLeftY()) > 0.1;
 		}
 	}
-	
 	CoDriverLeftStick coDriverLeftStick = new CoDriverLeftStick();
 	
 	/**

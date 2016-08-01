@@ -13,8 +13,7 @@ public class DriveWithXbox extends Command {
 	
     public DriveWithXbox() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-		requires(Robot.drive);
+        requires(Robot.drive);
     }
 	
     private boolean locked = false;
@@ -65,7 +64,7 @@ public class DriveWithXbox extends Command {
     	// 1. Use triggers for speed, joystick for turning
     	// 2. Use right joystick for slow motion
     	// 3. Use left joystick for normal arcadeDrive
-    	if(Math.abs(Robot.oi.getDriverSummedTriggers()) > .1) {
+//    	if(Math.abs(Robot.oi.getDriverSummedTriggers()) > .1) {
 //    		if(Math.abs(Robot.oi.getDriverLeftX()) < .05) {
 //    			if(!locked) {
 //    				lockedAngle = Robot.drive.getGyroAngle();
@@ -78,9 +77,13 @@ public class DriveWithXbox extends Command {
 //    		} else {
 //    			locked = false;
 //    			lockedAngle = Robot.drive.getGyroAngle();
-	    		Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers()/**.85*/), (Robot.oi.getDriverLeftX())/**.85*/);
+//	    		Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers()/**.85*/), (Robot.oi.getDriverLeftX())/**.85*/);
 //	    	}
-    	} else if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
+//    	} else if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
+//    	if(Math.abs(Robot.oi.getDriverSummedTriggers()) > .1) {
+//    		Robot.drive.arcadeDrive((Robot.oi.getDriverSummedTriggers()), (Robot.oi.getDriverLeftX()));
+//    	} else
+    	if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
     			|| Math.abs(Robot.oi.getDriverRightX()) > 0.1) {
     		Robot.drive.arcadeDrive((Robot.oi.getDriverRightY())*moveSlowScale, (Robot.oi.getDriverRightX())*rotateSlowScale);
     		locked = false;

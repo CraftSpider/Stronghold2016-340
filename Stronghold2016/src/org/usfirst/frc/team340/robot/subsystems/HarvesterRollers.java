@@ -18,7 +18,7 @@ public class HarvesterRollers extends Subsystem {
 	public final double SHOOTER_SHOOT_V_BUS = -1.0;
 	public final double SHOOTER_HARVEST_V_BUS = .55;
 	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.75;
-	public final double SHOOTER_SHOOT_SPINUP_TIME = 1.5;
+	public final double SHOOTER_SHOOT_SPINUP_TIME = .2;
 	
 	// Important ball control constants
 	public final double HARVESTER_RELEASE_BALL_V_BUS = .6;
