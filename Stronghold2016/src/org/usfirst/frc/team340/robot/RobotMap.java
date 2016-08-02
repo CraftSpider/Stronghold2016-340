@@ -14,7 +14,6 @@ public class RobotMap {
 	
 	public static int DriveLeftMotor = 1;
 	public static int DriveRightMotor = 2;
-//	public static int HarvesterBallControl = 3;
 	public static int ClimberMovementMotor = 5;
 	public static int ClimberWinchMotor = 6;
 	
@@ -42,14 +41,6 @@ public class RobotMap {
 	//
 	// Digital I/O Ports
 	//
-	
-//	public static int HarvesterEncoderPortA = 3;
-//	public static int HarvesterEncoderPortB = 4;
-	
-//	public static int LeftDriveEncoderPortA = 123456789;
-//	public static int LeftDriveEnocderPortB = 987654321;
-//	public static int RightDriveEncoderPortA = 8;
-//	public static int RightDriveEncoderPortB = 9;
 	
 	public static int LeftDriveEncoder = 10;
 	

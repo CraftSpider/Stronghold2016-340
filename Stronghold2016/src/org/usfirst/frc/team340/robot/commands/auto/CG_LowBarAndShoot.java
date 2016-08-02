@@ -14,9 +14,6 @@ public class CG_LowBarAndShoot extends CommandGroup {
     			addSequential(new DriveTime(1, -.65));
     			addSequential(new ArmToZero(), 3);
                 addSequential(new DriveTime(3.75, -.65));
-//                addSequential(new ArmToMax());
-//                addSequential(new DriveSpin(.75), .5);
-//    	        addSequential(new Shoot());
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

@@ -39,48 +39,17 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
     public OI() {
-    	// commented out so we dont mess stuff up
-    	//X1.whenPressed(new ReleaseLatch());
-    	//Y1.whenPressed(new Climb());
-    	//Y1.whenReleased(new DriveWithXbox());
-    	
-    	//A1.whileActive(new Shoot());
-    	//B1.whenPressed(new DischargeBall());
     	
     	X1.whenPressed(new DriveTurn90());
     	X1.whenReleased(new StopDrive());
     	
-    	//X1.whenPressed(new MO_BallControlIn());
-    	//X1.whenReleased(new BallControlOff());
-    	
-    	//Y1.whenPressed(new MO_BallControlOut());
-    	//Y1.whenReleased(new BallControlOff());
-    	
-    	//RB1.whenPressed(new MO_ShooterIn());
-    	//RB1.whenReleased(new StopShooter());
-    	
-    	//LB1.whenPressed(new MO_ShooterOut());
-    	//LB1.whenReleased(new StopShooter());
-    	
-    	//X1.whenPressed(new ManualShooting());
-    	//Y1.whenPressed(new ManualShooting());
-    	//RB1.whenPressed(new ManualShooting());
-    	//LB1.whenPressed(new ManualShooting());
-    	
     	// DRIVER
-    	
-//    	Y1.whenPressed(new DischargeBall());
-//    	Y1.whenReleased(new StopShooter());
-    	
-    	//X1.whenPressed(new DriveTime(1, .5));
     	
     	A2.whenPressed(new ArmToZero());
     	A2.whenReleased(new ArmStop());
     	
     	B2.whenPressed(new ArmToMax());
     	B2.whenReleased(new ArmStop());
-
-//    	Start1.whenPressed(new MO_ManualShooting());
     	Start1.whenPressed(new Climb(0.7));
     	Start1.whenReleased(new DriveWithXbox());
     	Back1.whenPressed(new Climb(-1));
@@ -92,29 +61,11 @@ public class OI {
     	
     	RB1.whenPressed(new Shoot());
     	RB1.whenReleased(new StopShooter());
-//    	Back1.whenPressed(new MO_ShooterOut());
-//    	Back1.whenReleased(new StopShooter());
-    	//RB1.whenPressed(new DischargeBall());
-    	//RB1.whenReleased(new StopShooter());
-    	
-//    	Start1.whenPressed(new ArmToZero());
-//    	Start1.whenReleased(new ArmStop());
-    	
-    	//Back1.whenPressed(new ArmToNicerPosition(20) );
-    	
+
     	dPadUp1.whenPressed(new MoveArm(0.80));
     	dPadUp1.whenReleased(new ArmStop());
     	dPadDown1.whenPressed(new MoveArm(-0.75));
     	dPadDown1.whenReleased(new ArmStop());
-    	
-    	
-//    	Back1.whenPressed(new ArmToMax());
-//    	Back1.whenReleased(new ArmStop());
-    	
-//    	dPadUp1.whenPressed(new CG_SpyBot());
-//    	X1.whenPressed(new Climb());
-//    	X1.whenReleased(new DriveWithXbox());
-    	
     	
     	// CO DRIVER
     	
@@ -126,9 +77,6 @@ public class OI {
     	dPadDown2.whenPressed(new MoveArm(-0.8));
     	dPadDown2.whenReleased(new ArmStop());
     	
-//    	Start2.whenPressed(new MO_ArmUp());
-//    	Start2.whenReleased(new ArmStop());
-    	//Start2.whenPressed(new ArmToNicerPosition(12));
     	Back2.whenPressed(new MO_ArmDown());
     	Back2.whenReleased(new ArmStop());
     	
@@ -138,23 +86,12 @@ public class OI {
     	RB2.whenPressed(new Shoot());
     	RB2.whenReleased(new StopShooter());
     	
-    	//rightTrig2.whenPressed(new MO_ClutchToggle());
-    	
-    	//rightTrig2.whenPressed(new MO_ClutchOn());
-    	
-    	//leftTrig2.whenPressed(new MO_ClutchOff());
-    	
-//    	X2.whenPressed(new Climb());
-//    	X2.whenReleased(new StopDrive());
-    	
     	dPadRight2.whenPressed(new ToggleFlashlight());
     	
     	coDriverLeftStick.whenPressed(new MoveArmVariable());
     	coDriverLeftStick.whenReleased(new StopDrive());
     	
     	coDriverTrigs.whenPressed(new MO_ManualShooting());
-    	//A1.whenPressed(new DriveDistance(5,20));
-    	//B1.whenPressed(new DriveDistance(5,-20));
     	
     	//////////////////////////////////////////
     	//			  MANUAL BOARD				//
@@ -181,33 +118,7 @@ public class OI {
     	ClimberDisengage.whenPressed(new DriveWithXbox());
     	
     }
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
     
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
-    
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-    
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
-	
     Joystick ManualBoard = new Joystick(2);
     
     Button HarvesterUp = new JoystickButton(ManualBoard, 2);
@@ -222,7 +133,6 @@ public class OI {
     
     public class climberDisengage extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return ManualBoard.getPOV() == 0;
 		}
 	}
@@ -242,26 +152,9 @@ public class OI {
 	Button Back1 = new JoystickButton(xBoxDriver, 7);
 	Button Start1 = new JoystickButton(xBoxDriver, 8);
 	Button LeftStick1 = new JoystickButton(xBoxDriver, 9);
-	
-	//Turn driver triggers to buttons
-//	public class RightTrig1 extends Button {
-//		public boolean get() {
-//			return xBoxDriver.getRawAxis(3) > .5;
-//		}
-//	}
-//	RightTrig1 rightTrig1 = new RightTrig1();
-//	
-//	public class LeftTrig1 extends Button {
-//		public boolean get() {
-//			return xBoxDriver.getRawAxis(2) > .5;
-//		}
-//	}
-//	LeftTrig1 leftTrig1 = new LeftTrig1();
-//	
-	
+		
 	public class DPadUp1 extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return xBoxDriver.getPOV() == 0;
 		}
 	}
@@ -270,7 +163,6 @@ public class OI {
 	
 	public class DPadDown1 extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return xBoxDriver.getPOV() == 180;
 		}
 	}
@@ -308,7 +200,6 @@ public class OI {
 	
 	public class DPadUp2 extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return xBoxCoDriver.getPOV() == 0;
 		}
 	}
@@ -317,7 +208,6 @@ public class OI {
 	
 	public class DPadRight2 extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return xBoxCoDriver.getPOV() == 90;
 		}
 	}
@@ -326,7 +216,6 @@ public class OI {
 	
 	public class DPadDown2 extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return xBoxCoDriver.getPOV() == 180;
 		}
 	}
@@ -369,7 +258,6 @@ public class OI {
 	
 	public class CoDriverTrigs extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return Math.abs(getCoDriverSummedTriggers()) < 0.5;
 		}
 	}
@@ -397,7 +285,6 @@ public class OI {
 	
 	public class CoDriverLeftStick extends Button {
 		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
 			return Math.abs(getCoDriverLeftY()) > 0.1;
 		}
 	}

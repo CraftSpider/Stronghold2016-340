@@ -34,7 +34,6 @@ public class Climber extends Subsystem {
 	public Climber() {
 		armLatch = new Servo(RobotMap.ClimberLatch);
 		dart = new Talon(4);
-//		atBottom = new DigitalInput(RobotMap.ClimberBottomSensor);
 		dartLimit = new DigitalInput(RobotMap.ClimberDartLimit);
 		winchBanner = new DigitalInput(RobotMap.ClimberBanner);
 	}
@@ -51,7 +50,6 @@ public class Climber extends Subsystem {
     public void releaseLatch() {  
     	armLatch.set(1);
     	latchState = false;
-//    	logger.fine("Latch Released: " + "ArmLatch=" + armLatch.get());
     }
     /**
      * Closes latch over the arm
@@ -59,7 +57,6 @@ public class Climber extends Subsystem {
     public void closeLatch() {
     	armLatch.set(0);
     	latchState = true;
-//    	logger.fine("Latch Closed: " + "ArmLatch=" + armLatch.get());
     }
     
     /**

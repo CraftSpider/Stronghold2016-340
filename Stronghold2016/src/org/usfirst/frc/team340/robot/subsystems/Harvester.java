@@ -92,10 +92,7 @@ public class Harvester extends Subsystem {
 		//TODO: sync left/right motors
 		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
 		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
-		
-		//tiltLeft.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue IE smooth out the jerkiness
-		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue IE smooth out the jerkiness
-		
+				
 		limitLeft = new DigitalInput(RobotMap.HarvesterBottomLeftBump);
 		limitRight = new DigitalInput(RobotMap.HarvesterBottomRightBump);
 		limitLeftTop = new DigitalInput(RobotMap.HarvesterTopLeftBump);
@@ -110,17 +107,6 @@ public class Harvester extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    
-    
-    
-//    /**
-//     * Drives the motor that actuates the harvester/shooter
-//     * @param speed
-//     */
-//    public void setTiltSpeed(double speed) {
-//    	tiltLeft.set(-speed);
-//    	tiltRight.set(speed);
-//    }
     
     /**
      * Access right limit switch state

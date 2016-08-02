@@ -73,17 +73,6 @@ public class ArmToPosition extends Command {
 		} else {
 			ThV = 0;
 		}
-//		if (currPos < tgtPos / 2) {
-//			ThV += maxAcc;
-//		} else if (currPos < tgtPos) {
-//			ThV -= maxAcc;
-//		} else if (currPos > tgtPos / 2) {
-//				ThV -= maxAcc;
-//		} else if (currPos > tgtPos) {
-//			ThV += maxAcc;
-//		} else {
-//			ThV = 0;
-//		}
 
 		if(ThV < vBound && ThV > -vBound) {
 			logger.info("ThV is ok");

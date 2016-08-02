@@ -52,8 +52,6 @@ public class ArmToNicerPosition extends Command {
     	
     	
     	logger.info("Command speed is: " + cmdSpd);
-    	//ramp? or something else?
-    	//desiredSpd  += ??
     	
     	if(deltaPos > 0 && currPos >= 0 && currPos <= balancePos) { //checking positive direction lifting
     		logger.info("Is positive lifting");

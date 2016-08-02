@@ -35,20 +35,12 @@ public class HarvestBall extends Command {
     protected void execute() {
     	double desiredShooterWheelHarvestSpeed = Robot.harvesterRollers.SHOOTER_HARVEST_V_BUS;
     	
-    	if(Robot.harvesterRollers.hasBallLeft()) {
-//    		Robot.oi.driverRumbleLeft(0);
-//    		Robot.oi.coDriverRumbleLeft(0);
-//    		desiredShooterWheelHarvestSpeed /= 2;
-    	} else {
+    	if(!Robot.harvesterRollers.hasBallLeft()) {
     		Robot.oi.driverRumbleLeft(1);
     		Robot.oi.coDriverRumbleLeft(1);
     	}
     	
-    	if(Robot.harvesterRollers.hasBallRight()) {
-//    		Robot.oi.driverRumbleRight(0);
-//    		Robot.oi.coDriverRumbleRight(0);
-//    		desiredShooterWheelHarvestSpeed /= 2;
-    	} else {
+    	if(!Robot.harvesterRollers.hasBallRight()) {
     		Robot.oi.driverRumbleRight(1);
     		Robot.oi.coDriverRumbleRight(1);
     	}

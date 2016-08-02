@@ -34,7 +34,6 @@ public class Shoot extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	speed = false;
-//    	t.start();
     	t.stop();
     	t.reset();
     	logger.info("[Initializing: Shooter]");
@@ -53,8 +52,6 @@ public class Shoot extends Command {
     //Hold Back on controller 1 to keep the command going and roll the shooter wheel
     //Hold Start on controller 1 to begin rolling the ball control wheel
     
-    //private boolean speed = false;
-    //private boolean align = false;
     private boolean speed = true;
     private boolean align = true;
     private boolean liningUp = false;
@@ -70,13 +67,11 @@ public class Shoot extends Command {
 	NetworkTable table = NetworkTable.getTable("GRIP");
     
     protected void execute() {
-//    	System.out.println(Robot.harvesterRollers.getShooterSpeed());
     	if(speedOverride == 100) {
     		Robot.harvesterRollers.setShooter(Robot.harvesterRollers.SHOOTER_SHOOT_V_BUS);
     	} else {
     		Robot.harvesterRollers.setShooter(speedOverride);
     	}
-//    	logger.info("current: " + Robot.harvesterRollers.harvesterCurrent());
     	Robot.harvesterRollers.harvesterCurrent();;
     	double desiredBallControlSpeed = 0;
     	//if we have the ball stop
@@ -86,9 +81,6 @@ public class Shoot extends Command {
     		desiredBallControlSpeed = Robot.harvesterRollers.HARVESTER_HARVEST_V_BUS;
     	}
     	
-//    	if(t.get() > Robot.harvesterRollers.SHOOTER_SHOOT_SPINUP_TIME) {
-//    		desiredBallControlSpeed = Robot.harvesterRollers.HARVESTER_RELEASE_BALL_V_BUS;
-//    	}
     	if(Robot.harvesterRollers.getShooterSpeed() < -55000 || t.get() > Robot.harvesterRollers.SHOOTER_SHOOT_SPINUP_TIME) {
     		speed = true;
     	}
@@ -96,31 +88,19 @@ public class Shoot extends Command {
     		desiredBallControlSpeed = Robot.harvesterRollers.HARVESTER_RELEASE_BALL_V_BUS;
     	}
     	Robot.harvesterRollers.setBallControl(desiredBallControlSpeed);
-//    	if(Robot.oi.getBackState()) {
-//    		Robot.harvester.setShooter(Robot.harvester.SHOOTER_SHOOT_V_BUS);
-//    	}
-//    	
-//    	if(Robot.oi.getStartState()) {
-//    		Robot.harvester.setBallControl(Robot.harvester.HARVESTER_RELEASE_BALL_V_BUS);
-//    	}
     	try {
     	double[] defaultValue = new double[0];
     	
     	double[] areas = table.getNumberArray("contours/area", defaultValue);
-//    	System.out.println(table.getSubTables());
-//    	System.out.println(areas.length);
     	int which = 0;
-//    	if(areas.length > 1) {
-    		double record = 0;
-    		for(int i = 0; i< areas.length; i++) {
-    			if(areas[i] > record && areas[i] > 200) {
-    				record = areas[i];
-    				which = i;
-    			}
+    	double record = 0;
+    	for(int i = 0; i< areas.length; i++) {
+    		if(areas[i] > record && areas[i] > 200) {
+    			record = areas[i];
+    			which = i;
     		}
-//    	}
+    	}
     	double[] centerX = table.getNumberArray("contours/centerX", defaultValue);
-//    	System.out.println(centerX.length);
     	if(!liningUp) {
     		angleOff = ((width/2-offset)-centerX[which])*0.157;
     		initAngle = Robot.drive.getGyroAngle();
@@ -160,7 +140,6 @@ public class Shoot extends Command {
 if(t.get() > Robot.harvesterRollers.SHOOTER_SHOOT_SPINUP_TIME) {
 desiredBallControlSpeed = Robot.harvesterRollers.HARVESTER_RELEASE_BALL_V_BUS;
 }
-    //		align = false;
     	}
     }
 

@@ -18,21 +18,6 @@ public class CG_SpyBot extends CommandGroup {
     	addSequential(new Shoot(-0.67), 7);
     	addSequential(new MoveArm(-1.0), 1);
     	
-    	/*addSequential(new ArmToMax(), 4);
-    	addSequential(new Shoot(), 7.5);
-    	addSequential(new DriveSpin(-1), .375);
-    	addSequential(new DriveTime(1, -0.75));
-    	addSequential(new DriveSpin(0.75), 1.15);
-    	addSequential(new ArmToZero(), 7);
-    	addSequential(new MO_ArmUp(), 0.2);
-    	addSequential(new DriveTime(1, 0.75));*/
-    	
-    	// uncomment these when driveSpin has been tested
-    	
-//    	addSequential(new DriveTime(2, 0.8));
-//    	addSequential(new DriveSpin(-0.5), 2);
-//    	addSequential(new DriveTime(1, 0.8));
-    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

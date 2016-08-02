@@ -47,8 +47,6 @@ public class HarvesterRollers extends Subsystem {
     public HarvesterRollers() {
     	shooterWheelA = new CANTalon(RobotMap.HarvesterShooterWheelA);//Construct shooter A as CANTalon, this should have encoder into it
 		shooterWheelB = new CANTalon(RobotMap.HarvesterShooterWheelB);//Construct shooter B as CANTalon
-//		shooterWheelB.changeControlMode(CANTalon.TalonControlMode.Follower);//turn shooter motor B to a slave
-//		shooterWheelB.set(shooterWheelA.get());//slave shooter motor B to shooter motor A
 		
 		harvesterBallControl = new CANTalon(RobotMap.HarvesterBallControl);
 

@@ -36,18 +36,6 @@ public class DriveWithXbox extends Command {
     }
     
     protected void execute() { 
-//    	System.out.println("gyro: " + Robot.drive.getGyroAngle());
-    	//Clutch should never be engaged while we are under human control
-//    	Robot.drive.disengagePTO();
-    	
-    	/*if(Robot.oi.getXYButtonState() == 2) {
-    		Robot.drive.engagePTO();
-    	} else if(Robot.oi.getXYButtonState() == 0) {
-    		Robot.climber.releaseLatch();
-    	} else {
-    		Robot.climber.closeLatch();
-    		Robot.drive.disengagePTO();
-    	}*/
     	
     	if(Robot.drive.PTOState) {
     		Robot.drive.engagePTO();

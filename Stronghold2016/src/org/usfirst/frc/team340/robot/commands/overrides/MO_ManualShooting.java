@@ -45,8 +45,6 @@ public class MO_ManualShooting extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-//    	
-    	System.out.println(/*arg0*/);
     	System.out.println("trig pressed : " + leftTrigPressed + " trig released: "+ leftTrigReleased);
     	
     	// if left trig is pressed
@@ -79,13 +77,6 @@ public class MO_ManualShooting extends Command {
     			// we have released
     			leftTrigReleased = true;
     		}
-    		
-//    		if(rightTrigPressed && !rightTrigReleased) {
-    			
-//    			rightTrigReleased = true;
-//    		}
-    		// we aren't pressed any more
-//    		rightTrigPressed = false;
 			leftTrigPressed = false;
     	} else if(Robot.oi.getCoDriverSummedTriggers() > 0.5) {
     		System.out.println("right trig");
@@ -100,41 +91,11 @@ public class MO_ManualShooting extends Command {
     		Robot.oi.coDriverRumbleRight((float) 0.5);
     		
     	}
-    	
-    	
-//    	log.info("Arm Potentiometers left: " + Robot.harvester.getLeftAimPot() + " right: " + Robot.harvester.getRightAimPot() + " left switch:" + Robot.harvester.getLeftLimit()  + " right switch:" + Robot.harvester.getRightLimit());
-    	
-    	//SET SHOOTER SPEED
-//    	if(Robot.oi.getDriverBumperState() == 2) { //if RB1 is pressed
-//    		// Feed in
-//    		log.info("RB1 pressed Shooter Speed is 1");
-//    		Robot.harvester.setShooter(1);
-//    	} else if(Robot.oi.getDriverBumperState() == 0) { // if LB1 is pressed
-//    		// Feeds out
-//    		log.info("LB1 pressed Shooter Speed is -1");
-//    		Robot.harvester.setShooter(-1);
-//    	} else {
-//    		Robot.harvester.setShooter(0);
-//    		log.info("RB1 and LB1 not pressed Stop Shooter");
-//    	}
-    	
-    	//SET HARVESTER SPEED
-//    	if(Robot.oi.getXYButtonState() == 2) { //if X1 is pressed
-//    		log.info("X 1 pressed Ball Control is 1");
-//    		Robot.harvester.setBallControl(1);
-//    	} else if(Robot.oi.getXYButtonState() == 0) { //if Y1 is pressed
-//    		log.info("Y 1 pressed Ball Control is -1");
-//    		Robot.harvester.setBallControl(-1);
-//    	} else {
-//    		Robot.harvester.setBallControl(0);
-//    		log.info("X 1 and Y 1 not pressed Ball Control Stop");
-//    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	return ended;
-//        return Robot.oi.getXYButtonState() == 1 && Robot.oi.getDriverBumperState() == 1;
     }
 
     // Called once after isFinished returns true

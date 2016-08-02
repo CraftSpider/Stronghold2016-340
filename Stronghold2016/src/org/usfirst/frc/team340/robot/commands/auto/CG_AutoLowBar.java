@@ -32,8 +32,6 @@ public class CG_AutoLowBar extends CommandGroup {
     	
     	addSequential(new ArmToMax());
     	addSequential(new PrintCommand("Autonomous finished"));
-//    	addSequential(new DriveTime(3, .5));
     	addSequential(new Shoot(), 4.0);
-    	//addSequential(new DriveDistance(10, 500));
     }
 }

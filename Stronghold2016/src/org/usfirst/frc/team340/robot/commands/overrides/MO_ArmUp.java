@@ -26,7 +26,6 @@ public class MO_ArmUp extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[initializing]");
-//    	Robot.harvester;
     }
 
     // Called repeatedly when this Command is scheduled to run

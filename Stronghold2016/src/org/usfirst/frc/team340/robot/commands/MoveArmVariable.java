@@ -26,10 +26,7 @@ public class MoveArmVariable extends Command {
     	speed = Robot.oi.getCoDriverLeftY();
     	double leftSpeed = speed;
     	double rightSpeed = speed;
-    	
-//    	Robot.harvester.setLeftTilt(Robot.oi.getCoDriverLeftY());
-//    	Robot.harvester.setRightTilt(Robot.oi.getCoDriverLeftY());
-    	
+    	    	
     	if(Robot.harvester.getLeftLimit() && speed < 0) {
 			leftSpeed = 0;
 			rightSpeed /= 2;
@@ -40,11 +37,6 @@ public class MoveArmVariable extends Command {
 			leftSpeed = 0;
 			rightSpeed /= 2;
 		}
-		// stop left slow right if pot is too high and we have reset
-		/*if(leftPot > Robot.harvester.HARVESTER_MAX_ANGLE && speed > 0 && Robot.harvester.hasReset()) {
-			leftSpeed = 0;
-			rightSpeed /= 2;
-		}*/
 		// stop right if bump slow left
 		if(Robot.harvester.getRightLimit() && speed < 0) {
 			rightSpeed = 0;
@@ -56,11 +48,6 @@ public class MoveArmVariable extends Command {
 			rightSpeed = 0;
 			leftSpeed /= 2;
 		}
-		// stop right slow left if pot is too high and we have reset
-		/*if(rightPot > Robot.harvester.HARVESTER_MAX_ANGLE && speed > 0 && Robot.harvester.hasReset()) {
-			rightSpeed = 0;
-			leftSpeed /= 2;
-		}*/
 		
 		Robot.harvester.setRightTilt(rightSpeed);
 		Robot.harvester.setLeftTilt(leftSpeed);

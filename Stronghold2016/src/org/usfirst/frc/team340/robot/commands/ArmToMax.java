@@ -24,45 +24,12 @@ public class ArmToMax extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.harvester);
-//    	setTimeout(3);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	logger.info("[Initializing]");
-//    	lSpd = 0.5;
-//    	rSpd = 0.5;
     }
-
-    // Called repeatedly when this Command is scheduled to run
-    /*protected void execute() {
-    	if(Robot.harvester.getTopLeftLimit()) {
-    		lSpd = 0;
-    		rSpd -= differentiate;
-    	}
-    	
-    	if(Robot.harvester.getTopRightLimit()) {
-    		lSpd -= differentiate;
-    		rSpd = 0;
-    	}
-    	
-    	if((lSpd < minSpd) && (lSpd != 0)) {
-    		lSpd = minSpd;
-    	}
-    	
-    	if((rSpd < minSpd) && (rSpd != 0)) {
-    		rSpd = minSpd;
-    	}
-    	
-    	if(isTimedOut()) {
-    		lSpd = 0;
-    		rSpd = 0;
-    	}
-    	
-    	Robot.harvester.setLeftTilt(lSpd);
-    	Robot.harvester.setRightTilt(rSpd);
-    	logger.info("lftSw: " + Robot.harvester.getTopLeftLimit() + " rgtSw:" + Robot.harvester.getTopRightLimit() + "lft:" + lSpd + " rgt:" + rSpd);
-    }*/
     
     protected void execute() {
     	double leftSpeed = 0.85;

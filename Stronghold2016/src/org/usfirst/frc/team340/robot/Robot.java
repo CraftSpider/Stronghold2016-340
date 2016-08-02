@@ -46,8 +46,6 @@ public class Robot extends IterativeRobot {
 	public static Flashlight flashlight;
 	public static OI oi;
 	
-//	public static Timer climberFailsafe;
-
     Command autonomousCommand;
     CommandGroup belowLowBar;
     SendableChooser chooser;
@@ -68,14 +66,6 @@ public class Robot extends IterativeRobot {
     			}
     		});
     	}
-//    	USBCamera camera = new USBCamera("cam0");
-////    	camera.
-//    	camera.setExposureManual(0);
-//        server = CameraServer.getInstance();
-//        server.setQuality(	50);
-//    	
-////        //the camera name (ex "cam0") can be found through the roborio web interface
-//        server.startAutomaticCapture(camera);
     }
 
     /**
@@ -94,14 +84,12 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(climber);
         SmartDashboard.putData(harvesterRollers);
         oi = new OI();
-//ppim.pm.ip.mip.mi.p.miipmmip.ip.m.pimmmpim.m.ipm..ipmmpimipmipm.mmipipm.pipmi.pmipmmpimipmpi..lmmmplip.mimp.im..p.ppn.p.pp.p.ppp.p
         chooser = new SendableChooser();
         chooser.addDefault("Do nothing", new AutoDoNothing());
         chooser.addObject("Spy Bot", new CG_SpyBot());
         chooser.addObject("Spy Bot and Turn", new CG_SpyBotTurn());
         chooser.addObject("Drive straight 2.5 seconds", new DriveTime(2.5, 1));
         chooser.addObject("Low bar", new CG_LowBarAndShoot());
-//        chooser.addObject("Middle to Low Bar", new MyAutoCommand());
         SmartDashboard.putData("AutoSelect", chooser);
     }
     
@@ -143,12 +131,6 @@ public class Robot extends IterativeRobot {
     	
     	// schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
-    	
-    	//Calibrates Gyro at beginning of auto.
-//        drive.calibrateGyro();
-    	
-//    	belowLowBar = new CG_AutoLowBar();
-//        belowLowBar.start();
     }
 
     /**
@@ -164,8 +146,6 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        
-//        climberFailsafe.start();
     }
 
     /**
@@ -181,17 +161,4 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
-    
-    /**
-     * Basic failsafe to prevent climber from being raised at the wrong time.
-     * I can't stop the timer from here, so I did it in the command
-     * @return boolean are we at the end of the match
-     */
-//    public static boolean isEndGame() {
-//    	if(climberFailsafe.get() >= 110) {
-//    		return true;
-//    	} else {
-//    		return false;
-//    	}
-//    }
 }
