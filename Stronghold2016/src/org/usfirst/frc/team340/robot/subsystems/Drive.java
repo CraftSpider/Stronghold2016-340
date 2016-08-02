@@ -6,16 +6,10 @@ import org.usfirst.frc.team340.robot.Robot;
 import org.usfirst.frc.team340.robot.RobotMap;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 
-//import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PWM;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * drive code including motors and encoders.
@@ -36,12 +30,6 @@ public class Drive extends Subsystem {
 	// Drive speed variables
 	private double leftMotorSpeed;
 	private double rightMotorSpeed;
-	
-	// Drive Gyro Sensor
-//	private AnalogGyro driveGyro;
-
-	private Encoder leftDriveEncoder;
-	//private Encoder rightDriveEncoder;
  
 	// Clutch servo
 	private Servo PTOMotor;
@@ -52,7 +40,6 @@ public class Drive extends Subsystem {
 	// Logger
 	Logger logger = Robot.getLogger("drive");
 
-	private Accelerometer accel;
 	private AnalogGyro gyro;
 	/**
 	 * Code for driving robot
@@ -61,18 +48,8 @@ public class Drive extends Subsystem {
 		leftDrive = new Talon(RobotMap.DriveLeftMotor);
 		rightDrive = new Talon(RobotMap.DriveRightMotor);
 		
-//		driveGyro = new AnalogGyro(RobotMap.DriveGyroPort);
-
-//		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
-//		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
-
-		leftDriveEncoder = new Encoder(10, 11);
-		
-//		PTOMotor = new PWM(RobotMap.DrivePTO);
 		PTOMotor = new Servo(RobotMap.DrivePTO);
 				
-		accel = new BuiltInAccelerometer();
-		// clutchMotor.setRaw(126);
 		gyro = new AnalogGyro(0);
 	}
 

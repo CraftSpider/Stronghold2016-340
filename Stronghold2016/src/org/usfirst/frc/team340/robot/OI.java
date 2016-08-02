@@ -2,25 +2,20 @@ package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.commands.ArmStop;
 import org.usfirst.frc.team340.robot.commands.ArmToMax;
-import org.usfirst.frc.team340.robot.commands.ArmToNicerPosition;
 import org.usfirst.frc.team340.robot.commands.ArmToZero;
-import org.usfirst.frc.team340.robot.commands.BallControlOff;
 import org.usfirst.frc.team340.robot.commands.Climb;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
-import org.usfirst.frc.team340.robot.commands.DriveTime;
 import org.usfirst.frc.team340.robot.commands.DriveTurn90;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 import org.usfirst.frc.team340.robot.commands.HarvestBall;
 import org.usfirst.frc.team340.robot.commands.MoveArm;
 import org.usfirst.frc.team340.robot.commands.MoveArmVariable;
-import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
 import org.usfirst.frc.team340.robot.commands.Shoot;
 import org.usfirst.frc.team340.robot.commands.StopBallControl;
 import org.usfirst.frc.team340.robot.commands.StopDrive;
 import org.usfirst.frc.team340.robot.commands.StopShooter;
 import org.usfirst.frc.team340.robot.commands.StopShooterWheels;
 import org.usfirst.frc.team340.robot.commands.ToggleFlashlight;
-import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmStop;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
@@ -28,7 +23,6 @@ import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlOut;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchOff;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchOn;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchToggle;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ManualShooting;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
@@ -42,7 +36,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-@SuppressWarnings("unused")
 public class OI {
 	
     public OI() {

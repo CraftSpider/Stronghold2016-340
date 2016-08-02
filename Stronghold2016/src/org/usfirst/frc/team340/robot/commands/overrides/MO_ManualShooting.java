@@ -23,11 +23,6 @@ public class MO_ManualShooting extends Command {
     private boolean leftTrigPressed = false;
     private boolean leftTrigReleased = false;
     
-    private boolean rightTrigPressed = false;
-    private boolean rightTrigReleased = false;
-    
-    private boolean backPressed = false;
-    private boolean backReleased = false;
     private boolean ended = false;
     
     Timer t = new Timer();
@@ -37,16 +32,11 @@ public class MO_ManualShooting extends Command {
     	leftTrigPressed = false;
     	leftTrigReleased = false;
         
-    	rightTrigPressed = false;
-    	rightTrigPressed = false;
-    	
-        backPressed = false;
-        backReleased = false;
-        
-        ended = false;
+    	ended = false;
         
         t.reset();
         t.stop();
+        log.fine("[MO_ManualShooting] Initializing!");
     }
     
     public boolean rumble = false;

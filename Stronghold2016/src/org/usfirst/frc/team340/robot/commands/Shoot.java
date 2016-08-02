@@ -121,8 +121,6 @@ public class Shoot extends Command {
 //    	}
     	double[] centerX = table.getNumberArray("contours/centerX", defaultValue);
 //    	System.out.println(centerX.length);
-    	double startspeed = 0.25;
-    	double maxModifier = 0.2;
     	if(!liningUp) {
     		angleOff = ((width/2-offset)-centerX[which])*0.157;
     		initAngle = Robot.drive.getGyroAngle();
@@ -154,28 +152,6 @@ public class Shoot extends Command {
     			}
     		}
     	}
-    	
-//    	if(!align && !liningUp) {
-    	/*if(Math.abs((width/2+offset)-centerX[which]) < tolerance) {
-    		System.out.println("GOOD");
-    		Robot.drive.setRightDrive(0);
-    		Robot.drive.setLeftDrive(0);
-    		align = true;
-    	} else if(centerX[which] < width/2) {
-//    		System.out.println("move left");
-    		maxModifier = Math.abs((width/2+offset)-centerX[which])/(width/7)*maxModifier;
-    		System.out.println("difference: " + Math.abs((width/2+offset)-centerX[which]) + " width/7: " + width/7);
-    		Robot.drive.setRightDrive(-startspeed - maxModifier);
-    		Robot.drive.setLeftDrive(startspeed + maxModifier);
-    		align = false;
-    	} else if(centerX[which] > width/2) {
-//    		System.out.println("move right");
-    		maxModifier = Math.abs((width/2+offset)-centerX[which])/(width/7)*maxModifier;
-    		System.out.println("difference: " + Math.abs((width/2+offset)-centerX[which]) + " width/7: " + width/7);
-    		Robot.drive.setRightDrive(startspeed + maxModifier);
-    		Robot.drive.setLeftDrive(-startspeed - maxModifier);
-    		align = false;
-    	}*/
     	} catch (Exception e) {
     		// do nothing
     		Robot.drive.setRightDrive(0);

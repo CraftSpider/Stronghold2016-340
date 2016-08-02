@@ -1,9 +1,7 @@
 package org.usfirst.frc.team340.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.AccumulatorResult;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-import static org.usfirst.frc.team340.robot.commands.ArmToPosition.vBound;
 
 import java.util.logging.Logger;
 
@@ -34,6 +32,7 @@ public class ArmToZero extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
 //    	cmdV = 0;
+    	log.fine("[ArmToZero] Initializing!");
     }
 
     // Called repeatedly when this Command is scheduled to run
