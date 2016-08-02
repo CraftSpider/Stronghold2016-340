@@ -268,23 +268,8 @@ public class OI {
 //	LeftTrig1 leftTrig1 = new LeftTrig1();
 //	
 	
-	public class DPadUp1 extends Button {
-		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
-			return xBoxDriver.getPOV() == 0;
-		}
-	}
-	
-	DPadUp1 dPadUp1 = new DPadUp1();
-	
-	public class DPadDown1 extends Button {
-		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
-			return xBoxDriver.getPOV() == 180;
-		}
-	}
-	
-	DPadDown1 dPadDown1 = new DPadDown1();
+	Button dPadUp1 = new DPad(xBoxDriver,0);
+	Button dPadDown1 = new DPad(xBoxDriver,180);
 	
 	//Init & construct co-driver controller
 	Joystick xBoxCoDriver = new Joystick(1);
@@ -315,26 +300,9 @@ public class OI {
 	}
 	LeftTrig2 leftTrig2 = new LeftTrig2();
 	
-	public class DPadUp2 extends Button {
-		public boolean get() {
-			return xBoxCoDriver.getPOV() == 0;
-		}
-	}
-	DPadUp2 dPadUp2 = new DPadUp2();
-	
-	public class DPadRight2 extends Button {
-		public boolean get() {
-			return xBoxCoDriver.getPOV() == 90;
-		}
-	}
-	DPadRight2 dPadRight2 = new DPadRight2();
-	
-	public class DPadDown2 extends Button {
-		public boolean get() {
-			return xBoxCoDriver.getPOV() == 180;
-		}
-	}
-	DPadDown2 dPadDown2 = new DPadDown2();
+	Button dPadUp2 = new DPad(xBoxCoDriver,0);
+	Button dPadRight2 = new DPad(xBoxCoDriver,90);
+	Button dPadDown2 = new DPad(xBoxCoDriver,180);
 	
 	/**
 	 * Get throttle for GTA (trigger-based) drive
