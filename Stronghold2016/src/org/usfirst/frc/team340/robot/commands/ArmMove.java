@@ -134,4 +134,4 @@ public class ArmMove extends Command {
     protected void interrupted() {
     	end();
     }
-}//EOF
+}

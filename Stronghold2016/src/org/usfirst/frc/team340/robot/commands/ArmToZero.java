@@ -1,13 +1,11 @@
 package org.usfirst.frc.team340.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.AccumulatorResult;
-import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-import static org.usfirst.frc.team340.robot.commands.ArmToPosition.vBound;
-
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team340.robot.Robot;
+
+import edu.wpi.first.wpilibj.BuiltInAccelerometer;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *

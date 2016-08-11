@@ -22,7 +22,7 @@ public class RollersShootFire extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.harvesterRollers.setShooter(-8/ControllerPower.getInputVoltage());
+    	Robot.harvesterRollers.setShooter(-10/ControllerPower.getInputVoltage());
     	Robot.harvesterRollers.setBallControl(Robot.harvesterRollers.HARVESTER_DISCHARGE_BALL_V_BUS);
     }
 

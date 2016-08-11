@@ -2,7 +2,6 @@ package org.usfirst.frc.team340.robot.commands.auto;
 
 import org.usfirst.frc.team340.robot.commands.ArmToMax;
 import org.usfirst.frc.team340.robot.commands.ArmToZero;
-import org.usfirst.frc.team340.robot.commands.DriveTime;
 import org.usfirst.frc.team340.robot.commands.Shoot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;

@@ -1,7 +1,5 @@
 package org.usfirst.frc.team340.robot.commands;
 
-import java.util.logging.Logger;
-
 import org.usfirst.frc.team340.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;

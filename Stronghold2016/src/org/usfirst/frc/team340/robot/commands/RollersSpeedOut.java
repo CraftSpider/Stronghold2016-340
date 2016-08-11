@@ -27,7 +27,7 @@ public class RollersSpeedOut extends Command {
     	}else{
     		Robot.harvesterRollers.setBallControl(0);
     	}
-    	Robot.harvesterRollers.setShooter(-8/ControllerPower.getInputVoltage());
+    	Robot.harvesterRollers.setShooter(-10/ControllerPower.getInputVoltage());
     }
 
     // Make this return true when this Command no longer needs to run execute()
