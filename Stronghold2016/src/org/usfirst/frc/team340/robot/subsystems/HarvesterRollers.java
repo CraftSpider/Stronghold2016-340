@@ -21,7 +21,7 @@ public class HarvesterRollers extends Subsystem {
 	
 	// Important ball control constants
 	public final double HARVESTER_RELEASE_BALL_V_BUS = .6;
-	public final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.25;
+	public final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.75;
 	public final int HARVESTER_CONTROL_STALL_CURRENT = 42;
 	public final double HARVESTER_HARVEST_V_BUS = -0.6;
 	

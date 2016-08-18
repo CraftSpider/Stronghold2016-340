@@ -29,14 +29,14 @@ public class DriveWithXbox extends Command {
     private double moveSlowScale = 0.6;
     private double rotateSlowScale = 0.7;
     
-    public double throttleThrottling(double input) {
-    	if(input > 0.1) {
-    		return 	-Math.sqrt(-Math.pow((input-1),2)+1);
-    	} else if (input < -0.1){
-    		return Math.sqrt(-Math.pow((-input-1),2)+1);
-    	}
-    	return 0;
-    }
+//    public double throttleThrottling(double input) {
+//    	if(input > 0.1) {
+//    		return 	-Math.sqrt(-Math.pow((input-1),2)+1);
+//    	} else if (input < -0.1){
+//    		return Math.sqrt(-Math.pow((-input-1),2)+1);
+//    	}
+//    	return 0;
+//    }
     
     protected void execute() { 
 //    	System.out.println("gyro: " + Robot.drive.getGyroAngle());
@@ -88,7 +88,7 @@ public class DriveWithXbox extends Command {
     		Robot.drive.arcadeDrive((Robot.oi.getDriverRightY())*moveSlowScale, (Robot.oi.getDriverRightX())*rotateSlowScale);
     		locked = false;
     	} else {
-    		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY()),(Robot.oi.getDriverLeftX()));
+    		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY())*(Robot.oi.getDriverLeftY()),(Robot.oi.getDriverLeftX())*(Robot.oi.getDriverLeftX()));
     		locked = false;
     	}
     }

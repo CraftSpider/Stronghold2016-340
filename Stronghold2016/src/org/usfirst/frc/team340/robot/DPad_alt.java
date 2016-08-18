@@ -3,14 +3,14 @@ package org.usfirst.frc.team340.robot;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class DPad_alt {
-	private Joystick joystick;
+	private Joystick m_joystick;
 	
 	public DPad_alt(Joystick joystick) {
-		this.joystick = joystick;
+		this.m_joystick = joystick;
 	}
 	
 	public boolean get(int direction) {
-		return joystick.getPOV() == direction;
+		return m_joystick.getPOV() == direction;
 	}
 	
 	public enum Direction {

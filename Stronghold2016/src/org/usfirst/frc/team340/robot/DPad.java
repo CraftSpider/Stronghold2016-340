@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 public class DPad extends Button {
-	private Joystick joy;
+	private Joystick m_joystick;
 	private int direction;
 	
 	/**
@@ -13,7 +13,7 @@ public class DPad extends Button {
 	 * @param joy the joystick
 	 */
 	public DPad(Joystick joy) {
-		this.joy = joy;
+		this.m_joystick = joy;
 	}
 	
 	/**
@@ -24,7 +24,7 @@ public class DPad extends Button {
 	 * must be equal to
 	 */
 	public DPad(Joystick joy, int direction) {
-		this.joy = joy;
+		this.m_joystick = joy;
 		this.direction = direction;
 	}
 	
@@ -36,7 +36,7 @@ public class DPad extends Button {
 	 * otherwise
 	 */
 	public boolean get() {
-		return joy.getPOV() == direction;		
+		return m_joystick.getPOV() == direction;		
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class DPad extends Button {
 	 * otherwise
 	 */
 	public boolean get(int direction) {
-		return joy.getPOV() == direction;
+		return m_joystick.getPOV() == direction;
 	}
 	
 	public enum Direction {

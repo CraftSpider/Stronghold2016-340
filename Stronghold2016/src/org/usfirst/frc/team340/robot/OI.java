@@ -47,7 +47,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 @SuppressWarnings("unused")
 public class OI {
 
-	//Driver
+	//Driver - Construct Buttons
 	Joystick xBoxDriver = new Joystick(0);
 	Button A1 = new JoystickButton(xBoxDriver, 1);
 	Button B1 = new JoystickButton(xBoxDriver, 2);
@@ -60,8 +60,10 @@ public class OI {
 	Button LeftStick1 = new JoystickButton(xBoxDriver, 9);
 	JoyTrigger leftTrig1 = new JoyTrigger(xBoxDriver, 2);
 	JoyTrigger rightTrig1 = new JoyTrigger(xBoxDriver, 3);
+	DPad dPadUp1 = new DPad(xBoxDriver,0);
+	DPad dPadDown1 = new DPad(xBoxDriver,180);
 	
-	//Co-driver
+	//Co-driver - Construct Buttons
 	Joystick xBoxCoDriver = new Joystick(1);
 	Button A2 = new JoystickButton(xBoxCoDriver, 1);
 	Button B2 = new JoystickButton(xBoxCoDriver, 2);
@@ -74,12 +76,17 @@ public class OI {
 	Button LeftStick2 = new JoystickButton(xBoxCoDriver, 9);
 	JoyTrigger leftTrig2 = new JoyTrigger(xBoxCoDriver, 2);
 	JoyTrigger rightTrig2 = new JoyTrigger(xBoxCoDriver, 3);
-	
 	Button dPadUp2 = new DPad(xBoxCoDriver,0);
 	Button dPadRight2 = new DPad(xBoxCoDriver,90);
 	Button dPadDown2 = new DPad(xBoxCoDriver,180);
+	public class CoDriverLeftStick extends Button {
+		public boolean get() {
+			return Math.abs(getCoDriverLeftY()) > 0.1;
+		}
+	}
+	CoDriverLeftStick coDriverLeftStick = new CoDriverLeftStick();
 	
-	//Manual board
+	//Manual board - Construct Buttons
 	Joystick ManualBoard = new Joystick(2);
     Button HarvesterUp = new JoystickButton(ManualBoard, 2);
     Button HarvesterDown = new JoystickButton(ManualBoard, 1);
@@ -98,22 +105,21 @@ public class OI {
     climberDisengage ClimberDisengage = new climberDisengage();
     
     public OI() {
-    
-    	// DRIVER
-    
+
+    	//////////////////////////////////////////
+    	//			     Driver 				//
+    	//////////////////////////////////////////
     	X1.whenPressed(new DriveTurn90());
     	X1.whenReleased(new StopDrive());
+    	
+    	LB1.whenPressed(new HarvestBall());
+    	LB1.whenReleased(new RollersStopShooter());
+    	RB1.whenPressed(new RollersSpeedOut());
     	Start1.whenPressed(new Climb(0.7));
     	Start1.whenReleased(new DriveWithXbox());
     	Back1.whenPressed(new Climb(-1));
     	Back1.whenReleased(new DriveWithXbox());
     	
-    	
-    	LB1.whenPressed(new HarvestBall());
-    	LB1.whenReleased(new RollersStopShooter());
-    	
-    	RB1.whenPressed(new RollersSpeedOut());
-//    	
     	rightTrig1.whenPressed(new RollersShootFire());
     	rightTrig1.whenReleased(new RollersStopShooter());
     	
@@ -122,45 +128,31 @@ public class OI {
     	dPadDown1.whenPressed(new ArmMove(-1.0));
     	dPadDown1.whenReleased(new ArmStop());
     	
-    	
-//    	Back1.whenPressed(new ArmToMax());
-//    	Back1.whenReleased(new ArmStop());
-    	
-//    	dPadUp1.whenPressed(new CG_SpyBot());
-//    	X1.whenPressed(new Climb());
-//    	X1.whenReleased(new DriveWithXbox());
-    	
-    	
-    	// CO DRIVER
+    	//////////////////////////////////////////
+    	//			   Co-Driver 				//
+    	//////////////////////////////////////////
       	A2.whenPressed(new ArmToZero());
     	A2.whenReleased(new ArmStop());
-    	
     	B2.whenPressed(new ArmToMax());
     	B2.whenReleased(new ArmStop());
-  	
     	Y2.whenPressed(new DischargeBall());
     	Y2.whenReleased(new RollersStopShooter());
+    	
+    	LB2.whenPressed(new HarvestBall());
+    	LB2.whenReleased(new RollersStopShooter());
+    	RB2.whenPressed(new RollersSpeedOut());
+    	Back2.whenPressed(new MO_ArmDown());
+    	Back2.whenReleased(new ArmStop());
+
+    	rightTrig2.whenPressed(new RollersShootFire());
+    	rightTrig2.whenReleased(new RollersStopShooter());
     	
     	dPadUp2.whenPressed(new ArmMove(0.90));
     	dPadUp2.whenReleased(new ArmStop());
     	dPadDown2.whenPressed(new ArmMove(-0.8));
     	dPadDown2.whenReleased(new ArmStop());
+    	dPadRight2.whenPressed(new ToggleFlashlight());    	
     	
-    	Back2.whenPressed(new MO_ArmDown());
-    	Back2.whenReleased(new ArmStop());
-    	
-    	LB2.whenPressed(new HarvestBall());
-    	LB2.whenReleased(new RollersStopShooter());
-    	
-    	RB2.whenPressed(new RollersSpeedOut());
-//    	RB2.whenReleased(new RollersStopShooter());
-    	
-    	rightTrig2.whenPressed(new RollersShootFire());
-    	rightTrig2.whenReleased(new RollersStopShooter());
-    	
-    	//leftTrig2.whenPressed(new MO_ClutchOff());
-    	
-    	dPadRight2.whenPressed(new ToggleFlashlight());
     	coDriverLeftStick.whenPressed(new ArmMoveVariable());
     	coDriverLeftStick.whenReleased(new StopDrive());
     	
@@ -189,45 +181,6 @@ public class OI {
     	ClimberDisengage.whenPressed(new DriveWithXbox());
     	
     }
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
-    
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
-    
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-    
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
-	
-    
-
-//	public class LeftTrig1 extends Button {
-//		public boolean get() {
-//			return xBoxDriver.getRawAxis(2) > .5;
-//		}
-//	}
-//	LeftTrig1 leftTrig1 = new LeftTrig1();
-//	
-	
-	Button dPadUp1 = new DPad(xBoxDriver,0);
-	Button dPadDown1 = new DPad(xBoxDriver,180);
 	
 	/**
 	 * Get throttle for GTA (trigger-based) drive
@@ -248,54 +201,45 @@ public class OI {
 //		//todo: add a dead zone variable perhaps in robotmap
 //	}
 	
-//	public double getCoDriverSummedTriggers() {
-//		//only return for the right trigger if it above 0.05 (dead zone)
-//		if(xBoxCoDriver.getRawAxis(3) > 0.05) {
-//			return xBoxCoDriver.getRawAxis(3);
-//		//even though the right trigger isn't above 0.05, make sure the left is to avoid running the
-//		//motors really slowly
-//		} else if(xBoxCoDriver.getRawAxis(2) > 0.05) {
-//			return -xBoxCoDriver.getRawAxis(2);
-//		}
-//		//in case neither trigger is held down
-//		return 0;
-//		
-//		//todo: add a dead zone variable perhaps in robotmap
-//	}
-	
-//	public class CoDriverTrigs extends Button {
-//		public boolean get() {
-//			return Math.abs(getCoDriverSummedTriggers()) < 0.5;
-//		}
-//	}	
-//	CoDriverTrigs coDriverTrigs = new CoDriverTrigs();
-//	
+    /**
+     * Accessor for driver joystick
+     * @return
+     */
 	public double getDriverLeftY() {
 		return -xBoxDriver.getRawAxis(1);
 	}
 	
+	/**
+     * Accessor for driver joystick
+     * @return
+     */
 	public double getDriverLeftX() {
 		return -xBoxDriver.getRawAxis(0);
 	}
+	
+	/**
+     * Accessor for driver joystick
+     * @return
+     */
 	public double getDriverRightY() {
 		return -xBoxDriver.getRawAxis(5);
 	}
 	
+	/**
+     * Accessor for driver joystick
+     * @return
+     */
 	public double getDriverRightX() {
 		return -xBoxDriver.getRawAxis(4);
 	}
 	
+	/**
+     * Accessor for codriver joystick
+     * @return
+     */
 	public double getCoDriverLeftY() {
 		return -xBoxCoDriver.getRawAxis(1);
 	}
-	
-	public class CoDriverLeftStick extends Button {
-		public boolean get() {
-//			System.out.println(xBoxDriver.getPOV());
-			return Math.abs(getCoDriverLeftY()) > 0.1;
-		}
-	}
-	CoDriverLeftStick coDriverLeftStick = new CoDriverLeftStick();
 	
 	/**
 	 * returns 0 if LB1 is pressed
