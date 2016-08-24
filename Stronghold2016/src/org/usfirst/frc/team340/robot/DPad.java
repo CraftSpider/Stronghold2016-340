@@ -4,17 +4,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 public class DPad extends Button {
-	private Joystick m_joystick;
+	private Joystick joystick;
 	private int direction;
-	
-	/**
-	 * Class for dealing with the D-Pad
-	 * aka PoV hat
-	 * @param joy the joystick
-	 */
-	public DPad(Joystick joy) {
-		this.m_joystick = joy;
-	}
 	
 	/**
 	 * Class for dealing with the D-Pad
@@ -24,10 +15,14 @@ public class DPad extends Button {
 	 * must be equal to
 	 */
 	public DPad(Joystick joy, int direction) {
-		this.m_joystick = joy;
+		this.joystick = joy;
 		this.direction = direction;
 	}
 	
+	public DPad(Joystick joy, Direction dir) {
+		this.joystick = joy;
+		this.direction = dir.direction;
+	}
 	/**
 	 * Gets whether or not the hat's angle
 	 * is equal to the given angle
@@ -36,20 +31,7 @@ public class DPad extends Button {
 	 * otherwise
 	 */
 	public boolean get() {
-		return m_joystick.getPOV() == direction;		
-	}
-	
-	/**
-	 * Gets whether or not the hat's angle
-	 * is equal to the given angle
-	 * @param direction the angle of the
-	 * PoV hat. Use <code>Direction.dPad___</code>
-	 * @return true if the PoV hat is
-	 * equal to the given angle, false
-	 * otherwise
-	 */
-	public boolean get(int direction) {
-		return m_joystick.getPOV() == direction;
+		return joystick.getPOV() == direction;		
 	}
 	
 	public enum Direction {

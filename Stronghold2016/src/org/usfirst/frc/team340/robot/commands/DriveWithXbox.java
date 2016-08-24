@@ -88,7 +88,19 @@ public class DriveWithXbox extends Command {
     		Robot.drive.arcadeDrive((Robot.oi.getDriverRightY())*moveSlowScale, (Robot.oi.getDriverRightX())*rotateSlowScale);
     		locked = false;
     	} else {
-    		Robot.drive.arcadeDrive((Robot.oi.getDriverLeftY())*(Robot.oi.getDriverLeftY()),(Robot.oi.getDriverLeftX())*(Robot.oi.getDriverLeftX()));
+    		double leftX;
+    		double leftY;
+    		if(Robot.oi.getDriverLeftY()<0){
+    			leftY = -(Robot.oi.getDriverLeftY())*(Robot.oi.getDriverLeftY());
+    		}else{
+    			leftY = (Robot.oi.getDriverLeftY())*(Robot.oi.getDriverLeftY());
+    		}
+    		if(Robot.oi.getDriverLeftX()<0){
+    			leftX = -(Robot.oi.getDriverLeftX())*(Robot.oi.getDriverLeftX());
+    		}else{
+    			leftX = (Robot.oi.getDriverLeftX())*(Robot.oi.getDriverLeftX());
+    		}
+    		Robot.drive.arcadeDrive(leftX,leftY);
     		locked = false;
     	}
     }

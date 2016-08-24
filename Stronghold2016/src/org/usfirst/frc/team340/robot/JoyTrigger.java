@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
 public class JoyTrigger extends Button {
-	private Joystick m_joystick;
+	private Joystick joystick;
 	private int axis;
 	private double percent;
 	
@@ -14,7 +14,7 @@ public class JoyTrigger extends Button {
 	 * @param axis the number of the axis
 	 */
 	public JoyTrigger(Joystick joy, int axis) {
-		this.m_joystick = joy;	
+		this.joystick = joy;	
 		this.axis = axis;
 		this.percent = 0.5;
 	}
@@ -27,7 +27,7 @@ public class JoyTrigger extends Button {
 	 * return to return true
 	 */
 	public JoyTrigger(Joystick joy, int axis, double percent) {
-		this.m_joystick = joy;	
+		this.joystick = joy;	
 		this.axis = axis;
 		this.percent = percent;
 	}
@@ -40,6 +40,6 @@ public class JoyTrigger extends Button {
 	 * false otherwise
 	 */
 	public boolean get() {
-		return m_joystick.getRawAxis(axis) >= percent;
+		return joystick.getRawAxis(axis) >= percent;
 	}
 }
