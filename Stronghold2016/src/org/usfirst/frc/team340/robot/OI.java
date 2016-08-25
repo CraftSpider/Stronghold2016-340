@@ -1,28 +1,23 @@
 package org.usfirst.frc.team340.robot;
 
+import org.usfirst.frc.team340.robot.DPad.Direction;
+import org.usfirst.frc.team340.robot.commands.ArmMove;
+import org.usfirst.frc.team340.robot.commands.ArmMoveVariable;
 import org.usfirst.frc.team340.robot.commands.ArmStop;
 import org.usfirst.frc.team340.robot.commands.ArmToMax;
-import org.usfirst.frc.team340.robot.commands.ArmToNicerPosition;
 import org.usfirst.frc.team340.robot.commands.ArmToZero;
-import org.usfirst.frc.team340.robot.commands.BallControlOff;
 import org.usfirst.frc.team340.robot.commands.Climb;
 import org.usfirst.frc.team340.robot.commands.DischargeBall;
-import org.usfirst.frc.team340.robot.commands.DriveTime;
 import org.usfirst.frc.team340.robot.commands.DriveTurn90;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 import org.usfirst.frc.team340.robot.commands.HarvestBall;
-import org.usfirst.frc.team340.robot.commands.ArmMove;
-import org.usfirst.frc.team340.robot.commands.ArmMoveVariable;
-import org.usfirst.frc.team340.robot.commands.ReleaseLatch;
 import org.usfirst.frc.team340.robot.commands.RollersShootFire;
 import org.usfirst.frc.team340.robot.commands.RollersSpeedOut;
-import org.usfirst.frc.team340.robot.commands.Shoot;
+import org.usfirst.frc.team340.robot.commands.RollersStopShooter;
 import org.usfirst.frc.team340.robot.commands.StopBallControl;
 import org.usfirst.frc.team340.robot.commands.StopDrive;
-import org.usfirst.frc.team340.robot.commands.RollersStopShooter;
 import org.usfirst.frc.team340.robot.commands.StopShooterWheels;
 import org.usfirst.frc.team340.robot.commands.ToggleFlashlight;
-import org.usfirst.frc.team340.robot.commands.auto.CG_SpyBot;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmDown;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmStop;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ArmUp;
@@ -30,8 +25,6 @@ import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_BallControlOut;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchOff;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchOn;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_ClutchToggle;
-import org.usfirst.frc.team340.robot.commands.overrides.MO_ManualShooting;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterIn;
 import org.usfirst.frc.team340.robot.commands.overrides.MO_ShooterOut;
 
@@ -44,7 +37,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
-@SuppressWarnings("unused")
 public class OI {
 
 	//Driver - Construct Buttons
@@ -60,8 +52,8 @@ public class OI {
 	Button LeftStick1 = new JoystickButton(xBoxDriver, 9);
 	JoyTrigger leftTrig1 = new JoyTrigger(xBoxDriver, 2);
 	JoyTrigger rightTrig1 = new JoyTrigger(xBoxDriver, 3);
-	DPad dPadUp1 = new DPad(xBoxDriver,0);
-	DPad dPadDown1 = new DPad(xBoxDriver,180);
+	Button dPadUp1 = new DPad(xBoxDriver, Direction.dPadUp);
+	Button dPadDown1 = new DPad(xBoxDriver, Direction.dPadDown);
 	
 	//Co-driver - Construct Buttons
 	Joystick xBoxCoDriver = new Joystick(1);
@@ -76,9 +68,9 @@ public class OI {
 	Button LeftStick2 = new JoystickButton(xBoxCoDriver, 9);
 	JoyTrigger leftTrig2 = new JoyTrigger(xBoxCoDriver, 2);
 	JoyTrigger rightTrig2 = new JoyTrigger(xBoxCoDriver, 3);
-	Button dPadUp2 = new DPad(xBoxCoDriver,0);
-	Button dPadRight2 = new DPad(xBoxCoDriver,90);
-	Button dPadDown2 = new DPad(xBoxCoDriver,180);
+	Button dPadUp2 = new DPad(xBoxCoDriver, Direction.dPadUp);
+	Button dPadRight2 = new DPad(xBoxCoDriver, Direction.dPadRight);
+	Button dPadDown2 = new DPad(xBoxCoDriver, Direction.dPadDown);
 	public class CoDriverLeftStick extends Button {
 		public boolean get() {
 			return Math.abs(getCoDriverLeftY()) > 0.1;
