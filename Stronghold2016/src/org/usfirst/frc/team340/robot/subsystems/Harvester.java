@@ -193,4 +193,12 @@ public class Harvester extends Subsystem {
     	
     }
     
+    public double getLeftCurrent() {
+    	return tiltLeft.getOutputCurrent();
+    }
+    
+    public double getRightCurrent() {
+    	return tiltRight.getOutputCurrent();
+    }
+    
 }

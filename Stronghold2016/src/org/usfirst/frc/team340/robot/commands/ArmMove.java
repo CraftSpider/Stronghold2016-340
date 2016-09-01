@@ -1,5 +1,6 @@
 package org.usfirst.frc.team340.robot.commands;
 
+import java.awt.RenderingHints;
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team340.robot.Robot;
@@ -111,12 +112,27 @@ public class ArmMove extends Command {
 			leftSpeed /= 2;
 		}
 		
+		if(Robot.harvester.getLeftCurrent() > 15 /*average of regular & stoppers*/) {
+			leftSpeed = 0;
+			rightSpeed /= 2;
+		}
+		
+		if(Robot.harvester.getLeftCurrent() > 15 /*same*/) {
+			rightSpeed = 0;
+			leftSpeed /= 2;
+		}
+		
+		System.out.println("Left current: " + Robot.harvester.getLeftCurrent());
+		System.out.println("Right current: " + Robot.harvester.getRightCurrent());
+		
 		Robot.harvester.setRightTilt(rightSpeed);
 		Robot.harvester.setLeftTilt(leftSpeed);
 		
-		logger.info("left pot: " + leftPot + " right pot: " + rightPot + " hasReset" + Robot.harvester.hasReset());//+ 
+//		System.out.println(leftSpeed);
+		
+//		logger.info("left pot: " + leftPot + " right pot: " + rightPot + " hasReset" + Robot.harvester.hasReset());//+ 
 				//" left limit: " + Robot.harvester.getLeftLimit()  + " right limit: " + Robot.harvester.getRightLimit());
-		logger.info("getTopLeftLimit: " + Robot.harvester.getTopLeftLimit() + " getTopRightLimit: " + Robot.harvester.getTopRightLimit());
+//		logger.info("getTopLeftLimit: " + Robot.harvester.getTopLeftLimit() + " getTopRightLimit: " + Robot.harvester.getTopRightLimit());
     }
 
     // Make this return true when this Command no longer needs to run execute()

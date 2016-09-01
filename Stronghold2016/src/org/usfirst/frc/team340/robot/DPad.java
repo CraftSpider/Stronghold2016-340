@@ -35,14 +35,14 @@ public class DPad extends Button {
 	}
 	
 	public enum Direction {
-		dPadRight(0),
+		dPadRight(90),
 		dPadUpRight(45),
-		dPadUp(90),
-		dPadUpLeft(135),
-		dPadLeft(180),
+		dPadUp(0),
+		dPadUpLeft(315),
+		dPadLeft(270),
 		dPadDownLeft(225),
-		dPadDown(270),
-		dPadDownRight(315);
+		dPadDown(180),
+		dPadDownRight(135);
 		
 		public final int direction;
 		
