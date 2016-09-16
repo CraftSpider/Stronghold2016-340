@@ -85,22 +85,22 @@ public class DriveWithXbox extends Command {
 //    	} else
     	if(Math.abs(Robot.oi.getDriverRightY()) > 0.1 
     			|| Math.abs(Robot.oi.getDriverRightX()) > 0.1) {
-    		Robot.drive.arcadeDrive((Robot.oi.getDriverRightY())*moveSlowScale, (Robot.oi.getDriverRightX())*rotateSlowScale);
+    		Robot.drive.arcadeDrive(-(Robot.oi.getDriverRightY())*moveSlowScale, -(Robot.oi.getDriverRightX())*rotateSlowScale);
     		locked = false;
     	} else {
     		double leftX;
     		double leftY;
     		if(Robot.oi.getDriverLeftY()<0){
-    			leftY = -(Robot.oi.getDriverLeftY())*(Robot.oi.getDriverLeftY());
-    		}else{
     			leftY = (Robot.oi.getDriverLeftY())*(Robot.oi.getDriverLeftY());
+    		}else{
+    			leftY = -(Robot.oi.getDriverLeftY())*(Robot.oi.getDriverLeftY());
     		}
     		if(Robot.oi.getDriverLeftX()<0){
-    			leftX = -(Robot.oi.getDriverLeftX())*(Robot.oi.getDriverLeftX());
-    		}else{
     			leftX = (Robot.oi.getDriverLeftX())*(Robot.oi.getDriverLeftX());
+    		}else{
+    			leftX = -(Robot.oi.getDriverLeftX())*(Robot.oi.getDriverLeftX());
     		}
-    		Robot.drive.arcadeDrive(leftX,leftY);
+    		Robot.drive.arcadeDrive(leftY,leftX);
     		locked = false;
     	}
     }
