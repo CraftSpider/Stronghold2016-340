@@ -26,6 +26,7 @@ public class Climber extends Subsystem {
 	
 	private Talon dart;
 	
+	@SuppressWarnings("unused")
 	private boolean latchState = true;
 	
 	/**

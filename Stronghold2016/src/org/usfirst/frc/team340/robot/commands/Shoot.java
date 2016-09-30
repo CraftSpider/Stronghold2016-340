@@ -57,7 +57,10 @@ public class Shoot extends Command {
     //private boolean speed = false;
     //private boolean align = false;
     private boolean speed = true;
-    private boolean align = true;
+    
+    @SuppressWarnings("unused")
+	private boolean align = true;
+    
     private boolean liningUp = false;
     
     private double checkDelay = 0.6;
@@ -122,8 +125,8 @@ public class Shoot extends Command {
 //    	}
     	double[] centerX = table.getNumberArray("contours/centerX", defaultValue);
 //    	System.out.println(centerX.length);
-    	double startspeed = 0.25;
-    	double maxModifier = 0.2;
+//    	double startspeed = 0.25;
+//    	double maxModifier = 0.2;
     	if(!liningUp) {
     		angleOff = ((width/2-offset)-centerX[which])*0.157;
     		initAngle = Robot.drive.getGyroAngle();

@@ -1,6 +1,5 @@
 package org.usfirst.frc.team340.robot.commands;
 
-import java.awt.RenderingHints;
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team340.robot.Robot;

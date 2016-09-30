@@ -16,8 +16,9 @@ public class DriveWithXbox extends Command {
         requires(Robot.drive);
     }
 	
-    private boolean locked = false;
-    private double lockedAngle = 0;
+    @SuppressWarnings("unused")
+	private boolean locked = false;
+//    private double lockedAngle = 0;
     
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -58,7 +59,7 @@ public class DriveWithXbox extends Command {
     		Robot.drive.disengagePTO();
     	}
     	
-    	double off = 0;
+//    	double off = 0;
     	
     	//Allow driver to drive in any of three modes.
     	// 1. Use triggers for speed, joystick for turning

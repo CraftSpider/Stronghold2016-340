@@ -37,7 +37,9 @@ public class Drive extends Subsystem {
 	// Drive Gyro Sensor
 //	private AnalogGyro driveGyro;
 
+	@SuppressWarnings("unused")
 	private Encoder leftDriveEncoder;
+	
 	//private Encoder rightDriveEncoder;
  
 	// Clutch servo
@@ -49,7 +51,9 @@ public class Drive extends Subsystem {
 	// Logger
 	Logger logger = Robot.getLogger("drive");
 
+	@SuppressWarnings("unused")
 	private Accelerometer accel;
+	
 	private AnalogGyro gyro;
 	/**
 	 * Code for driving robot

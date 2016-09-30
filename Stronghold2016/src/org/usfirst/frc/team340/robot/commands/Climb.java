@@ -13,8 +13,8 @@ public class Climb extends Command {
 	
 	Logger logger = Robot.getLogger(Climb.class);
 	
-	private boolean dartStage = false;
-	private boolean ptoStage = false;
+//	private boolean dartStage = false;
+//	private boolean ptoStage = false;
 	
 	private double speed = 0;
 	
@@ -42,8 +42,8 @@ public class Climb extends Command {
      * If the arm is not at the bottom AND the clutch is engaged AND the latch is open, set driverail motors to full speed
      */
     
-    private double dartExtendSpeed = 0.85;
-    private double dartInSpeed = -1;
+//    private double dartExtendSpeed = 0.85;
+//    private double dartInSpeed = -1;
     
     protected void execute() {
     	

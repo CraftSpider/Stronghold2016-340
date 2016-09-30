@@ -22,7 +22,10 @@ public class ArmToZero extends Command {
 	
 	private double leftSpeed = 0,
 			       rightSpeed = 0;*/
+	 
+	@SuppressWarnings("unused")
 	private static Logger log = Robot.getLogger("ArmToZero");
+	
     public ArmToZero() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

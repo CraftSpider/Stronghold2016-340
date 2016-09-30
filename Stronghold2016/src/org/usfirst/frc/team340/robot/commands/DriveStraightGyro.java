@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveStraightGyro extends Command {
 	
-	private double angle;
-	private double Kp = .03; //TODO Figure out what this should be.
+//	private double angle;
+//	private double Kp = .03; //TODO Figure out what this should be.
 							 //And what it means?
     public DriveStraightGyro() {
         // Use requires() here to declare subsystem dependencies
