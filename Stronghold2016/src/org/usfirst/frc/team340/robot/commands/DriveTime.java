@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveTime extends Command {
 	
-	Logger logger = Robot.getLogger(DriveTime.class);
+	private Logger logger = Robot.getLogger(DriveTime.class);
 	
-	double speed;
+	private double speed;
 
 	/**
 	 * Code to drive robot based on time
