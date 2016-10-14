@@ -15,7 +15,7 @@ public class HarvesterRollers extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public final double SHOOTER_SHOOT_V_BUS = -1.0;
-	public final double SHOOTER_HARVEST_V_BUS = .55;
+	public final double SHOOTER_HARVEST_V_BUS = 1.0;
 	public final double SHOOTER_DISCHARGE_BALL_V_BUS = -0.75;
 	public final double SHOOTER_SHOOT_SPINUP_TIME = .2;
 	
@@ -23,7 +23,7 @@ public class HarvesterRollers extends Subsystem {
 	public final double HARVESTER_RELEASE_BALL_V_BUS = .6;
 	public final double HARVESTER_DISCHARGE_BALL_V_BUS = 0.75;
 	public final int HARVESTER_CONTROL_STALL_CURRENT = 42;
-	public final double HARVESTER_HARVEST_V_BUS = -0.6;
+	public final double HARVESTER_HARVEST_V_BUS = -1.0;
 	
 	private CANTalon shooterWheelA;
 	private CANTalon shooterWheelB;
