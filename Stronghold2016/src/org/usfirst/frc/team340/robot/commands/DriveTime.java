@@ -13,18 +13,29 @@ public class DriveTime extends Command {
 	
 	private Logger logger = Robot.getLogger(DriveTime.class);
 	
-	private double speed;
+	private double lSpeed;
+	private double rSpeed;
 
 	/**
 	 * Code to drive robot based on time
+	 * @param timeout time before stop
+	 * @param speed speed to move (both rails)
 	 */
     public DriveTime(double timeout, double speed) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        this(timeout, speed, speed);
+    }
+    
+    /**
+     * Drive based on time
+     * @param timeout time before stop
+     * @param leftSpeed speed of left rail
+     * @param rightSpeed speed of right rail
+     */
+    public DriveTime(double timeout, double leftSpeed, double rightSpeed) {
     	requires(Robot.drive);
     	setTimeout(timeout);
-    	
-    	this.speed = speed;
+    	lSpeed = leftSpeed;
+    	rSpeed = rightSpeed;
     }
 
     // Called just before this Command runs the first time
@@ -34,7 +45,7 @@ public class DriveTime extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.setBothDrive(speed, speed);
+    	Robot.drive.setBothDrive(lSpeed, rSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
