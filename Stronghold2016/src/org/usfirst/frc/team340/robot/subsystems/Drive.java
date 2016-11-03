@@ -59,8 +59,8 @@ public class Drive extends Subsystem {
 	 * Code for driving robot
 	 */
 	public Drive() {
-		leftDrive = new Talon(RobotMap.DriveLeftMotor);
-		rightDrive = new Talon(RobotMap.DriveRightMotor);
+		leftDrive = new Talon(RobotMap.LEFT_DRIVE_TALON);
+		rightDrive = new Talon(RobotMap.RIGHT_DRIVE_TALON);
 		
 //		driveGyro = new AnalogGyro(RobotMap.DriveGyroPort);
 
@@ -70,7 +70,7 @@ public class Drive extends Subsystem {
 		leftDriveEncoder = new Encoder(10, 11);
 		
 //		PTOMotor = new PWM(RobotMap.DrivePTO);
-		PTOMotor = new Servo(RobotMap.DrivePTO);
+		PTOMotor = new Servo(RobotMap.DRIVE_PTO);
 				
 		accel = new BuiltInAccelerometer();
 		// clutchMotor.setRaw(126);

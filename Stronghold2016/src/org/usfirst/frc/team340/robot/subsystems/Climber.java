@@ -33,11 +33,11 @@ public class Climber extends Subsystem {
 	 * Instantiate latch and sensor
 	 */
 	public Climber() {
-		armLatch = new Servo(RobotMap.ClimberLatch);
+		armLatch = new Servo(RobotMap.CLIMBER_LATCH);
 		dart = new Talon(4);
 //		atBottom = new DigitalInput(RobotMap.ClimberBottomSensor);
-		dartLimit = new DigitalInput(RobotMap.ClimberDartLimit);
-		winchBanner = new DigitalInput(RobotMap.ClimberBanner);
+		dartLimit = new DigitalInput(RobotMap.CLIMBER_DART_LIMIT);
+		winchBanner = new DigitalInput(RobotMap.CLIMBER_BANNER);
 	}
 
     public void initDefaultCommand() {

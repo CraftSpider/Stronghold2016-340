@@ -12,32 +12,32 @@ public class RobotMap {
 	// PWM Motor Ports
 	//
 	
-	public static int DriveLeftMotor = 1;
-	public static int DriveRightMotor = 2;
+	public static final int LEFT_DRIVE_TALON = 1;
+	public static final int RIGHT_DRIVE_TALON = 2;
 //	public static int HarvesterBallControl = 3;
-	public static int ClimberMovementMotor = 5;
-	public static int ClimberWinchMotor = 6;
+	public static final int CLIMBER_MOVEMENT = 5;
+	public static final int CLIMBER_WINCH = 6;
 	
-	public static int ClimberLatch = 3;
+	public static final int CLIMBER_LATCH = 3;
 	
-	public static int DrivePTO = 9;
+	public static final int DRIVE_PTO = 9;
 	
 	//
 	// CAN Talon Ports
  	//
 	
-	public static int HarvesterShooterWheelA = 3;
-	public static int HarvesterShooterWheelB = 4;
-	public static int HarvesterBallControl = 2;
+	public static final int HARVESTER_SHOOTER_WHEEL_A = 3;
+	public static final int HARVESTER_SHOOTER_WHEEL_B = 4;
+	public static final int HARVESTER_BALL_CONTROL = 2;
 	
-	public static int HarvesterAimingMotorLeft = 1;
-	public static int HarvesterAimingMotorRight = 5;	
+	public static final int HARVESTER_AIMING_LEFT = 1;
+	public static final int HARVESTER_AIMING_RIGHT = 5;	
 	
 	//
 	// Solenoid Ports
 	//
 	
-	public static int ClimberPinPuller = 0;
+	public static final int CLIMBER_PIN_PULL = 0;
 	
 	//
 	// Digital I/O Ports
@@ -51,41 +51,41 @@ public class RobotMap {
 //	public static int RightDriveEncoderPortA = 8;
 //	public static int RightDriveEncoderPortB = 9;
 	
-	public static int LeftDriveEncoder = 10;
+	public static final int LEFT_DRIVE_ENCODER = 10;
 	
-	public static int ClimberBanner = 8;
-	public static int ClimberDartLimit = 9;
+	public static final int CLIMBER_BANNER = 8;
+	public static final int CLIMBER_DART_LIMIT = 9;
 	
-	public static int HarvesterBottomLeftBump = 1;
-	public static int HarvesterBottomRightBump = 0;
+	public static final int HARVESTER_LEFT_BUMP_BOTTOM = 1;
+	public static final int HARVESTER_RIGHT_BUMP_BOTTOM = 0;
 	
-	public static int HarvesterTopLeftBump = 6;
-	public static int HarvesterTopRightBump = 7;
+	public static final int HARVESTER_LEFT_BUMP_TOP = 6;
+	public static final int HARVESTER_RIGHT_BUMP_TOP = 7;
 	
-	public static int BallSensorLeftPort = 2;
-	public static int BallSensorRightPort = 3;
+	public static final int BALL_SENSOR_LEFT = 2;
+	public static final int BALL_SENSOR_RIGHT = 3;
 	
 	//
 	// Analog I/O Ports
 	//
 	
-	public static int LeftAimPot = 2;
-	public static int RightAimPot = 3;
+	public static final int LEFT_AIM_POT = 2;
+	public static final int RIGHT_AIM_POT = 3;
 	//
 	// SPI Ports
 	//
 	
-	public static int DriveGyroPort = 2;
+	public static final int DRIVE_GYRO = 2;
 	
 	//
 	// Constants
 	//
 	
-	public static int ENCODER_TICKS_PER_REV = 100;
+	public static final int ENCODER_TICKS_PER_REV = 100;
 	
 	//
 	// Relay ports
 	//
 	
-	public static int Flashlight = 2;
+	public static final int FLASHLIGHT = 2;
 }

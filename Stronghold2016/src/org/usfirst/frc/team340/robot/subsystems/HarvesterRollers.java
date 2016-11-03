@@ -44,15 +44,15 @@ public class HarvesterRollers extends Subsystem {
     }
     
     public HarvesterRollers() {
-    	shooterWheelA = new CANTalon(RobotMap.HarvesterShooterWheelA);//Construct shooter A as CANTalon, this should have encoder into it
-		shooterWheelB = new CANTalon(RobotMap.HarvesterShooterWheelB);//Construct shooter B as CANTalon
+    	shooterWheelA = new CANTalon(RobotMap.HARVESTER_SHOOTER_WHEEL_A);//Construct shooter A as CANTalon, this should have encoder into it
+		shooterWheelB = new CANTalon(RobotMap.HARVESTER_SHOOTER_WHEEL_B);//Construct shooter B as CANTalon
 //		shooterWheelB.changeControlMode(CANTalon.TalonControlMode.Follower);//turn shooter motor B to a slave
 //		shooterWheelB.set(shooterWheelA.get());//slave shooter motor B to shooter motor A
 		
-		harvesterBallControl = new CANTalon(RobotMap.HarvesterBallControl);
+		harvesterBallControl = new CANTalon(RobotMap.HARVESTER_BALL_CONTROL);
 
-		ballSensorLeft = new DigitalInput(RobotMap.BallSensorLeftPort);
-		ballSensorRight = new DigitalInput(RobotMap.BallSensorRightPort);
+		ballSensorLeft = new DigitalInput(RobotMap.BALL_SENSOR_LEFT);
+		ballSensorRight = new DigitalInput(RobotMap.BALL_SENSOR_RIGHT);
 		pdp = new PowerDistributionPanel();
     }
     

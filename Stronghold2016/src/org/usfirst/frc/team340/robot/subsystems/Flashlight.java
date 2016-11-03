@@ -21,7 +21,7 @@ public class Flashlight extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public Flashlight() {
-    	spike = new Relay(RobotMap.Flashlight);
+    	spike = new Relay(RobotMap.FLASHLIGHT);
     }
     public void enableFlashLight() {
     	spike.set(Relay.Value.kForward);

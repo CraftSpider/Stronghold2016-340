@@ -90,19 +90,19 @@ public class Harvester extends Subsystem {
 		
 		
 		//TODO: sync left/right motors
-		tiltRight = new CANTalon(RobotMap.HarvesterAimingMotorRight);
-		tiltLeft = new CANTalon(RobotMap.HarvesterAimingMotorLeft);
+		tiltRight = new CANTalon(RobotMap.HARVESTER_AIMING_RIGHT);
+		tiltLeft = new CANTalon(RobotMap.HARVESTER_AIMING_LEFT);
 		
 		//tiltLeft.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue IE smooth out the jerkiness
 		//tiltRight.setVoltageRampRate(5); // this might be a good way to solve our ramp rate issue IE smooth out the jerkiness
 		
-		limitLeft = new DigitalInput(RobotMap.HarvesterBottomLeftBump);
-		limitRight = new DigitalInput(RobotMap.HarvesterBottomRightBump);
-		limitLeftTop = new DigitalInput(RobotMap.HarvesterTopLeftBump);
-		limitRightTop = new DigitalInput(RobotMap.HarvesterTopRightBump);
+		limitLeft = new DigitalInput(RobotMap.HARVESTER_LEFT_BUMP_BOTTOM);
+		limitRight = new DigitalInput(RobotMap.HARVESTER_RIGHT_BUMP_BOTTOM);
+		limitLeftTop = new DigitalInput(RobotMap.HARVESTER_LEFT_BUMP_TOP);
+		limitRightTop = new DigitalInput(RobotMap.HARVESTER_RIGHT_BUMP_TOP);
 		
-		leftPot = new ZeroablePotentiometer(RobotMap.LeftAimPot, 250);
-		rightPot = new ZeroablePotentiometer(RobotMap.RightAimPot, 250);
+		leftPot = new ZeroablePotentiometer(RobotMap.LEFT_AIM_POT, 250);
+		rightPot = new ZeroablePotentiometer(RobotMap.RIGHT_AIM_POT, 250);
 		leftPot.setInverted(true);
 	}
 	
