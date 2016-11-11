@@ -15,13 +15,12 @@ public class DPad extends Button {
 	 * must be equal to
 	 */
 	public DPad(Joystick joy, int direction) {
-		this.joystick = joy;
+		joystick = joy;
 		this.direction = direction;
 	}
 	
 	public DPad(Joystick joy, Direction dir) {
-		this.joystick = joy;
-		this.direction = dir.direction;
+		this(joy, dir.direction);
 	}
 	/**
 	 * Gets whether or not the hat's angle

@@ -14,7 +14,7 @@ public class JoyTrigger extends Button {
 	 * @param axis the number of the axis
 	 */
 	public JoyTrigger(Joystick joy, int axis) {
-		this.joystick = joy;	
+		joystick = joy;	
 		this.axis = axis;
 		this.percent = 0.5;
 	}
@@ -27,7 +27,7 @@ public class JoyTrigger extends Button {
 	 * return to return true
 	 */
 	public JoyTrigger(Joystick joy, int axis, double percent) {
-		this.joystick = joy;	
+		joystick = joy;	
 		this.axis = axis;
 		this.percent = percent;
 	}
