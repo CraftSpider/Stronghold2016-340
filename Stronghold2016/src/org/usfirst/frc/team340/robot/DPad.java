@@ -19,6 +19,15 @@ public class DPad extends Button {
 		this.direction = direction;
 	}
 	
+	/**
+	 * Class for dealing with the D-Pad
+	 * aka PoV hat
+	 * @param joy {@link Joystick} in
+	 * question
+	 * @param dir {@link Direction} enum
+	 * to use (because memorizing numbers
+	 * is hard)
+	 */
 	public DPad(Joystick joy, Direction dir) {
 		this(joy, dir.direction);
 	}
@@ -30,7 +39,7 @@ public class DPad extends Button {
 	 * otherwise
 	 */
 	public boolean get() {
-		return joystick.getPOV() == direction;		
+		return joystick.getPOV() == direction;
 	}
 	
 	public enum Direction {
