@@ -88,7 +88,6 @@ public class Harvester extends Subsystem {
 	
 	public Harvester() {		
 		
-		
 		//TODO: sync left/right motors
 		tiltRight = new CANTalon(RobotMap.HARVESTER_AIMING_RIGHT);
 		tiltLeft = new CANTalon(RobotMap.HARVESTER_AIMING_LEFT);
@@ -200,5 +199,4 @@ public class Harvester extends Subsystem {
     public double getRightCurrent() {
     	return tiltRight.getOutputCurrent();
     }
-    
 }

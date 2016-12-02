@@ -45,13 +45,14 @@ public class Climb extends Command {
 //    private double dartExtendSpeed = 0.85;
 //    private double dartInSpeed = -1;
     
-    protected void execute() {
-    	
+    @SuppressWarnings("deprecation")
+	protected void execute() {
     	if(Robot.climber.getDartLimit() && this.speed > 0) {
     		Robot.climber.runDart(0);
     	} else {
     		Robot.climber.runDart(this.speed);
     	}
+    	
     	System.out.println("Limit: " + Robot.climber.getDartLimit()  + " and Banner: " + Robot.climber.getWinchBanner());
 //    	if(!dartStage) {
 //    		Robot.climber.runDart(dartExtendSpeed);
@@ -90,7 +91,8 @@ public class Climb extends Command {
      * Stops driverail motors when completed
      * @return void
      */
-    protected void end() {
+    @SuppressWarnings("deprecation")
+	protected void end() {
     	logger.info("[Ending]");
     	Robot.drive.disengagePTO();
     	Robot.climber.runDart(0);

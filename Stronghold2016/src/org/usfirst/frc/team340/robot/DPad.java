@@ -21,7 +21,7 @@ public class DPad extends Button {
 	
 	/**
 	 * Class for dealing with the D-Pad
-	 * aka PoV hat
+	 * aka PoV hat using enum
 	 * @param joy {@link Joystick} in
 	 * question
 	 * @param dir {@link Direction} enum

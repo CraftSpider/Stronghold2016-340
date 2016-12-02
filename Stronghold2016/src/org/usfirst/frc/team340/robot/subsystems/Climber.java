@@ -11,8 +11,10 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Raises the climber and enables it to pull
+ * @deprecated we had a climber. <b>had.</b>
  */
+@Deprecated
 public class Climber extends Subsystem {
     
     // Put methods for controlling this subsystem

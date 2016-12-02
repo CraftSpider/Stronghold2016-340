@@ -7,8 +7,11 @@ import java.util.logging.Logger;
 import org.usfirst.frc.team340.robot.Robot;
 
 /**
- *
+ * Closes the latch/clutch to change the drive control
+ * from the drive train to pulling the climber
+ * @deprecated no climber, no point
  */
+@Deprecated
 public class CloseLatch extends Command {
 	
 	Logger logger = Robot.getLogger(CloseLatch.class);

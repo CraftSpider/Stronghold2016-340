@@ -128,7 +128,7 @@ public class HarvesterRollers extends Subsystem {
     public boolean hasBallRight() {
     	return !ballSensorRight.get();
     }
-    public void harvesterCurrent(){
+    public void harvesterCurrent() {
     	double current = pdp.getCurrent(0);
     	double current2 = pdp.getCurrent(1);
     	System.out.println(current + ": port 14" + current2 + ": port 15");

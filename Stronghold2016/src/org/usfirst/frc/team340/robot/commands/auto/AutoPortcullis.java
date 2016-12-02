@@ -4,9 +4,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team340.robot.Robot;
 
 /**
- *
- * @deprecated
+ * Automagically completes the portcullis...
+ * well, ok, it <em>tries<em>
+ * @deprecated obstacle is no longer used
  */
+@Deprecated
 @SuppressWarnings("unused")
 public class AutoPortcullis extends Command {
 	

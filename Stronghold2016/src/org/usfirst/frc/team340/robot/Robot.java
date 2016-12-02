@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team340.robot;
 
 import java.util.logging.ConsoleHandler;
@@ -35,6 +34,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+@SuppressWarnings("deprecation")
 public class Robot extends IterativeRobot {
 	
 	public static Level logLevel = Level.FINE;

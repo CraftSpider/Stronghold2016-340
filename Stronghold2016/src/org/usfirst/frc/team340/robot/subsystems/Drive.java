@@ -7,12 +7,9 @@ import org.usfirst.frc.team340.robot.RobotMap;
 import org.usfirst.frc.team340.robot.commands.DriveWithXbox;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 
 /**
  * drive code including motors and encoders.
@@ -20,11 +17,6 @@ import edu.wpi.first.wpilibj.interfaces.Accelerometer;
  * @version 1.0
  */
 public class Drive extends Subsystem {
-
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-
-	public final double CLIMB_DRIVE_SPEED = 0.5;
 
 	// Drive motors
 	public static Talon leftDrive;
@@ -34,14 +26,6 @@ public class Drive extends Subsystem {
 	private double leftMotorSpeed;
 	private double rightMotorSpeed;
 	
-	// Drive Gyro Sensor
-//	private AnalogGyro driveGyro;
-
-	@SuppressWarnings("unused")
-	private Encoder leftDriveEncoder;
-	
-	//private Encoder rightDriveEncoder;
- 
 	// Clutch servo
 	private Servo PTOMotor;
 
@@ -51,29 +35,15 @@ public class Drive extends Subsystem {
 	// Logger
 	Logger logger = Robot.getLogger("drive");
 
-	@SuppressWarnings("unused")
-	private Accelerometer accel;
-	
 	private AnalogGyro gyro;
+	
 	/**
 	 * Code for driving robot
 	 */
 	public Drive() {
 		leftDrive = new Talon(RobotMap.LEFT_DRIVE_TALON);
 		rightDrive = new Talon(RobotMap.RIGHT_DRIVE_TALON);
-		
-//		driveGyro = new AnalogGyro(RobotMap.DriveGyroPort);
-
-//		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
-//		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
-
-		leftDriveEncoder = new Encoder(10, 11);
-		
-//		PTOMotor = new PWM(RobotMap.DrivePTO);
 		PTOMotor = new Servo(RobotMap.DRIVE_PTO);
-				
-		accel = new BuiltInAccelerometer();
-		// clutchMotor.setRaw(126);
 		gyro = new AnalogGyro(0);
 	}
 
